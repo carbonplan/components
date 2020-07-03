@@ -1,2 +1,3 @@
 # carbonplan / components
-shared react components and themes
+
+shared react components for our websites
