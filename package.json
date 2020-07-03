@@ -1,0 +1,39 @@
+{
+  "name": "@carbonplan/components",
+  "version": "1.0.0",
+  "description": "shared components for our websites",
+  "main": "dst/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dst"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carbonplan/components.git"
+  },
+  "keywords": [
+    "carbonplan",
+    "climate",
+    "carbon",
+    "theme-ui"
+  ],
+  "author": "freeman-lab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carbonplan/components/issues"
+  },
+  "files": [
+    "dst"
+  ],
+  "homepage": "https://github.com/carbonplan/components#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-jsx": "^3.3.0"
+  }
+}
