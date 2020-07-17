@@ -3,6 +3,7 @@
 [![Build](https://github.com/carbonplan/components/workflows/CI/badge.svg)](https://github.com/carbonplan/components/actions)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=carbonplan/components)](https://dependabot.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/carbonplan/components/blob/master/LICENSE)
+[![npm version](https://badge.fury.io/js/%40carbonplan%2Fcomponents.svg)](https://badge.fury.io/js/%40carbonplan%2Fcomponents)
 
 Shared react components for our websites.
 
@@ -11,10 +12,6 @@ To use, import into your package
 ```js
 import Head from '@carbonplan/components'
 ```
-
-## publishing to npm
-
-Publishing to NPM is handled automatically. Simply update the version number in `package.json` and let GitHub do the rest.
 
 ## license
 
