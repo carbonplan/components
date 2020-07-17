@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 
 const prefix = 'https://carbonplan-assets.s3.amazonaws.com/fonts/relative/'
 
-function Style () {
-  return <style jsx global>
+function Style() {
+  return (
+    <style jsx global>
       {`
         body {
           overscroll-behavior: none;
@@ -78,6 +79,7 @@ function Style () {
 
       `}
     </style>
+  )
 }
 
 export default Style
