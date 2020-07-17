@@ -1,10 +1,20 @@
 # carbonplan / components
 
-[![Build](https://github.com/carbonplan/theme/workflows/CI/badge.svg)](https://github.com/carbonplan/theme/actions)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=carbonplan/theme)](https://dependabot.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/carbonplan/theme/blob/master/LICENSE)
+[![Build](https://github.com/carbonplan/components/workflows/CI/badge.svg)](https://github.com/carbonplan/components/actions)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=carbonplan/components)](https://dependabot.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/carbonplan/components/blob/master/LICENSE)
 
-shared react components for our websites
+Shared react components for our websites.
+
+To use, import into your package
+
+```js
+import Head from '@carbonplan/components'
+```
+
+## publishing to npm
+
+Publishing to NPM is handled automatically. Simply update the version number in `package.json` and let GitHub do the rest.
 
 ## license
 
