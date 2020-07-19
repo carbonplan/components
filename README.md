@@ -9,14 +9,12 @@
 
 [![GitHub][github-badge]][github]
 ![Build Status][]
-![dependabot][]
 ![MIT License][]
 ![NPM Version][]
 
 [github]: https://github.com/carbonplan/components
 [github-badge]: https://flat.badgen.net/badge/-/github?icon=github&label
 [build status]: https://flat.badgen.net/github/checks/carbonplan/components
-[dependabot]: https://flat.badgen.net/dependabot/carbonplan/components?icon=dependabot
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 [npm version]: https://flat.badgen.net/npm/v/@carbonplan/components
 
