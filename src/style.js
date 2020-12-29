@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 const prefix = 'https://carbonplan-assets.s3.amazonaws.com/fonts/relative/'
 

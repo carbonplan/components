@@ -1,11 +1,11 @@
 {
   "name": "@carbonplan/components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "shared components for our websites",
   "main": "dst/index.js",
+  "module": "dst/index.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d dst"
+    "build": "microbundle --no-compress --jsx React.createElement -f modern,es,cjs"
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,13 @@
   ],
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "theme-ui": "^0.3.5",
+    "styled-jsx": "^3.3.0"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "microbundle": "^0.13.0",
     "styled-jsx": "^3.3.0"
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 export const GA_TRACKING_ID = 'UA-165985850-1'
 
