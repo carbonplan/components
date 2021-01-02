@@ -39,13 +39,13 @@ const Header = ({ status, local }) => {
       <Box>
         {local && (
           <NextLink href='/' passHref>
-            <Link>
+            <Link aria-label='CarbonPlan Homepage'>
               <Logo sx={{ cursor: 'pointer' }} />
             </Link>
           </NextLink>
         )}
         {!local && (
-          <Link href='/'>
+          <Link href='https://carbonplan.org' aria-label='CarbonPlan Homepage'>
             <Logo sx={{ cursor: 'pointer' }} />
           </Link>
         )}
@@ -164,14 +164,14 @@ const Header = ({ status, local }) => {
                 </NextLink>
               )}
               {!local && (
-                <Link href='/about' sx={sx.link}>
+                <Link href='https://carbonplan.org/about' sx={sx.link}>
                   About
                 </Link>
               )}
-              <Link href='/reports' sx={sx.link}>
+              <Link href='https://carbonplan.org/reports' sx={sx.link}>
                 Reports
               </Link>
-              <Link href='/research' sx={sx.link}>
+              <Link href='https://carbonplan.org/research' sx={sx.link}>
                 Research
               </Link>
               {local && (
@@ -180,7 +180,7 @@ const Header = ({ status, local }) => {
                 </NextLink>
               )}
               {!local && (
-                <Link href='/team' sx={sx.link}>
+                <Link href='https://carbonplan.org/team' sx={sx.link}>
                   Team
                 </Link>
               )}
@@ -190,7 +190,7 @@ const Header = ({ status, local }) => {
                 </NextLink>
               )}
               {!local && (
-                <Link href='/faq' sx={sx.link}>
+                <Link href='https://carbonplan.org/faq' sx={sx.link}>
                   FAQ
                 </Link>
               )}

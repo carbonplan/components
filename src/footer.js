@@ -32,6 +32,7 @@ const Footer = () => {
           <Link
             href='https://twitter.com/carbonplanorg'
             target='_blank'
+            rel='noreferrer'
             sx={{ textDecoration: 'none' }}
           >
             @carbonplanorg

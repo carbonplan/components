@@ -1,11 +1,14 @@
 import React from 'react'
 import { Text } from 'theme-ui'
 
-const Badge = ({ label, value, onClick, sx }) => {
+const Tag = ({ label, value, onClick, sx }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Text
       onClick={onClick}
+      role='checkbox'
+      aria-checked={value}
+      aria-label={label}
       sx={{
         display: 'inline-block',
         fontSize: [1],
@@ -34,4 +37,4 @@ const Badge = ({ label, value, onClick, sx }) => {
   )
 }
 
-export default Badge
+export default Tag

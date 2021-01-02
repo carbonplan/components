@@ -13,6 +13,8 @@ const Switch = ({ sx }) => {
     <IconButton
       aria-label='Toggle dark mode'
       onClick={toggle}
+      role='checkbox'
+      aria-checked={colorMode == 'dark'}
       sx={{
         width: 32,
         height: 32,

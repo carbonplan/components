@@ -7,6 +7,9 @@ const Toggle = ({ value, onClick, sx }) => {
   return (
     <Box
       onClick={onClick}
+      role='checkbox'
+      aria-checked={value}
+      aria-label='Toggle'
       sx={{ cursor: 'pointer', display: 'inline-block', ...sx }}
     >
       <Box

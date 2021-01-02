@@ -6,6 +6,8 @@ const Expander = ({ value, id, onClick, sx }) => {
     <IconButton
       onClick={onClick}
       id={id}
+      role='checkbox'
+      aria-checked={value}
       aria-label='Expand'
       sx={{
         display: 'inline-block',
