@@ -38,7 +38,7 @@ const Custom404 = () => {
               width: ['70%', '70%', '450px'],
               mr: [4],
               mt: [2, 2, 5],
-              ml: [3],
+              ml: [0, 0, 3],
               fill: 'primary',
             }}
           >
