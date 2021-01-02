@@ -18,13 +18,40 @@
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 [npm version]: https://flat.badgen.net/npm/v/@carbonplan/components
 
+These are a set of modular but opinionated `react` components. They assume and make extensive use of `theme-ui` and `next`, and are meant to be composed with our [theme](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
+
 ## usage
 
-To use, import into your package
+To use, import the component(s) you want into your `next` project. Here are some examples.
 
-```js
-import Head from '@carbonplan/components'
+Use our logo and monogram:
+
+```jsx
+import { Logo, Monogram } from '@carbonplan/components'
 ```
+
+Use our icons:
+
+```jsx
+import { Icons } from '@carbonplan/components'
+
+const { Check, Question, Info } = Icons
+```
+
+Render a simple layout without a footer
+
+```jsx
+import { Layout, Logo, Monogram } from '@carbonplan/components'
+
+const Index = () => {
+  return <Layout footer={false}>
+    <Logo sx={{width: 180}}/>
+    <Monogram sx={{width: 60}}/>
+  </Layout>
+}
+
+export default Index
+````
 
 ## license
 
