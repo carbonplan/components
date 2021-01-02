@@ -13,7 +13,7 @@ const Footer = () => {
         mb: [4, 4, 4],
       }}
     >
-      <Grid columns={[1, 1, '35% 31% 30%']} sx={{ mb: [3] }}>
+      <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
         <Box>
           <Text sx={{ fontFamily: 'heading', letterSpacing: 'mono', mb: [2] }}>
             EMAIL
@@ -45,7 +45,7 @@ const Footer = () => {
           </Text>
         </Box>
       </Grid>
-      <Grid columns={[1, 1, '35% 31% 30%']} sx={{ mb: ['2px'] }}>
+      <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: ['2px'] }}>
         <Box sx={{ position: 'relative' }}>
           <Box
             sx={{

@@ -56,7 +56,9 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          {children}
+          <Container sx={{px: [3, 4, 4]}}>
+            {children}
+          </Container>
         </Box>
         {footer && (
           <Box
