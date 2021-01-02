@@ -10,7 +10,7 @@ const Custom404 = () => {
         <Grid
           gap={['12px', '16px', '16px']}
           columns={[1, 1, '480px 1fr']}
-          sx={{ mb: [5, 0, 0], width: ['90%', '90%', '50%']}}
+          sx={{ mb: [5, 0, 0], width: ['90%', '90%', '50%'], pt: [0, 0, 6]}}
         >
           <Box>
             <Styled.h1
