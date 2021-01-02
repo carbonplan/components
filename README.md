@@ -18,7 +18,7 @@
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 [npm version]: https://flat.badgen.net/npm/v/@carbonplan/components
 
-These are a set of modular but opinionated `react` components. They assume and make extensive use of `theme-ui` and `next`, and are meant to be composed with our [theme](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
+These are a set of modular but opinionated `react` components. They assume and make extensive use of `theme-ui` and `next`, and are meant to be composed with our [`theme`](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
 
 ## usage
 
@@ -52,6 +52,8 @@ const Index = () => {
 
 export default Index
 ````
+
+For more usage examples checkout our [`design`](https://github.com/carbonplan/design) sample which showcases all these components live.
 
 ## license
 
