@@ -93,12 +93,12 @@ const Header = ({ status, local }) => {
               <line x1='52' y1='6.1' x2='16' y2='6.1' />
               <line x1='52' y1='18' x2='16' y2='18' />
               <path
-                sx={{ transition: 'all 0.25s' }}
+                style={{ transition: 'all 0.2s' }}
                 className='paren'
                 d='M6.4,1.2c-6.3,10.3-6.3,23.3,0,33.6'
               />
               <path
-                sx={{ transition: 'all 0.25s' }}
+                style={{ transition: 'all 0.2s' }}
                 className='paren'
                 d='M61.6,34.8c6.3-10.3,6.3-23.3,0-33.6'
               />
@@ -118,12 +118,12 @@ const Header = ({ status, local }) => {
               <line x1='50.85' y1='29.79' x2='17.15' y2='6.21' />
               <line x1='17.15' y1='29.79' x2='50.85' y2='6.21' />
               <path
-                sx={{ transition: 'all 0.25s' }}
+                style={{ transition: 'all 0.2s' }}
                 className='paren'
                 d='M6.4,1.2c-6.3,10.3-6.3,23.3,0,33.6'
               />
               <path
-                sx={{ transition: 'all 0.25s' }}
+                style={{ transition: 'all 0.2s' }}
                 className='paren'
                 d='M61.6,34.8c6.3-10.3,6.3-23.3,0-33.6'
               />
