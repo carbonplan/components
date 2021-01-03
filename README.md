@@ -55,6 +55,14 @@ export default Index
 
 For more usage examples checkout our [`design`](https://github.com/carbonplan/design) sample which showcases all these components live.
 
+## development
+
+To update a component and publish a new version, first make your changes, then follow these steps
+
+- Increase the version number in `package.json`
+- `npm run build`
+- `npm publish`
+
 ## license
 
 All the code in this repository is [MIT](https://choosealicense.com/licenses/mit/) licensed, but we request that you please provide attribution if reusing any of our digital content (graphics, logo, articles, etc.).
