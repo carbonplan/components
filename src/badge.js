@@ -19,19 +19,20 @@ const Badge = ({ value, sx }) => {
         textAlign: 'center',
         userSelect: 'none',
         fontSize: [2],
-        ...sx
+        ...sx,
       }}
     >
-      <Text
+      <Box
         sx={{
           fontFamily: 'mono',
           mt: ['0px'],
           px: [1],
           color: color,
+          ...sx,
         }}
       >
         {value}
-      </Text>
+      </Box>
     </Box>
   )
 }

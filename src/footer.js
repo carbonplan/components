@@ -15,7 +15,14 @@ const Footer = () => {
     >
       <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
         <Box sx={{ fontSize: [2] }}>
-          <Text sx={{ fontFamily: 'heading', letterSpacing: 'mono', mb: [2] }}>
+          <Text
+            sx={{
+              fontSize: [2],
+              fontFamily: 'heading',
+              letterSpacing: 'mono',
+              mb: [2],
+            }}
+          >
             EMAIL
           </Text>
           <Link
@@ -25,8 +32,15 @@ const Footer = () => {
             hello@carbonplan.org
           </Link>
         </Box>
-        <Box sx={{ fontSize: [2] }}>
-          <Text sx={{ fontFamily: 'heading', letterSpacing: 'mono', mb: [2] }}>
+        <Box sx={{}}>
+          <Text
+            sx={{
+              fontSize: [2],
+              fontFamily: 'heading',
+              letterSpacing: 'mono',
+              mb: [2],
+            }}
+          >
             FOLLOW
           </Text>
           <Link
@@ -36,8 +50,15 @@ const Footer = () => {
             @carbonplanorg
           </Link>
         </Box>
-        <Box sx={{ fontSize: [2], fontFamily: 'body' }}>
-          <Text sx={{ color: 'secondary', maxWidth: '90%' }}>
+        <Box>
+          <Text
+            sx={{
+              fontSize: [2],
+              fontFamily: 'body',
+              color: 'secondary',
+              maxWidth: '90%',
+            }}
+          >
             CarbonPlan is a registered non-profit public benefit corporation in
             California with 501(3)(c) status.
           </Text>
@@ -56,12 +77,13 @@ const Footer = () => {
               borderWidth: '0px',
               borderTopWidth: '1px',
               color: 'secondary',
-              fontSize: [1],
               pt: [2],
               display: ['none', 'none', 'inherit'],
             }}
           >
-            <Text>(c) 2020 CARBONPLAN, SAN FRANCISCO, CA</Text>
+            <Text sx={{ fontSize: [1] }}>
+              (c) 2020 CARBONPLAN, SAN FRANCISCO, CA
+            </Text>
           </Box>
         </Box>
         <Box sx={{ position: 'relative' }}>
@@ -76,18 +98,17 @@ const Footer = () => {
               borderWidth: '0px',
               borderTopWidth: '1px',
               color: 'secondary',
-              fontSize: [1],
               pt: [2],
               display: ['none', 'none', 'inherit'],
             }}
           >
-            <Text>
-              <NextLink href='/terms' passHref>
-                <Link sx={{ textDecoration: 'none' }}>
-                  <Text sx={{ color: 'secondary' }}>READ OUR TERMS</Text>
-                </Link>
-              </NextLink>
-            </Text>
+            <NextLink href='/terms' passHref>
+              <Link sx={{ textDecoration: 'none' }}>
+                <Text sx={{ fontSize: [1], color: 'secondary' }}>
+                  READ OUR TERMS
+                </Text>
+              </Link>
+            </NextLink>
           </Box>
         </Box>
         <Box sx={{ mt: [3] }}>
