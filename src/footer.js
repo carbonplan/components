@@ -68,20 +68,24 @@ const Footer = () => {
         <Box sx={{ position: 'relative' }}>
           <Box
             sx={{
-              fontFamily: 'mono',
-              letterSpacing: 'mono',
               position: 'absolute',
               bottom: '0px',
               borderStyle: 'solid',
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              color: 'secondary',
               pt: [2],
               display: ['none', 'none', 'inherit'],
             }}
           >
-            <Text sx={{ fontSize: [1] }}>
+            <Text
+              sx={{
+                color: 'secondary',
+                fontSize: [1],
+                fontFamily: 'mono',
+                letterSpacing: 'mono',
+              }}
+            >
               (c) 2020 CARBONPLAN, SAN FRANCISCO, CA
             </Text>
           </Box>
@@ -89,22 +93,26 @@ const Footer = () => {
         <Box sx={{ position: 'relative' }}>
           <Box
             sx={{
-              fontFamily: 'mono',
-              letterSpacing: 'mono',
               position: 'absolute',
               bottom: '0px',
               borderStyle: 'solid',
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              color: 'secondary',
               pt: [2],
               display: ['none', 'none', 'inherit'],
             }}
           >
             <NextLink href='/terms' passHref>
               <Link sx={{ textDecoration: 'none' }}>
-                <Text sx={{ fontSize: [1], color: 'secondary' }}>
+                <Text
+                  sx={{
+                    fontSize: [1],
+                    color: 'secondary',
+                    fontFamily: 'mono',
+                    letterSpacing: 'mono',
+                  }}
+                >
                   READ OUR TERMS
                 </Text>
               </Link>
