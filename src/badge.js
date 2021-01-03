@@ -18,6 +18,8 @@ const Badge = ({ value, sx }) => {
         mr: [2],
         textAlign: 'center',
         userSelect: 'none',
+        fontSize: [2],
+        ...sx
       }}
     >
       <Text
