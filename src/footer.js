@@ -14,7 +14,7 @@ const Footer = () => {
       }}
     >
       <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
-        <Box>
+        <Box sx={{ fontSize: [2] }}>
           <Text sx={{ fontFamily: 'heading', letterSpacing: 'mono', mb: [2] }}>
             EMAIL
           </Text>
@@ -25,20 +25,18 @@ const Footer = () => {
             hello@carbonplan.org
           </Link>
         </Box>
-        <Box>
+        <Box sx={{ fontSize: [2] }}>
           <Text sx={{ fontFamily: 'heading', letterSpacing: 'mono', mb: [2] }}>
             FOLLOW
           </Text>
           <Link
             href='https://twitter.com/carbonplanorg'
-            target='_blank'
-            rel='noreferrer'
             sx={{ textDecoration: 'none' }}
           >
             @carbonplanorg
           </Link>
         </Box>
-        <Box sx={{ fontFamily: 'body' }}>
+        <Box sx={{ fontSize: [2], fontFamily: 'body' }}>
           <Text sx={{ color: 'secondary', maxWidth: '90%' }}>
             CarbonPlan is a registered non-profit public benefit corporation in
             California with 501(3)(c) status.
