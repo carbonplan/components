@@ -13,13 +13,10 @@ const Custom404 = () => {
           sx={{ mb: [5, 0, 0], width: ['90%', '90%', '50%'], pt: [0, 0, 6]}}
         >
           <Box>
-            <Styled.h1
-            >
-              {' '}
-              Oops!{' '}
+            <Styled.h1>
+              Oops!
             </Styled.h1>
-            <Styled.h3
-            >
+            <Styled.h3>
               Sorry but we can't seem to find the page you are looking for.
             </Styled.h3>
             <Text
@@ -27,6 +24,7 @@ const Custom404 = () => {
                 color: 'secondary',
                 fontFamily: 'mono',
                 letterSpacing: 'mono',
+                fontSize: [2],
                 mt: [4, 5, 5]
               }}
             >
