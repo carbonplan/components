@@ -131,7 +131,6 @@ const Header = ({ status, local }) => {
           )}
         </IconButton>
         <Box
-          onClick={() => setExpanded(false)}
           sx={{
             opacity: expanded ? 1 : 0,
             pointerEvents: expanded ? 'all' : 'none',
