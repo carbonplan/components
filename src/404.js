@@ -18,6 +18,7 @@ const Custom404 = () => {
               Sorry but we can't seem to find the page you are looking for.
             </Styled.h3>
             <Text
+              as='span'
               sx={{
                 color: 'secondary',
                 fontFamily: 'mono',

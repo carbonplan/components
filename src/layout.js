@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Flex, Box, Text } from 'theme-ui'
+import { Container, Flex, Box } from 'theme-ui'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'

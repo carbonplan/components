@@ -14,8 +14,9 @@ const Footer = () => {
       }}
     >
       <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
-        <Box sx={{ fontSize: [2] }}>
+        <Box>
           <Text
+            as='span'
             sx={{
               fontSize: [2],
               fontFamily: 'heading',
@@ -34,6 +35,7 @@ const Footer = () => {
         </Box>
         <Box sx={{}}>
           <Text
+            as='span'
             sx={{
               fontSize: [2],
               fontFamily: 'heading',
@@ -52,6 +54,7 @@ const Footer = () => {
         </Box>
         <Box>
           <Text
+            as='span'
             sx={{
               fontSize: [2],
               fontFamily: 'body',
@@ -79,6 +82,7 @@ const Footer = () => {
             }}
           >
             <Text
+              as='span'
               sx={{
                 color: 'secondary',
                 fontSize: [1],
@@ -106,6 +110,7 @@ const Footer = () => {
             <NextLink href='/terms' passHref>
               <Link sx={{ textDecoration: 'none' }}>
                 <Text
+                  as='span'
                   sx={{
                     fontSize: [1],
                     color: 'secondary',

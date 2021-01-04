@@ -5,6 +5,7 @@ const Tag = ({ label, value, onClick, sx }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Text
+      as='span'
       onClick={onClick}
       role='checkbox'
       aria-checked={value}
