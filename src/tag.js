@@ -1,11 +1,10 @@
 import React from 'react'
-import { Text } from 'theme-ui'
+import { Box } from 'theme-ui'
 
 const Tag = ({ label, value, onClick, sx }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
-    <Text
-      as='span'
+    <Box
       onClick={onClick}
       role='checkbox'
       aria-checked={value}
@@ -34,7 +33,7 @@ const Tag = ({ label, value, onClick, sx }) => {
       }}
     >
       {label}
-    </Text>
+    </Box>
   )
 }
 
