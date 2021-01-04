@@ -35,7 +35,7 @@ const Value = ({ mode }) => {
       sx={{
         whiteSpace: 'nowrap',
         display: 'inline-block',
-        mr: '-4px',
+        mr: '-6px',
         fontFamily: 'mono',
         letterSpacing: 'body',
         color: 'secondary',
@@ -59,7 +59,7 @@ const Metadata = ({ mode }) => {
         userSelect: 'none',
         position: 'fixed',
         bottom: 42,
-        right: 27,
+        right: 29,
         transformOrigin: 'right',
         transform: 'rotate(90deg)',
         display: ['none', 'initial', 'initial'],
