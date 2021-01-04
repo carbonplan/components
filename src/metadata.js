@@ -3,7 +3,7 @@ import { useThemeUI, Box, Text } from 'theme-ui'
 import { useState, useEffect } from 'react'
 
 const Value = ({ mode }) => {
-  const [display, setDisplay] = useState('')
+  const [display, setDisplay] = useState(init(mode))
 
   useEffect(() => {
     if (mode === 'mouse') {
@@ -13,7 +13,6 @@ const Value = ({ mode }) => {
         setDisplay(`X,Y: ${x}, ${y}`)
       }
       window.addEventListener('mousemove', setFromEvent)
-      setDisplay(`X,Y: ${format(0, 4)}, ${format(0, 4)}`)
       return () => {
         window.removeEventListener('mousemove', setFromEvent)
       }
@@ -25,7 +24,6 @@ const Value = ({ mode }) => {
       }
       window.addEventListener('scroll', setFromEvent)
       const y = scrollFraction(window, document)
-      setDisplay(`SCROLL: 0.${format((y * 100).toFixed(0), 2)}`)
       return () => {
         window.removeEventListener('scroll', setFromEvent)
       }
@@ -93,6 +91,15 @@ const Metadata = ({ mode }) => {
       </Text>
     </Box>
   )
+}
+
+function init(mode) {
+  if (mode === 'mouse') {
+    return `X,Y: ${format(0, 4)}, ${format(0, 4)}`
+  }
+  if (mode === 'scroll') {
+    return `SCROLL: 0.${format((0).toFixed(0), 2)}`
+  }
 }
 
 function format(num, pad) {
