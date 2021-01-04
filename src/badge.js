@@ -29,7 +29,6 @@ const Badge = ({ value, sx }) => {
           mt: ['0px'],
           px: [1],
           color: color,
-          ...sx,
         }}
       >
         {value}
