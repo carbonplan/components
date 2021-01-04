@@ -4,6 +4,7 @@ import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
 import Switch from './switch'
+import Metadata from './metadata'
 
 const Layout = ({
   footer,
@@ -14,9 +15,11 @@ const Layout = ({
   children,
   local,
   status,
+  metadata,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
+  metadata = metadata == null ? 'position' : metadata
   return (
     <>
       <Meta card={card} description={description} title={title} />
@@ -86,6 +89,7 @@ const Layout = ({
         >
           <Switch />
         </Box>
+        {metadata && <Metadata mode={metadata} />}
       </Flex>
     </>
   )
