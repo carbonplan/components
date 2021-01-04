@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, Grid, Link } from 'theme-ui'
+import { Box, Grid, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
 
@@ -15,8 +15,7 @@ const Footer = () => {
     >
       <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
         <Box>
-          <Text
-            as='span'
+          <Box
             sx={{
               fontSize: [2],
               fontFamily: 'heading',
@@ -25,7 +24,7 @@ const Footer = () => {
             }}
           >
             EMAIL
-          </Text>
+          </Box>
           <Link
             href='mailto:hello@carbonplan.org'
             sx={{ textDecoration: 'none' }}
@@ -33,9 +32,8 @@ const Footer = () => {
             hello@carbonplan.org
           </Link>
         </Box>
-        <Box sx={{}}>
-          <Text
-            as='span'
+        <Box>
+          <Box
             sx={{
               fontSize: [2],
               fontFamily: 'heading',
@@ -44,7 +42,7 @@ const Footer = () => {
             }}
           >
             FOLLOW
-          </Text>
+          </Box>
           <Link
             href='https://twitter.com/carbonplanorg'
             sx={{ textDecoration: 'none' }}
@@ -53,8 +51,7 @@ const Footer = () => {
           </Link>
         </Box>
         <Box>
-          <Text
-            as='span'
+          <Box
             sx={{
               fontSize: [2],
               fontFamily: 'body',
@@ -64,7 +61,7 @@ const Footer = () => {
           >
             CarbonPlan is a registered non-profit public benefit corporation in
             California with 501(3)(c) status.
-          </Text>
+          </Box>
         </Box>
       </Grid>
       <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: ['2px'] }}>
@@ -81,8 +78,7 @@ const Footer = () => {
               display: ['none', 'none', 'inherit'],
             }}
           >
-            <Text
-              as='span'
+            <Box
               sx={{
                 color: 'secondary',
                 fontSize: [1],
@@ -91,7 +87,7 @@ const Footer = () => {
               }}
             >
               (c) 2020 CARBONPLAN, SAN FRANCISCO, CA
-            </Text>
+            </Box>
           </Box>
         </Box>
         <Box sx={{ position: 'relative' }}>
@@ -109,8 +105,7 @@ const Footer = () => {
           >
             <NextLink href='/terms' passHref>
               <Link sx={{ textDecoration: 'none' }}>
-                <Text
-                  as='span'
+                <Box
                   sx={{
                     fontSize: [1],
                     color: 'secondary',
@@ -119,7 +114,7 @@ const Footer = () => {
                   }}
                 >
                   READ OUR TERMS
-                </Text>
+                </Box>
               </Link>
             </NextLink>
           </Box>
