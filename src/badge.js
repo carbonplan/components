@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text } from 'theme-ui'
+import { Box } from 'theme-ui'
 import { mix } from '@theme-ui/color'
 
 const Badge = ({ value, sx }) => {
@@ -24,6 +24,7 @@ const Badge = ({ value, sx }) => {
     >
       <Box
         sx={{
+          letterSpacing: 'body',
           fontFamily: 'mono',
           mt: ['0px'],
           px: [1],
