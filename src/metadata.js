@@ -2,51 +2,6 @@ import React from 'react'
 import { useThemeUI, Box, Text } from 'theme-ui'
 import { useState, useEffect } from 'react'
 
-const Metadata = ({ mode }) => {
-  const { theme } = useThemeUI()
-
-  const color = theme.colors.secondary
-
-  return (
-    <Box
-      sx={{
-        userSelect: 'none',
-        position: 'fixed',
-        bottom: 42,
-        right: 27,
-        transformOrigin: 'right',
-        transform: 'rotate(90deg)',
-        display: ['none', 'initial', 'initial'],
-      }}
-    >
-      <Value mode={mode} />
-      <svg
-        fill={color}
-        opacity='0.8'
-        viewBox='0 0 24 24'
-        width='24'
-        height='24'
-      >
-        <circle r={5} cx={19} cy={19} />
-      </svg>
-      <Text
-        sx={{
-          whiteSpace: 'nowrap',
-          display: 'inline-block',
-          ml: [2],
-          fontFamily: 'mono',
-          letterSpacing: 'body',
-          color: 'secondary',
-          fontSize: [1],
-          textTransform: 'uppercase',
-        }}
-      >
-        {color}
-      </Text>
-    </Box>
-  )
-}
-
 const Value = ({ mode }) => {
   const [display, setDisplay] = useState('')
 
@@ -92,6 +47,51 @@ const Value = ({ mode }) => {
     >
       {display}
     </Text>
+  )
+}
+
+const Metadata = ({ mode }) => {
+  const { theme } = useThemeUI()
+
+  const color = theme.colors.secondary
+
+  return (
+    <Box
+      sx={{
+        userSelect: 'none',
+        position: 'fixed',
+        bottom: 42,
+        right: 27,
+        transformOrigin: 'right',
+        transform: 'rotate(90deg)',
+        display: ['none', 'initial', 'initial'],
+      }}
+    >
+      <Value mode={mode} />
+      <svg
+        fill={color}
+        opacity='0.8'
+        viewBox='0 0 24 24'
+        width='24'
+        height='24'
+      >
+        <circle r={5} cx={19} cy={19} />
+      </svg>
+      <Text
+        sx={{
+          whiteSpace: 'nowrap',
+          display: 'inline-block',
+          ml: [2],
+          fontFamily: 'mono',
+          letterSpacing: 'body',
+          color: 'secondary',
+          fontSize: [1],
+          textTransform: 'uppercase',
+        }}
+      >
+        {color}
+      </Text>
+    </Box>
   )
 }
 

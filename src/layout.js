@@ -19,7 +19,7 @@ const Layout = ({
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
-  metadata = metadata == null ? 'position' : metadata
+  metadata = metadata == null ? 'mouse' : metadata
   return (
     <>
       <Meta card={card} description={description} title={title} />
