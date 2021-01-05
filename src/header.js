@@ -37,14 +37,14 @@ const Header = ({ status, mode }) => {
       }}
     >
       <Box>
-        {local && (
+        {(mode == 'homepage' || mode == 'local') && (
           <NextLink href='/' passHref>
             <Link aria-label='CarbonPlan Homepage'>
               <Logo sx={{ cursor: 'pointer' }} />
             </Link>
           </NextLink>
         )}
-        {!local && (
+        {(mode == null || mode == 'remote') && (
           <Link href='https://carbonplan.org' aria-label='CarbonPlan Homepage'>
             <Logo sx={{ cursor: 'pointer' }} />
           </Link>
