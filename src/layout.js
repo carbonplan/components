@@ -16,10 +16,12 @@ const Layout = ({
   local,
   status,
   metadata,
+  links
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
+  links = links == null ? 'remote' : links
   return (
     <>
       <Meta card={card} description={description} title={title} />
@@ -49,7 +51,7 @@ const Layout = ({
                 px: [3, 4, 4],
               }}
             >
-              <Header local={local} status={status} />
+              <Header mode={links} status={status} />
             </Container>
           </Box>
         )}

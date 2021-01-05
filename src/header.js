@@ -19,7 +19,7 @@ const sx = {
   },
 }
 
-const Header = ({ status, local }) => {
+const Header = ({ status, mode }) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggle = (e) => {
@@ -158,41 +158,62 @@ const Header = ({ status, local }) => {
                 fontSize: ['92px'],
               }}
             >
-              {local && (
+              {(mode == 'homepage') && (
+                <>
                 <NextLink href='/about' passHref>
                   <Link sx={sx.link}>About</Link>
                 </NextLink>
-              )}
-              {!local && (
-                <Link href='https://carbonplan.org/about' sx={sx.link}>
-                  About
+                <Link href='/reports' sx={sx.link}>
+                  Reports
                 </Link>
-              )}
-              <Link href='https://carbonplan.org/reports' sx={sx.link}>
-                Reports
-              </Link>
-              <Link href='https://carbonplan.org/research' sx={sx.link}>
-                Research
-              </Link>
-              {local && (
+                <Link href='/research' sx={sx.link}>
+                  Research
+                </Link>
                 <NextLink href='/team' passHref>
                   <Link sx={sx.link}>Team</Link>
                 </NextLink>
-              )}
-              {!local && (
-                <Link href='https://carbonplan.org/team' sx={sx.link}>
-                  Team
-                </Link>
-              )}
-              {local && (
                 <NextLink href='/faq' passHref>
                   <Link sx={sx.link}>FAQ</Link>
                 </NextLink>
+                </>
               )}
-              {!local && (
+              {(mode == 'local') && (
+                <>
+                <Link href='/about' sx={sx.link}>
+                  About
+                </Link>
+                <Link href='/reports' sx={sx.link}>
+                  Reports
+                </Link>
+                <Link href='/research' sx={sx.link}>
+                  Research
+                </Link>
+                <Link href='/team' sx={sx.link}>
+                  Team
+                </Link>
+                <Link href='/faq' sx={sx.link}>
+                  FAQ
+                </Link>
+                </>
+              )}
+              {(mode == null || mode == 'remote') && (
+                <>
+                <Link href='https://carbonplan.org/about' sx={sx.link}>
+                  About
+                </Link>
+                <Link href='https://carbonplan.org/reports' sx={sx.link}>
+                  Reports
+                </Link>
+                <Link href='https://carbonplan.org/research' sx={sx.link}>
+                  Research
+                </Link>
+                <Link href='https://carbonplan.org/team' sx={sx.link}>
+                  Team
+                </Link>
                 <Link href='https://carbonplan.org/faq' sx={sx.link}>
                   FAQ
                 </Link>
+                </>
               )}
             </Box>
           </Container>
