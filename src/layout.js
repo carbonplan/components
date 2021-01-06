@@ -16,7 +16,7 @@ const Layout = ({
   local,
   status,
   metadata,
-  links
+  links,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
