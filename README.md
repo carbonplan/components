@@ -46,14 +46,16 @@ Render a simple layout without a footer
 import { Layout, Logo, Monogram } from '@carbonplan/components'
 
 const Index = () => {
-  return <Layout footer={false}>
-    <Logo sx={{width: 180}}/>
-    <Monogram sx={{width: 60}}/>
-  </Layout>
+  return (
+    <Layout footer={false}>
+      <Logo sx={{ width: 180 }} />
+      <Monogram sx={{ width: 60 }} />
+    </Layout>
+  )
 }
 
 export default Index
-````
+```
 
 For more usage examples checkout our [`design`](https://github.com/carbonplan/design) sample which showcases all these components live.
 
