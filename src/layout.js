@@ -17,11 +17,13 @@ const Layout = ({
   status,
   metadata,
   links,
+  container,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
+  container = container == null ? true : container
   return (
     <>
       <Meta card={card} description={description} title={title} />
@@ -61,7 +63,10 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
+          {container && (
+            <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
+          )}
+          {!container && { children }}
         </Box>
         {footer && (
           <Box
