@@ -95,7 +95,7 @@ const Metadata = ({ mode }) => {
 
 function init(mode) {
   if (mode === 'mouse') {
-    return `X,Y: ${format(0, 4)}, ${format(0, 4)}`
+    return `X,Y: ${format(0, 4)},${format(0, 4)}`
   }
   if (mode === 'scroll') {
     return `SCROLL: 0.${format((0).toFixed(0), 2)}`
