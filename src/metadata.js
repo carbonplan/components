@@ -10,7 +10,7 @@ const Value = ({ mode }) => {
       const setFromEvent = (e) => {
         const x = format(e.clientX, 4)
         const y = format(e.clientY, 4)
-        setDisplay(`X,Y: ${x}, ${y}`)
+        setDisplay(`X,Y: ${x},${y}`)
       }
       window.addEventListener('mousemove', setFromEvent)
       return () => {
