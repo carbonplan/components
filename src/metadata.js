@@ -59,7 +59,7 @@ const Metadata = ({ mode }) => {
         userSelect: 'none',
         position: 'fixed',
         bottom: 42,
-        right: 29,
+        right: 28,
         transformOrigin: 'right',
         transform: 'rotate(90deg)',
         display: ['none', 'initial', 'initial'],
