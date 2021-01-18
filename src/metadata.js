@@ -62,7 +62,7 @@ const Metadata = ({ mode }) => {
         right: 28,
         transformOrigin: 'right',
         transform: 'rotate(90deg)',
-        display: ['none', 'initial', 'initial'],
+        display: ['none', 'none', 'initial'],
       }}
     >
       <Value mode={mode} />
