@@ -40,7 +40,7 @@ const Value = ({ mode }) => {
         letterSpacing: 'body',
         color: 'secondary',
         fontSize: [1],
-        textTransform: 'normal',
+        textTransform: 'uppercase',
       }}
     >
       {display}
@@ -96,9 +96,10 @@ const Metadata = ({ mode }) => {
 function init(mode) {
   if (mode === 'mouse') {
     return `X,Y: ${format(0, 4)},${format(0, 4)}`
-  }
-  if (mode === 'scroll') {
+  } else if (mode === 'scroll') {
     return `SCROLL: 0.${format((0).toFixed(0), 2)}`
+  } else {
+    return mode
   }
 }
 
