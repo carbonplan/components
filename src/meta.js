@@ -13,10 +13,34 @@ const Meta = ({ title, description, card }) => {
       <title>{title}</title>
       <meta name='description' content={description} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      <link rel='preload' href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.woff2' as='font' type='font/woff2' crossorigin>
-      <link rel='preload' href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.woff2' as='font' type='font/woff2' crossorigin>
-      <link rel='preload' href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.woff2' as='font' type='font/woff2' crossorigin>
-      <link rel='preload' href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.woff2' as='font' type='font/woff2' crossorigin>
+      <link
+        rel='preload'
+        href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.woff2'
+        as='font'
+        type='font/woff2'
+        crossorigin
+      />
+      <link
+        rel='preload'
+        href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.woff2'
+        as='font'
+        type='font/woff2'
+        crossorigin
+      />
+      <link
+        rel='preload'
+        href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.woff2'
+        as='font'
+        type='font/woff2'
+        crossorigin
+      />
+      <link
+        rel='preload'
+        href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.woff2'
+        as='font'
+        type='font/woff2'
+        crossorigin
+      />
       <link rel='canonical' content='https://carbonplan.org/' />
       <link
         rel='manifest'
