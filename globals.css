@@ -1,5 +1,6 @@
 body {
   overscroll-behavior: none;
+  text-rendering: optimizeLegibility;
 }
 
 a {
