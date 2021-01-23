@@ -18,28 +18,28 @@ const Meta = ({ title, description, card }) => {
         href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.woff2'
         as='font'
         type='font/woff2'
-        crossOrigin
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.woff2'
         as='font'
         type='font/woff2'
-        crossOrigin
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.woff2'
         as='font'
         type='font/woff2'
-        crossOrigin
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.woff2'
         as='font'
         type='font/woff2'
-        crossOrigin
+        crossOrigin='anonymous'
       />
       <link rel='canonical' content='https://carbonplan.org/' />
       <link
