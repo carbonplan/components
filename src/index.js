@@ -10,6 +10,7 @@ import Meta from './meta'
 import Monogram from './monogram'
 import Switch from './switch'
 import Tag from './tag'
+import TaggedLink from './tagged-link'
 import Toggle from './toggle'
 import Tracking from './tracking'
 
@@ -26,6 +27,7 @@ export {
   Monogram,
   Switch,
   Tag,
+  TaggedLink,
   Toggle,
   Tracking,
 }
