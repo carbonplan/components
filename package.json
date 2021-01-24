@@ -6,9 +6,7 @@
   "module": "dst/index.esm.js",
   "scripts": {
     "build": "microbundle --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "format": "npm run format-js && npm run format-md",
-    "format-js": "prettier --write 'src/**/*.js' '*.css'",
-    "format-md": "prettier --write --parser mdx '*.md'"
+    "format": "prettier --write 'src/**/*.js' '*.css'"
   },
   "repository": {
     "type": "git",
