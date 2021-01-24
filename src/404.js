@@ -5,7 +5,7 @@ import Layout from './layout'
 
 const Custom404 = () => {
   return (
-    <Layout footer={false}>
+    <Layout footer={false} title={'404 / carbonplan'}>
       <Grid
         gap={['12px', '16px', '16px']}
         columns={[1, 1, '480px 1fr']}
