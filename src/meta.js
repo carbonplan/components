@@ -6,7 +6,7 @@ const Meta = ({ title, description, card }) => {
   description = description
     ? description
     : 'Data and science for carbon removal.'
-  card = card ? card : 'homepage'
+  card = card ? card : 'https://images.carbonplan.org/social/homepage.png'
 
   return (
     <Head>
@@ -62,17 +62,11 @@ const Meta = ({ title, description, card }) => {
       />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
-      <meta
-        property='og:image'
-        content={`https://images.carbonplan.org/social/${card}.png`}
-      />
+      <meta property='og:image' content={card} />
       <meta property='og:url' content='https://carbonplan.org' />
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
-      <meta
-        name='twitter:image'
-        content={`https://images.carbonplan.org/social/${card}.png`}
-      />
+      <meta name='twitter:image' content={card} />
       <meta name='twitter:card' content='summary_large_image' />
     </Head>
   )
