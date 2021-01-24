@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'relative-book-pro';
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.eot');
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.eot?#iefix')
+  src: url('https://fonts.carbonplan.org/relative/relative-book-pro.eot');
+  src: url('https://fonts.carbonplan.org/relative/relative-book-pro.eot?#iefix')
       format('embedded-opentype'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.woff2')
+    url('https://fonts.carbonplan.org/relative/relative-book-pro.woff2')
       format('woff2'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.woff')
+    url('https://fonts.carbonplan.org/relative/relative-book-pro.woff')
       format('woff'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-book-pro.ttf')
+    url('https://fonts.carbonplan.org/relative/relative-book-pro.ttf')
       format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -15,14 +15,14 @@
 
 @font-face {
   font-family: 'relative-medium-pro';
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.eot');
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.eot?#iefix')
+  src: url('https://fonts.carbonplan.org/relative/relative-medium-pro.eot');
+  src: url('https://fonts.carbonplan.org/relative/relative-medium-pro.eot?#iefix')
       format('embedded-opentype'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.woff2')
+    url('https://fonts.carbonplan.org/relative/relative-medium-pro.woff2')
       format('woff2'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.woff')
+    url('https://fonts.carbonplan.org/relative/relative-medium-pro.woff')
       format('woff'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-medium-pro.ttf')
+    url('https://fonts.carbonplan.org/relative/relative-medium-pro.ttf')
       format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -30,14 +30,14 @@
 
 @font-face {
   font-family: 'relative-mono-11-pitch-pro';
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.eot');
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.eot?#iefix')
+  src: url('https://fonts.carbonplan.org/relative/relative-mono-11-pitch-pro.eot');
+  src: url('https://fonts.carbonplan.org/relative/relative-mono-11-pitch-pro.eot?#iefix')
       format('embedded-opentype'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.woff2')
+    url('https://fonts.carbonplan.org/relative/relative-mono-11-pitch-pro.woff2')
       format('woff2'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.woff')
+    url('https://fonts.carbonplan.org/relative/relative-mono-11-pitch-pro.woff')
       format('woff'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-mono-11-pitch-pro.ttf')
+    url('https://fonts.carbonplan.org/relative/relative-mono-11-pitch-pro.ttf')
       format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -45,14 +45,14 @@
 
 @font-face {
   font-family: 'relative-faux-book-pro';
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.eot');
-  src: url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.eot?#iefix')
+  src: url('https://fonts.carbonplan.org/relative/relative-faux-book-pro.eot');
+  src: url('https://fonts.carbonplan.org/relative/relative-faux-book-pro.eot?#iefix')
       format('embedded-opentype'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.woff2')
+    url('https://fonts.carbonplan.org/relative/relative-faux-book-pro.woff2')
       format('woff2'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.woff')
+    url('https://fonts.carbonplan.org/relative/relative-faux-book-pro.woff')
       format('woff'),
-    url('https://carbonplan-assets.s3.amazonaws.com/fonts/relative/relative-faux-book-pro.ttf')
+    url('https://fonts.carbonplan.org/relative/relative-faux-book-pro.ttf')
       format('truetype');
   font-weight: normal;
   font-style: normal;
