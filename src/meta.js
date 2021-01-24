@@ -42,10 +42,7 @@ const Meta = ({ title, description, card }) => {
         crossOrigin='anonymous'
       />
       <link rel='canonical' content='https://carbonplan.org/' />
-      <link
-        rel='manifest'
-        href='https://images.carbonplan.org/manifest.json'
-      />
+      <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
       <meta name='theme-color' content='#1b1e23' />
       <link
         rel='icon'
