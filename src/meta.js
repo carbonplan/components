@@ -13,6 +13,7 @@ const Meta = ({ title, description, card }) => {
       <title>{title}</title>
       <meta name='description' content={description} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      <link rel='canonical' content='https://carbonplan.org/' />
       <link
         rel='preload'
         href='https://fonts.carbonplan.org/relative/relative-book-pro.woff2'
@@ -41,14 +42,18 @@ const Meta = ({ title, description, card }) => {
         type='font/woff2'
         crossOrigin='anonymous'
       />
-      <link rel='canonical' content='https://carbonplan.org/' />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
       <meta name='theme-color' content='#1b1e23' />
+
       <link
         rel='icon'
         sizes='any'
         type='image/svg+xml'
         href='https://images.carbonplan.org/favicon.svg'
+      />
+      <link
+        rel='alternate icon'
+        href='https://images.carbonplan.org/favicon.ico'
       />
       <link
         rel='mask-icon'
@@ -59,6 +64,11 @@ const Meta = ({ title, description, card }) => {
         rel='apple-touch-icon'
         sizes='180x180'
         href='https://images.carbonplan.org/favicon-180.png'
+      />
+      <meta name='msapplication-TileColor' content='#1b1e23' />
+      <meta
+        name='msapplication-TileImage'
+        content='https://images.carbonplan.org/favicon-144.png'
       />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
