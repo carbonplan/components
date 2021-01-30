@@ -52,7 +52,8 @@ const Meta = ({ title, description, card }) => {
       />
       <link
         rel='alternate icon'
-        href='https://images.carbonplan.org/favicon.ico'
+        type='image/png'
+        href='https://images.carbonplan.org/favicon.png'
       />
       <link
         rel='mask-icon'
