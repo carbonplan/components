@@ -44,7 +44,6 @@ const Meta = ({ title, description, card }) => {
       />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
       <meta name='theme-color' content='#1b1e23' />
-
       <link
         rel='icon'
         sizes='any'
@@ -57,18 +56,22 @@ const Meta = ({ title, description, card }) => {
       />
       <link
         rel='mask-icon'
-        href='https://images.carbonplan.org/favicon.svg'
+        href='https://images.carbonplan.org/safari-pinned-tab.svg'
         color='#000000'
       />
       <link
         rel='apple-touch-icon'
         sizes='180x180'
-        href='https://images.carbonplan.org/favicon-180.png'
+        href='https://images.carbonplan.org/favicon-180x180.png'
       />
       <meta name='msapplication-TileColor' content='#1b1e23' />
       <meta
         name='msapplication-TileImage'
-        content='https://images.carbonplan.org/favicon-144.png'
+        content='https://images.carbonplan.org/mstile-144x144.png'
+      />
+      <meta
+        name='msapplication-config'
+        content='https://images.carbonplan.org/browserconfig.xml'
       />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
