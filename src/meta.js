@@ -15,6 +15,11 @@ const Meta = ({ title, description, card }) => {
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link rel='canonical' content='https://carbonplan.org/' />
       <link
+        rel='icon'
+        type='image/svg+xml'
+        href='https://images.carbonplan.org/favicon.svg'
+      />
+      <link
         rel='preload'
         href='https://fonts.carbonplan.org/relative/relative-book-pro.woff2'
         as='font'
@@ -44,12 +49,6 @@ const Meta = ({ title, description, card }) => {
       />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
       <meta name='theme-color' content='#1b1e23' />
-      <link
-        rel='icon'
-        sizes='any'
-        type='image/svg+xml'
-        href='https://images.carbonplan.org/favicon.svg'
-      />
       <link
         rel='alternate icon'
         type='image/png'
