@@ -62,7 +62,7 @@ const Meta = ({ title, description, card }) => {
       <link
         rel='apple-touch-icon'
         sizes='180x180'
-        href='https://images.carbonplan.org/favicon-180x180-transparent.png'
+        href='https://images.carbonplan.org/favicon-180x180.png'
       />
       <meta name='msapplication-TileColor' content='#1b1e23' />
       <meta
