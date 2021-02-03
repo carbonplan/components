@@ -19,13 +19,13 @@ const sx = {
   },
 }
 
+function Wrapper({ container, children }) {
+  if (container) return <Container>{children}</Container>
+  return <Box>{children}</Box>
+}
+
 const Header = ({ status, mode, container }) => {
   const [expanded, setExpanded] = useState(false)
-
-  const Wrapper = ({ children }) => {
-    if (container) return <Container>{children}</Container>
-    return <Box>{children}</Box>
-  }
 
   const toggle = (e) => {
     setExpanded(!expanded)
@@ -154,7 +154,7 @@ const Header = ({ status, mode, container }) => {
             transition: '0.25s',
           }}
         >
-          <Wrapper>
+          <Wrapper container={container}>
             <Box
               sx={{
                 textAlign: '-webkit-right',
