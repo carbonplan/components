@@ -25,10 +25,10 @@ const Layout = ({
   links = links == null ? 'remote' : links
   container = container == null ? true : container
 
-  const Wrapper = ({ component }) => {
+  const Wrapper = ({ children }) => {
     const sx = { px: [3, 4, 4] }
-    if (container) return <Container sx={sx}>{component}</Container>
-    return <Box sx={sx}>{component}</Box>
+    if (container) return <Container sx={sx}>{children}</Container>
+    return <Box sx={sx}>{children}</Box>
   }
 
   return (
