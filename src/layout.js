@@ -77,7 +77,7 @@ const Layout = ({
           {container && (
             <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
           )}
-          {!container && <Box sx={{ px: [3, 3, 4] }}>{children}</Box>}
+          {!container && <Box sx={{ px: [3, 4, 4] }}>{children}</Box>}
         </Box>
         {footer && (
           <Box
