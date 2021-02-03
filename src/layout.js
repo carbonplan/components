@@ -24,6 +24,13 @@ const Layout = ({
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
   container = container == null ? true : container
+
+  const Wrapper = ({ component }) => {
+    const sx = { px: [3, 4, 4] }
+    if (container) return <Container sx={sx}>{component}</Container>
+    return <Box sx={sx}>{component}</Box>
+  }
+
   return (
     <>
       <Meta card={card} description={description} title={title} />
@@ -48,24 +55,9 @@ const Layout = ({
               zIndex: 1000,
             }}
           >
-            {container && (
-              <Container
-                sx={{
-                  px: [3, 4, 4],
-                }}
-              >
-                <Header mode={links} status={status} />
-              </Container>
-            )}
-            {!container && (
-              <Box
-                sx={{
-                  px: [3, 4, 4],
-                }}
-              >
-                <Header mode={links} status={status} />
-              </Box>
-            )}
+            <Wrapper>
+              <Header mode={links} status={status} container={container} />
+            </Wrapper>
           </Box>
         )}
         <Box
@@ -74,10 +66,7 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          {container && (
-            <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
-          )}
-          {!container && <Box sx={{ px: [3, 4, 4] }}>{children}</Box>}
+          <Wrapper>{children}</Wrapper>
         </Box>
         {footer && (
           <Box
@@ -89,24 +78,9 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            {container && (
-              <Container
-                sx={{
-                  px: [3, 4, 4],
-                }}
-              >
-                <Footer />
-              </Container>
-            )}
-            {!container && (
-              <Box
-                sx={{
-                  px: [3, 4, 4],
-                }}
-              >
-                <Footer />
-              </Box>
-            )}
+            <Wrapper>
+              <Footer />
+            </Wrapper>
           </Box>
         )}
         <Box

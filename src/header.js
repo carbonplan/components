@@ -19,8 +19,13 @@ const sx = {
   },
 }
 
-const Header = ({ status, mode }) => {
+const Header = ({ status, mode, container }) => {
   const [expanded, setExpanded] = useState(false)
+
+  const Wrapper = ({ children }) => {
+    if (container) return <Container>{children}</Container>
+    return <Box>{children}</Box>
+  }
 
   const toggle = (e) => {
     setExpanded(!expanded)
@@ -149,7 +154,7 @@ const Header = ({ status, mode }) => {
             transition: '0.25s',
           }}
         >
-          <Container>
+          <Wrapper>
             <Box
               sx={{
                 textAlign: '-webkit-right',
@@ -216,7 +221,7 @@ const Header = ({ status, mode }) => {
                 </>
               )}
             </Box>
-          </Container>
+          </Wrapper>
         </Box>
       </Box>
     </Flex>
