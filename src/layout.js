@@ -48,13 +48,24 @@ const Layout = ({
               zIndex: 1000,
             }}
           >
-            <Container
-              sx={{
-                px: [3, 4, 4],
-              }}
-            >
-              <Header mode={links} status={status} />
-            </Container>
+            {container && (
+              <Container
+                sx={{
+                  px: [3, 4, 4],
+                }}
+              >
+                <Header mode={links} status={status} />
+              </Container>
+            )}
+            {!container && (
+              <Box
+                sx={{
+                  px: [3, 4, 4],
+                }}
+              >
+                <Header mode={links} status={status} />
+              </Box>
+            )}
           </Box>
         )}
         <Box
@@ -66,7 +77,7 @@ const Layout = ({
           {container && (
             <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
           )}
-          {!container && <Box>{children}</Box>}
+          {!container && <Box sx={{ px: [3, 3, 4] }}>{children}</Box>}
         </Box>
         {footer && (
           <Box
@@ -78,13 +89,24 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            <Container
-              sx={{
-                px: [3, 4, 4],
-              }}
-            >
-              <Footer />
-            </Container>
+            {container && (
+              <Container
+                sx={{
+                  px: [3, 4, 4],
+                }}
+              >
+                <Footer />
+              </Container>
+            )}
+            {!container && (
+              <Box
+                sx={{
+                  px: [3, 4, 4],
+                }}
+              >
+                <Footer />
+              </Box>
+            )}
           </Box>
         )}
         <Box
