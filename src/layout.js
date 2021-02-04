@@ -7,9 +7,8 @@ import Switch from './switch'
 import Metadata from './metadata'
 
 function Wrapper({ container, children }) {
-  const sx = { px: [3, 4, 4] }
-  if (container) return <Container sx={sx}>{children}</Container>
-  return <Box sx={sx}>{children}</Box>
+  if (container) return <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
+  return <Box sx={{ px: [3, '24px', '24px'] }}>{children}</Box>
 }
 
 const Layout = ({
