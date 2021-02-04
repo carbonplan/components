@@ -20,8 +20,8 @@ const sx = {
 }
 
 function Wrapper({ container, children }) {
-  if (container) return <Container sx={{ mr: [3, 4, 4] }}>{children}</Container>
-  return <Box sx={{ mr: [3, '24px', '24px'] }}>{children}</Box>
+  if (container) return <Container>{children}</Container>
+  return <Box>{children}</Box>
 }
 
 const Header = ({ status, mode, container }) => {
@@ -160,6 +160,7 @@ const Header = ({ status, mode, container }) => {
                 textAlign: '-webkit-right',
                 width: 'fit-content',
                 fontSize: ['92px'],
+                mr: container ? [3, 4, 4] : [3, '24px', '24px']
               }}
             >
               {mode == 'homepage' && (
