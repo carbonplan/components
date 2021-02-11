@@ -160,7 +160,7 @@ const Header = ({ status, mode, container }) => {
                 textAlign: '-webkit-right',
                 width: 'fit-content',
                 fontSize: ['92px'],
-                mr: container ? [3, 4, 4] : [3, '24px', '24px']
+                mr: container ? [3, 4, 4] : [3, '24px', '24px'],
               }}
             >
               {mode == 'homepage' && (
