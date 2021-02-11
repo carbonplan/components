@@ -6,6 +6,11 @@ import Footer from './footer'
 import Switch from './switch'
 import Metadata from './metadata'
 
+function Wrapper({ container, children }) {
+  if (container) return <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
+  return <Box sx={{ px: [3, '24px', '24px'] }}>{children}</Box>
+}
+
 const Layout = ({
   footer,
   header,
@@ -24,6 +29,7 @@ const Layout = ({
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
   container = container == null ? true : container
+
   return (
     <>
       <Meta card={card} description={description} title={title} />
@@ -48,13 +54,9 @@ const Layout = ({
               zIndex: 1000,
             }}
           >
-            <Container
-              sx={{
-                px: [3, 4, 4],
-              }}
-            >
-              <Header mode={links} status={status} />
-            </Container>
+            <Wrapper container={container}>
+              <Header mode={links} status={status} container={container} />
+            </Wrapper>
           </Box>
         )}
         <Box
@@ -63,10 +65,7 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          {container && (
-            <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
-          )}
-          {!container && <Box>{children}</Box>}
+          <Wrapper container={container}>{children}</Wrapper>
         </Box>
         {footer && (
           <Box
@@ -78,13 +77,9 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            <Container
-              sx={{
-                px: [3, 4, 4],
-              }}
-            >
+            <Wrapper container={container}>
               <Footer />
-            </Container>
+            </Wrapper>
           </Box>
         )}
         <Box

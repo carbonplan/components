@@ -24,7 +24,7 @@ const Badge = ({ value, sx }) => {
     >
       <Box
         sx={{
-          letterSpacing: 'body',
+          letterSpacing: '0.02em',
           fontFamily: 'mono',
           mt: ['0px'],
           px: [1],

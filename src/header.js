@@ -19,7 +19,12 @@ const sx = {
   },
 }
 
-const Header = ({ status, mode }) => {
+function Wrapper({ container, children }) {
+  if (container) return <Container>{children}</Container>
+  return <Box>{children}</Box>
+}
+
+const Header = ({ status, mode, container }) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggle = (e) => {
@@ -149,13 +154,13 @@ const Header = ({ status, mode }) => {
             transition: '0.25s',
           }}
         >
-          <Container>
+          <Wrapper container={container}>
             <Box
               sx={{
                 textAlign: '-webkit-right',
                 width: 'fit-content',
-                mr: [3, 3, 4],
                 fontSize: ['92px'],
+                mr: container ? [3, 4, 4] : [3, '24px', '24px']
               }}
             >
               {mode == 'homepage' && (
@@ -216,7 +221,7 @@ const Header = ({ status, mode }) => {
                 </>
               )}
             </Box>
-          </Container>
+          </Wrapper>
         </Box>
       </Box>
     </Flex>

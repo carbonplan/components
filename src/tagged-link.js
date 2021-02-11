@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'theme-ui'
 
 const event = ({ action, category, label, value }) => {
@@ -8,7 +9,7 @@ const event = ({ action, category, label, value }) => {
   })
 }
 
-const TaggedLink = ({ action, category, href, children }) => {
+const TaggedLink = ({ action, category, href, children, sx }) => {
   const onClick = (e) => {
     event({
       action: action,
@@ -18,10 +19,10 @@ const TaggedLink = ({ action, category, href, children }) => {
   }
 
   return (
-    <Link onClick={onClick} href={href}>
-      {' '}
-      {children}{' '}
+    <Link onClick={onClick} href={href} sx={sx}>
+      {children}
     </Link>
   )
 }
+
 export default TaggedLink
