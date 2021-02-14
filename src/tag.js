@@ -13,7 +13,10 @@ const Tag = ({ label, value, sx, ...props }) => {
         fontSize: [1],
         fontFamily: 'mono',
         letterSpacing: 'mono',
-        cursor: onClick ? 'pointer' : 'default',
+        cursor:
+          props && (props.onClick || props.onDoubleClick)
+            ? 'pointer'
+            : 'default',
         color: color,
         borderStyle: 'solid',
         borderColor: color,
