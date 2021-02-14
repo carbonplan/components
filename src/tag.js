@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
-const Tag = ({ label, value, sx, ...props }) => {
+const Tag = ({ label, value, sx, children, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box
@@ -34,7 +34,9 @@ const Tag = ({ label, value, sx, ...props }) => {
         ...sx,
       }}
       {...props}
-    />
+    >
+      {children}
+    </Box>
   )
 }
 
