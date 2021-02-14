@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from 'theme-ui'
 import { mix } from '@theme-ui/color'
 
-const Badge = ({ value, sx }) => {
+const Badge = ({ sx, children, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box
@@ -21,6 +21,7 @@ const Badge = ({ value, sx }) => {
         fontSize: [2],
         ...sx,
       }}
+      {...props}
     >
       <Box
         sx={{
@@ -31,7 +32,7 @@ const Badge = ({ value, sx }) => {
           color: color,
         }}
       >
-        {value}
+        {children}
       </Box>
     </Box>
   )

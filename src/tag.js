@@ -1,11 +1,10 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
-const Tag = ({ label, value, onClick, sx }) => {
+const Tag = ({ label, value, sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box
-      onClick={onClick}
       role='checkbox'
       aria-checked={value}
       aria-label={label}
@@ -31,9 +30,8 @@ const Tag = ({ label, value, onClick, sx }) => {
         opacity: value == null || value ? 1 : color == 'primary' ? 0.2 : 0.27,
         ...sx,
       }}
-    >
-      {label}
-    </Box>
+      {...props}
+    />
   )
 }
 
