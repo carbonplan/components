@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
-const Info = ({ closed, sx }) => {
+const Info = ({ closed, sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box
@@ -13,6 +13,7 @@ const Info = ({ closed, sx }) => {
         strokeWidth: '1.5px',
         ...sx,
       }}
+      {...props}
     >
       <svg fill='none' viewBox='0 0 26 26'>
         <g transform='translate(0,-1)'>
