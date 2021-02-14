@@ -23,7 +23,7 @@ const Layout = ({
   metadata,
   links,
   container,
-  dimmer
+  dimmer,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
@@ -84,16 +84,17 @@ const Layout = ({
             </Wrapper>
           </Box>
         )}
-        {dimmer && <Box
-          sx={{
-            position: 'fixed',
-            right: 17,
-            bottom: 17,
-          }}
-        >
-          <Dimmer />
-        </Box>
-        }
+        {dimmer && (
+          <Box
+            sx={{
+              position: 'fixed',
+              right: 17,
+              bottom: 17,
+            }}
+          >
+            <Dimmer />
+          </Box>
+        )}
         {metadata && <Metadata mode={metadata} />}
       </Flex>
     </>
