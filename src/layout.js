@@ -3,7 +3,7 @@ import { Container, Flex, Box } from 'theme-ui'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
-import Switch from './switch'
+import Dimmer from './dimmer'
 import Metadata from './metadata'
 
 function Wrapper({ container, children }) {
@@ -23,12 +23,14 @@ const Layout = ({
   metadata,
   links,
   container,
+  dimmer
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
   container = container == null ? true : container
+  dimmer = dimmer == null ? true : dimmer
 
   return (
     <>
@@ -82,15 +84,16 @@ const Layout = ({
             </Wrapper>
           </Box>
         )}
-        <Box
+        {dimmer && <Box
           sx={{
             position: 'fixed',
             right: 17,
             bottom: 17,
           }}
         >
-          <Switch />
+          <Dimmer />
         </Box>
+        }
         {metadata && <Metadata mode={metadata} />}
       </Flex>
     </>

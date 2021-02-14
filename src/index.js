@@ -1,5 +1,6 @@
 import Badge from './badge'
 import Custom404 from './404'
+import Dimmer from './dimmer'
 import Expander from './expander'
 import Footer from './footer'
 import Header from './header'
@@ -8,7 +9,6 @@ import Layout from './layout'
 import Logo from './logo'
 import Meta from './meta'
 import Monogram from './monogram'
-import Switch from './switch'
 import Tag from './tag'
 import TaggedLink from './tagged-link'
 import Toggle from './toggle'
@@ -25,7 +25,7 @@ export {
   Logo,
   Meta,
   Monogram,
-  Switch,
+  Dimmer,
   Tag,
   TaggedLink,
   Toggle,

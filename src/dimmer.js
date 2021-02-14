@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, IconButton, useColorMode } from 'theme-ui'
 import { useCallback } from 'react'
 
-const Switch = ({ sx }) => {
+const Dimmer = ({ sx, ...props }) => {
   const [colorMode, setColorMode] = useColorMode()
 
   const toggle = useCallback(() => {
@@ -27,6 +27,7 @@ const Switch = ({ sx }) => {
         },
         ...sx,
       }}
+      {...props}
     >
       <svg version='1.1' viewBox='0 0 24 24' strokeWidth='2' fill='none'>
         <circle cx='12' cy='12' r='4.77' />
@@ -43,4 +44,4 @@ const Switch = ({ sx }) => {
   )
 }
 
-export default Switch
+export default Dimmer
