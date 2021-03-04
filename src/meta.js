@@ -5,7 +5,7 @@ const Meta = ({ title, description, card }) => {
   title = title ? title : 'carbonplan'
   description = description
     ? description
-    : 'Data and science for carbon removal.'
+    : 'Data and science for climate action.'
   card = card ? card : 'https://images.carbonplan.org/social/homepage.png'
 
   return (
