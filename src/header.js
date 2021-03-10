@@ -165,7 +165,9 @@ const Header = ({ status, mode, container }) => {
                 {mode == 'homepage' && (
                   <>
                     <NextLink href='/about' passHref>
-                      <Link sx={sx.link}>About</Link>
+                      <Link onClick={() => setExpanded(false)} sx={sx.link}>
+                        About
+                      </Link>
                     </NextLink>
                     <Link href='/reports' sx={sx.link}>
                       Reports
@@ -174,10 +176,14 @@ const Header = ({ status, mode, container }) => {
                       Research
                     </Link>
                     <NextLink href='/team' passHref>
-                      <Link sx={sx.link}>Team</Link>
+                      <Link onClick={() => setExpanded(false)} sx={sx.link}>
+                        Team
+                      </Link>
                     </NextLink>
                     <NextLink href='/faq' passHref>
-                      <Link sx={sx.link}>FAQ</Link>
+                      <Link onClick={() => setExpanded(false)} sx={sx.link}>
+                        FAQ
+                      </Link>
                     </NextLink>
                   </>
                 )}
