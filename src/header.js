@@ -148,7 +148,6 @@ const Header = ({ status, mode, container }) => {
             backgroundColor: 'background',
             textAlign: '-webkit-right',
             textAlign: '-moz-right',
-            textAlign: 'right',
             zIndex: 5000,
             mt: ['56px'],
             pt: [3],
