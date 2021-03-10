@@ -147,6 +147,8 @@ const Header = ({ status, mode, container }) => {
             width: '100vw',
             backgroundColor: 'background',
             textAlign: '-webkit-right',
+            textAlign: '-moz-right',
+            textAlign: 'right',
             zIndex: 5000,
             mt: ['56px'],
             pt: [3],
@@ -157,7 +159,6 @@ const Header = ({ status, mode, container }) => {
             <Box
               sx={{
                 display: expanded ? 'inherit' : 'none',
-                textAlign: '-webkit-right',
                 width: 'fit-content',
                 fontSize: ['92px'],
               }}
