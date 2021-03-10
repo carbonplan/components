@@ -165,11 +165,7 @@ const Header = ({ status, mode, container }) => {
                 {mode == 'homepage' && (
                   <>
                     <NextLink href='/about' passHref>
-                      <Link sx={sx.link}>
-                        <Box as='span' sx={{ width: 'fit-content' }}>
-                          About
-                        </Box>
-                      </Link>
+                      <Link sx={sx.link}>About</Link>
                     </NextLink>
                     <Link href='/reports' sx={sx.link}>
                       Reports
