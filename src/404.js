@@ -9,13 +9,21 @@ const Custom404 = () => {
       <Grid
         gap={['12px', '16px', '16px']}
         columns={[1, 1, '480px 1fr']}
-        sx={{ mb: [5, 0, 0], width: ['90%', '90%', '50%'], pt: [0, 0, 6] }}
+        sx={{ mb: [5, 0, 0], pt: [0, 0, 6] }}
       >
         <Box>
           <Styled.h1>Oops!</Styled.h1>
-          <Styled.h3>
+          <Box
+            sx={{
+              fontSize: [4],
+              lineHeight: 'h3',
+              mt: [3, 4, 4],
+              mb: [2, 3, 3],
+              maxWidth: ['90%', '90%', '400px'],
+            }}
+          >
             Sorry but we can't seem to find the page you are looking for.
-          </Styled.h3>
+          </Box>
           <Box
             sx={{
               color: 'secondary',

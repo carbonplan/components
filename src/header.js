@@ -19,11 +19,6 @@ const sx = {
   },
 }
 
-function Wrapper({ container, children }) {
-  if (container) return <Container>{children}</Container>
-  return <Box>{children}</Box>
-}
-
 const Header = ({ status, mode, container }) => {
   const [expanded, setExpanded] = useState(false)
 
@@ -41,16 +36,20 @@ const Header = ({ status, mode, container }) => {
         pb: [3],
       }}
     >
-      <Box>
+      <Box sx={{ display: 'block' }}>
         {(mode == 'homepage' || mode == 'local') && (
           <NextLink href='/' passHref>
-            <Link aria-label='CarbonPlan Homepage'>
+            <Link aria-label='CarbonPlan Homepage' sx={{ display: 'block' }}>
               <Logo sx={{ cursor: 'pointer' }} />
             </Link>
           </NextLink>
         )}
         {(mode == null || mode == 'remote') && (
-          <Link href='https://carbonplan.org' aria-label='CarbonPlan Homepage'>
+          <Link
+            href='https://carbonplan.org'
+            aria-label='CarbonPlan Homepage'
+            sx={{ display: 'block' }}
+          >
             <Logo sx={{ cursor: 'pointer' }} />
           </Link>
         )}
@@ -154,13 +153,13 @@ const Header = ({ status, mode, container }) => {
             transition: '0.25s',
           }}
         >
-          <Wrapper container={container}>
+          <Container variant={container}>
             <Box
               sx={{
+                display: expanded ? 'inherit' : 'none',
                 textAlign: '-webkit-right',
                 width: 'fit-content',
                 fontSize: ['92px'],
-                mr: container ? [3, 4, 4] : [3, '24px', '24px'],
               }}
             >
               {mode == 'homepage' && (
@@ -221,7 +220,7 @@ const Header = ({ status, mode, container }) => {
                 </>
               )}
             </Box>
-          </Wrapper>
+          </Container>
         </Box>
       </Box>
     </Flex>

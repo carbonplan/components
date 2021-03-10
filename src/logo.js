@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Link } from 'theme-ui'
 
-const Logo = ({ sx }) => {
+const Logo = ({ sx, ...props }) => {
   return (
-    <Box sx={{ width: 150, fill: 'text', ...sx }}>
+    <Box sx={{ width: 150, fill: 'text', ...sx }} {...props}>
       <svg version='1.1' x='0px' y='0px' viewBox='0 0 151.1 28.8'>
         <g>
           <g>

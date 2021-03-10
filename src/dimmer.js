@@ -22,8 +22,10 @@ const Dimmer = ({ sx, ...props }) => {
         cursor: 'pointer',
         stroke: 'secondary',
         transition: 'stroke 0.15s',
-        '&:hover': {
-          stroke: 'primary',
+        '@media (hover: hover) and (pointer: fine)': {
+          '&:hover': {
+            stroke: 'primary',
+          },
         },
         ...sx,
       }}

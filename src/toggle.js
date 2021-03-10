@@ -1,16 +1,25 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import { mix } from '@theme-ui/color'
+import { transparentize } from '@theme-ui/color'
 
 const Toggle = ({ value, onClick, sx }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box
+      as='button'
       onClick={onClick}
       role='checkbox'
       aria-checked={value}
       aria-label='Toggle'
-      sx={{ cursor: 'pointer', display: 'inline-block', ...sx }}
+      sx={{
+        border: 'none',
+        background: 'none',
+        cursor: 'pointer',
+        p: [0],
+        m: [0],
+        display: 'inline-block',
+        ...sx,
+      }}
     >
       <Box
         sx={{
@@ -18,7 +27,7 @@ const Toggle = ({ value, onClick, sx }) => {
           height: '20px',
           borderRadius: '20px',
           backgroundColor: value
-            ? mix(color, 'background', color == 'primary' ? 0.5 : 0.57)
+            ? transparentize(color, color == 'primary' ? 0.5 : 0.45)
             : 'muted',
           position: 'relative',
           transition: '0.15s',

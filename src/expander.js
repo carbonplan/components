@@ -17,9 +17,11 @@ const Expander = ({ value, id, onClick, sx }) => {
         cursor: 'pointer',
         fill: 'secondary',
         stroke: 'secondary',
-        '&:hover': {
-          fill: 'primary',
-          stroke: 'primary',
+        '@media (hover: hover) and (pointer: fine)': {
+          '&:hover': {
+            fill: 'primary',
+            stroke: 'primary',
+          },
         },
         ...sx,
       }}

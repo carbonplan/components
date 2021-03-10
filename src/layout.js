@@ -6,11 +6,6 @@ import Footer from './footer'
 import Dimmer from './dimmer'
 import Metadata from './metadata'
 
-function Wrapper({ container, children }) {
-  if (container) return <Container sx={{ px: [3, 4, 4] }}>{children}</Container>
-  return <Box sx={{ px: [3, '24px', '24px'] }}>{children}</Box>
-}
-
 const Layout = ({
   footer,
   header,
@@ -29,7 +24,8 @@ const Layout = ({
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
-  container = container == null ? true : container
+  container =
+    (container == null) | (container == 'default') ? 'container' : container
   dimmer = dimmer == null ? true : dimmer
 
   return (
@@ -56,9 +52,9 @@ const Layout = ({
               zIndex: 1000,
             }}
           >
-            <Wrapper container={container}>
+            <Container variant={container}>
               <Header mode={links} status={status} container={container} />
-            </Wrapper>
+            </Container>
           </Box>
         )}
         <Box
@@ -67,7 +63,7 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          <Wrapper container={container}>{children}</Wrapper>
+          <Container variant={container}>{children}</Container>
         </Box>
         {footer && (
           <Box
@@ -79,9 +75,9 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            <Wrapper container={container}>
+            <Container variant={container}>
               <Footer />
-            </Wrapper>
+            </Container>
           </Box>
         )}
         {dimmer && (

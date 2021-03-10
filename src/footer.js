@@ -104,17 +104,16 @@ const Footer = () => {
             }}
           >
             <NextLink href='/terms' passHref>
-              <Link sx={{ textDecoration: 'none' }}>
-                <Box
-                  sx={{
-                    fontSize: [1],
-                    color: 'secondary',
-                    fontFamily: 'mono',
-                    letterSpacing: 'mono',
-                  }}
-                >
-                  READ OUR TERMS
-                </Box>
+              <Link
+                sx={{
+                  textDecoration: 'none',
+                  fontSize: [1],
+                  color: 'secondary',
+                  fontFamily: 'mono',
+                  letterSpacing: 'mono',
+                }}
+              >
+                READ OUR TERMS
               </Link>
             </NextLink>
           </Box>

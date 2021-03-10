@@ -30,7 +30,7 @@ const Tag = ({ label, value, sx, children, ...props }) => {
         pl: [0],
         pr: [0],
         mr: [2],
-        opacity: value == null || value ? 1 : color == 'primary' ? 0.2 : 0.27,
+        opacity: value == null || value ? 1 : color == 'primary' ? 0.24 : 0.33,
         ...sx,
       }}
       {...props}

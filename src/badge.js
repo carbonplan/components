@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import { mix } from '@theme-ui/color'
+import { transparentize } from '@theme-ui/color'
 
 const Badge = ({ sx, children, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
@@ -14,7 +14,7 @@ const Badge = ({ sx, children, ...props }) => {
         backgroundColor:
           color == 'primary' || color == 'secondary'
             ? 'muted'
-            : mix(color, 'background', 0.25),
+            : transparentize(color, 0.7),
         mr: [2],
         textAlign: 'center',
         userSelect: 'none',

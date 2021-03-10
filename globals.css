@@ -11,15 +11,23 @@ a {
 .no-focus-outline button:focus,
 .no-focus-outline input:focus,
 .no-focus-outline select:focus {
-  outline: none !important;
+  outline: none;
+}
+
+.no-focus-outline a:focus-visible,
+.no-focus-outline button:focus-visible,
+.no-focus-outline input:focus-visible,
+.no-focus-outline select:focus-visible {
+  outline: dashed 1px rgb(110, 110, 110, 0.625);
+  background: rgb(110, 110, 110, 0.625);
 }
 
 ::selection {
-  background: rgb(128, 128, 128, 0.99);
+  background: rgb(110, 110, 110, 0.575);
 }
 
 ::-moz-selection {
-  background: rgb(128, 128, 128, 0.99);
+  background: rgb(110, 110, 110, 0.575);
 }
 
 sup,
