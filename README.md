@@ -8,15 +8,14 @@
 **shared react components for our websites**
 
 [![GitHub][github-badge]][github]
-![Build Status][]
+[![Build Status]][actions]
 ![MIT License][]
-![NPM Version][]
 
 [github]: https://github.com/carbonplan/components
-[github-badge]: https://flat.badgen.net/badge/-/github?icon=github&label
-[build status]: https://flat.badgen.net/github/checks/carbonplan/components
-[mit license]: https://flat.badgen.net/badge/license/MIT/blue
-[npm version]: https://flat.badgen.net/npm/v/@carbonplan/components
+[github-badge]: https://badgen.net/badge/-/github?icon=github&label
+[build status]: https://github.com/carbonplan/components/actions/workflows/main.yml/badge.svg
+[actions]: https://github.com/carbonplan/components/actions/workflows/main.yml
+[mit license]: https://badgen.net/badge/license/MIT/blue
 
 These are a set of modular but opinionated [`react`](https://github.com/facebook/react) components. They assume and make extensive use of [`theme-ui`](https://github.com/system-ui/theme-ui) and [`next`](https://github.com/vercel/next.js), and are meant to be composed with our [`theme`](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
 
