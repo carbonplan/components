@@ -169,9 +169,6 @@ const Header = ({ status, mode, container }) => {
                         About
                       </Link>
                     </NextLink>
-                    <Link href='/reports' sx={sx.link}>
-                      Reports
-                    </Link>
                     <Link href='/research' sx={sx.link}>
                       Research
                     </Link>
@@ -192,9 +189,6 @@ const Header = ({ status, mode, container }) => {
                     <Link href='/about' sx={sx.link}>
                       About
                     </Link>
-                    <Link href='/reports' sx={sx.link}>
-                      Reports
-                    </Link>
                     <Link href='/research' sx={sx.link}>
                       Research
                     </Link>
@@ -210,9 +204,6 @@ const Header = ({ status, mode, container }) => {
                   <>
                     <Link href='https://carbonplan.org/about' sx={sx.link}>
                       About
-                    </Link>
-                    <Link href='https://carbonplan.org/reports' sx={sx.link}>
-                      Reports
                     </Link>
                     <Link href='https://carbonplan.org/research' sx={sx.link}>
                       Research
