@@ -51,7 +51,7 @@ const Value = ({ mode }) => {
 const Metadata = ({ mode }) => {
   const { theme } = useThemeUI()
 
-  const color = theme.colors.secondary
+  const color = theme.rawColors.secondary
 
   return (
     <Box
@@ -59,7 +59,7 @@ const Metadata = ({ mode }) => {
         userSelect: 'none',
         position: 'fixed',
         bottom: 42,
-        right: 28,
+        right: 24,
         transformOrigin: 'right',
         transform: 'rotate(90deg)',
         display: ['none', 'none', 'initial'],
@@ -79,7 +79,7 @@ const Metadata = ({ mode }) => {
         sx={{
           whiteSpace: 'nowrap',
           display: 'inline-block',
-          ml: [2],
+          ml: [3],
           fontFamily: 'mono',
           letterSpacing: 'body',
           color: 'secondary',

@@ -14,7 +14,7 @@ const Dimmer = ({ sx, ...props }) => {
       aria-label='Toggle dark mode'
       onClick={toggle}
       role='checkbox'
-      aria-checked={colorMode == 'dark'}
+      aria-checked={colorMode == 'light'}
       sx={{
         width: 32,
         height: 32,

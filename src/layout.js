@@ -17,15 +17,12 @@ const Layout = ({
   status,
   metadata,
   links,
-  container,
   dimmer,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
-  container =
-    (container == null) | (container == 'default') ? 'container' : container
   dimmer = dimmer == null ? true : dimmer
 
   return (
@@ -52,8 +49,8 @@ const Layout = ({
               zIndex: 1000,
             }}
           >
-            <Container variant={container}>
-              <Header mode={links} status={status} container={container} />
+            <Container>
+              <Header mode={links} status={status} />
             </Container>
           </Box>
         )}
@@ -63,7 +60,7 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          <Container variant={container}>{children}</Container>
+          <Container>{children}</Container>
         </Box>
         {footer && (
           <Box
@@ -75,7 +72,7 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            <Container variant={container}>
+            <Container>
               <Footer />
             </Container>
           </Box>
@@ -84,8 +81,8 @@ const Layout = ({
           <Box
             sx={{
               position: 'fixed',
-              right: 17,
-              bottom: 17,
+              right: [13],
+              bottom: [17, 17, 15, 15],
             }}
           >
             <Dimmer />

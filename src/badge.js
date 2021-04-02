@@ -15,7 +15,6 @@ const Badge = ({ sx, children, ...props }) => {
           color == 'primary' || color == 'secondary'
             ? 'muted'
             : transparentize(color, 0.7),
-        mr: [2],
         textAlign: 'center',
         userSelect: 'none',
         fontSize: [2],
