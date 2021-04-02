@@ -2,86 +2,106 @@ import React from 'react'
 import { Box, Grid, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
+import Row from './row'
+import Column from './column'
 
 const Footer = () => {
   return (
     <Box
       sx={{
-        mt: [4],
-        pt: [4],
-        pb: [0, 2, 2],
-        mb: [4, 4, 4],
+        mt: [5, 6, 7, 8],
+        mb: [5, 6, 7, 8],
       }}
     >
-      <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: [3] }}>
-        <Box>
-          <Box
-            sx={{
-              fontSize: [2],
-              fontFamily: 'heading',
-              letterSpacing: 'mono',
-              mb: [2],
-            }}
-          >
-            EMAIL
+      <Row sx={{ mb: [0, 0, 4, 5] }}>
+        <Column start={[1, 2]} width={[3, 4]}>
+          <Box>
+            <Box
+              sx={{
+                fontSize: [2, 2, 2, 3],
+                fontFamily: 'heading',
+                letterSpacing: 'mono',
+                mb: [2],
+              }}
+            >
+              EMAIL
+            </Box>
+            <Link
+              href='mailto:hello@carbonplan.org'
+              sx={{
+                textDecoration: 'none',
+                fontSize: [2, 2, 2, 3],
+              }}
+            >
+              hello@carbonplan.org
+            </Link>
           </Box>
-          <Link
-            href='mailto:hello@carbonplan.org'
-            sx={{ textDecoration: 'none' }}
-          >
-            hello@carbonplan.org
-          </Link>
-        </Box>
-        <Box>
-          <Box
-            sx={{
-              fontSize: [2],
-              fontFamily: 'heading',
-              letterSpacing: 'mono',
-              mb: [2],
-            }}
-          >
-            FOLLOW
+        </Column>
+        <Column start={[4, 6]} width={[3, 3]}>
+          <Box>
+            <Box
+              sx={{
+                fontSize: [2, 2, 2, 3],
+                fontFamily: 'heading',
+                letterSpacing: 'mono',
+                mb: [2],
+              }}
+            >
+              FOLLOW
+            </Box>
+            <Link
+              href='https://twitter.com/carbonplanorg'
+              sx={{
+                textDecoration: 'none',
+                fontSize: [2, 2, 2, 3],
+              }}
+            >
+              @carbonplanorg
+            </Link>
           </Box>
-          <Link
-            href='https://twitter.com/carbonplanorg'
-            sx={{ textDecoration: 'none' }}
-          >
-            @carbonplanorg
-          </Link>
-        </Box>
-        <Box>
-          <Box
-            sx={{
-              fontSize: [2],
-              fontFamily: 'body',
-              color: 'secondary',
-              maxWidth: '90%',
-            }}
-          >
-            CarbonPlan is a registered non-profit public benefit corporation in
-            California with 501(3)(c) status.
+        </Column>
+        <Column
+          start={[1, 9]}
+          width={[6, 3, 3, 3]}
+          sx={{ mt: [6, 6, 0], mb: [3, 3, 0] }}
+        >
+          <Box>
+            <Box
+              sx={{
+                fontSize: [2, 2, 2, 3],
+                fontFamily: 'body',
+                color: 'secondary',
+              }}
+            >
+              CarbonPlan is a registered non-profit public benefit corporation
+              in California with 501(3)(c) status.
+            </Box>
           </Box>
-        </Box>
-      </Grid>
-      <Grid columns={[1, 1, '35% 30% 30%']} sx={{ mb: ['2px'] }}>
-        <Box sx={{ position: 'relative' }}>
+        </Column>
+      </Row>
+      <Row sx={{ mb: ['2px'], mt: [5, 5, 4] }}>
+        <Column
+          start={[1, 2]}
+          width={[6, 4]}
+          sx={{
+            display: 'flex',
+            alignItems: ['flex-start', 'flex-start', 'flex-end'],
+          }}
+        >
           <Box
             sx={{
-              position: 'absolute',
               bottom: '0px',
               borderStyle: 'solid',
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
               pt: [2],
-              display: ['none', 'none', 'inherit'],
             }}
           >
             <Box
               sx={{
                 color: 'secondary',
-                fontSize: [1],
+                fontSize: [1, 1, 1, 2],
                 fontFamily: 'mono',
                 letterSpacing: 'mono',
               }}
@@ -89,25 +109,31 @@ const Footer = () => {
               (c) 2020 CARBONPLAN, SAN FRANCISCO, CA
             </Box>
           </Box>
-        </Box>
-        <Box sx={{ position: 'relative' }}>
+        </Column>
+        <Column
+          start={[1, 6]}
+          width={[3, 3]}
+          sx={{
+            display: 'flex',
+            alignItems: ['flex-start', 'flex-start', 'flex-end'],
+            mt: [4, 5, 0, 0],
+          }}
+        >
           <Box
             sx={{
-              position: 'absolute',
               bottom: '0px',
               borderStyle: 'solid',
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              pt: [2],
-              display: ['none', 'none', 'inherit'],
+              pt: '5px',
             }}
           >
             <NextLink href='/terms' passHref>
               <Link
                 sx={{
                   textDecoration: 'none',
-                  fontSize: [1],
+                  fontSize: [1, 1, 1, 2],
                   color: 'secondary',
                   fontFamily: 'mono',
                   letterSpacing: 'mono',
@@ -117,11 +143,11 @@ const Footer = () => {
               </Link>
             </NextLink>
           </Box>
-        </Box>
-        <Box sx={{ mt: [3] }}>
-          <Monogram sx={{ mb: ['-12px'] }} />
-        </Box>
-      </Grid>
+        </Column>
+        <Column start={[1, 9]} width={[3, 3]} sx={{}}>
+          <Monogram sx={{ mt: [5, 6, 4, 5], mb: ['-12px'] }} />
+        </Column>
+      </Row>
     </Box>
   )
 }

@@ -10,7 +10,7 @@ const Tag = ({ label, value, sx, children, ...props }) => {
       aria-label={label}
       sx={{
         display: 'inline-block',
-        fontSize: [1],
+        fontSize: [1, 1, 1, 2],
         fontFamily: 'mono',
         letterSpacing: 'mono',
         cursor:
@@ -24,12 +24,8 @@ const Tag = ({ label, value, sx, children, ...props }) => {
         borderBottomWidth: '1px',
         textTransform: 'uppercase',
         userSelect: 'none',
-        mb: [2],
         pt: ['1px'],
         pb: ['2px'],
-        pl: [0],
-        pr: [0],
-        mr: [2],
         opacity: value == null || value ? 1 : color == 'primary' ? 0.24 : 0.33,
         ...sx,
       }}

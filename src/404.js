@@ -2,20 +2,18 @@ import React from 'react'
 import { Box, Styled, Container, Grid } from 'theme-ui'
 import PoopSad from './emoji/poop-sad'
 import Layout from './layout'
+import Row from './row'
+import Column from './column'
 
 const Custom404 = () => {
   return (
     <Layout footer={false} title={'404 / carbonplan'}>
-      <Grid
-        gap={['12px', '16px', '16px']}
-        columns={[1, 1, '480px 1fr']}
-        sx={{ mb: [5, 0, 0], pt: [0, 0, 6] }}
-      >
-        <Box>
+      <Row sx={{ mb: [5, 0, 0], pt: [0, 0, 6] }}>
+        <Column start={[1, 1, 3, 3]} width={[6, 3, 4, 4]}>
           <Styled.h1>Oops!</Styled.h1>
           <Box
             sx={{
-              fontSize: [4],
+              fontSize: [4, 4, 4, 5],
               lineHeight: 'h3',
               mt: [3, 4, 4],
               mb: [2, 3, 3],
@@ -29,25 +27,25 @@ const Custom404 = () => {
               color: 'secondary',
               fontFamily: 'mono',
               letterSpacing: 'mono',
-              fontSize: [2],
+              fontSize: [2, 2, 2, 3],
               mt: [4, 5, 5],
             }}
           >
             ERROR CODE 404
           </Box>
-        </Box>
-        <Box
-          sx={{
-            width: ['70%', '70%', '450px'],
-            mr: [4],
-            mt: [2, 2, 5],
-            ml: [0, 0, 3],
-            fill: 'primary',
-          }}
-        >
-          <PoopSad />
-        </Box>
-      </Grid>
+        </Column>
+        <Column start={[1, 4, 7, 7]} width={[4, 3, 4, 4]}>
+          <Box
+            sx={{
+              width: ['100%'],
+              mt: [2, 4, 4, 5],
+              fill: 'primary',
+            }}
+          >
+            <PoopSad />
+          </Box>
+        </Column>
+      </Row>
     </Layout>
   )
 }
