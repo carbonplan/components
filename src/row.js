@@ -31,7 +31,7 @@ const Row = ({ children, sx, columns, gap, ...props }) => {
   if (Number.isInteger(columns) || Array.isArray(columns)) {
     columns = makeArray(columns)
   } else {
-    columns = [6, 6, 12, 12]
+    columns = [6, 8, 12, 12]
   }
 
   return (

@@ -1,6 +1,6 @@
 {
   "name": "@carbonplan/components",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
@@ -30,13 +30,14 @@
   ],
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {
-    "@theme-ui/color": "^0.6.0"
+    "@theme-ui/color": "^0.7.2"
   },
   "peerDependencies": {
     "next": "^10.0.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "theme-ui": "^0.6.0"
+    "theme-ui": "^0.7.2",
+    "@emotion/react": "^11.1.1"
   },
   "devDependencies": {
     "microbundle": "^0.13.0",

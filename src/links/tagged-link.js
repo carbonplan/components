@@ -9,7 +9,7 @@ const event = ({ action, category, label, value }) => {
   })
 }
 
-const TaggedLink = ({ action, category, href, children, sx }) => {
+const TaggedLink = ({ action, category, href, children, ...props }) => {
   const onClick = (e) => {
     event({
       action: action,
@@ -19,7 +19,7 @@ const TaggedLink = ({ action, category, href, children, sx }) => {
   }
 
   return (
-    <Link onClick={onClick} href={href} sx={sx}>
+    <Link onClick={onClick} href={href} {...props}>
       {children}
     </Link>
   )

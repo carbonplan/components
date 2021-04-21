@@ -14,7 +14,6 @@ const Dimmer = ({ sx, ...props }) => {
       aria-label='Toggle dark mode'
       onClick={toggle}
       role='checkbox'
-      aria-checked={colorMode == 'light'}
       sx={{
         width: 32,
         height: 32,
@@ -31,7 +30,7 @@ const Dimmer = ({ sx, ...props }) => {
       }}
       {...props}
     >
-      <svg version='1.1' viewBox='0 0 24 24' strokeWidth='2' fill='none'>
+      <svg version='1.1' viewBox='0 0 24 24' strokeWidth='1.75px' fill='none'>
         <circle cx='12' cy='12' r='4.77' />
         <line x1='12' x2='12' y2='4.06' />
         <line x1='12' y1='19.94' x2='12' y2='24' />

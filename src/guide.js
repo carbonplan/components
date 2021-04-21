@@ -38,7 +38,7 @@ const Guide = () => {
         width: '100%',
         left: 0,
         top: 0,
-        zIndex: 1000,
+        zIndex: 5000,
         pointerEvents: 'none',
         display: display ? 'initial' : 'none',
       }}
@@ -47,7 +47,10 @@ const Guide = () => {
         <Box sx={{ display: ['none', 'none', 'initial', 'initial'] }}>
           <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} />
         </Box>
-        <Box sx={{ display: ['initial', 'initial', 'none', 'none'] }}>
+        <Box sx={{ display: ['none', 'initial', 'none', 'none'] }}>
+          <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8]} />
+        </Box>
+        <Box sx={{ display: ['initial', 'none', 'none', 'none'] }}>
           <GuideColumns indices={[1, 2, 3, 4, 5, 6]} />
         </Box>
       </Container>
