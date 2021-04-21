@@ -79,7 +79,7 @@ const Metadata = ({ mode }) => {
         sx={{
           whiteSpace: 'nowrap',
           display: 'inline-block',
-          ml: [3],
+          ml: [2],
           fontFamily: 'mono',
           letterSpacing: 'body',
           color: 'secondary',
