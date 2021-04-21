@@ -1,6 +1,7 @@
+import React from 'react'
 import { IconButton } from 'theme-ui'
 
-const Hamburger = ({ value, sx, ...props }) => {
+const Menu = ({ value, sx, ...props }) => {
   return (
     <IconButton
       sx={{
@@ -76,4 +77,4 @@ const Hamburger = ({ value, sx, ...props }) => {
   )
 }
 
-export default Hamburger
+export default Menu
