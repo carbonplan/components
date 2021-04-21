@@ -40,11 +40,12 @@ const Tray = ({ expanded, children }) => {
           transition: 'transform 0.15s',
           ml: [-3, -4, -5, -6],
           pl: [3, 4, 5, 6],
+          pr: [3, 4, 5, 6],
           transform: expanded ? 'translateY(0)' : 'translateY(-400px)',
         }}
       >
         <Row>
-          <Column start={[1, 1, 1, 1]} width={[5, 5, 1, 1]}>
+          <Column start={[1, 1, 1, 1]} width={[6, 8, 10, 10]}>
             {children}
           </Column>
         </Row>

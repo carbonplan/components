@@ -26,7 +26,7 @@ const Layout = ({
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
-  dimmer = dimmer == null ? true : dimmer
+  dimmer = dimmer == null || dimmer == true ? 'bottom' : dimmer
 
   return (
     <>
@@ -58,6 +58,7 @@ const Layout = ({
                 status={status}
                 nav={nav}
                 settings={settings}
+                dimmer={dimmer}
               />
             </Container>
           </Box>
@@ -87,7 +88,7 @@ const Layout = ({
             </Container>
           </Box>
         )}
-        {dimmer && (
+        {dimmer === 'bottom' && (
           <Box
             sx={{
               display: ['none', 'none', 'initial', 'initial'],

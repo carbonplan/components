@@ -66,7 +66,7 @@ const HoverArrow = () => {
   )
 }
 
-const Nav = ({ link, mode, nav, first, setExpanded }) => {
+const Nav = ({ link, mode, nav, first, dimmer, setExpanded }) => {
   const { url, display } = link
   const href = mode === 'remote' ? 'https://carbonplan.org/' + url : '/' + url
 
@@ -109,7 +109,7 @@ const NavGroup = ({ links, nav, mode, setExpanded }) => {
   })
 }
 
-const Header = ({ status, mode, nav, settings }) => {
+const Header = ({ status, mode, nav, dimmer, settings }) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggle = (e) => {
@@ -176,7 +176,7 @@ const Header = ({ status, mode, nav, settings }) => {
         </Column>
         <Column
           start={[status ? 6 : 4, 6, 12, 12]}
-          width={[status ? 1 : 3, 3, 1, 1]}
+          width={[status ? 1 : 3, 3, 2, 2]}
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -191,7 +191,12 @@ const Header = ({ status, mode, nav, settings }) => {
               pointerEvents:
                 expanded || (settings && settings.value) ? 'none' : 'all',
               transition: 'opacity 0.15s',
-              display: [status ? 'none' : 'block', 'block', 'none', 'none'],
+              display: [
+                status ? 'none' : 'block',
+                'block',
+                dimmer === 'top' ? 'block' : 'none',
+                dimmer === 'top' ? 'block' : 'none',
+              ],
             }}
           >
             <Dimmer
