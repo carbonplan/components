@@ -15,7 +15,7 @@ const Footer = () => {
       }}
     >
       <Row sx={{ mb: [0, 0, 4, 5] }}>
-        <Column start={[1, 2]} width={[3, 4]}>
+        <Column start={[1, 2]} width={[3, 3]}>
           <Box>
             <Box
               sx={{
@@ -50,7 +50,7 @@ const Footer = () => {
         >
           <Monogram sx={{ mt: ['-4px'], width: '60px', height: '60px' }} />
         </Column>
-        <Column start={[1, 6, 6, 6]} width={[3, 3]} sx={{ mt: [3, 0, 0, 0] }}>
+        <Column start={[1, 5, 5, 5]} width={[3, 3]} sx={{ mt: [3, 0, 0, 0] }}>
           <Box>
             <Box
               sx={{
@@ -95,7 +95,7 @@ const Footer = () => {
       <Row sx={{ mb: ['2px'], mt: [5, 5, 4] }}>
         <Column
           start={[1, 1, 2, 2]}
-          width={[3, 2, 4, 4]}
+          width={[3, 2, 3, 3]}
           sx={{
             display: 'flex',
             alignItems: ['flex-start', 'flex-start', 'flex-end'],
@@ -124,7 +124,7 @@ const Footer = () => {
           </Box>
         </Column>
         <Column
-          start={[4, 3, 6, 6]}
+          start={[4, 3, 5, 5]}
           width={[2, 2, 3, 3]}
           sx={{
             display: 'flex',
