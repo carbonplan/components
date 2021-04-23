@@ -3,18 +3,7 @@ import { Box, Container } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 
-const sx = {
-  guideColumn: {
-    borderStyle: 'solid',
-    borderWidth: '0px',
-    borderLeftWidth: '0px',
-    borderRightWidth: '0px',
-    borderColor: 'rgb(124,236,238)',
-    opacity: 0.4,
-  },
-}
-
-const Guide = () => {
+const Guide = ({ color = 'muted' }) => {
   const [display, setDisplay] = useState(false)
 
   useEffect(() => {
@@ -38,27 +27,47 @@ const Guide = () => {
         width: '100%',
         left: 0,
         top: 0,
-        zIndex: 5000,
+        zIndex: (color === 'teal') ? 5000 : -1,
         pointerEvents: 'none',
         display: display ? 'initial' : 'none',
       }}
     >
       <Container>
         <Box sx={{ display: ['none', 'none', 'initial', 'initial'] }}>
-          <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} />
+          <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} color={color} />
         </Box>
         <Box sx={{ display: ['none', 'initial', 'none', 'none'] }}>
-          <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8]} />
+          <GuideColumns indices={[1, 2, 3, 4, 5, 6, 7, 8]} color={color} />
         </Box>
         <Box sx={{ display: ['initial', 'none', 'none', 'none'] }}>
-          <GuideColumns indices={[1, 2, 3, 4, 5, 6]} />
+          <GuideColumns indices={[1, 2, 3, 4, 5, 6]} color={color} />
         </Box>
       </Container>
     </Box>
   )
 }
 
-function GuideColumns({ indices }) {
+const colorCycle = ['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'purple', 'pink']
+
+function GuideColumns({ indices, color }) {
+  const sx = {
+    outerGuideColumn: {
+      borderStyle: 'solid',
+      borderWidth: '0px',
+      borderLeftWidth: (color === 'teal') ? '0px' : '1px',
+      borderRightWidth: (color === 'teal') ? '0px' : '1px',
+      opacity: (color == 'teal') ? 0.4 : 1,
+    },
+    innerGuideColumn: {
+      borderStyle: 'solid',
+      borderWidth: '0px',
+      borderLeftWidth: '0px',
+      borderRightWidth: '0px',
+      opacity: 0.4,
+    },
+  }
+
+
   return (
     <Row>
       {indices.map((i) => {
@@ -70,17 +79,19 @@ function GuideColumns({ indices }) {
             dl={0.5}
             dr={0.5}
             sx={{
-              bg: 'teal',
+              bg: (color === 'teal') ? 'teal' : 'transparent',
               height: '100vh',
-              ...sx.guideColumn,
+              ...sx.innerGuideColumn,
             }}
           >
             <Box
               sx={{
                 mx: ['12px', 3, 3, 4],
-                bg: 'background',
+                bg: (color === 'teal') ? 'background' : 'transparent',
                 height: '100%',
-                ...sx.guideColumn,
+                borderLeftColor: (color === 'rainbow') ? colorCycle[i % 8] : 'muted',
+                borderRightColor: (color === 'rainbow') ? colorCycle[i % 8] : 'muted',
+                ...sx.outerGuideColumn,
               }}
             ></Box>
           </Column>

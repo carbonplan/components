@@ -228,6 +228,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
               transition: 'opacity 0.15s',
               pointerEvents: settings && settings.value ? 'none' : 'all',
               opacity: settings && settings.value ? 0 : 1,
+              mr: ['-2px']
             }}
             value={expanded}
             onClick={toggle}
