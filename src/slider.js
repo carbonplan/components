@@ -8,7 +8,7 @@ const Slider = ({ sx, ...props }) => {
   } = useThemeUI()
 
   return (
-    <Slider
+    <ThemeSlider
       sx={{
         '&::-webkit-slider-thumb': {
           height: [24, 24, 16],
@@ -36,7 +36,9 @@ const Slider = ({ sx, ...props }) => {
           },
         },
         color: color,
+        ...sx,
       }}
+      {...props}
     />
   )
 }

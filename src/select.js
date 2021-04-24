@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import Arrow from './components'
+import Arrow from './arrow'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
