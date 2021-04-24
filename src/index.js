@@ -18,6 +18,8 @@ import Meta from './meta'
 import Monogram from './monogram'
 import Menu from './menu'
 import Row from './row'
+import Select from './select'
+import Slider from './slider'
 import Table from './table'
 import Tag from './tag'
 import Toggle from './toggle'
@@ -45,6 +47,8 @@ export {
   Menu,
   Dimmer,
   Row,
+  Select,
+  Slider,
   Table,
   Tag,
   Toggle,

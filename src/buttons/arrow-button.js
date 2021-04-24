@@ -4,7 +4,7 @@ import Arrow from '../arrow'
 
 const ArrowButton = ({
   label,
-  size = 'sm',
+  size = 'xs',
   color = 'primary',
   fill = 'primary',
   sx,
@@ -12,11 +12,11 @@ const ArrowButton = ({
 }) => {
   let fontSize, fontFamily, letterSpacing, ml, top, height, width
 
-  if (!['sm', 'md', 'lg', 'xl'].includes(size)) {
-    throw new Error('Size must be sm, md, or lg')
+  if (!['xs', 'md', 'lg', 'xl'].includes(size)) {
+    throw new Error('Size must be xs, md, or lg')
   }
 
-  if (size === 'sm') {
+  if (size === 'xs') {
     fontSize = [2, 2, 2, 3]
     fontFamily = 'body'
     letterSpacing = 'body'

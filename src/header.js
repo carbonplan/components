@@ -118,6 +118,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
 
   return (
     <Box
+      as='header'
       sx={{
         width: '100%',
         pt: ['12px'],
@@ -228,7 +229,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
               transition: 'opacity 0.15s',
               pointerEvents: settings && settings.value ? 'none' : 'all',
               opacity: settings && settings.value ? 0 : 1,
-              mr: ['-2px']
+              mr: ['-2px'],
             }}
             value={expanded}
             onClick={toggle}
@@ -263,6 +264,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
                     }}
                   >
                     <NavGroup
+                      as='nav'
                       links={links}
                       nav={nav}
                       mode={mode}

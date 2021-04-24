@@ -1,0 +1,44 @@
+import React from 'react'
+import { useThemeUI, Slider as ThemeSlider } from 'theme-ui'
+
+const Slider = ({ sx, ...props }) => {
+  const color = sx && sx.color ? sx.color : 'primary'
+  const {
+    theme: { rawColors: colors },
+  } = useThemeUI()
+
+  return (
+    <Slider
+      sx={{
+        '&::-webkit-slider-thumb': {
+          height: [24, 24, 16],
+          width: [24, 24, 16],
+          boxShadow: `0 0 0 0px ${colors.secondary}`,
+          transition: 'box-shadow .15s ease',
+        },
+        '&::-moz-range-thumb': {
+          height: [24, 24, 16],
+          width: [24, 24, 16],
+          boxShadow: `0 0 0 0px ${colors.secondary}`,
+          transition: 'box-shadow .15s ease',
+        },
+        ':focus-visible': {
+          outline: 'none !important',
+          background: `${colors.secondary} !important`,
+        },
+        ':focus': {
+          color: color,
+          '&::-webkit-slider-thumb': {
+            boxShadow: `0 0 0 4px ${colors.secondary}`,
+          },
+          '&::-moz-range-thumb': {
+            boxShadow: `0 0 0 4px ${colors.secondary}`,
+          },
+        },
+        color: color,
+      }}
+    />
+  )
+}
+
+export default Slider
