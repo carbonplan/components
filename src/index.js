@@ -25,6 +25,7 @@ import Tag from './tag'
 import Toggle from './toggle'
 import Tracking from './tracking'
 import Tray from './tray'
+import utils from './utils'
 
 export {
   Arrow,
@@ -54,4 +55,5 @@ export {
   Toggle,
   Tracking,
   Tray,
+  utils,
 }
