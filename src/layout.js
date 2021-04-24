@@ -39,6 +39,7 @@ const Layout = ({
       >
         {header && (
           <Box
+            as='header'
             sx={{
               width: '100%',
               borderStyle: 'solid',
@@ -75,6 +76,7 @@ const Layout = ({
         </Box>
         {footer && (
           <Box
+            as='footer'
             sx={{
               width: '100%',
               borderStyle: 'solid',

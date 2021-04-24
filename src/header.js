@@ -98,6 +98,7 @@ const NavGroup = ({ links, nav, mode, setExpanded }) => {
   return links.map((d, i) => {
     return (
       <Nav
+        as='nav'
         key={i}
         link={d}
         mode={mode}
@@ -118,7 +119,6 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
 
   return (
     <Box
-      as='header'
       sx={{
         width: '100%',
         pt: ['12px'],

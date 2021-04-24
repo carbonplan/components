@@ -8,7 +8,6 @@ import Column from './column'
 const Footer = () => {
   return (
     <Box
-      as='footer'
       sx={{
         mt: [7, 7, 7, 8],
         mb: [7, 7, 7, 8],
