@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Box } from 'theme-ui'
 import Arrow from './arrow'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
+  const ref = useRef(null)
 
   if (!['xs', 'sm', 'md'].includes(size)) {
     throw new Error('Size must be sm, md, or lg')
@@ -15,15 +16,15 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
     fontSize = [2, 2, 2, 3]
     height = [14, 14, 14, 16]
     width = [14, 14, 14, 14]
-    top = ['2px']
+    top = ['1px']
     ml = ['-14px', '-14px', '-14px', '-16px']
   }
 
   if (size === 'sm') {
     fontSize = [3, 3, 3, 4]
-    height = [16, 16, 16, 20]
-    width = [16, 16, 16, 20]
-    top = ['2px']
+    height = [15, 15, 15, 20]
+    width = [15, 15, 15, 20]
+    top = ['1px']
     ml = ['-16px', '-16px', '-16px', '-20px']
   }
 
@@ -46,6 +47,8 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
     >
       <Box
         as='select'
+        ref={ref}
+        onChange={() => ref.current.blur()}
         sx={{
           cursor: 'pointer',
           WebkitAppearance: 'none',
@@ -56,11 +59,11 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
           border: 'none',
           borderBottomStyle: 'solid',
           borderBottomWidth: '1px',
-          borderBottomColor: 'secondary',
+          borderBottomColor: 'primary',
           borderRadius: '0px',
           fontFamily: 'body',
           fontSize: fontSize,
-          fontColor: 'text',
+          color: 'text',
           width: 'fit-content',
           color: color,
           userSelect: 'none',
@@ -69,16 +72,6 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
             ':hover': {
               borderBottomColor: 'primary',
             },
-          },
-          ':focus': {
-            outline: 'none !important',
-            background: 'none !important',
-            borderBottomColor: 'primary',
-          },
-          ':focus-visible': {
-            outline: 'none !important',
-            background: 'none !important',
-            borderBottomColor: 'primary',
           },
         }}
         {...props}
