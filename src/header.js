@@ -98,7 +98,6 @@ const NavGroup = ({ links, nav, mode, setExpanded }) => {
   return links.map((d, i) => {
     return (
       <Nav
-        as='nav'
         key={i}
         link={d}
         mode={mode}
@@ -258,13 +257,13 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
               <Row>
                 <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
                   <Box
+                    as='nav'
                     sx={{
                       display: expanded ? 'inherit' : 'none',
                       mt: [5],
                     }}
                   >
                     <NavGroup
-                      as='nav'
                       links={links}
                       nav={nav}
                       mode={mode}
