@@ -4,6 +4,13 @@ import Row from './row'
 import Column from './column'
 
 const styles = {
+  reset: {
+    verticalAlign: 'baseline',
+    border: 0,
+    outline: 0,
+    margin: 0,
+    padding: 0,
+  },
   row: {
     borderStyle: 'solid',
     borderWidth: '0px',
@@ -14,18 +21,21 @@ const styles = {
     mb: ['2px'],
   },
   header: {
+    display: 'block',
     textTransform: 'uppercase',
     letterSpacing: 'smallcaps',
     fontFamily: 'heading',
     fontSize: [2, 2, 2, 3],
   },
   index: {
+    display: 'block',
     textTransform: 'uppercase',
     letterSpacing: 'smallcaps',
     fontFamily: 'heading',
     fontSize: [2, 2, 2, 3],
   },
   entry: {
+    display: 'block',
     fontSize: [2, 2, 2, 3],
     fontFamily: 'faux',
     letterSpacing: 'faux',
@@ -47,43 +57,62 @@ const Table = ({
 }) => {
   return (
     <Box as='table' sx={{ display: 'block', ...sx }}>
-      {header && (
-        <Box
-          sx={{
-            ...styles.header,
-            ...styles.row,
-            color: color,
-            borderTopWidth: !borderTop ? '0px' : '1px',
-          }}
-        >
-          {header}
-        </Box>
-      )}
-      {data.map((d, i) => {
-        return (
+      <Box as='tbody' sx={{ display: 'block' }}>
+        {header && (
           <Row
-            columns={columns}
-            key={i}
+            as='tr'
             sx={{
+              ...styles.reset,
+              ...styles.header,
               ...styles.row,
-              pb:
-                borderBottom && i === data.length - 1
-                  ? ['18px', '18px', '18px', '22px']
-                  : [3, 3, 3, '20px'],
-              borderBottomWidth:
-                borderBottom && i === data.length - 1 ? '1px' : '0px',
-              borderTopWidth: !borderTop && i === 0 && !header ? '0px' : '1px',
+              color: color,
+              borderTopWidth: !borderTop ? '0px' : '1px',
             }}
           >
-            <Column start={start[0]} width={width[0]} sx={styles.index}>
-              {d[0]}
-            </Column>
-            <Column start={start[1]} width={width[1]} sx={styles.entry}>
-              {d[1]}
+            <Column as='td' start={[1]} width={columns} sx={styles.index}>
+              {header}
             </Column>
           </Row>
-        )
-      })}
+        )}
+        {data.map((d, i) => {
+          return (
+            <Row
+              as='tr'
+              columns={columns}
+              key={i}
+              sx={{
+                ...styles.reset,
+                ...styles.row,
+                pb:
+                  borderBottom && i === data.length - 1
+                    ? ['18px', '18px', '18px', '22px']
+                    : [3, 3, 3, '20px'],
+                borderBottomWidth:
+                  borderBottom && i === data.length - 1 ? '1px' : '0px',
+                borderTopWidth:
+                  !borderTop && i === 0 && !header ? '0px' : '1px',
+              }}
+            >
+              <Column
+                as='td'
+                start={start[0]}
+                width={width[0]}
+                sx={{ ...styles.reset, ...styles.index }}
+              >
+                {d[0]}
+              </Column>
+              <Column
+                as='td'
+                start={start[1]}
+                width={width[1]}
+                sx={{ ...styles.reset, ...styles.entry }}
+              >
+                {d[1]}
+              </Column>
+            </Row>
+          )
+        })}
+      </Box>
     </Box>
   )
 }

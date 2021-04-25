@@ -8,7 +8,7 @@ const CalloutButton = ({ label, children, sx, ...props }) => {
       sx={{
         fontSize: [3, 3, 3, 4],
         textDecoration: 'none',
-        lineHeight: '1.2em',
+        lineHeight: 'h3',
         width: 'fit-content',
         mb: [1],
         '@media (hover: hover) and (pointer: fine)': {
