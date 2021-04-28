@@ -19,7 +19,6 @@
 [mit license]: https://badgen.net/badge/license/MIT/blue
 [npm version]: https://badgen.net/npm/v/@carbonplan/components
 
-
 These are a set of modular but opinionated [`react`](https://github.com/facebook/react) components. They assume and make extensive use of [`theme-ui`](https://github.com/system-ui/theme-ui) and [`next`](https://github.com/vercel/next.js), and are meant to be composed with our [`theme`](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
 
 See them demoed at [design.carbonplan.org](https://design.carbonplan.org).
