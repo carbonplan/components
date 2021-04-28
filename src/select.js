@@ -1,10 +1,14 @@
 import React, { useRef } from 'react'
 import { Box } from 'theme-ui'
+import getProps from './utils/get-props'
 import Arrow from './arrow'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   const ref = useRef(null)
+
+  const { onChange } = props
+  const omitOnChange = getProps((k) => k !== 'onChange')(props)
 
   if (!['xs', 'sm', 'md'].includes(size)) {
     throw new Error('Size must be sm, md, or lg')
@@ -48,7 +52,10 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
       <Box
         as='select'
         ref={ref}
-        onChange={() => ref.current.blur()}
+        onChange={(e) => {
+          ref.current.blur()
+          if (onChange) onChange(e)
+        }}
         sx={{
           cursor: 'pointer',
           WebkitAppearance: 'none',
@@ -74,7 +81,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
             },
           },
         }}
-        {...props}
+        {...omitOnChange}
       >
         {children}
       </Box>

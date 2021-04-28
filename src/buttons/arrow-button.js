@@ -21,9 +21,9 @@ const ArrowButton = ({
     fontFamily = 'body'
     letterSpacing = 'body'
     top = ['2px']
-    ml = [1, 1, 1, 2]
-    height = 12
-    width = 12
+    ml = ['5px', '5px', '5px', '7px']
+    height = [12, 12, 12, 14]
+    width = [12, 12, 12, 14]
   }
 
   if (size === 'md') {
