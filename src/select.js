@@ -74,10 +74,10 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
           width: 'fit-content',
           color: color,
           userSelect: 'none',
-          transition: 'border 0.15s',
-          '@media (hover: hover) and (pointer: fine)': {
-            ':hover': {
-              borderBottomColor: 'primary',
+          '@media (hover: none) and (pointer: coarse)': {
+            '&:focus-visible': {
+              outline: 'none !important',
+              background: 'transparent !important',
             },
           },
         }}
