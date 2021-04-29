@@ -93,15 +93,15 @@ const ArrowButton = ({
         color: color,
         '@media (hover: hover) and (pointer: fine)': {
           '&:hover': {
-            color: color === 'secondary' ? 'primary' : 'secondary',
+            color: color !== 'primary' ? 'primary' : 'secondary',
           },
           '&:hover > #span-1 > #container > #arrow': {
             transform: 'rotate(45deg)',
-            fill: color === 'secondary' ? 'primary' : 'secondary',
+            fill: color !== 'primary' ? 'primary' : 'secondary',
           },
           '&:hover > #span-1 > #span-2 > #container > #arrow': {
             transform: 'rotate(45deg)',
-            fill: color === 'secondary' ? 'primary' : 'secondary',
+            fill: color !== 'primary' ? 'primary' : 'secondary',
           },
         },
         ...sx,
