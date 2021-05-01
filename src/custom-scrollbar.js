@@ -20,11 +20,13 @@ const addCustomScrollbar = `(function() { try {
 } catch (e) {} })();`
 
 const CustomScrollbar = () => {
-  return <script
-    dangerouslySetInnerHTML={{
-      __html: addCustomScrollbar,
-    }}
-  />
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: addCustomScrollbar,
+      }}
+    />
+  )
 }
 
 export default CustomScrollbar

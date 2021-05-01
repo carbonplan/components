@@ -7,6 +7,39 @@ a {
   text-decoration: none;
 }
 
+.custom-scrollbar {
+  scrollbar-color: rgb(110, 110, 110, 0.575) rgb(110, 110, 110, 0.25);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 14px;
+  transition: 0.15s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgb(110, 110, 110, 0.25);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(110, 110, 110, 0.575);
+  border-radius: 8px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 8px;
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(110, 110, 110, 0.85);
+  border-radius: 8px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 8px;
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
 .no-focus-outline a:focus,
 .no-focus-outline button:focus,
 .no-focus-outline input:focus,
