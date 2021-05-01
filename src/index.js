@@ -2,7 +2,8 @@ import Arrow from './arrow'
 import Badge from './badge'
 import Buttons from './buttons'
 import Column from './column'
-import Custom404 from './404'
+import Custom404 from './custom-404'
+import CustomScrollbar from './custom-scrollbar'
 import Dimmer from './dimmer'
 import Expander from './expander'
 import FadeIn from './fade-in'
@@ -33,6 +34,7 @@ export {
   Badge,
   Column,
   Custom404,
+  CustomScrollbar,
   Expander,
   FadeIn,
   Filter,
