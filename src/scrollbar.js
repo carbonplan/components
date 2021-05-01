@@ -20,7 +20,9 @@ const Scrollbar = () => {
       const delta = getScrollbarWidth(document)
       if (delta > 0) {
         document.body.classList.add('custom-scrollbar')
-        document.getElementsByTagName('html')[0].classList.add('custom-scrollbar')
+        document
+          .getElementsByTagName('html')[0]
+          .classList.add('custom-scrollbar')
       }
     }
   }, [])

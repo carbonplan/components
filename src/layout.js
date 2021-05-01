@@ -24,7 +24,7 @@ const Layout = ({
   nav,
   settings,
   guide,
-  scrollbar
+  scrollbar,
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
@@ -36,7 +36,7 @@ const Layout = ({
 
   return (
     <>
-      {guide && <Guide color={guide}/>}
+      {guide && <Guide color={guide} />}
       {scrollbar && <Scrollbar />}
       <Meta card={card} description={description} title={title} />
       <Flex
