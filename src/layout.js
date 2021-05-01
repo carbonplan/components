@@ -21,12 +21,16 @@ const Layout = ({
   dimmer,
   nav,
   settings,
+  guide,
+  scrollbar
 }) => {
   footer = footer == null ? true : footer
   header = header == null ? true : header
   metadata = metadata == null ? 'mouse' : metadata
   links = links == null ? 'remote' : links
   dimmer = dimmer == null || dimmer == true ? 'bottom' : dimmer
+  guide = guide == null ? true : guide
+  scrollbar = scrollbar == null ? true : scrollbar
 
   return (
     <>

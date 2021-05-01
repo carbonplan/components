@@ -3,7 +3,6 @@ import Badge from './badge'
 import Buttons from './buttons'
 import Column from './column'
 import Custom404 from './custom-404'
-import CustomScrollbar from './custom-scrollbar'
 import Dimmer from './dimmer'
 import Expander from './expander'
 import FadeIn from './fade-in'
@@ -19,6 +18,7 @@ import Meta from './meta'
 import Monogram from './monogram'
 import Menu from './menu'
 import Row from './row'
+import Scrollbar from './scrollbar'
 import Select from './select'
 import Slider from './slider'
 import Table from './table'
@@ -34,7 +34,6 @@ export {
   Badge,
   Column,
   Custom404,
-  CustomScrollbar,
   Expander,
   FadeIn,
   Filter,
@@ -50,6 +49,7 @@ export {
   Menu,
   Dimmer,
   Row,
+  Scrollbar,
   Select,
   Slider,
   Table,
