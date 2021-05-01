@@ -12,7 +12,7 @@ a {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 14px;
+  width: 15px;
   transition: 0.15s;
 }
 
