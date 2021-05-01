@@ -6,6 +6,8 @@ import Footer from './footer'
 import Dimmer from './dimmer'
 import Metadata from './metadata'
 import FadeIn from './fade-in'
+import Scrollbar from './scrollbar'
+import Guide from './guide'
 
 const Layout = ({
   footer,
@@ -34,6 +36,8 @@ const Layout = ({
 
   return (
     <>
+      {guide && <Guide color={guide}/>}
+      {scrollbar && <Scrollbar />}
       <Meta card={card} description={description} title={title} />
       <Flex
         sx={{
