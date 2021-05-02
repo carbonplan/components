@@ -75,7 +75,7 @@ function GuideColumns({ indices, color }) {
       borderWidth: '0px',
       borderLeftWidth: '0px',
       borderRightWidth: '0px',
-      opacity: 1,
+      opacity: color == 'teal' ? 0.4 : 1,
     },
   }
 
