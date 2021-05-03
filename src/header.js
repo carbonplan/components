@@ -233,7 +233,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
           onClick={toggle}
         />
       </Column>
-      <Container
+      <Box
         sx={{
           opacity: expanded ? 1 : 0,
           pointerEvents: expanded ? 'all' : 'none',
@@ -251,25 +251,27 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
           transition: 'opacity 0.25s',
         }}
       >
-        <Row>
-          <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
-            <Box
-              as='nav'
-              sx={{
-                display: expanded ? 'inherit' : 'none',
-                mt: [5],
-              }}
-            >
-              <NavGroup
-                links={links}
-                nav={nav}
-                mode={mode}
-                setExpanded={setExpanded}
-              />
-            </Box>
-          </Column>
-        </Row>
-      </Container>
+        <Container>
+          <Row>
+            <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
+              <Box
+                as='nav'
+                sx={{
+                  display: expanded ? 'inherit' : 'none',
+                  mt: [5, 5, 5, 6],
+                }}
+              >
+                <NavGroup
+                  links={links}
+                  nav={nav}
+                  mode={mode}
+                  setExpanded={setExpanded}
+                />
+              </Box>
+            </Column>
+          </Row>
+        </Container>
+      </Box>
     </Row>
   )
 }
