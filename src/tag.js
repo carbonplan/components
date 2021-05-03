@@ -4,6 +4,7 @@ import { Box } from 'theme-ui'
 const Tag = ({ label, value, sx, children, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   const isClickable = props && (props.onClick || props.onDoubleClick)
+
   return (
     <Box
       as={isClickable ? 'button' : 'span'}
@@ -25,6 +26,7 @@ const Tag = ({ label, value, sx, children, ...props }) => {
         borderBottomWidth: '1px',
         textTransform: 'uppercase',
         userSelect: 'none',
+        transition: 'opacity 0.05s',
         pt: ['1px'],
         pb: ['2px'],
         px: [0],

@@ -52,9 +52,13 @@ const Table = ({
   columns,
   start,
   width,
+  index = true,
   borderBottom = true,
   borderTop = true,
 }) => {
+  if (!start || !columns || !width) {
+    throw new Error('Must provide columns, start, and width')
+  }
   return (
     <Box as='table' sx={{ display: 'block', ...sx }}>
       <Box as='tbody' sx={{ display: 'block' }}>
@@ -74,7 +78,7 @@ const Table = ({
             </Column>
           </Row>
         )}
-        {data.map((d, i) => {
+        {data.map((row, i) => {
           return (
             <Row
               as='tr'
@@ -93,22 +97,23 @@ const Table = ({
                   !borderTop && i === 0 && !header ? '0px' : '1px',
               }}
             >
-              <Column
-                as='td'
-                start={start[0]}
-                width={width[0]}
-                sx={{ ...styles.reset, ...styles.index }}
-              >
-                {d[0]}
-              </Column>
-              <Column
-                as='td'
-                start={start[1]}
-                width={width[1]}
-                sx={{ ...styles.reset, ...styles.entry }}
-              >
-                {d[1]}
-              </Column>
+              {row.map((column, j) => {
+                return (
+                  <Column
+                    as='td'
+                    key={j}
+                    start={start[j]}
+                    width={width[j]}
+                    sx={
+                      j == 0 && index
+                        ? { ...styles.reset, ...styles.index }
+                        : { ...styles.reset, ...styles.entry }
+                    }
+                  >
+                    {column}
+                  </Column>
+                )
+              })}
             </Row>
           )
         })}

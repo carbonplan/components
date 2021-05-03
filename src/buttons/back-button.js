@@ -2,7 +2,9 @@ import React from 'react'
 import { Box } from 'theme-ui'
 import Arrow from '../arrow'
 
-const BackButton = ({ sx, ...props }) => {
+const BackButton = ({ sx, label, ...props }) => {
+  label = label || 'Back'
+
   return (
     <Box
       sx={{
@@ -12,6 +14,7 @@ const BackButton = ({ sx, ...props }) => {
         fontFamily: 'body',
         letterSpacing: 'body',
         transition: '0.15s',
+        cursor: 'pointer',
         '@media (hover: hover) and (pointer: fine)': {
           '&:hover': {
             color: 'primary',
@@ -30,23 +33,20 @@ const BackButton = ({ sx, ...props }) => {
           transition: 'fill 0.15s',
           transform: 'rotate(-135deg)',
           position: 'relative',
-          top: ['3px'],
+          top: ['1px', '1px', '1px', '1px'],
           fill: 'secondary',
-          width: 13,
-          height: 13,
+          width: [13, 13, 13, 14.5],
+          height: [13, 13, 13, 14.5],
         }}
       />
       <Box
         as='span'
         sx={{
           fontSize: [2, 2, 2, 3],
-          position: 'relative',
-          pb: [1],
-          ml: [2],
-          top: ['2px'],
+          ml: ['7px'],
         }}
       >
-        Back
+        {label}
       </Box>
     </Box>
   )

@@ -117,166 +117,160 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
   }
 
   return (
-    <Box
+    <Row
       sx={{
         width: '100%',
         pt: ['12px'],
         pb: [3],
       }}
     >
-      <Row>
-        <Column start={[1]} width={[2]}>
-          <Box sx={{ display: 'block', width: 'fit-content' }}>
-            {(mode == 'homepage' || mode == 'local') && (
-              <NextLink href='/' passHref>
-                <Link
-                  aria-label='CarbonPlan Homepage'
-                  sx={{
-                    display: 'block',
-                  }}
-                >
-                  <Logo
-                    id='logo'
-                    sx={{
-                      cursor: 'pointer',
-                    }}
-                  />
-                </Link>
-              </NextLink>
-            )}
-            {(mode == null || mode == 'remote') && (
+      <Column start={[1]} width={[2]}>
+        <Box sx={{ display: 'block', width: 'fit-content' }}>
+          {(mode == 'homepage' || mode == 'local') && (
+            <NextLink href='/' passHref>
               <Link
-                href='https://carbonplan.org'
                 aria-label='CarbonPlan Homepage'
-                sx={{ display: 'block' }}
+                sx={{
+                  display: 'block',
+                }}
               >
-                <Logo sx={{ cursor: 'pointer' }} />
+                <Logo
+                  id='logo'
+                  sx={{
+                    cursor: 'pointer',
+                  }}
+                />
               </Link>
-            )}
-          </Box>
-        </Column>
-        <Column
-          start={[4, 9]}
-          width={[2, 2]}
-          dr={1}
+            </NextLink>
+          )}
+          {(mode == null || mode == 'remote') && (
+            <Link
+              href='https://carbonplan.org'
+              aria-label='CarbonPlan Homepage'
+              sx={{ display: 'block' }}
+            >
+              <Logo sx={{ cursor: 'pointer' }} />
+            </Link>
+          )}
+        </Box>
+      </Column>
+      <Column
+        start={[4, 9]}
+        width={[2, 2]}
+        dr={1}
+        sx={{
+          display: [status ? 'flex' : 'none', 'flex', 'flex', 'flex'],
+          alignItems: 'center',
+        }}
+      >
+        <Box
           sx={{
-            display: [status ? 'flex' : 'none', 'flex', 'flex', 'flex'],
-            alignItems: 'center',
+            fontSize: [1, 2, 3],
+            position: 'relative',
+            top: ['-2px', '-3px', '-3px'],
           }}
         >
-          <Box
+          {status ? `(${status})` : ''}
+        </Box>
+      </Column>
+      <Column
+        start={[status ? 6 : 4, 6, 12, 12]}
+        width={[status ? 1 : 3, 3, 2, 2]}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Box
+          sx={{
+            mr: ['18px'],
+            position: 'relative',
+            top: ['-1px'],
+            pointerEvents:
+              expanded || (settings && settings.value) ? 'none' : 'all',
+            transition: 'opacity 0.15s',
+            display: [
+              status ? 'none' : 'block',
+              'block',
+              dimmer === 'top' ? 'block' : 'none',
+              dimmer === 'top' ? 'block' : 'none',
+            ],
+          }}
+        >
+          <Dimmer
             sx={{
-              fontSize: [1, 2, 3],
-              position: 'relative',
-              top: ['-2px', '-3px', '-3px'],
+              opacity: expanded || (settings && settings.value) ? 0 : 1,
+              stroke: 'primary',
             }}
-          >
-            {status ? `(${status})` : ''}
-          </Box>
-        </Column>
-        <Column
-          start={[status ? 6 : 4, 6, 12, 12]}
-          width={[status ? 1 : 3, 3, 2, 2]}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-          }}
-        >
+          />
+        </Box>
+        {settings && (
           <Box
             sx={{
-              mr: ['18px'],
+              mr: ['21px'],
               position: 'relative',
-              top: ['-1px'],
-              pointerEvents:
-                expanded || (settings && settings.value) ? 'none' : 'all',
+              pointerEvents: expanded ? 'none' : 'all',
               transition: 'opacity 0.15s',
-              display: [
-                status ? 'none' : 'block',
-                'block',
-                dimmer === 'top' ? 'block' : 'none',
-                dimmer === 'top' ? 'block' : 'none',
-              ],
+              display: [status ? 'none' : 'block', 'block', 'none', 'none'],
             }}
           >
-            <Dimmer
-              sx={{
-                opacity: expanded || (settings && settings.value) ? 0 : 1,
-                stroke: 'primary',
-              }}
+            <Settings
+              value={settings.value}
+              onClick={settings.onClick}
+              sx={{ opacity: expanded ? 0 : 1, stroke: 'primary' }}
             />
           </Box>
-          {settings && (
+        )}
+        <Menu
+          sx={{
+            transition: 'opacity 0.15s',
+            pointerEvents: settings && settings.value ? 'none' : 'all',
+            opacity: settings && settings.value ? 0 : 1,
+            mr: ['-2px'],
+          }}
+          value={expanded}
+          onClick={toggle}
+        />
+      </Column>
+      <Container
+        sx={{
+          opacity: expanded ? 1 : 0,
+          pointerEvents: expanded ? 'all' : 'none',
+          position: 'fixed',
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          minWidth: '0px',
+          maxHeight: '100vh',
+          width: '100vw',
+          backgroundColor: 'background',
+          zIndex: 5000,
+          mt: ['55px'],
+          pt: [4],
+          transition: 'opacity 0.25s',
+        }}
+      >
+        <Row>
+          <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
             <Box
+              as='nav'
               sx={{
-                mr: ['21px'],
-                position: 'relative',
-                pointerEvents: expanded ? 'none' : 'all',
-                transition: 'opacity 0.15s',
-                display: [status ? 'none' : 'block', 'block', 'none', 'none'],
+                display: expanded ? 'inherit' : 'none',
+                mt: [5],
               }}
             >
-              <Settings
-                value={settings.value}
-                onClick={settings.onClick}
-                sx={{ opacity: expanded ? 0 : 1, stroke: 'primary' }}
+              <NavGroup
+                links={links}
+                nav={nav}
+                mode={mode}
+                setExpanded={setExpanded}
               />
             </Box>
-          )}
-          <Menu
-            sx={{
-              transition: 'opacity 0.15s',
-              pointerEvents: settings && settings.value ? 'none' : 'all',
-              opacity: settings && settings.value ? 0 : 1,
-              mr: ['-2px'],
-            }}
-            value={expanded}
-            onClick={toggle}
-          />
-        </Column>
-        <Box>
-          <Box
-            sx={{
-              opacity: expanded ? 1 : 0,
-              pointerEvents: expanded ? 'all' : 'none',
-              position: 'fixed',
-              top: '0px',
-              right: '0px',
-              bottom: '0px',
-              minWidth: '0px',
-              maxHeight: '100vh',
-              width: '100vw',
-              backgroundColor: 'background',
-              zIndex: 5000,
-              mt: ['55px'],
-              pt: [4],
-              transition: 'opacity 0.25s',
-            }}
-          >
-            <Container>
-              <Row>
-                <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
-                  <Box
-                    as='nav'
-                    sx={{
-                      display: expanded ? 'inherit' : 'none',
-                      mt: [5],
-                    }}
-                  >
-                    <NavGroup
-                      links={links}
-                      nav={nav}
-                      mode={mode}
-                      setExpanded={setExpanded}
-                    />
-                  </Box>
-                </Column>
-              </Row>
-            </Container>
-          </Box>
-        </Box>
-      </Row>
-    </Box>
+          </Column>
+        </Row>
+      </Container>
+    </Row>
   )
 }
 

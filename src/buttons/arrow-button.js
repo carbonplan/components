@@ -12,7 +12,7 @@ const ArrowButton = ({
 }) => {
   let fontSize, fontFamily, letterSpacing, ml, top, height, width
 
-  if (!['xs', 'md', 'lg', 'xl'].includes(size)) {
+  if (!['xs', 'sm', 'md', 'lg', 'xl'].includes(size)) {
     throw new Error('Size must be xs, md, or lg')
   }
 
@@ -22,8 +22,18 @@ const ArrowButton = ({
     letterSpacing = 'body'
     top = ['2px']
     ml = ['5px', '5px', '5px', '7px']
-    height = [12, 12, 12, 14]
-    width = [12, 12, 12, 14]
+    height = [12, 12, 12, 13]
+    width = [12, 12, 12, 13]
+  }
+
+  if (size === 'sm') {
+    fontSize = [3, 3, 3, 4]
+    fontFamily = 'body'
+    letterSpacing = 'body'
+    top = ['2px', '2px', '2px', '3px']
+    ml = ['6px', '6px', '6px', '7px']
+    height = [13, 13, 13, 18]
+    width = [13, 13, 13, 18]
   }
 
   if (size === 'md') {
@@ -40,20 +50,20 @@ const ArrowButton = ({
     fontSize = [5, 5, 6, 7]
     fontFamily = 'heading'
     letterSpacing = 'heading'
-    top = ['4px', '4px', '5px', '6px']
-    ml = ['8px', '8px', '12px', '16px']
-    height = [25, 25, 35, 45]
-    width = [25, 25, 35, 45]
+    top = ['3px', '3px', '5px', '7px']
+    ml = ['10px', '10px', '12px', '16px']
+    height = [24, 24, 34, 46]
+    width = [24, 24, 34, 46]
   }
 
   if (size === 'xl') {
     fontSize = [6, 7, 8, 9]
     fontFamily = 'heading'
     letterSpacing = 'heading'
-    top = ['5px', '7px', '9px', '11px']
-    ml = ['8px', '12px', '12px', '16px']
-    height = [34, 46, 56, 68]
-    width = [34, 46, 56, 68]
+    top = ['5px', '7px', '9px', '9px']
+    ml = ['12px', '16px', '18px', '20px']
+    height = [34, 46, 58, 67]
+    width = [34, 46, 58, 67]
   }
 
   const InnerArrow = () => {
@@ -90,6 +100,7 @@ const ArrowButton = ({
         letterSpacing: letterSpacing,
         width: 'fit-content',
         transition: 'color 0.15s',
+        cursor: 'pointer',
         color: color,
         '@media (hover: hover) and (pointer: fine)': {
           '&:hover': {

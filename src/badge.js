@@ -9,7 +9,7 @@ const Badge = ({ sx, children, ...props }) => {
       sx={{
         display: 'inline-block',
         width: 'fit-content',
-        height: '24px',
+        height: ['24px', '24px', '24px', '26px'],
         borderRadius: '5px',
         backgroundColor:
           color == 'primary' || color == 'secondary'
@@ -17,7 +17,7 @@ const Badge = ({ sx, children, ...props }) => {
             : transparentize(color, 0.7),
         textAlign: 'center',
         userSelect: 'none',
-        fontSize: [2],
+        fontSize: [2, 2, 2, 3],
         ...sx,
       }}
       {...props}
@@ -26,8 +26,8 @@ const Badge = ({ sx, children, ...props }) => {
         sx={{
           letterSpacing: '0.02em',
           fontFamily: 'mono',
-          mt: ['0px'],
-          px: [1],
+          mt: ['1px', '1px', '1px', '0px'],
+          px: [1, 1, 1, '5px'],
           color: color,
         }}
       >

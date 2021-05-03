@@ -3,6 +3,7 @@ import { Box } from 'theme-ui'
 
 const Info = ({ closed, sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
+  const style = { vectorEffect: 'non-scaling-stroke' }
   return (
     <Box
       sx={{
@@ -17,10 +18,10 @@ const Info = ({ closed, sx, ...props }) => {
     >
       <svg fill='none' viewBox='0 0 26 26'>
         <g transform='translate(0,-1)'>
-          <line x1='13' y1='12.3' x2='13' y2='19.5' />
-          <line x1='13' y1='7.9' x2='13' y2='10.1' />
+          <line x1='13' y1='12.3' x2='13' y2='19.5' style={style} />
+          <line x1='13' y1='7.9' x2='13' y2='10.1' style={style} />
         </g>
-        {closed && <circle cx='13' cy='13' r='12' />}
+        {closed && <circle cx='13' cy='13' r='12' style={style} />}
       </svg>
     </Box>
   )
