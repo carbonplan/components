@@ -46,7 +46,7 @@ const Layout = ({
         }}
       >
         {header && (
-          <Container
+          <Box
             as='header'
             sx={{
               width: '100%',
@@ -61,25 +61,29 @@ const Layout = ({
               zIndex: 2000,
             }}
           >
-            <Header
-              mode={links}
-              status={status}
-              nav={nav}
-              settings={settings}
-              dimmer={dimmer}
-            />
-          </Container>
+            <Container>
+              <Header
+                mode={links}
+                status={status}
+                nav={nav}
+                settings={settings}
+                dimmer={dimmer}
+              />
+            </Container>
+          </Box>
         )}
-        <Container
+        <Box
           sx={{
             width: '100%',
             flex: '1 1 auto',
           }}
         >
-          <FadeIn duration={250}>{children}</FadeIn>
-        </Container>
+          <Container>
+            <FadeIn duration={250}>{children}</FadeIn>
+          </Container>
+        </Box>
         {footer && (
-          <Container
+          <Box
             as='footer'
             sx={{
               width: '100%',
@@ -89,8 +93,10 @@ const Layout = ({
               borderTopWidth: '1px',
             }}
           >
-            <Footer />
-          </Container>
+            <Container>
+              <Footer />
+            </Container>
+          </Box>
         )}
         {dimmer === 'bottom' && (
           <Box
