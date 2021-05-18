@@ -87,7 +87,7 @@ const Footer = () => {
               }}
             >
               CarbonPlan is a registered non-profit public benefit corporation
-              in California with 501(3)(c) status.
+              in California with 501(c)(3) status.
             </Box>
           </Box>
         </Column>
