@@ -3,7 +3,7 @@ import { Box } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 
-const Tray = ({ expanded, children }) => {
+const Tray = ({ expanded, sx, children }) => {
   return (
     <>
       <Box
@@ -42,6 +42,7 @@ const Tray = ({ expanded, children }) => {
           pl: [3, 4, 5, 6],
           pr: [3, 4, 5, 6],
           transform: expanded ? 'translateY(0)' : 'translateY(-400px)',
+          ...sx
         }}
       >
         <Row>
