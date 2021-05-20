@@ -11,14 +11,14 @@ const Slider = ({ sx, ...props }) => {
     <ThemeSlider
       sx={{
         '&::-webkit-slider-thumb': {
-          height: [24, 24, 16],
-          width: [24, 24, 16],
+          height: [22, 18, 16],
+          width: [22, 18, 16],
           boxShadow: `0 0 0 0px ${colors.secondary}`,
           transition: 'box-shadow .15s ease',
         },
         '&::-moz-range-thumb': {
-          height: [24, 24, 16],
-          width: [24, 24, 16],
+          height: [22, 18, 16],
+          width: [22, 18, 16],
           boxShadow: `0 0 0 0px ${colors.secondary}`,
           transition: 'box-shadow .15s ease',
         },
