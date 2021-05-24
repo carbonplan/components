@@ -27,7 +27,7 @@ const Guide = ({ color = 'muted' }) => {
         width: '100%',
         left: 0,
         top: 0,
-        zIndex: color === 'teal' ? 5000 : -1,
+        zIndex: color === 'teal' ? 5000 : 0,
         pointerEvents: 'none',
         display: display ? 'initial' : 'none',
       }}
