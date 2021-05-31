@@ -1,9 +1,3 @@
-import Check from './check'
-import Info from './info'
-import Question from './question'
-
-export default {
-  Check,
-  Question,
-  Info,
-}
+export { default as Check } from './check'
+export { default as Info } from './info'
+export { default as Question } from './question'

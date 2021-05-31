@@ -1,11 +1,17 @@
 {
   "name": "@carbonplan/components",
-  "version": "7.8.3",
+  "version": "8.0.0-alpha.0",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
   "scripts": {
-    "build": "microbundle --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build": "rimraf dst && npm run build:index && npm run build:buttons && npm run build:emoji && npm run build:icons && npm run build:links && npm run build:utils",
+    "build:index": "microbundle src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build:buttons": "microbundle src/buttons/index.js -o dst/buttons.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build:emoji": "microbundle src/emoji/index.js -o dst/emoji.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build:icons": "microbundle src/icons/index.js -o dst/icons.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build:links": "microbundle src/links/index.js -o dst/links.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build:utils": "microbundle src/utils/index.js -o dst/utils.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
     "format": "prettier --write 'src/**/*.js' '*.css'"
   },
   "repository": {
@@ -41,6 +47,7 @@
   },
   "devDependencies": {
     "microbundle": "^0.13.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "rimraf": "2.6.3"
   }
 }

@@ -1,9 +1,3 @@
-import TaggedLink from './tagged-link'
-import WrappedLink from './wrapped-link'
-import InternalLink from './internal-link'
-
-export default {
-  InternalLink,
-  TaggedLink,
-  WrappedLink,
-}
+export { default as TaggedLink } from './tagged-link'
+export { default as WrappedLink } from './wrapped-link'
+export { default as InternalLink } from './internal-link'

@@ -42,7 +42,7 @@ const Tray = ({ expanded, sx, children }) => {
           pl: [3, 4, 5, 6],
           pr: [3, 4, 5, 6],
           transform: expanded ? 'translateY(0)' : 'translateY(-400px)',
-          ...sx
+          ...sx,
         }}
       >
         <Row>

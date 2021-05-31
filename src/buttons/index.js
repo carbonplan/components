@@ -1,9 +1,3 @@
-import ArrowButton from './arrow-button'
-import BackButton from './back-button'
-import CalloutButton from './callout-button'
-
-export default {
-  ArrowButton,
-  BackButton,
-  CalloutButton,
-}
+export { default as ArrowButton } from './arrow-button'
+export { default as BackButton } from './back-button'
+export { default as CalloutButton } from './callout-button'
