@@ -30,7 +30,7 @@
   ],
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {
-    "@theme-ui/color": "^0.8.4"
+    "@theme-ui/color": "^0.10.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.5",
