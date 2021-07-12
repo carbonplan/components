@@ -17,7 +17,7 @@ const Link = ({
   tracking = false,
   ...props
 }) => {
-  if (internal || href.startsWith('/')) {
+  if (internal || (href && href.startsWith('/'))) {
     return (
       <NextLink href={href} passHref>
         <ThemedLink {...props}>{children}</ThemedLink>
