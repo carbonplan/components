@@ -10,30 +10,22 @@ import Scrollbar from './scrollbar'
 import Guide from './guide'
 
 const Layout = ({
-  footer,
-  header,
   title,
   description,
   card,
   children,
-  local,
   status,
-  metadata,
-  links,
-  dimmer,
   nav,
   settings,
-  guide,
-  scrollbar,
+  footer = true,
+  header = true,
+  metadata = 'mouse',
+  links = 'remote',
+  dimmer = 'bottom',
+  guide = true,
+  scrollbar = true,
+  fade = true,
 }) => {
-  footer = footer == null ? true : footer
-  header = header == null ? true : header
-  metadata = metadata == null ? 'mouse' : metadata
-  links = links == null ? 'remote' : links
-  dimmer = dimmer == null || dimmer == true ? 'bottom' : dimmer
-  guide = guide == null ? true : guide
-  scrollbar = scrollbar == null ? true : scrollbar
-
   return (
     <>
       {guide && <Guide color={guide} />}
@@ -79,7 +71,8 @@ const Layout = ({
           }}
         >
           <Container>
-            <FadeIn duration={250}>{children}</FadeIn>
+            {fade && <FadeIn duration={250}>{children}</FadeIn>}
+            {!fade && children}
           </Container>
         </Box>
         {footer && (

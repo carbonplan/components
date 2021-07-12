@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Box } from 'theme-ui'
+import { Arrow } from '@carbonplan/icons'
 import getProps from './utils/get-props'
-import Arrow from './arrow'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
@@ -11,7 +11,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
   const omitOnChange = getProps((k) => k !== 'onChange')(props)
 
   if (!['xs', 'sm', 'md'].includes(size)) {
-    throw new Error('Size must be sm, md, or lg')
+    throw new Error('Size must be xs, sm, or md')
   }
 
   let fontSize, pr, height, width, ml, top
@@ -33,7 +33,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
   }
 
   if (size === 'md') {
-    fontSize = [4, 4, 4, 4]
+    fontSize = [4, 4, 4, 5]
     height = [20, 20, 20, 20]
     width = [20, 20, 20, 20]
     top = ['2px']
