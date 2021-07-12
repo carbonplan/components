@@ -138,7 +138,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
                   id='logo'
                   sx={{
                     cursor: 'pointer',
-                    color: 'primary'
+                    color: 'primary',
                   }}
                 />
               </Link>

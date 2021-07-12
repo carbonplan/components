@@ -42,7 +42,7 @@ const Custom404 = () => {
               fill: 'primary',
             }}
           >
-            <PoopSad sx={{width: '100%', height: 'auto'}}/>
+            <PoopSad sx={{ width: '100%', height: 'auto' }} />
           </Box>
         </Column>
       </Row>

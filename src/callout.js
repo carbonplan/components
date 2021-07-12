@@ -45,7 +45,9 @@ const Callout = ({
 
   const Inner = (
     <>
-      <Box sx={{ transition: '0.15s', letterSpacing: 'body', pb: ['6px'] }}>{children}</Box>
+      <Box sx={{ transition: '0.15s', letterSpacing: 'body', pb: ['6px'] }}>
+        {children}
+      </Box>
       <Box
         sx={{
           transition: '0.15s',

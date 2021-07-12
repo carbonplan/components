@@ -3,7 +3,14 @@ import { Box } from 'theme-ui'
 
 const Logo = ({ ...props }) => {
   return (
-    <Box as='svg' width='150' fill='currentColor' stroke='none' viewBox='0 0 151.1 28.8' {...props}>
+    <Box
+      as='svg'
+      width='150'
+      fill='currentColor'
+      stroke='none'
+      viewBox='0 0 151.1 28.8'
+      {...props}
+    >
       <g>
         <g>
           <path

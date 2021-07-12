@@ -165,7 +165,14 @@ const Footer = () => {
           width={[2, 3, 3, 3]}
           sx={{ display: ['none', 'initial', 'initial', 'initial'] }}
         >
-          <Monogram sx={{ width: 80, height: 80, mt: [0, '-10px', 4, 5], mb: ['-12px'] }} />
+          <Monogram
+            sx={{
+              width: 80,
+              height: 80,
+              mt: [0, '-10px', 4, 5],
+              mb: ['-12px'],
+            }}
+          />
         </Column>
       </Row>
     </Box>
