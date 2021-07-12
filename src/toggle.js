@@ -2,8 +2,9 @@ import React from 'react'
 import { Box } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
-const Toggle = ({ value, onClick, sx }) => {
+const Toggle = ({ value, onClick, disabled, sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
+  value = disabled ? false : value
   return (
     <Box
       as='button'
@@ -14,12 +15,13 @@ const Toggle = ({ value, onClick, sx }) => {
       sx={{
         border: 'none',
         background: 'none',
-        cursor: 'pointer',
+        cursor: disabled ? 'default' : 'pointer',
         p: [0],
         m: [0],
         display: 'inline-block',
         ...sx,
       }}
+      {...props}
     >
       <Box
         sx={{

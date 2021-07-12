@@ -1,17 +1,12 @@
 {
   "name": "@carbonplan/components",
-  "version": "8.0.0-alpha.0",
+  "version": "8.0.0",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
   "scripts": {
-    "build": "rimraf dst && npm run build:index && npm run build:buttons && npm run build:emoji && npm run build:icons && npm run build:links && npm run build:utils",
-    "build:index": "microbundle src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "build:buttons": "microbundle src/buttons/index.js -o dst/buttons.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "build:emoji": "microbundle src/emoji/index.js -o dst/emoji.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "build:icons": "microbundle src/icons/index.js -o dst/icons.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "build:links": "microbundle src/links/index.js -o dst/links.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "build:utils": "microbundle src/utils/index.js -o dst/utils.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build": "rimraf dst && microbundle src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "watch": "microbundle watch src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
     "format": "prettier --write 'src/**/*.js' '*.css'"
   },
   "repository": {
@@ -36,14 +31,16 @@
   ],
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {
-    "@theme-ui/color": "^0.8.4"
+    "@carbonplan/emoji": "^1.0.0",
+    "@carbonplan/icons": "^1.0.0",
+    "@theme-ui/color": ">=0.10.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.5",
-    "next": "^10.1.3",
+    "next": "^10.1.3 || ^11.0.1",
     "react": "^16.14.0 || ^17.0.2",
     "react-dom": "^16.14.0 || ^17.0.2",
-    "theme-ui": "^0.8.4"
+    "theme-ui": ">=0.10.0"
   },
   "devDependencies": {
     "microbundle": "^0.13.0",

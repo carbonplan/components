@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Styled, Container, Grid } from 'theme-ui'
-import PoopSad from './emoji/poop-sad'
+import { PoopSad } from '@carbonplan/emoji'
 import Layout from './layout'
 import Row from './row'
 import Column from './column'
@@ -42,7 +42,7 @@ const Custom404 = () => {
               fill: 'primary',
             }}
           >
-            <PoopSad />
+            <PoopSad sx={{width: '100%', height: 'auto'}}/>
           </Box>
         </Column>
       </Row>

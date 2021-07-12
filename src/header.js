@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link } from 'theme-ui'
+import { Arrow } from '@carbonplan/icons'
 import Logo from './logo'
 import Row from './row'
 import Column from './column'
 import Menu from './menu'
 import Settings from './settings'
 import Dimmer from './dimmer'
-import Arrow from './arrow'
 
 const sx = {
   link: (current, label, first = false) => {
@@ -43,7 +43,7 @@ const links = [
   { url: 'about', display: 'About' },
   { url: 'research', display: 'Research' },
   { url: 'team', display: 'Team' },
-  { url: 'faq', display: 'FAQ' },
+  { url: 'press', display: 'Press' },
 ]
 
 const HoverArrow = () => {
@@ -138,6 +138,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
                   id='logo'
                   sx={{
                     cursor: 'pointer',
+                    color: 'primary'
                   }}
                 />
               </Link>
@@ -149,7 +150,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
               aria-label='CarbonPlan Homepage'
               sx={{ display: 'block' }}
             >
-              <Logo sx={{ cursor: 'pointer' }} />
+              <Logo sx={{ cursor: 'pointer', color: 'primary' }} />
             </Link>
           )}
         </Box>
@@ -201,7 +202,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
           <Dimmer
             sx={{
               opacity: expanded || (settings && settings.value) ? 0 : 1,
-              stroke: 'primary',
+              color: 'primary',
             }}
           />
         </Box>
