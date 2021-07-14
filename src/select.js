@@ -2,11 +2,11 @@ import React, { useRef } from 'react'
 import { Box } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
 import getProps from './utils/get-props'
-import getFontSize from './utils/get-font-size'
+import getSizeStyles from './utils/get-size-styles'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
-  const fontSize = getFontSize(size)
+  const sizeStyles = getSizeStyles(size)
   const ref = useRef(null)
 
   const { onChange } = props
@@ -56,6 +56,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
           if (onChange) onChange(e)
         }}
         sx={{
+          ...sizeStyles,
           cursor: 'pointer',
           WebkitAppearance: 'none',
           MozAppearance: 'none',
@@ -67,8 +68,6 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
           borderBottomWidth: '1px',
           borderBottomColor: 'primary',
           borderRadius: '0px',
-          fontFamily: 'body',
-          fontSize: fontSize,
           color: 'text',
           width: 'fit-content',
           color: color,

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { Input as ThemedInput } from 'theme-ui'
-import getFontSize from './utils/get-font-size'
+import getSizeStyles from './utils/get-size-styles'
 
 const Input = ({ size, prefix, suffix, inverted, sx, align, ...props }) => {
   const defaultColor = inverted ? 'secondary' : 'primary'
@@ -23,7 +23,6 @@ const Input = ({ size, prefix, suffix, inverted, sx, align, ...props }) => {
 
   const styles = {
     color: defaultColor,
-    fontSize: getFontSize(size),
     borderColor: inputFocus ? 'primary' : 'secondary',
     borderStyle: 'solid',
     borderWidth: '0px',
@@ -45,6 +44,7 @@ const Input = ({ size, prefix, suffix, inverted, sx, align, ...props }) => {
       outline: 'none !important',
       background: 'none !important',
     },
+    ...getSizeStyles(size),
     ...sx,
   }
   return (

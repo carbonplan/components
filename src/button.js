@@ -1,7 +1,7 @@
 import React, { cloneElement } from 'react'
 import { Box } from 'theme-ui'
 import Link from './link'
-import getFontSize from './utils/get-font-size'
+import getSizeStyles from './utils/get-size-styles'
 
 const Button = ({
   size = 'sm',
@@ -20,16 +20,13 @@ const Button = ({
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  let fontFamily, offset, letterSpacing, margin, top, height, width, strokeWidth
+  let offset, margin, top, height, width, strokeWidth
 
   const color = sx && sx.color ? sx.color : null
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
-  const fontSize = getFontSize(size)
 
   if (size === 'xs') {
-    fontFamily = 'body'
-    letterSpacing = 'body'
     margin = ['6px', '6px', '6px', '6px']
     height = [12, 12, 12, 13]
     width = [12, 12, 12, 13]
@@ -38,8 +35,6 @@ const Button = ({
   }
 
   if (size === 'sm') {
-    fontFamily = 'body'
-    letterSpacing = 'body'
     margin = ['7px', '7px', '7px', '7px']
     height = [13, 13, 13, 18]
     width = [13, 13, 13, 18]
@@ -48,8 +43,6 @@ const Button = ({
   }
 
   if (size === 'md') {
-    fontFamily = 'body'
-    letterSpacing = 'body'
     margin = ['8px', '8px', '8px', '8px']
     height = [18, 18, 18, 24]
     width = [18, 18, 18, 24]
@@ -57,8 +50,6 @@ const Button = ({
   }
 
   if (size === 'lg') {
-    fontFamily = 'heading'
-    letterSpacing = 'heading'
     margin = ['10px', '10px', '12px', '16px']
     height = [24, 24, 34, 46]
     width = [24, 24, 34, 46]
@@ -66,8 +57,6 @@ const Button = ({
   }
 
   if (size === 'xl') {
-    fontFamily = 'heading'
-    letterSpacing = 'heading'
     margin = ['12px', '16px', '18px', '20px']
     height = [34, 46, 56, 68]
     width = [34, 46, 56, 68]
@@ -150,17 +139,21 @@ const Button = ({
     })
   }
 
+  let sizeStyles = getSizeStyles(size)
+  if (!children) {
+    sizeStyles.fontSize = 'inherit'
+    sizeStyles.fontFamily = 'inherit'
+  }
+
   const style = {
+    ...sizeStyles,
+    lineHeight: children ? 1.05 : 'inherit',
     border: 'none',
     background: 'transparent',
     display: 'block',
     color: baseColor,
     padding: [0],
-    fontSize: children ? fontSize : 'inherit',
-    fontFamily: children ? fontFamily : 'inherit',
-    lineHeight: children ? 1.05 : 'inherit',
     textAlign: 'left',
-    letterSpacing: letterSpacing,
     cursor: 'pointer',
     width: 'fit-content',
     '@media (hover: hover) and (pointer: fine)': {
