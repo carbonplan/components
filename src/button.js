@@ -1,6 +1,7 @@
 import React, { cloneElement } from 'react'
 import { Box } from 'theme-ui'
 import Link from './link'
+import getFontSize from './utils/get-font-size'
 
 const Button = ({
   size = 'sm',
@@ -19,22 +20,14 @@ const Button = ({
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  let fontSize,
-    fontFamily,
-    offset,
-    letterSpacing,
-    margin,
-    top,
-    height,
-    width,
-    strokeWidth
+  let fontFamily, offset, letterSpacing, margin, top, height, width, strokeWidth
 
   const color = sx && sx.color ? sx.color : null
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
+  const fontSize = getFontSize(size)
 
   if (size === 'xs') {
-    fontSize = [2, 2, 2, 3]
     fontFamily = 'body'
     letterSpacing = 'body'
     margin = ['6px', '6px', '6px', '6px']
@@ -45,7 +38,6 @@ const Button = ({
   }
 
   if (size === 'sm') {
-    fontSize = [3, 3, 3, 4]
     fontFamily = 'body'
     letterSpacing = 'body'
     margin = ['7px', '7px', '7px', '7px']
@@ -56,7 +48,6 @@ const Button = ({
   }
 
   if (size === 'md') {
-    fontSize = [4, 4, 4, 5]
     fontFamily = 'body'
     letterSpacing = 'body'
     margin = ['8px', '8px', '8px', '8px']
@@ -66,7 +57,6 @@ const Button = ({
   }
 
   if (size === 'lg') {
-    fontSize = [5, 5, 6, 7]
     fontFamily = 'heading'
     letterSpacing = 'heading'
     margin = ['10px', '10px', '12px', '16px']
@@ -76,7 +66,6 @@ const Button = ({
   }
 
   if (size === 'xl') {
-    fontSize = [6, 7, 8, 9]
     fontFamily = 'heading'
     letterSpacing = 'heading'
     margin = ['12px', '16px', '18px', '20px']

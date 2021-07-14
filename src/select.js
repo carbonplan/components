@@ -2,9 +2,11 @@ import React, { useRef } from 'react'
 import { Box } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
 import getProps from './utils/get-props'
+import getFontSize from './utils/get-font-size'
 
 const Select = ({ children, size = 'sm', sx, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
+  const fontSize = getFontSize(size)
   const ref = useRef(null)
 
   const { onChange } = props
@@ -14,10 +16,9 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
     throw new Error('Size must be xs, sm, or md')
   }
 
-  let fontSize, pr, height, width, ml, top
+  let pr, height, width, ml, top
 
   if (size === 'xs') {
-    fontSize = [2, 2, 2, 3]
     height = [14, 14, 14, 16]
     width = [14, 14, 14, 14]
     top = ['1px']
@@ -25,7 +26,6 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
   }
 
   if (size === 'sm') {
-    fontSize = [3, 3, 3, 4]
     height = [15, 15, 15, 20]
     width = [15, 15, 15, 20]
     top = ['1px']
@@ -33,7 +33,6 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
   }
 
   if (size === 'md') {
-    fontSize = [4, 4, 4, 5]
     height = [20, 20, 20, 20]
     width = [20, 20, 20, 20]
     top = ['2px']
