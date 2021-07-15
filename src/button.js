@@ -140,14 +140,10 @@ const Button = ({
   }
 
   let sizeStyles = getSizeStyles(size)
-  if (!children) {
-    sizeStyles.fontSize = 'inherit'
-    sizeStyles.fontFamily = 'inherit'
-  }
 
   const style = {
     ...sizeStyles,
-    lineHeight: children ? 1.05 : 'inherit',
+    lineHeight: 1.05,
     border: 'none',
     background: 'transparent',
     display: 'block',
