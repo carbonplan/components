@@ -2,7 +2,7 @@ import React from 'react'
 import { Input as ThemedInput } from 'theme-ui'
 import getSizeStyles from './utils/get-size-styles'
 
-const Input = ({ size, inverted, sx, align, ...props }) => {
+const Input = ({ size = 'sm', inverted, sx, ...props }) => {
   const defaultColor = inverted ? 'secondary' : 'primary'
 
   const styles = {
@@ -12,11 +12,11 @@ const Input = ({ size, inverted, sx, align, ...props }) => {
     borderWidth: '0px',
     borderBottomWidth: '1px',
     borderRadius: '0px',
-    transition: '0.15s',
+    transition: 'border 0.15s',
     borderBottomWidth: '1px',
-    lineHeight: 1.05,
-    p: [1, 1, 1],
-    pl: [0, 0, 0],
+    width: 'calc(min(15ch, 100%))',
+    p: [0],
+    py: ['2px'],
     'input::-webkit-outer-spin-button': {
       WebkitAppearance: 'none',
       margin: 0,
