@@ -14,7 +14,6 @@ const Input = ({ size = 'sm', inverted, sx, ...props }) => {
     borderRadius: '0px',
     transition: 'border 0.15s',
     borderBottomWidth: '1px',
-    lineHeight: 1.2,
     width: 'calc(min(15ch, 100%))',
     p: [0],
     py: ['2px'],

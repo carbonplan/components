@@ -57,6 +57,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
         }}
         sx={{
           ...sizeStyles,
+          lineHeight: 'normal',
           cursor: 'pointer',
           WebkitAppearance: 'none',
           MozAppearance: 'none',
