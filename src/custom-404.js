@@ -34,7 +34,7 @@ const Custom404 = () => {
             ERROR CODE 404
           </Box>
         </Column>
-        <Column start={[1, 5, 7, 7]} width={[4, 4, 4, 4]}>
+        <Column start={[2, 5, 7, 7]} width={[4, 4, 4, 4]}>
           <Box
             sx={{
               width: ['100%'],
