@@ -13,12 +13,20 @@ const sx = {
   },
 }
 
+const duplicateFilterWithValues = (filter, value) => {
+  return Object.keys(filter).reduce(
+    (o, key) => Object.assign(o, { [key]: value }),
+    {}
+  )
+}
+
 const Filter = ({
   filters,
   setFilters,
   filterLabels,
   filterList,
   filterColors,
+  multiselect = false,
 }) => {
   const isAll = (filter) => {
     return (
@@ -28,24 +36,33 @@ const Filter = ({
   }
 
   const toggleFilter = (filter, setFilter, value) => {
-    if (value === 'all') {
-      if (!isAll(filter)) {
-        setFilter(
-          Object.keys(filter).reduce(
-            (o, key) => Object.assign(o, { [key]: true }),
-            {}
-          )
-        )
+    const isAllAlreadyToggled = isAll(filter)
+    const isTogglingAll = value === 'all'
+
+    let updatedFilter
+    if (!isTogglingAll && isAllAlreadyToggled) {
+      // select only value
+      updatedFilter = duplicateFilterWithValues(filter, false)
+      updatedFilter[value] = true
+    } else if (isTogglingAll && !isAllAlreadyToggled) {
+      // select all
+      updatedFilter = duplicateFilterWithValues(filter, true)
+    } else if (isTogglingAll && isAllAlreadyToggled) {
+      if (multiselect) {
+        // deselect all
+        updatedFilter = duplicateFilterWithValues(filter, false)
       }
+    } else if (multiselect) {
+      // additionally select value
+      updatedFilter = { ...filter, [value]: true }
     } else {
-      const init = Object.keys(filter).reduce(
-        (o, key) => Object.assign(o, { [key]: false }),
-        {}
-      )
-      if (!(value === 'all')) {
-        init[value] = true
-        setFilter(init)
-      }
+      // select only value
+      updatedFilter = duplicateFilterWithValues(filter, false)
+      updatedFilter[value] = true
+    }
+
+    if (updatedFilter) {
+      setFilter(updatedFilter)
     }
   }
 
