@@ -13,9 +13,9 @@ const sx = {
   },
 }
 
-const duplicateOptionsWithValues = (options, value) => {
+const duplicateOptions = (options, defaultValue, overrides = {}) => {
   return Object.keys(options).reduce(
-    (o, key) => Object.assign(o, { [key]: value }),
+    (o, key) => Object.assign(o, { [key]: overrides[key] || defaultValue }),
     {}
   )
 }
@@ -34,23 +34,21 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
   let updatedToggle
   if (!isSelectingAll && isAllAlreadySelected) {
     // select only value
-    updatedToggle = duplicateOptionsWithValues(values, false)
-    updatedToggle[value] = true
+    updatedToggle = duplicateOptions(values, false, { [value]: true })
   } else if (isSelectingAll && !isAllAlreadySelected) {
     // select all
-    updatedToggle = duplicateOptionsWithValues(values, true)
+    updatedToggle = duplicateOptions(values, true)
   } else if (isSelectingAll && isAllAlreadySelected) {
     if (multiSelect) {
       // deselect all
-      updatedToggle = duplicateOptionsWithValues(values, false)
+      updatedToggle = duplicateOptions(values, false)
     }
   } else if (multiSelect) {
     // additionally select value
     updatedToggle = { ...values, [value]: true }
   } else {
     // select only value
-    updatedToggle = duplicateOptionsWithValues(values, false)
-    updatedToggle[value] = true
+    updatedToggle = duplicateOptions(values, false, { [value]: true })
   }
 
   if (updatedToggle) {
