@@ -20,6 +20,44 @@ const duplicateFilterWithValues = (filter, value) => {
   )
 }
 
+const isAll = (filter) => {
+  return (
+    Object.keys(filter).filter((d) => filter[d]).length ==
+    Object.keys(filter).length
+  )
+}
+
+const toggleFilter = ({ filter, multiselect, setFilter, value }) => {
+  const isAllAlreadyToggled = isAll(filter)
+  const isTogglingAll = value === 'all'
+
+  let updatedFilter
+  if (!isTogglingAll && isAllAlreadyToggled) {
+    // select only value
+    updatedFilter = duplicateFilterWithValues(filter, false)
+    updatedFilter[value] = true
+  } else if (isTogglingAll && !isAllAlreadyToggled) {
+    // select all
+    updatedFilter = duplicateFilterWithValues(filter, true)
+  } else if (isTogglingAll && isAllAlreadyToggled) {
+    if (multiselect) {
+      // deselect all
+      updatedFilter = duplicateFilterWithValues(filter, false)
+    }
+  } else if (multiselect) {
+    // additionally select value
+    updatedFilter = { ...filter, [value]: true }
+  } else {
+    // select only value
+    updatedFilter = duplicateFilterWithValues(filter, false)
+    updatedFilter[value] = true
+  }
+
+  if (updatedFilter) {
+    setFilter(updatedFilter)
+  }
+}
+
 const Filter = ({
   filters,
   setFilters,
@@ -28,44 +66,6 @@ const Filter = ({
   filterColors,
   multiselect = false,
 }) => {
-  const isAll = (filter) => {
-    return (
-      Object.keys(filter).filter((d) => filter[d]).length ==
-      Object.keys(filter).length
-    )
-  }
-
-  const toggleFilter = (filter, setFilter, value) => {
-    const isAllAlreadyToggled = isAll(filter)
-    const isTogglingAll = value === 'all'
-
-    let updatedFilter
-    if (!isTogglingAll && isAllAlreadyToggled) {
-      // select only value
-      updatedFilter = duplicateFilterWithValues(filter, false)
-      updatedFilter[value] = true
-    } else if (isTogglingAll && !isAllAlreadyToggled) {
-      // select all
-      updatedFilter = duplicateFilterWithValues(filter, true)
-    } else if (isTogglingAll && isAllAlreadyToggled) {
-      if (multiselect) {
-        // deselect all
-        updatedFilter = duplicateFilterWithValues(filter, false)
-      }
-    } else if (multiselect) {
-      // additionally select value
-      updatedFilter = { ...filter, [value]: true }
-    } else {
-      // select only value
-      updatedFilter = duplicateFilterWithValues(filter, false)
-      updatedFilter[value] = true
-    }
-
-    if (updatedFilter) {
-      setFilter(updatedFilter)
-    }
-  }
-
   return (
     <Box>
       {filterList.map((f, i) => {
@@ -76,7 +76,14 @@ const Filter = ({
             </Box>
             <Box sx={{ mt: [3] }}>
               <Tag
-                onClick={() => toggleFilter(filters[f], setFilters[f], 'all')}
+                onClick={() =>
+                  toggleFilter({
+                    filter: filters[f],
+                    multiselect,
+                    setFilter: setFilters[f],
+                    value: 'all',
+                  })
+                }
                 value={isAll(filters[f])}
                 sx={{ mr: [2] }}
               >
@@ -84,7 +91,14 @@ const Filter = ({
               </Tag>
               {Object.keys(filters[f]).map((d, i) => (
                 <Tag
-                  onClick={() => toggleFilter(filters[f], setFilters[f], d)}
+                  onClick={() =>
+                    toggleFilter({
+                      filter: filters[f],
+                      multiselect,
+                      setFilter: setFilters[f],
+                      value: d,
+                    })
+                  }
                   key={i}
                   value={filters[f][d]}
                   sx={{
