@@ -44,8 +44,8 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
       updatedToggle = duplicateOptions(values, false)
     }
   } else if (multiSelect) {
-    // additionally select value
-    updatedToggle = { ...values, [value]: true }
+    // de/select value, inherit other values
+    updatedToggle = { ...values, [value]: !values[value] }
   } else {
     // select only value
     updatedToggle = duplicateOptions(values, false, { [value]: true })
