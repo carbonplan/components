@@ -32,23 +32,28 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
   const isSelectingAll = value === 'all'
 
   let updatedToggle
-  if (!isSelectingAll && isAllAlreadySelected) {
-    // select only value
-    updatedToggle = duplicateOptions(values, false, { [value]: true })
-  } else if (isSelectingAll && !isAllAlreadySelected) {
-    // select all
-    updatedToggle = duplicateOptions(values, true)
-  } else if (isSelectingAll && isAllAlreadySelected) {
-    if (multiSelect) {
+
+  if (multiSelect) {
+    if (isSelectingAll && !isAllAlreadySelected) {
+      // select all
+      updatedToggle = duplicateOptions(values, true)
+    } else if (isSelectingAll && isAllAlreadySelected) {
       // deselect all
       updatedToggle = duplicateOptions(values, false)
+    } else {
+      // de/select value, inherit other values
+      updatedToggle = { ...values, [value]: !values[value] }
     }
-  } else if (multiSelect) {
-    // de/select value, inherit other values
-    updatedToggle = { ...values, [value]: !values[value] }
   } else {
-    // select only value
-    updatedToggle = duplicateOptions(values, false, { [value]: true })
+    if (isSelectingAll && !isAllAlreadySelected) {
+      // select all
+      updatedToggle = duplicateOptions(values, true)
+    } else if (isSelectingAll && isAllAlreadySelected) {
+      // do nothing
+    } else {
+      // select only value
+      updatedToggle = duplicateOptions(values, false, { [value]: true })
+    }
   }
 
   if (updatedToggle) {
