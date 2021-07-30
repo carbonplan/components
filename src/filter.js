@@ -95,6 +95,14 @@ const Filter = ({
                 value: d,
               })
             }
+            onDoubleClick={() =>
+              updateValues({
+                values: optionValues,
+                multiSelect: false,
+                setValues: setValues,
+                value: d,
+              })
+            }
             key={i}
             value={optionValues[d]}
             sx={{
