@@ -13,80 +13,109 @@ const sx = {
   },
 }
 
-const Filter = ({
-  filters,
-  setFilters,
-  filterLabels,
-  filterList,
-  filterColors,
-}) => {
-  const isAll = (filter) => {
-    return (
-      Object.keys(filter).filter((d) => filter[d]).length ==
-      Object.keys(filter).length
-    )
-  }
+const duplicateOptions = (options, defaultValue, overrides = {}) => {
+  return Object.keys(options).reduce(
+    (o, key) => Object.assign(o, { [key]: overrides[key] || defaultValue }),
+    {}
+  )
+}
 
-  const toggleFilter = (filter, setFilter, value) => {
-    if (value === 'all') {
-      if (!isAll(filter)) {
-        setFilter(
-          Object.keys(filter).reduce(
-            (o, key) => Object.assign(o, { [key]: true }),
-            {}
-          )
-        )
-      }
-    } else {
-      const init = Object.keys(filter).reduce(
-        (o, key) => Object.assign(o, { [key]: false }),
-        {}
-      )
-      if (!(value === 'all')) {
-        init[value] = true
-        setFilter(init)
-      }
-    }
-  }
-
+const isAll = (option) => {
   return (
-    <Box>
-      {filterList.map((f, i) => {
-        return (
-          <Box key={i}>
-            <Box sx={{ ...sx.label, mt: i > 0 ? [5] : [0] }}>
-              {'Filter by ' + filterLabels[f]}
-            </Box>
-            <Box sx={{ mt: [3] }}>
-              <Tag
-                onClick={() => toggleFilter(filters[f], setFilters[f], 'all')}
-                value={isAll(filters[f])}
-                sx={{ mr: [2] }}
-              >
-                All
-              </Tag>
-              {Object.keys(filters[f]).map((d, i) => (
-                <Tag
-                  onClick={() => toggleFilter(filters[f], setFilters[f], d)}
-                  key={i}
-                  value={filters[f][d]}
-                  sx={{
-                    width: 'max-content',
-                    color:
-                      filterColors && filterColors[f]
-                        ? filterColors[f][d]
-                        : 'primary',
-                    mr: [2],
-                    mb: [1],
-                  }}
-                >
-                  {d}
-                </Tag>
-              ))}
-            </Box>
-          </Box>
-        )
-      })}
+    Object.keys(option).filter((d) => option[d]).length ==
+    Object.keys(option).length
+  )
+}
+
+const updateValues = ({ values, multiSelect, setValues, value }) => {
+  const isAllAlreadySelected = isAll(values)
+  const isSelectingAll = value === 'all'
+
+  let updatedToggle
+  if (!isSelectingAll && isAllAlreadySelected) {
+    // select only value
+    updatedToggle = duplicateOptions(values, false, { [value]: true })
+  } else if (isSelectingAll && !isAllAlreadySelected) {
+    // select all
+    updatedToggle = duplicateOptions(values, true)
+  } else if (isSelectingAll && isAllAlreadySelected) {
+    if (multiSelect) {
+      // deselect all
+      updatedToggle = duplicateOptions(values, false)
+    }
+  } else if (multiSelect) {
+    // additionally select value
+    updatedToggle = { ...values, [value]: true }
+  } else {
+    // select only value
+    updatedToggle = duplicateOptions(values, false, { [value]: true })
+  }
+
+  if (updatedToggle) {
+    setValues(updatedToggle)
+  }
+}
+
+const Filter = ({
+  values,
+  setValues,
+  label,
+  colors,
+  showAll = false,
+  multiSelect = false,
+  ...props
+}) => {
+  return (
+    <Box {...props}>
+      {label && <Box sx={sx.label}>{label}</Box>}
+      <Box sx={{ mt: label ? [3] : 0 }}>
+        {showAll && (
+          <Tag
+            onClick={() =>
+              updateValues({
+                values: values,
+                multiSelect,
+                setValues: setValues,
+                value: 'all',
+              })
+            }
+            value={isAll(values)}
+            sx={{ mr: [2] }}
+          >
+            All
+          </Tag>
+        )}
+        {Object.keys(values).map((d, i) => (
+          <Tag
+            onClick={() =>
+              updateValues({
+                values: values,
+                multiSelect,
+                setValues: setValues,
+                value: d,
+              })
+            }
+            onDoubleClick={() =>
+              updateValues({
+                values: values,
+                multiSelect: false,
+                setValues: setValues,
+                value: d,
+              })
+            }
+            key={i}
+            value={values[d]}
+            sx={{
+              width: 'max-content',
+              color: colors ? colors[d] : 'primary',
+              mr: [2],
+              mb: [1],
+            }}
+          >
+            {d}
+          </Tag>
+        ))}
+      </Box>
     </Box>
   )
 }
