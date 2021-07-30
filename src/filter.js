@@ -67,8 +67,8 @@ const Filter = ({
 }) => {
   return (
     <Box {...rest}>
-      <Box sx={sx.label}>{label}</Box>
-      <Box sx={{ mt: [3] }}>
+      {label && <Box sx={sx.label}>{label}</Box>}
+      <Box sx={{ mt: label ? [3] : 0 }}>
         {showAll && (
           <Tag
             onClick={() =>
