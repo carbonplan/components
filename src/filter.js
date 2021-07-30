@@ -57,39 +57,39 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
 }
 
 const Filter = ({
-  optionValues,
+  values,
   setValues,
   label,
-  optionColors,
+  colors,
   showAll = false,
   multiSelect = false,
-  ...rest
+  ...props
 }) => {
   return (
-    <Box {...rest}>
+    <Box {...props}>
       {label && <Box sx={sx.label}>{label}</Box>}
       <Box sx={{ mt: label ? [3] : 0 }}>
         {showAll && (
           <Tag
             onClick={() =>
               updateValues({
-                values: optionValues,
+                values: values,
                 multiSelect,
                 setValues: setValues,
                 value: 'all',
               })
             }
-            value={isAll(optionValues)}
+            value={isAll(values)}
             sx={{ mr: [2] }}
           >
             All
           </Tag>
         )}
-        {Object.keys(optionValues).map((d, i) => (
+        {Object.keys(values).map((d, i) => (
           <Tag
             onClick={() =>
               updateValues({
-                values: optionValues,
+                values: values,
                 multiSelect,
                 setValues: setValues,
                 value: d,
@@ -97,17 +97,17 @@ const Filter = ({
             }
             onDoubleClick={() =>
               updateValues({
-                values: optionValues,
+                values: values,
                 multiSelect: false,
                 setValues: setValues,
                 value: d,
               })
             }
             key={i}
-            value={optionValues[d]}
+            value={values[d]}
             sx={{
               width: 'max-content',
-              color: optionColors ? optionColors[d] : 'primary',
+              color: colors ? colors[d] : 'primary',
               mr: [2],
               mb: [1],
             }}
