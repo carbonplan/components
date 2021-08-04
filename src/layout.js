@@ -25,7 +25,16 @@ const Layout = ({
   guide = true,
   scrollbar = true,
   fade = true,
+  container = true,
 }) => {
+  let content = children
+  if (fade) {
+    content = <FadeIn duration={250}>{content}</FadeIn>
+  }
+  if (container) {
+    content = <Container>{content}</Container>
+  }
+
   return (
     <>
       {guide && <Guide color={guide} />}
@@ -70,10 +79,7 @@ const Layout = ({
             flex: '1 1 auto',
           }}
         >
-          <Container>
-            {fade && <FadeIn duration={250}>{children}</FadeIn>}
-            {!fade && children}
-          </Container>
+          {content}
         </Box>
         {footer && (
           <Box
