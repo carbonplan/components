@@ -32,7 +32,11 @@ const Layout = ({
     content = <FadeIn duration={250}>{content}</FadeIn>
   }
   if (container) {
-    content = <Container>{content}</Container>
+    content = (
+      <Box id='testing' sx={{ mb: [8, 8, 9, 10] }}>
+        <Container>{content}</Container>
+      </Box>
+    )
   }
 
   return (
