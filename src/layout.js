@@ -33,7 +33,7 @@ const Layout = ({
   }
   if (container) {
     content = (
-      <Box id='testing' sx={{ mb: [8, 8, 9, 10] }}>
+      <Box sx={{ mb: [8, 8, 9, 10] }}>
         <Container>{content}</Container>
       </Box>
     )
