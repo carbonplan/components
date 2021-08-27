@@ -33,7 +33,7 @@ const Link = ({
       action = 'website'
       category = 'external'
     }
-    const onClick = (e) => {
+    const track = (e) => {
       event({
         action: action,
         category: category,
@@ -41,7 +41,7 @@ const Link = ({
       })
     }
     return (
-      <ThemedLink onClick={onClick} href={href} {...props}>
+      <ThemedLink onClick={track} onContextMenu={track} href={href} {...props}>
         {children}
       </ThemedLink>
     )
