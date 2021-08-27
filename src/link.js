@@ -24,7 +24,9 @@ const Link = ({
       </NextLink>
     )
   } else if (tracking) {
-    if (href.includes('pdf')) {
+    let action
+    let category
+    if (href && href.includes('pdf')) {
       action = 'PDF'
       category = 'download'
     } else {
