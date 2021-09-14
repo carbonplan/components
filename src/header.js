@@ -42,7 +42,7 @@ const sx = {
 const links = [
   { url: 'about', display: 'About' },
   { url: 'research', display: 'Research' },
-  { url: 'team', display: 'Team' },
+  { url: 'blog', display: 'Blog' },
   { url: 'press', display: 'Press' },
 ]
 
@@ -229,6 +229,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
             pointerEvents: settings && settings.value ? 'none' : 'all',
             opacity: settings && settings.value ? 0 : 1,
             mr: ['-2px'],
+            zIndex: 5000
           }}
           value={expanded}
           onClick={toggle}
@@ -246,9 +247,8 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
           maxHeight: '100vh',
           width: '100vw',
           backgroundColor: 'background',
-          zIndex: 5000,
-          mt: ['55px'],
-          pt: [4],
+          zIndex: 4000,
+          pt: ['79px'],
           transition: 'opacity 0.25s',
         }}
       >
