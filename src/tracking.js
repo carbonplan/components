@@ -1,21 +1,19 @@
 import React from 'react'
 
-export const GA_TRACKING_ID = 'UA-165985850-1'
-
-const Tracking = () => {
+const Tracking = ({ id }) => {
+  if (!id) {
+    return null
+  }
   return (
     <>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
       <script
         dangerouslySetInnerHTML={{
           __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_TRACKING_ID}', {
+          gtag('config', '${id}', {
             page_path: window.location.pathname,
           });
         `,
