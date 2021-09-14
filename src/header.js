@@ -229,7 +229,7 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
             pointerEvents: settings && settings.value ? 'none' : 'all',
             opacity: settings && settings.value ? 0 : 1,
             mr: ['-2px'],
-            zIndex: 5000
+            zIndex: 5000,
           }}
           value={expanded}
           onClick={toggle}
