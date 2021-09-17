@@ -1,9 +1,34 @@
-const formatDate = (date) => {
-  let d = new Date(date.replace(/-/g, '/'))
-  let month = d.toLocaleString('default', { month: 'short' })
-  let day = String(d.getDate()).padStart(2, '0')
-  let year = d.getFullYear()
-  return month + ' ' + day + ' ' + year
+const defaultOptions = {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+}
+
+const formatDateElement = (date, element, option) => {
+  if (!option) {
+    return null
+  }
+
+  const format = typeof option === 'string' ? option : defaultOptions[element]
+
+  const result = date.toLocaleString('default', {
+    [element]: format,
+  })
+
+  if (format === 'numeric' && element === 'day') {
+    return result.padStart(2, '0')
+  } else {
+    return result
+  }
+}
+const formatDate = (date, options = defaultOptions) => {
+  const d = new Date(date.replace(/-/g, '/'))
+
+  const month = formatDateElement(d, 'month', options.month)
+  const day = formatDateElement(d, 'day', options.day)
+  const year = formatDateElement(d, 'year', options.year)
+
+  return [month, day, year].filter(Boolean).join(' ')
 }
 
 export default formatDate
