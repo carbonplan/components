@@ -64,11 +64,6 @@ const GitSha = () => {
       </Box>
     )
   }
-
-  if (sha == null) {
-    // fallback
-  } else {
-  }
 }
 
 export default GitSha
