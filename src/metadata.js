@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, useThemeUI } from 'theme-ui'
+import { Box, Text } from 'theme-ui'
 import { useState, useEffect } from 'react'
 import GitSha from './gitsha'
 
@@ -50,10 +50,6 @@ const Value = ({ mode }) => {
 }
 
 const Metadata = ({ mode }) => {
-  const { theme } = useThemeUI()
-
-  const color = theme.rawColors.secondary
-
   return (
     <Box
       sx={{
@@ -67,7 +63,7 @@ const Metadata = ({ mode }) => {
       }}
     >
       <Value mode={mode} />
-      <GitSha color={color} />
+      <GitSha />
     </Box>
   )
 }

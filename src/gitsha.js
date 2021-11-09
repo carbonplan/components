@@ -1,10 +1,40 @@
 import React from 'react'
-import { Box, Text, Link } from 'theme-ui'
+import { Box, Text, Link, useThemeUI } from 'theme-ui'
+import { Check } from '@carbonplan/icons'
 
-const GitSha = ({ color }) => {
+const GitSha = () => {
   const sha = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA
+  const owner = process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER
+  const slug = process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG
 
-  if (sha == null) {
+  const { theme } = useThemeUI()
+
+  const color = theme.rawColors.secondary
+
+  if (sha && owner && slug) {
+    const shortSha = sha.substring(0, 7)
+    const href = 'https://github.com/' + owner + '/' + slug + '/tree/' + sha
+
+    return (
+      <Box sx={{ display: 'inline-block' }}>
+        <Check sx={{ color: color, ml: [3] }} />
+        <Link
+          href={href}
+          sx={{
+            whiteSpace: 'nowrap',
+            fontFamily: 'mono',
+            letterSpacing: 'body',
+            color: color,
+            fontSize: [1],
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+          }}
+        >
+          {shortSha}
+        </Link>
+      </Box>
+    )
+  } else {
     // fallback
     return (
       <Box sx={{ display: 'inline-block' }}>
@@ -24,7 +54,7 @@ const GitSha = ({ color }) => {
             ml: [2],
             fontFamily: 'mono',
             letterSpacing: 'body',
-            color: 'secondary',
+            color: color,
             fontSize: [1],
             textTransform: 'uppercase',
           }}
@@ -33,46 +63,11 @@ const GitSha = ({ color }) => {
         </Text>
       </Box>
     )
-  } else {
-    const shortSha = sha.substring(0, 7)
-    const href =
-      'https://github.com/' +
-      process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER +
-      '/' +
-      process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG +
-      '/tree/' +
-      process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA
+  }
 
-    return (
-      <Box sx={{ display: 'inline-block' }}>
-        {/* replace with git commit svg `-o-` ?*/}
-        <svg
-          fill={color}
-          opacity='0.8'
-          viewBox='0 0 24 24'
-          width='24'
-          height='24'
-        >
-          <circle r={5} cx={19} cy={19} />
-        </svg>
-        <Link
-          href={href}
-          sx={{
-            whiteSpace: 'nowrap',
-            display: 'inline-block',
-            ml: [2],
-            fontFamily: 'mono',
-            letterSpacing: 'body',
-            color: color,
-            fontSize: [1],
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-          }}
-        >
-          {shortSha}
-        </Link>
-      </Box>
-    )
+  if (sha == null) {
+    // fallback
+  } else {
   }
 }
 
