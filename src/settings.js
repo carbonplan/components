@@ -9,7 +9,6 @@ const Settings = ({ value, sx, ...props }) => {
         fill: 'none',
         strokeWidth: '2px',
         stroke: 'text',
-        fill: 'background',
         '.paren': {
           opacity: '0',
         },
@@ -34,10 +33,10 @@ const Settings = ({ value, sx, ...props }) => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 68 36'
         >
-          <line x1='24' y1='2.1' x2='24' y2='33.9' />
-          <line x1='44' y1='2.1' x2='44' y2='33.9' />
-          <circle cx='24' cy='15.1' r='9' stroke='none' />
-          <circle cx='44' cy='21.1' r='9' stroke='none' />
+          <line x1='24' y1='2.1' x2='24' y2='6.1' />
+          <line x1='24' y1='24.1' x2='24' y2='33.9' />
+          <line x1='44' y1='2.1' x2='44' y2='12.1' />
+          <line x1='44' y1='30.1' x2='44' y2='33.9' />
           <circle cx='24' cy='15.1' r='5' />
           <circle cx='44' cy='21.1' r='5' />
           <path

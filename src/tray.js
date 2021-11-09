@@ -41,7 +41,7 @@ const Tray = ({ expanded, sx, children }) => {
           ml: [-3, -4, -5, -6],
           pl: [3, 4, 5, 6],
           pr: [3, 4, 5, 6],
-          transform: expanded ? 'translateY(0)' : 'translateY(-400px)',
+          transform: expanded ? 'translateY(0)' : 'translateY(-100%)',
           ...sx,
         }}
       >
