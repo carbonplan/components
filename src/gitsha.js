@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Text, Link, useThemeUI } from 'theme-ui'
-import { Check } from '@carbonplan/icons'
 
 const GitSha = () => {
   const sha = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA
@@ -17,11 +16,13 @@ const GitSha = () => {
 
     return (
       <Box sx={{ display: 'inline-block' }}>
-        <Check sx={{ color: color, ml: [3] }} />
+        <Separator color={color} />
         <Link
           href={href}
           sx={{
             whiteSpace: 'nowrap',
+            display: 'inline-block',
+            ml: [2],
             fontFamily: 'mono',
             letterSpacing: 'body',
             color: color,
@@ -38,15 +39,7 @@ const GitSha = () => {
     // fallback
     return (
       <Box sx={{ display: 'inline-block' }}>
-        <svg
-          fill={color}
-          opacity='0.8'
-          viewBox='0 0 24 24'
-          width='24'
-          height='24'
-        >
-          <circle r={5} cx={19} cy={19} />
-        </svg>
+        <Separator color={color} />
         <Text
           sx={{
             whiteSpace: 'nowrap',
@@ -64,6 +57,14 @@ const GitSha = () => {
       </Box>
     )
   }
+}
+
+const Separator = ({ color }) => {
+  return (
+    <svg fill={color} opacity='0.8' viewBox='0 0 24 24' width='24' height='24'>
+      <circle r={5} cx={19} cy={19} />
+    </svg>
+  )
 }
 
 export default GitSha
