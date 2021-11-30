@@ -3,6 +3,11 @@ import { Link as ThemedLink } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 
 const event = ({ action, category, label, value }) => {
+  if (typeof window.gtag !== 'function') {
+    console.warn(`Missing window.gtag, skipping analytics action: '${action}'.`)
+    return
+  }
+
   window.gtag('event', action, {
     event_category: category,
     event_label: label,
