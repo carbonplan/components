@@ -39,7 +39,7 @@ const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
               width: width || DIMENSIONS.width,
               minHeight: height || DIMENSIONS.height,
             }),
-        mt: horizontal ? [0, '2px', '2px', 0] : 0,
+        mt: horizontal ? [0, '1px', '1px', 0] : 0,
         border: ({ colors }) => `solid 1px ${colors.hinted}`,
         background: css,
       }}
@@ -51,7 +51,7 @@ const Label = ({ label, units, horizontal }) => (
   <Box sx={!horizontal && { alignSelf: 'flex-end' }}>
     <Box
       sx={{
-        mb: horizontal ? 0 : ['-4px', '-3px', '-3px', '-3px'],
+        mb: horizontal ? 0 : ['-4px', '-4px', '-4px', '-3px'],
         fontFamily: 'mono',
         fontSize: ['9px', 0, 0, 1],
         letterSpacing: 'smallcaps',
@@ -103,7 +103,7 @@ const Colorbar = ({
       <Box
         sx={{
           ...sx.clim,
-          ml: horizontal ? '10px' : '2px',
+          ml: label ? (horizontal ? '10px' : '2px') : 0,
           mr: horizontal ? ['2px', '1px', '1px', '2px'] : 0,
           mb: horizontal ? 0 : ['-2px', '-2px', '-2px', '-3px'],
         }}
