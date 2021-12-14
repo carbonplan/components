@@ -8,6 +8,7 @@ import Metadata from './metadata'
 import FadeIn from './fade-in'
 import Scrollbar from './scrollbar'
 import Guide from './guide'
+import Settings from './settings'
 
 const Layout = ({
   title,
@@ -33,6 +34,31 @@ const Layout = ({
   }
   if (container) {
     content = <Container>{content}</Container>
+  }
+
+  const menuItems = [
+    <Dimmer
+      key='dimmer'
+      sx={{
+        color: 'primary',
+        mt: '-2px',
+        display: [
+          'block',
+          'block',
+          dimmer === 'top' ? 'block' : 'none',
+          dimmer === 'top' ? 'block' : 'none',
+        ],
+      }}
+    />,
+  ]
+  if (settings) {
+    menuItems.push(
+      <Settings
+        key='settings'
+        sx={{ display: ['inherit', 'inherit', 'none', 'none'] }}
+        {...settings}
+      />
+    )
   }
 
   return (
@@ -67,8 +93,7 @@ const Layout = ({
                 mode={links}
                 status={status}
                 nav={nav}
-                settings={settings}
-                dimmer={dimmer}
+                menuItems={menuItems}
               />
             </Container>
           </Box>
