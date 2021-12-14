@@ -72,7 +72,7 @@ const Label = ({ label, units, horizontal }) => (
         as='span'
         sx={{
           textTransform: 'none',
-          color: 'primary',
+          color: 'secondary',
           display: 'inline-block',
         }}
       >
