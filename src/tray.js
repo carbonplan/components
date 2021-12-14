@@ -8,7 +8,6 @@ const Tray = ({ expanded, sx, children }) => {
     <>
       <Box
         sx={{
-          display: ['initial', 'initial', 'none', 'none'],
           position: 'fixed',
           top: '56px',
           bottom: '0px',
@@ -24,7 +23,6 @@ const Tray = ({ expanded, sx, children }) => {
       />
       <Box
         sx={{
-          display: ['initial', 'initial', 'none', 'none'],
           position: 'fixed',
           width: 'calc(100vw)',
           top: '0px',

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Flex, Box } from 'theme-ui'
+import { useBreakpointIndex } from '@theme-ui/match-media'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
@@ -29,12 +30,20 @@ const Layout = ({
   container = true,
 }) => {
   let content = children
+  const index = useBreakpointIndex()
+
   if (fade) {
     content = <FadeIn duration={250}>{content}</FadeIn>
   }
   if (container) {
     content = <Container>{content}</Container>
   }
+
+  useEffect(() => {
+    if (index > 2 && settings?.value && settings?.onClick) {
+      settings?.onClick()
+    }
+  }, [index, settings?.value, settings?.onClick])
 
   const menuItems = [
     <Dimmer
@@ -51,6 +60,7 @@ const Layout = ({
       }}
     />,
   ]
+
   if (settings) {
     menuItems.push(
       <Settings
