@@ -6,8 +6,6 @@ import Logo from './logo'
 import Row from './row'
 import Column from './column'
 import Menu from './menu'
-import Settings from './settings'
-import Dimmer from './dimmer'
 
 const sx = {
   link: (current, label, first = false) => {
@@ -66,7 +64,7 @@ const HoverArrow = () => {
   )
 }
 
-const Nav = ({ link, mode, nav, first, dimmer, setExpanded }) => {
+const Nav = ({ link, mode, nav, first, setExpanded }) => {
   const { url, display } = link
   const href = mode === 'remote' ? 'https://carbonplan.org/' + url : '/' + url
 
@@ -109,7 +107,7 @@ const NavGroup = ({ links, nav, mode, setExpanded }) => {
   })
 }
 
-const Header = ({ status, mode, nav, dimmer, settings }) => {
+const Header = ({ status, mode, nav, menuItems }) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggle = (e) => {
@@ -119,7 +117,6 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
   return (
     <Row
       sx={{
-        width: '100%',
         pt: ['12px'],
         pb: [3],
       }}
@@ -175,65 +172,31 @@ const Header = ({ status, mode, nav, dimmer, settings }) => {
         </Box>
       </Column>
       <Column
-        start={[status ? 6 : 4, 6, 12, 12]}
+        start={[status ? 6 : 4, 6, 11, 11]}
         width={[status ? 1 : 3, 3, 2, 2]}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-        }}
+        sx={{ zIndex: 5000 }}
       >
-        <Box
-          sx={{
-            mr: ['18px'],
-            position: 'relative',
-            top: ['-1px'],
-            pointerEvents:
-              expanded || (settings && settings.value) ? 'none' : 'all',
-            transition: 'opacity 0.15s',
-            display: [
-              status ? 'none' : 'block',
-              'block',
-              dimmer === 'top' ? 'block' : 'none',
-              dimmer === 'top' ? 'block' : 'none',
-            ],
-          }}
-        >
-          <Dimmer
+        <Flex sx={{ justifyContent: 'flex-end' }}>
+          <Flex
             sx={{
-              opacity: expanded || (settings && settings.value) ? 0 : 1,
-              color: 'primary',
-            }}
-          />
-        </Box>
-        {settings && (
-          <Box
-            sx={{
-              mr: ['21px'],
-              position: 'relative',
-              pointerEvents: expanded ? 'none' : 'all',
+              mr: 18,
+              gap: 18,
+              opacity: expanded ? 0 : 1,
               transition: 'opacity 0.15s',
-              display: [status ? 'none' : 'block', 'block', 'none', 'none'],
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
-            <Settings
-              value={settings.value}
-              onClick={settings.onClick}
-              sx={{ opacity: expanded ? 0 : 1, stroke: 'primary' }}
-            />
-          </Box>
-        )}
-        <Menu
-          sx={{
-            transition: 'opacity 0.15s',
-            pointerEvents: settings && settings.value ? 'none' : 'all',
-            opacity: settings && settings.value ? 0 : 1,
-            mr: ['-2px'],
-            zIndex: 5000,
-          }}
-          value={expanded}
-          onClick={toggle}
-        />
+            {menuItems}
+          </Flex>
+          <Menu
+            sx={{
+              mr: ['-2px'],
+            }}
+            value={expanded}
+            onClick={toggle}
+          />
+        </Flex>
       </Column>
       <Box
         sx={{
