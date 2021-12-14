@@ -1,6 +1,7 @@
 export { default as Badge } from './badge'
 export { default as Button } from './button'
 export { default as Callout } from './callout'
+export { default as Colorbar } from './colorbar'
 export { default as Column } from './column'
 export { default as Custom404 } from './custom-404'
 export { default as Dimmer } from './dimmer'
