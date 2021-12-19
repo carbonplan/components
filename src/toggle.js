@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { Box } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
-const Toggle = ({ value, onClick, disabled, sx, ...props }, forwardRef) => {
+const Toggle = ({ value, onClick, disabled, sx, ...props }, ref) => {
   const color = sx && sx.color ? sx.color : 'primary'
   value = disabled ? false : value
   return (
