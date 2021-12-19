@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Link as ThemedLink } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 
@@ -15,17 +15,16 @@ const event = ({ action, category, label, value }) => {
   })
 }
 
-const Link = ({
-  href,
-  children,
-  internal = false,
-  tracking = false,
-  ...props
-}) => {
+const Link = (
+  { href, children, internal = false, tracking = false, ...props },
+  ref
+) => {
   if (internal || (href && href.startsWith('/'))) {
     return (
       <NextLink href={href} passHref>
-        <ThemedLink {...props}>{children}</ThemedLink>
+        <ThemedLink ref={ref} {...props}>
+          {children}
+        </ThemedLink>
       </NextLink>
     )
   } else if (tracking) {
@@ -46,17 +45,23 @@ const Link = ({
       })
     }
     return (
-      <ThemedLink onClick={track} onContextMenu={track} href={href} {...props}>
+      <ThemedLink
+        ref={ref}
+        onClick={track}
+        onContextMenu={track}
+        href={href}
+        {...props}
+      >
         {children}
       </ThemedLink>
     )
   } else {
     return (
-      <ThemedLink href={href} {...props}>
+      <ThemedLink ref={ref} href={href} {...props}>
         {children}
       </ThemedLink>
     )
   }
 }
 
-export default Link
+export default forwardRef(Link)

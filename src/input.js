@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Input as ThemedInput } from 'theme-ui'
 import getSizeStyles from './utils/get-size-styles'
 
-const Input = ({ size = 'sm', inverted, sx, ...props }) => {
+const Input = ({ size = 'sm', inverted, sx, ...props }, ref) => {
   const defaultColor = inverted ? 'secondary' : 'primary'
 
   const styles = {
@@ -35,7 +35,7 @@ const Input = ({ size = 'sm', inverted, sx, ...props }) => {
     ...getSizeStyles(size),
     ...sx,
   }
-  return <ThemedInput {...props} sx={styles} />
+  return <ThemedInput {...props} ref={ref} sx={styles} />
 }
 
-export default Input
+export default forwardRef(Input)

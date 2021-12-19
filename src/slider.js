@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { useThemeUI, Slider as ThemeSlider } from 'theme-ui'
 
-const Slider = ({ sx, ...props }) => {
+const Slider = ({ sx, ...props }, ref) => {
   const color = sx && sx.color ? sx.color : 'primary'
   const {
     theme: { rawColors: colors },
@@ -9,6 +9,7 @@ const Slider = ({ sx, ...props }) => {
 
   return (
     <ThemeSlider
+      ref={ref}
       sx={{
         '&::-webkit-slider-thumb': {
           height: [22, 18, 16],
@@ -43,4 +44,4 @@ const Slider = ({ sx, ...props }) => {
   )
 }
 
-export default Slider
+export default forwardRef(Slider)
