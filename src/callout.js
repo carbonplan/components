@@ -1,19 +1,12 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Box } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
 import Link from './link'
 
-const Callout = ({
-  label,
-  children,
-  inverted,
-  color,
-  href,
-  internal,
-  tracking,
-  sx,
-  ...props
-}) => {
+const Callout = (
+  { label, children, inverted, color, href, internal, tracking, sx, ...props },
+  ref
+) => {
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
 
@@ -86,6 +79,7 @@ const Callout = ({
   if (href) {
     return (
       <Link
+        ref={ref}
         href={href}
         internal={internal}
         tracking={tracking}
@@ -97,11 +91,11 @@ const Callout = ({
     )
   } else {
     return (
-      <Box as='button' sx={style} {...props}>
+      <Box ref={ref} as='button' sx={style} {...props}>
         {Inner}
       </Box>
     )
   }
 }
 
-export default Callout
+export default forwardRef(Callout)

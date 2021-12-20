@@ -1,21 +1,24 @@
-import React, { cloneElement } from 'react'
+import React, { forwardRef, cloneElement } from 'react'
 import { Box } from 'theme-ui'
 import Link from './link'
 import getSizeStyles from './utils/get-size-styles'
 
-const Button = ({
-  size = 'sm',
-  prefix,
-  suffix,
-  inverted,
-  sx,
-  children,
-  align,
-  href,
-  internal,
-  tracking,
-  ...props
-}) => {
+const Button = (
+  {
+    size = 'sm',
+    prefix,
+    suffix,
+    inverted,
+    sx,
+    children,
+    align,
+    href,
+    internal,
+    tracking,
+    ...props
+  },
+  ref
+) => {
   if (!['xs', 'sm', 'md', 'lg', 'xl'].includes(size)) {
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
@@ -187,6 +190,7 @@ const Button = ({
   if (href) {
     return (
       <Link
+        ref={ref}
         href={href}
         internal={internal}
         tracking={tracking}
@@ -201,11 +205,11 @@ const Button = ({
     )
   } else {
     return (
-      <Box as='button' sx={style} {...props}>
+      <Box ref={ref} as='button' sx={style} {...props}>
         {Inner}
       </Box>
     )
   }
 }
 
-export default Button
+export default forwardRef(Button)
