@@ -179,8 +179,8 @@ const Header = ({ status, mode, nav, menuItems }) => {
         <Flex sx={{ justifyContent: 'flex-end' }}>
           <Flex
             sx={{
-              mr: 18,
-              gap: 18,
+              mr: '18px',
+              gap: '18px',
               opacity: expanded ? 0 : 1,
               transition: 'opacity 0.15s',
               justifyContent: 'space-between',
