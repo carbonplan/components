@@ -8,10 +8,12 @@ const sx = {
       fontSize: ['9px', 0, 0, 1],
       letterSpacing: 'smallcaps',
       textTransform: 'uppercase',
-      '&:hover': {
-        borderBottom: setClim
-          ? ({ colors }) => `solid 1px ${colors.primary} !important`
-          : 'unset',
+      '@media (hover: hover) and (pointer: fine)': {
+        '&:hover': {
+          borderBottom: setClim
+            ? ({ colors }) => `solid 1px ${colors.primary} !important`
+            : 'unset',
+        },
       },
       '&:focus': {
         outline: 'none',
@@ -22,6 +24,7 @@ const sx = {
       transition: 'border 0.15s',
       userSelect: setClim ? 'none !important' : 'unset',
       width: 'fit-content',
+      minWidth: 'fit-content',
     }
   },
 }
@@ -111,6 +114,7 @@ const Colorbar = ({
   format = (d) => d,
   horizontal = false,
   bottom = false,
+  sxClim = {},
   ...props
 }) => {
   if (!Array.isArray(colormap)) {
@@ -197,7 +201,7 @@ const Colorbar = ({
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', (e) => {
+    const listener = (e) => {
       if (
         ['ArrowUp', 'ArrowRight'].includes(e.code) ||
         ['ArrowUp', 'ArrowRight'].includes(e.key)
@@ -210,8 +214,13 @@ const Colorbar = ({
       ) {
         decrement(e)
       }
-    })
-  }, [])
+    }
+    window.addEventListener('keydown', listener)
+
+    return () => {
+      window.removeEventListener('keydown', listener)
+    }
+  }, [clim])
 
   const ClimMin = () => {
     return (
@@ -229,12 +238,12 @@ const Colorbar = ({
               ? ({ colors }) => `solid 1px ${colors.primary}`
               : ({ colors }) => `solid 1px ${colors.secondary}`
             : 'unset',
-
           cursor: setClim
             ? horizontal
               ? 'ew-resize'
               : 'ns-resize'
             : 'default',
+          ...sxClim,
         }}
         onMouseDown={setClim ? handleMouseDown : () => {}}
         onClick={() => climRef[0].current.focus()}
@@ -264,6 +273,7 @@ const Colorbar = ({
               ? 'ew-resize'
               : 'ns-resize'
             : 'default',
+          ...sxClim,
         }}
         onMouseDown={setClim ? handleMouseDown : () => {}}
         onClick={() => climRef[1].current.focus()}
@@ -284,7 +294,13 @@ const Colorbar = ({
       }}
     >
       {label && <Label label={label} units={units} horizontal={horizontal} />}
-      <Flex sx={{ flexDirection: 'column', ml: bottom ? '4px' : '0px' }}>
+      <Flex
+        sx={{
+          flexGrow: 1,
+          flexDirection: 'column',
+          ml: bottom && label ? '4px' : '0px',
+        }}
+      >
         <Flex sx={{ gap: ['3px', '6px', '6px', '7px'] }}>
           {horizontal && clim && !bottom && <ClimMin />}
           <Gradient
