@@ -291,17 +291,24 @@ const Colorbar = ({
         alignItems: 'start',
         justifyContent: 'flex-start',
         gap: ['3px', '6px', '6px', '7px'],
+        height: !horizontal ? '100%' : 'unset',
       }}
     >
       {label && <Label label={label} units={units} horizontal={horizontal} />}
       <Flex
         sx={{
-          flexGrow: 1,
+          flexGrow: horizontal ? 1 : 'unset',
           flexDirection: 'column',
           ml: bottom && label ? '4px' : '0px',
+          height: !horizontal ? '100%' : 'unset',
         }}
       >
-        <Flex sx={{ gap: ['3px', '6px', '6px', '7px'] }}>
+        <Flex
+          sx={{
+            gap: ['3px', '6px', '6px', '7px'],
+            height: !horizontal ? '100%' : 'unset',
+          }}
+        >
           {horizontal && clim && !bottom && <ClimMin />}
           <Gradient
             colormap={colormap}
