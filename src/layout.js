@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Flex, Box } from 'theme-ui'
+import { useBreakpointIndex } from '@theme-ui/match-media'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
@@ -8,6 +9,7 @@ import Metadata from './metadata'
 import FadeIn from './fade-in'
 import Scrollbar from './scrollbar'
 import Guide from './guide'
+import Settings from './settings'
 
 const Layout = ({
   title,
@@ -28,11 +30,45 @@ const Layout = ({
   container = true,
 }) => {
   let content = children
+  const index = useBreakpointIndex()
+
   if (fade) {
     content = <FadeIn duration={250}>{content}</FadeIn>
   }
   if (container) {
     content = <Container>{content}</Container>
+  }
+
+  useEffect(() => {
+    if (index > 2 && settings?.value && settings?.onClick) {
+      settings?.onClick()
+    }
+  }, [index, settings?.value, settings?.onClick])
+
+  const menuItems = [
+    <Dimmer
+      key='dimmer'
+      sx={{
+        color: 'primary',
+        mt: '-2px',
+        display: [
+          'block',
+          'block',
+          dimmer === 'top' ? 'block' : 'none',
+          dimmer === 'top' ? 'block' : 'none',
+        ],
+      }}
+    />,
+  ]
+
+  if (settings) {
+    menuItems.push(
+      <Settings
+        key='settings'
+        sx={{ display: ['inherit', 'inherit', 'none', 'none'] }}
+        {...settings}
+      />
+    )
   }
 
   return (
@@ -67,8 +103,7 @@ const Layout = ({
                 mode={links}
                 status={status}
                 nav={nav}
-                settings={settings}
-                dimmer={dimmer}
+                menuItems={menuItems}
               />
             </Container>
           </Box>
