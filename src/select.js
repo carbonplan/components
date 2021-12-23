@@ -4,7 +4,7 @@ import { Arrow } from '@carbonplan/icons'
 import getProps from './utils/get-props'
 import getSizeStyles from './utils/get-size-styles'
 
-const Select = ({ children, size = 'sm', sx, ...props }) => {
+const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
   const color = sx && sx.color ? sx.color : 'primary'
   const sizeStyles = getSizeStyles(size)
   const ref = useRef(null)
@@ -79,6 +79,7 @@ const Select = ({ children, size = 'sm', sx, ...props }) => {
               background: 'transparent !important',
             },
           },
+          ...sxSelect,
         }}
         {...omitOnChange}
       >
