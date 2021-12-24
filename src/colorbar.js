@@ -70,7 +70,7 @@ const Label = ({ label, units, horizontal }) => (
   <Box
     sx={
       !horizontal && {
-        width: ['12px', '17px', '17px', '19px'],
+        width: ['13px', '17px', '17px', '19px'],
         alignSelf: 'flex-end',
       }
     }
