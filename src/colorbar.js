@@ -58,7 +58,7 @@ const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
               width: width || DIMENSIONS.width,
               minHeight: height || DIMENSIONS.height,
             }),
-        mt: horizontal ? [0, '1px', '1px', 0] : 0,
+        mt: horizontal ? ['1px', '1px', '1px', 0] : 0,
         border: ({ colors }) => `solid 1px ${colors.hinted}`,
         background: css,
       }}
@@ -67,7 +67,14 @@ const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
 }
 
 const Label = ({ label, units, horizontal }) => (
-  <Box sx={!horizontal && { alignSelf: 'flex-end' }}>
+  <Box
+    sx={
+      !horizontal && {
+        width: ['12px', '17px', '17px', '19px'],
+        alignSelf: 'flex-end',
+      }
+    }
+  >
     <Box
       sx={{
         mb: horizontal ? 0 : ['-4px', '-4px', '-4px', '-3px'],
@@ -231,7 +238,13 @@ const Colorbar = ({
         tabIndex={0}
         sx={{
           ...styles.clim(setClim),
-          ml: label ? (horizontal ? (bottom ? '0px' : '10px') : '2px') : 0,
+          ml: label
+            ? horizontal
+              ? bottom
+                ? '0px'
+                : '10px'
+              : ['2px', '1px', '1px', '2px']
+            : 0,
           mr: horizontal ? ['2px', '1px', '1px', '2px'] : 0,
           mb: horizontal ? 0 : ['-2px', '-2px', '-2px', '-3px'],
           borderBottom: setClim
@@ -262,7 +275,9 @@ const Colorbar = ({
         tabIndex={0}
         sx={{
           ...styles.clim(setClim),
-          ml: horizontal ? ['2px', '1px', '1px', '2px'] : '2px',
+          ml: horizontal
+            ? ['2px', '1px', '1px', '2px']
+            : ['2px', '1px', '1px', '2px'],
           mt: horizontal ? 0 : ['-2px', '-3px', '-3px', '-3px'],
           borderBottom: setClim
             ? climMaxDragging
