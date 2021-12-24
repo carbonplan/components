@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Box, Flex } from 'theme-ui'
 
-const sx = {
+const styles = {
   clim: (setClim) => {
     return {
       fontFamily: 'mono',
@@ -114,7 +114,8 @@ const Colorbar = ({
   format = (d) => d,
   horizontal = false,
   bottom = false,
-  sxClim = {},
+  sx,
+  sxClim,
   ...props
 }) => {
   if (!Array.isArray(colormap)) {
@@ -229,7 +230,7 @@ const Colorbar = ({
         ref={climRef[0]}
         tabIndex={0}
         sx={{
-          ...sx.clim(setClim),
+          ...styles.clim(setClim),
           ml: label ? (horizontal ? (bottom ? '0px' : '10px') : '2px') : 0,
           mr: horizontal ? ['2px', '1px', '1px', '2px'] : 0,
           mb: horizontal ? 0 : ['-2px', '-2px', '-2px', '-3px'],
@@ -260,7 +261,7 @@ const Colorbar = ({
         ref={climRef[1]}
         tabIndex={0}
         sx={{
-          ...sx.clim(setClim),
+          ...styles.clim(setClim),
           ml: horizontal ? ['2px', '1px', '1px', '2px'] : '2px',
           mt: horizontal ? 0 : ['-2px', '-3px', '-3px', '-3px'],
           borderBottom: setClim
@@ -285,13 +286,14 @@ const Colorbar = ({
 
   return (
     <Flex
+      {...props}
       sx={{
-        ...props.sx,
         flexDirection: 'row',
         alignItems: 'start',
         justifyContent: 'flex-start',
         gap: ['3px', '6px', '6px', '7px'],
         height: !horizontal ? '100%' : 'unset',
+        ...sx,
       }}
     >
       {label && <Label label={label} units={units} horizontal={horizontal} />}
