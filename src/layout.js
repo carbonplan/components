@@ -69,7 +69,7 @@ const Layout = ({
     menuItems.push(
       <Settings
         key='settings'
-        sx={{ display: ['inherit', 'inherit', 'none', 'none'] }}
+        sx={{ mr: ['2px'], display: ['inherit', 'inherit', 'none', 'none'] }}
         {...settings}
       />
     )
