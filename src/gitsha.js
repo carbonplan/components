@@ -15,7 +15,7 @@ const GitSha = () => {
     const href = 'https://github.com/' + owner + '/' + slug + '/tree/' + sha
 
     return (
-      <Box sx={{ display: 'inline-block' }}>
+      <Box sx={{ display: 'inline-block', width: '87px' }}>
         <Separator color={color} />
         <Link
           href={href}
@@ -38,7 +38,7 @@ const GitSha = () => {
   } else {
     // fallback
     return (
-      <Box sx={{ display: 'inline-block' }}>
+      <Box sx={{ display: 'inline-block', width: '87px' }}>
         <Separator color={color} />
         <Text
           sx={{

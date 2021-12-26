@@ -55,8 +55,8 @@ const Metadata = ({ mode }) => {
       sx={{
         userSelect: 'none',
         position: 'fixed',
-        bottom: 42,
-        right: 24,
+        bottom: '42px',
+        right: '24px',
         transformOrigin: 'right',
         transform: 'rotate(90deg)',
         display: ['none', 'none', 'initial'],
