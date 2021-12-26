@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Flex, Box } from 'theme-ui'
-import { useBreakpointIndex } from '@theme-ui/match-media'
+import { useThemeUI, Container, Flex, Box } from 'theme-ui'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
@@ -30,7 +29,6 @@ const Layout = ({
   container = true,
 }) => {
   let content = children
-  const index = useBreakpointIndex()
 
   if (fade) {
     content = <FadeIn duration={250}>{content}</FadeIn>
@@ -43,11 +41,24 @@ const Layout = ({
     )
   }
 
+  const { theme } = useThemeUI()
+
   useEffect(() => {
-    if (index > 2 && settings?.value && settings?.onClick) {
-      settings?.onClick()
+    if (!theme) return
+
+    const handler = (e) => {
+      if (e.matches && settings?.value && settings?.onClick) {
+        settings?.onClick()
+      }
     }
-  }, [index, settings?.value, settings?.onClick])
+
+    const query = window.matchMedia(`(min-width: ${theme.breakpoints[1]})`)
+    query.onchange = handler
+
+    return () => {
+      query.onchange = null
+    }
+  }, [theme?.breakpoints, settings?.value, settings?.onClick])
 
   const menuItems = [
     <Dimmer
