@@ -1,6 +1,6 @@
 {
   "name": "@carbonplan/components",
-  "version": "11.0.4",
+  "version": "11.0.5",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
@@ -33,8 +33,7 @@
   "dependencies": {
     "@carbonplan/emoji": "^1.0.0",
     "@carbonplan/icons": "^1.0.0",
-    "@theme-ui/color": ">=0.11.1",
-    "@theme-ui/match-media": ">=0.11.1"
+    "@theme-ui/color": ">=0.11.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.5",
