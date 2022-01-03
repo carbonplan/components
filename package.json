@@ -1,12 +1,12 @@
 {
   "name": "@carbonplan/components",
-  "version": "11.0.6",
+  "version": "11.1.0-develop.1",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
   "scripts": {
-    "build": "rimraf dst && microbundle src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "watch": "microbundle watch src/index.js -o dst/index.js --no-compress --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "build": "rimraf dst && microbundle src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "watch": "microbundle watch src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
     "format": "prettier --write 'src/**/*.js' '*.css'"
   },
   "repository": {
