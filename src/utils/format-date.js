@@ -28,7 +28,7 @@ const formatDate = (date, options = defaultOptions) => {
   const day = formatDateElement(d, 'day', options.day)
   const year = formatDateElement(d, 'year', options.year)
 
-  return [month, day, year].filter(Boolean).join(options.separator || ' ')
+  return [month, day, year].filter(Boolean).join(options.separator ?? ' ')
 }
 
 export default formatDate
