@@ -15,7 +15,7 @@ const formatDateElement = (date, element, option) => {
     [element]: format,
   })
 
-  if (format === 'numeric' && element === 'day') {
+  if (format === 'numeric' && ['day', 'month'].includes(element)) {
     return result.padStart(2, '0')
   } else {
     return result
