@@ -189,10 +189,11 @@ const Header = ({ status, mode, nav, menuItems }) => {
               alignItems: 'center',
             }}
           >
-            {menuItems}
+            {status ? null : menuItems}
           </Flex>
           <Menu
             sx={{
+              flexShrink: 0,
               mr: ['-2px'],
             }}
             value={expanded}
