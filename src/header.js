@@ -179,8 +179,9 @@ const Header = ({ status, mode, nav, menuItems }) => {
         sx={{ zIndex: 5000 }}
       >
         <Flex sx={{ pointerEvents: 'all', justifyContent: 'flex-end' }}>
-          <Flex
+          <Box
             sx={{
+              display: [status ? 'none' : 'flex', 'flex', 'flex', 'flex'],
               mr: '18px',
               gap: '18px',
               opacity: expanded ? 0 : 1,
@@ -189,8 +190,8 @@ const Header = ({ status, mode, nav, menuItems }) => {
               alignItems: 'center',
             }}
           >
-            {status ? null : menuItems}
-          </Flex>
+            {menuItems}
+          </Box>
           <Menu
             sx={{
               flexShrink: 0,
