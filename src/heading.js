@@ -12,8 +12,11 @@ const Heading = ({
   descriptionWidth = [5, 5, 5, 4],
   sx,
 }) => {
-  const titleWidth = descriptionStart.map((d) => d - 1)
+  let titleWidth = []
   titleWidth[0] = 6
+  titleWidth[1] = descriptionStart[1] - 1
+  titleWidth[2] = descriptionStart[2] - 2
+  titleWidth[3] = descriptionStart[3] - 2
 
   return (
     <Row sx={{ mt: [5, 6, 7, 8], mb: [5, 6, 7, 8] }}>
