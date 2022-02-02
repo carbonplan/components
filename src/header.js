@@ -122,7 +122,9 @@ const Header = ({ status, mode, nav, menuItems }) => {
       }}
     >
       <Column start={[1]} width={[2]}>
-        <Box sx={{ display: 'block', width: 'fit-content' }}>
+        <Box
+          sx={{ pointerEvents: 'all', display: 'block', width: 'fit-content' }}
+        >
           {(mode == 'homepage' || mode == 'local') && (
             <NextLink href='/' passHref>
               <Link
@@ -176,9 +178,10 @@ const Header = ({ status, mode, nav, menuItems }) => {
         width={[status ? 1 : 3, 3, 2, 2]}
         sx={{ zIndex: 5000 }}
       >
-        <Flex sx={{ justifyContent: 'flex-end' }}>
-          <Flex
+        <Flex sx={{ pointerEvents: 'all', justifyContent: 'flex-end' }}>
+          <Box
             sx={{
+              display: [status ? 'none' : 'flex', 'flex', 'flex', 'flex'],
               mr: '18px',
               gap: '18px',
               opacity: expanded ? 0 : 1,
@@ -188,9 +191,10 @@ const Header = ({ status, mode, nav, menuItems }) => {
             }}
           >
             {menuItems}
-          </Flex>
+          </Box>
           <Menu
             sx={{
+              flexShrink: 0,
               mr: ['-2px'],
             }}
             value={expanded}
