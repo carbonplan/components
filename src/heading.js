@@ -12,9 +12,12 @@ const Heading = ({
   descriptionWidth = [5, 5, 5, 4],
   sx,
 }) => {
+  const titleWidth = descriptionStart.map(d => d - 1)
+  titleWidth[0] = 6
+
   return (
     <Row sx={{ mt: [5, 6, 7, 8], mb: [5, 6, 7, 8] }}>
-      <Column start={[1, 1, 2, 2]} width={[6, 2, 3, 3]}>
+      <Column start={[1, 1, 2, 2]} width={titleWidth}>
         <Box as='h1' variant='styles.h1' sx={{ my: [0, 0, 0, 0], ...sx }}>
           {children}
         </Box>
