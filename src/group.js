@@ -8,15 +8,15 @@ const sizes = {
   lg: [7],
   xl: [9],
 }
-const Group = ({ children, direction = 'vertical', spacing = 'md' }) => {
+const Group = ({ children, direction = 'vertical', spacing = 'md', sx }) => {
   let marginValue
-  if (typeof spacing === 'string') {
+  if (typeof spacing === 'string' && Object.keys(sizes).includes(spacing)) {
     marginValue = sizes[spacing]
-  } else if (typeof spacing === 'number') {
+  } else if (typeof spacing === 'number' || typeof spacing === 'string') {
     marginValue = [spacing]
   } else if (
     Array.isArray(spacing) &&
-    spacing.every((el) => typeof el === 'number')
+    spacing.every((el) => typeof el === 'number' || typeof el === 'string')
   ) {
     marginValue = spacing
   }
@@ -33,16 +33,16 @@ const Group = ({ children, direction = 'vertical', spacing = 'md' }) => {
     )
   }
 
-  const marginProperty = direction === 'vertical' ? 'mt' : 'ml'
+  const marginProperty = direction === 'vertical' ? 'mb' : 'mr'
   const additionalStyles =
     direction === 'horizontal' ? { display: 'inline-block' } : {}
   return (
-    <Box>
+    <Box {...sx}>
       {React.Children.map(children, (child, i) => {
         return (
           <Box
             sx={{
-              [marginProperty]: i > 0 ? marginValue : 0,
+              [marginProperty]: i < children.length - 1 ? marginValue : 0,
               ...additionalStyles,
             }}
           >
