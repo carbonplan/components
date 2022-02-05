@@ -1,7 +1,16 @@
 import React from 'react'
 import { Box, Image } from 'theme-ui'
 
-const Avatar = ({ color, width, maxWidth, name, github, alt, src, sx }) => {
+const Avatar = ({
+  color = 'transparent',
+  width = '90px',
+  maxWidth,
+  name,
+  github,
+  alt,
+  src,
+  sx,
+}) => {
   if (!name && !src && !github) {
     console.warn('must specify either name, github, or src')
   }
@@ -19,13 +28,13 @@ const Avatar = ({ color, width, maxWidth, name, github, alt, src, sx }) => {
   return (
     <Box
       sx={{
-        width: width || '90px',
+        width: width,
         maxWidth: maxWidth,
         height: 'auto',
         borderRadius: '50%',
         position: 'relative',
         display: 'inline-block',
-        bg: color || 'transparent',
+        bg: color,
         ...sx,
       }}
     >
@@ -33,10 +42,11 @@ const Avatar = ({ color, width, maxWidth, name, github, alt, src, sx }) => {
         alt={alt}
         src={src}
         sx={{
-          opacity: color ? 0.25 : 1,
-          filter: color
-            ? 'grayscale(100%) contrast(200%) brightness(100%)'
-            : 'none',
+          opacity: color && color !== 'transparent' ? 0.25 : 1,
+          filter:
+            color && color !== 'transparent'
+              ? 'grayscale(100%) contrast(200%) brightness(100%)'
+              : 'none',
           width: '100%',
           height: 'auto',
           borderRadius: '50%',

@@ -10,21 +10,10 @@ const sizes = {
 }
 const Group = ({ children, direction = 'vertical', spacing = 'md', sx }) => {
   let marginValue
-  if (typeof spacing === 'string' && Object.keys(sizes).includes(spacing)) {
+  if (typeof spacing === 'string' && sizes.hasOwnProperty(spacing)) {
     marginValue = sizes[spacing]
-  } else if (typeof spacing === 'number' || typeof spacing === 'string') {
-    marginValue = [spacing]
-  } else if (
-    Array.isArray(spacing) &&
-    spacing.every((el) => typeof el === 'number' || typeof el === 'string')
-  ) {
+  } else {
     marginValue = spacing
-  }
-
-  if (!marginValue) {
-    throw new Error(
-      'Invalid spacing size. Must be numeric value(s) or one of xs, sm, md, lg, or xl'
-    )
   }
 
   if (!['horizontal', 'vertical'].includes(direction)) {

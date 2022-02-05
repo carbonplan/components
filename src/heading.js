@@ -19,9 +19,9 @@ const Heading = ({
   titleWidth[3] = descriptionStart[3] - 2
 
   return (
-    <Row sx={{ mt: [5, 6, 7, 8], mb: [5, 6, 7, 8] }}>
+    <Row sx={{ mt: [5, 6, 7, 8], mb: [5, 6, 7, 8], ...sx }}>
       <Column start={[1, 1, 2, 2]} width={titleWidth}>
-        <Box as='h1' variant='styles.h1' sx={{ my: [0, 0, 0, 0], ...sx }}>
+        <Box as='h1' variant='styles.h1' sx={{ my: [0, 0, 0, 0] }}>
           {children}
         </Box>
       </Column>
