@@ -1,23 +1,19 @@
 import React from 'react'
 import { Box, Image } from 'theme-ui'
 
-const Avatar = ({ color, width, maxWidth, name, github, src, sx }) => {
+const Avatar = ({ color, width, maxWidth, name, github, alt, src, sx }) => {
   if (!name && !src && !github) {
     console.warn('must specify either name, github, or src')
   }
-
-  let alt
 
   if (name) {
     src = `https://images.carbonplan.org/team/${name
       .toLowerCase()
       .replace(' ', '-')}.png`
-    alt = name
+    alt = alt || name
   } else if (github) {
     src = `https://github.com/${github}.png`
-    alt = github
-  } else {
-    alt = src
+    alt = alt || github
   }
 
   return (
