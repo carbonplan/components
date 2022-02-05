@@ -56,7 +56,7 @@ const AvatarGroup = ({
   return (
     <>
       {fixedCount && (
-        <Row columns={fixedCount} gap={gap} {...sx}>
+        <Row columns={fixedCount} gap={gap} sx={sx}>
           {members.map((props, idx) => (
             <Column key={idx} start={start(idx)}>
               <Avatar {...props} width={width} maxWidth={maxWidth} />
@@ -65,7 +65,7 @@ const AvatarGroup = ({
         </Row>
       )}
       {!fixedCount && (
-        <Group direction={direction} spacing={spacing} {...sx}>
+        <Group direction={direction} spacing={spacing} sx={sx}>
           {members.map((props, idx) => (
             <Avatar key={idx} {...props} width={width} maxWidth={maxWidth} />
           ))}

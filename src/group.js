@@ -26,7 +26,7 @@ const Group = ({ children, direction = 'vertical', spacing = 'md', sx }) => {
   const additionalStyles =
     direction === 'horizontal' ? { display: 'inline-block' } : {}
   return (
-    <Box {...sx}>
+    <Box sx={sx}>
       {React.Children.map(children, (child, i) => {
         return (
           <Box
