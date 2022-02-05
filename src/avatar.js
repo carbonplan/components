@@ -34,6 +34,7 @@ const Avatar = ({
         borderRadius: '50%',
         position: 'relative',
         display: 'inline-block',
+        verticalAlign: 'top',
         bg: color,
         ...sx,
       }}
@@ -48,7 +49,6 @@ const Avatar = ({
               ? 'grayscale(100%) contrast(200%) brightness(100%)'
               : 'none',
           width: '100%',
-          height: 'auto',
           borderRadius: '50%',
           display: 'block',
         }}

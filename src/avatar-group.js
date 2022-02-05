@@ -14,7 +14,7 @@ const sizes = {
 
 const AvatarGroup = ({
   members,
-  direction,
+  direction = 'horizontal',
   align,
   spacing = 'md',
   width,
