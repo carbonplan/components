@@ -21,8 +21,6 @@ const Blockquote = ({ children }) => {
     children = children.slice(1)
   }
 
-  console.log(firstChar)
-
   return (
     <Box variant='styles.blockquote'>
       {specialChars.includes(firstChar) && (
