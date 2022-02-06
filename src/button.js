@@ -30,6 +30,8 @@ const Button = (
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
 
+  // delete the color field to avoid the rare case where it is null
+  // and the null would otherwise override the baseColor set above
   if (sx) delete sx.color
 
   if (size === 'xs') {
