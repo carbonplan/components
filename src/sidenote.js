@@ -5,7 +5,7 @@ import Column from './column'
 const Sidenote = ({ children, variant = 'h1' }) => {
   let mt
   if (variant === 'h1') mt = [4, '27px', '42px', '54px']
-  if (variant === 'h2') mt = [4, 4, '14px', '54px']
+  if (variant === 'h2') mt = [4, 4, '14px', '25px']
   return (
     <>
       <Column start={[1, 4, 8, 8]} width={[1, 1, 1, 1]}>

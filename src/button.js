@@ -30,7 +30,7 @@ const Button = (
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
 
-  delete sx.color
+  if (sx && sx.color) delete sx.color
 
   if (size === 'xs') {
     margin = ['6px', '6px', '6px', '6px']
