@@ -27,6 +27,7 @@ const Layout = ({
   scrollbar = true,
   fade = true,
   container = true,
+  printable = false,
 }) => {
   let content = children
 
@@ -42,6 +43,14 @@ const Layout = ({
   }
 
   const { theme } = useThemeUI()
+
+  const hideOnPrint = printable
+    ? {
+        '@media print': {
+          display: 'none',
+        },
+      }
+    : {}
 
   useEffect(() => {
     if (!theme) return
@@ -111,6 +120,7 @@ const Layout = ({
               bg: 'background',
               height: '56px',
               zIndex: 2000,
+              ...hideOnPrint,
             }}
           >
             <Container>
@@ -140,6 +150,7 @@ const Layout = ({
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
+              ...hideOnPrint,
             }}
           >
             <Container>

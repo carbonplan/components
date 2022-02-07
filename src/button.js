@@ -25,7 +25,8 @@ const Button = (
 
   let offset, margin, top, height, width, strokeWidth
 
-  const color = sx && sx.color ? sx.color : null
+  const { color, ...sxProp } = sx || {}
+
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
 
@@ -162,7 +163,7 @@ const Button = (
       ...suffixHover,
       ...prefixHover,
     },
-    ...sx,
+    ...sxProp,
   }
 
   const Inner = (
