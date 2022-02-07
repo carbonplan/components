@@ -15,100 +15,52 @@ const InlineColor = ({ sx, color, children, ...props }) => {
 
 const Colors = {}
 
-Colors.Primary = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='primary' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Primary = (props) => {
+  return <InlineColor color='primary' {...props} />
 }
 
-Colors.Secondary = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='secondary' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Secondary = (props) => {
+  return <InlineColor color='secondary' {...props} />
 }
 
-Colors.Background = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='background' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Background = (props) => {
+  return <InlineColor color='background' {...props} />
 }
 
-Colors.Red = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='red' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Red = (props) => {
+  return <InlineColor color='red' {...props} />
 }
 
-Colors.Orange = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='orange' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Orange = (props) => {
+  return <InlineColor color='orange' {...props} />
 }
 
-Colors.Yellow = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='yellow' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Yellow = (props) => {
+  return <InlineColor color='yellow' {...props} />
 }
 
-Colors.Green = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='green' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Green = (props) => {
+  return <InlineColor color='green' {...props} />
 }
 
-Colors.Teal = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='teal' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Teal = (props) => {
+  return <InlineColor color='teal' {...props} />
 }
 
-Colors.Blue = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='blue' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Blue = (props) => {
+  return <InlineColor color='blue' {...props} />
 }
 
-Colors.Purple = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='purple' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Purple = (props) => {
+  return <InlineColor color='purple' {...props} />
 }
 
-Colors.Pink = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='pink' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Pink = (props) => {
+  return <InlineColor color='pink' {...props} />
 }
 
-Colors.Grey = ({ sx, children, ...props }) => {
-  return (
-    <InlineColor color='grey' {...props}>
-      {children}
-    </InlineColor>
-  )
+Colors.Grey = (props) => {
+  return <InlineColor color='grey' {...props} />
 }
 
 export default Colors
