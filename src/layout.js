@@ -44,7 +44,7 @@ const Layout = ({
 
   const { theme } = useThemeUI()
 
-  const printStyles = printable
+  const hideOnPrint = printable
     ? {
         '@media print': {
           display: 'none',
@@ -120,7 +120,7 @@ const Layout = ({
               bg: 'background',
               height: '56px',
               zIndex: 2000,
-              ...printStyles,
+              ...hideOnPrint,
             }}
           >
             <Container>
@@ -150,7 +150,7 @@ const Layout = ({
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              ...printStyles,
+              ...hideOnPrint,
             }}
           >
             <Container>
