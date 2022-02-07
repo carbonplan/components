@@ -21,6 +21,7 @@ const AvatarGroup = ({
   maxWidth,
   fixedCount,
   sx,
+  ...props
 }) => {
   if (members.length > fixedCount) {
     throw Error(
@@ -29,7 +30,7 @@ const AvatarGroup = ({
   }
 
   let gap
-  if (Object.keys(sizes).includes(spacing)) {
+  if (sizes.hasOwnProperty(spacing)) {
     gap = sizes[spacing]
   } else {
     gap = spacing
@@ -56,7 +57,7 @@ const AvatarGroup = ({
   return (
     <>
       {fixedCount && (
-        <Row columns={fixedCount} gap={gap} sx={sx}>
+        <Row columns={fixedCount} gap={gap} sx={sx} {...props}>
           {members.map((props, idx) => (
             <Column key={idx} start={start(idx)}>
               <Avatar {...props} width={width} maxWidth={maxWidth} />
@@ -65,7 +66,7 @@ const AvatarGroup = ({
         </Row>
       )}
       {!fixedCount && (
-        <Group direction={direction} spacing={spacing} sx={sx}>
+        <Group direction={direction} spacing={spacing} sx={sx} {...props}>
           {members.map((props, idx) => (
             <Avatar key={idx} {...props} width={width} maxWidth={maxWidth} />
           ))}

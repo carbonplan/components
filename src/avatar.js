@@ -10,19 +10,24 @@ const Avatar = ({
   alt,
   src,
   sx,
+  ...props
 }) => {
   if (!name && !src && !github) {
     console.warn('must specify either name, github, or src')
   }
 
+  let srcProp, altProp
   if (name) {
-    src = `https://images.carbonplan.org/team/${name
+    srcProp = `https://images.carbonplan.org/team/${name
       .toLowerCase()
       .replace(' ', '-')}.png`
-    alt = alt || name
+    altProp = alt || name
   } else if (github) {
-    src = `https://github.com/${github}.png`
-    alt = alt || github
+    srcProp = `https://github.com/${github}.png`
+    altProp = alt || github
+  } else {
+    srcProp = src
+    altProp = alt
   }
 
   return (
@@ -38,10 +43,11 @@ const Avatar = ({
         bg: color,
         ...sx,
       }}
+      {...props}
     >
       <Image
-        alt={alt}
-        src={src}
+        alt={altProp}
+        src={srcProp}
         sx={{
           opacity: color && color !== 'transparent' ? 0.25 : 1,
           filter:

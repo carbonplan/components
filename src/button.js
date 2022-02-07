@@ -25,14 +25,10 @@ const Button = (
 
   let offset, margin, top, height, width, strokeWidth
 
-  const color = sx && sx.color ? sx.color : null
+  const { color, ...sxProp } = sx || {}
 
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
-
-  // delete the color field to avoid the rare case where it is null
-  // and the null would otherwise override the baseColor set above
-  if (sx) delete sx.color
 
   if (size === 'xs') {
     margin = ['6px', '6px', '6px', '6px']
@@ -167,7 +163,7 @@ const Button = (
       ...suffixHover,
       ...prefixHover,
     },
-    ...sx,
+    ...sxProp,
   }
 
   const Inner = (
