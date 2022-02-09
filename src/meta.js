@@ -2,10 +2,10 @@ import React from 'react'
 import Head from 'next/head'
 
 const Meta = ({ title, description, card }) => {
-  title = title ? title : 'carbonplan'
-  description = description
-    ? description
-    : 'Data and science for climate action.'
+  title = title ? title : 'CarbonPlan'
+  description =
+    description ||
+    'Data and science for climate action. Improving the transparency and scientific integrity of climate solutions.'
   card = card ? card : 'https://images.carbonplan.org/social/homepage.png'
 
   return (
