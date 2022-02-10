@@ -2,16 +2,24 @@ import React from 'react'
 import Head from 'next/head'
 
 const Meta = ({ title, description, card }) => {
-  title = title ? title : 'carbonplan'
-  description = description
-    ? description
-    : 'Data and science for climate action.'
-  card = card ? card : 'https://images.carbonplan.org/social/homepage.png'
+  if (!description) {
+    console.warn(
+      'a custom description should be used for search engine optimization'
+    )
+  }
+  if (!title) {
+    console.warn('a custom title should be used for search engine optimization')
+  }
+  const titleProp = title || 'CarbonPlan'
+  const descriptionProp =
+    description ||
+    'Improving the transparency and scientific integrity of carbon removal and climate solutions through open data and tools.'
+  const cardProp = card || 'https://images.carbonplan.org/social/homepage.png'
 
   return (
     <Head>
-      <title>{title}</title>
-      <meta name='description' content={description} />
+      <title>{titleProp}</title>
+      <meta name='description' content={descriptionProp} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link rel='canonical' content='https://carbonplan.org/' />
       <link
@@ -73,13 +81,13 @@ const Meta = ({ title, description, card }) => {
         name='msapplication-config'
         content='https://images.carbonplan.org/browserconfig.xml'
       />
-      <meta property='og:title' content={title} />
-      <meta property='og:description' content={description} />
-      <meta property='og:image' content={card} />
+      <meta property='og:title' content={titleProp} />
+      <meta property='og:description' content={descriptionProp} />
+      <meta property='og:image' content={cardProp} />
       <meta property='og:url' content='https://carbonplan.org' />
-      <meta name='twitter:title' content={title} />
-      <meta name='twitter:description' content={description} />
-      <meta name='twitter:image' content={card} />
+      <meta name='twitter:title' content={titleProp} />
+      <meta name='twitter:description' content={descriptionProp} />
+      <meta name='twitter:image' content={cardProp} />
       <meta name='twitter:card' content='summary_large_image' />
     </Head>
   )
