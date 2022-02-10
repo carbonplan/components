@@ -21,7 +21,6 @@ const Meta = ({ title, description, card }) => {
       <title>{titleProp}</title>
       <meta name='description' content={descriptionProp} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      <link rel='canonical' content='https://carbonplan.org/' />
       <link
         rel='icon'
         type='image/svg+xml'
