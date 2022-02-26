@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Flex } from 'theme-ui'
 import { RotatingArrow } from '@carbonplan/icons'
-import Group from './group'
 import Button from './button'
 
 const LinkGroup = ({
@@ -10,12 +9,21 @@ const LinkGroup = ({
   inverted,
   tracking,
   size = 'xs',
+  rowGap = [2, 2, 2, 3],
+  columnGap = [3, 3, 3, 4],
   direction = 'horizontal',
-  spacing = 'sm',
   sx,
 }) => {
   return (
-    <Group direction={direction} spacing={spacing} sx={sx}>
+    <Flex
+      sx={{
+        flexDirection: direction === 'horizontal' ? 'row' : 'column',
+        rowGap,
+        columnGap,
+        flexWrap: 'wrap',
+        ...sx,
+      }}
+    >
       {members.map((d, i) => {
         return (
           <Button
@@ -23,10 +31,7 @@ const LinkGroup = ({
             href={d.href}
             label={d.label}
             size={size}
-            sx={{
-              color: color,
-              mb: [2, 1, 1, 1],
-            }}
+            sx={{ color: color }}
             inverted={inverted}
             suffix={<RotatingArrow />}
             tracking={tracking}
@@ -35,7 +40,7 @@ const LinkGroup = ({
           </Button>
         )
       })}
-    </Group>
+    </Flex>
   )
 }
 

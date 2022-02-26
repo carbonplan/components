@@ -7,7 +7,13 @@ import Column from './column'
 
 const Custom404 = () => {
   return (
-    <Layout footer={false} title={'404 – CarbonPlan'} description={"Sorry but we can't seem to find the page you are looking for."}>
+    <Layout
+      footer={false}
+      title={'404 – CarbonPlan'}
+      description={
+        "Sorry but we can't seem to find the page you are looking for."
+      }
+    >
       <Row sx={{ mb: [5, 0, 0], pt: [0, 0, 6] }}>
         <Column start={[1, 1, 3, 3]} width={[6, 4, 4, 4]}>
           <Styled.h1>Oops!</Styled.h1>
