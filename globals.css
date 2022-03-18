@@ -61,6 +61,10 @@ a {
   -webkit-border-bottom-left-radius: 8px;
 }
 
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: rgb(0, 0, 0, 0);
+}
+
 .no-focus-outline a:focus,
 .no-focus-outline button:focus,
 .no-focus-outline input:focus,
