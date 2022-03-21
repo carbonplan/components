@@ -1,14 +1,14 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
-const Caption = ({ number, children, label = 'figure' }) => {
+const Caption = ({ as = 'figcaption', number, children, label = 'figure' }) => {
   return (
     <Box
-      as='figcaption'
+      as={as}
       sx={{
         color: 'secondary',
-        mt: [3, 3, 3, 4],
-        mb: [6, 6, 6, 7],
+        display: 'block',
+        textAlign: 'left',
         fontSize: [2, 2, 2, 3],
       }}
     >

@@ -1,9 +1,9 @@
 import React from 'react'
 import Caption from './caption'
 
-const TableCaption = ({ number, children }) => {
+const TableCaption = ({ as = 'caption', number, children }) => {
   return (
-    <Caption number={number} label='table'>
+    <Caption as={as} number={number} label='table'>
       {children}
     </Caption>
   )
