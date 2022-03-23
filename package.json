@@ -1,6 +1,6 @@
 {
   "name": "@carbonplan/components",
-  "version": "11.5.0-develop.0",
+  "version": "11.5.0-develop.1",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
