@@ -62,7 +62,7 @@ const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
           WebkitAppearance: 'none',
           MozAppearance: 'none',
           pb: ['5px'],
-          bg: 'transparent',
+          bg: 'background',
           pr: pr,
           border: 'none',
           borderBottomStyle: 'solid',
