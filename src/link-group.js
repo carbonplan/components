@@ -29,6 +29,7 @@ const LinkGroup = ({
           <Button
             key={i}
             href={d.href}
+            onClick={d.onClick}
             label={d.label}
             size={size}
             sx={{ color: color }}
