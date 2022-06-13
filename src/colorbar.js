@@ -4,23 +4,14 @@ import { Box, Flex } from 'theme-ui'
 const styles = {
   clim: (setClim) => {
     return {
+      bg: 'unset',
+      border: 'none',
+      color: 'primary',
+      px: 0,
       fontFamily: 'mono',
       fontSize: ['9px', 0, 0, 1],
       letterSpacing: 'smallcaps',
       textTransform: 'uppercase',
-      '@media (hover: hover) and (pointer: fine)': {
-        '&:hover': {
-          borderBottom: setClim
-            ? ({ colors }) => `solid 1px ${colors.primary} !important`
-            : 'unset',
-        },
-      },
-      '&:focus': {
-        outline: 'none',
-        borderBottom: setClim
-          ? ({ colors }) => `solid 1px ${colors.primary} !important`
-          : 'unset',
-      },
       transition: 'border 0.15s',
       userSelect: setClim ? 'none !important' : 'unset',
       width: 'fit-content',
@@ -234,6 +225,7 @@ const Colorbar = ({
     return (
       <Box
         id='min'
+        as={setClim ? 'button' : 'div'}
         ref={climRef[0]}
         tabIndex={0}
         sx={{
@@ -248,9 +240,7 @@ const Colorbar = ({
           mr: horizontal ? ['2px', '1px', '1px', '2px'] : 0,
           mb: horizontal ? 0 : ['-2px', '-2px', '-2px', '-3px'],
           borderBottom: setClim
-            ? climMinDragging
-              ? ({ colors }) => `solid 1px ${colors.primary}`
-              : ({ colors }) => `solid 1px ${colors.secondary}`
+            ? ({ colors }) => `solid 1px ${colors.primary}`
             : 'unset',
           cursor: setClim
             ? horizontal
@@ -271,6 +261,7 @@ const Colorbar = ({
     return (
       <Box
         id='max'
+        as={setClim ? 'button' : 'div'}
         ref={climRef[1]}
         tabIndex={0}
         sx={{
@@ -280,9 +271,7 @@ const Colorbar = ({
             : ['2px', '1px', '1px', '2px'],
           mt: horizontal ? 0 : ['-2px', '-3px', '-3px', '-3px'],
           borderBottom: setClim
-            ? climMaxDragging
-              ? ({ colors }) => `solid 1px ${colors.primary}`
-              : ({ colors }) => `solid 1px ${colors.secondary}`
+            ? ({ colors }) => `solid 1px ${colors.primary}`
             : 'unset',
           cursor: setClim
             ? horizontal
