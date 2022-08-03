@@ -22,6 +22,11 @@ const Meta = ({ title, description, card }) => {
       <meta name='description' content={descriptionProp} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link
+        rel='alternate icon'
+        type='image/png'
+        href='https://images.carbonplan.org/favicon.png'
+      />
+      <link
         rel='icon'
         type='image/svg+xml'
         href='https://images.carbonplan.org/favicon.svg'
@@ -56,11 +61,6 @@ const Meta = ({ title, description, card }) => {
       />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
       <meta name='theme-color' content='#1b1e23' />
-      <link
-        rel='alternate icon'
-        type='image/png'
-        href='https://images.carbonplan.org/favicon.png'
-      />
       <link
         rel='mask-icon'
         href='https://images.carbonplan.org/safari-pinned-tab.svg'
