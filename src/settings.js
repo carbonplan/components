@@ -27,8 +27,8 @@ const Settings = ({ value, sx, ...props }) => {
           style={{
             width: '50px',
             height: '30px',
-            transform: 'scale(2)',
             marginTop: '-3px',
+            flexShrink: 0,
           }}
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 68 36'
@@ -56,8 +56,8 @@ const Settings = ({ value, sx, ...props }) => {
           style={{
             width: '50px',
             height: '30px',
-            transform: 'scale(2)',
             marginTop: '-3px',
+            flexShrink: 0,
           }}
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 68 36'
