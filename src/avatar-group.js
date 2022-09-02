@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from 'theme-ui'
 import Avatar from './avatar'
 import Row from './row'
 import Column from './column'
@@ -12,23 +13,50 @@ const sizes = {
   xl: [9],
 }
 
+const Blank = ({ overflow, maxWidth }) => {
+  return (
+    <Box
+      sx={{
+        bg: 'muted',
+        height: '100%',
+        maxWidth: maxWidth,
+        borderRadius: '50%',
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            fontFamily: 'mono',
+            letterSpacing: 'mono',
+            fontSize: [3, 3, 3, 4],
+          }}
+        >
+          +{overflow}
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
 const AvatarGroup = ({
   members,
   direction = 'horizontal',
   align,
   spacing = 'md',
+  limit,
   width,
   maxWidth,
   fixedCount,
   sx,
   ...props
 }) => {
-  if (members.length > fixedCount) {
-    throw Error(
-      `cannot render '${members.length}' avatars with a fixed count of '${fixedCount}'`
-    )
-  }
-
   let gap
   if (sizes.hasOwnProperty(spacing)) {
     gap = sizes[spacing]
@@ -47,12 +75,15 @@ const AvatarGroup = ({
           return 'auto'
         } else if (d === 'right') {
           const offset = Math.max(1, fixedCount - members.length + 1)
-          return offset + idx
+          return (offset + idx) % fixedCount
         } else {
           throw Error(`alignment '${align}' not recognized`)
         }
       })
   }
+
+  let excess = members.length > limit
+  let overflow = members.length - limit + 1
 
   return (
     <>
@@ -60,7 +91,12 @@ const AvatarGroup = ({
         <Row columns={fixedCount} gap={gap} sx={sx} {...props}>
           {members.map((props, idx) => (
             <Column key={idx} start={start(idx)}>
-              <Avatar {...props} width={width} maxWidth={maxWidth} />
+              {(!excess || idx < (limit - 1)) && (
+                <Avatar {...props} width={width} maxWidth={maxWidth} />
+              )}
+              {excess && idx === (limit - 1) && (
+                <Blank overflow={overflow} maxWidth={maxWidth} />
+              )}
             </Column>
           ))}
         </Row>
