@@ -119,7 +119,7 @@ const Footer = () => {
                 letterSpacing: 'mono',
               }}
             >
-              (c) 2021 CARBONPLAN
+              (c) 2022 CARBONPLAN
             </Box>
           </Box>
         </Column>
