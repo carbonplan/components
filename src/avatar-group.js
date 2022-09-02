@@ -82,8 +82,8 @@ const AvatarGroup = ({
       })
   }
 
-  let excess = members.length > limit
-  let overflow = members.length - limit + 1
+  const excess = members.length > limit
+  const overflow = members.length - limit + 1
 
   return (
     <>
@@ -91,10 +91,10 @@ const AvatarGroup = ({
         <Row columns={fixedCount} gap={gap} sx={sx} {...props}>
           {members.map((props, idx) => (
             <Column key={idx} start={start(idx)}>
-              {(!excess || idx < limit - 1) && (
+              {((!limit && !excess) || idx < limit - 1) && (
                 <Avatar {...props} width={width} maxWidth={maxWidth} />
               )}
-              {excess && idx === limit - 1 && (
+              {(limit && excess) && idx === limit - 1 && (
                 <Blank overflow={overflow} maxWidth={maxWidth} />
               )}
             </Column>
