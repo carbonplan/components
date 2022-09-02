@@ -94,7 +94,7 @@ const AvatarGroup = ({
               {((!limit && !excess) || idx < limit - 1) && (
                 <Avatar {...props} width={width} maxWidth={maxWidth} />
               )}
-              {(limit && excess) && idx === limit - 1 && (
+              {limit && excess && idx === limit - 1 && (
                 <Blank overflow={overflow} maxWidth={maxWidth} />
               )}
             </Column>
