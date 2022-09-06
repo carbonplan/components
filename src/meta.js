@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useThemeUI } from 'theme-ui'
 
 const Meta = ({ title, description, card }) => {
-  const { theme, colormode } = useThemeUI()
+  const { theme, colorMode } = useThemeUI()
   if (!description) {
     console.warn(
       'a custom description should be used for search engine optimization'
@@ -65,7 +65,7 @@ const Meta = ({ title, description, card }) => {
       <meta name='theme-color' content={theme.colors.background} />
       <meta
         name='color-scheme'
-        content={colormode === 'light' ? 'light' : 'dark'}
+        content={colorMode === 'light' ? 'light' : 'dark'}
       />
       <link
         rel='mask-icon'
