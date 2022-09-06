@@ -94,6 +94,7 @@ const Meta = ({ title, description, card }) => {
       <meta name='twitter:description' content={descriptionProp} />
       <meta name='twitter:image' content={cardProp} />
       <meta name='twitter:card' content='summary_large_image' />
+      <meta name='format-detection' content='telephone=no' />
     </Head>
   )
 }
