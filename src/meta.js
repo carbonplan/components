@@ -15,7 +15,7 @@ const Meta = ({ title, description, card }) => {
   const titleProp = title || 'CarbonPlan'
   const descriptionProp =
     description ||
-    'Improving the transparency and scientific integrity of climate solutions through open data and tools.'
+    'Improving the transparency and scientific integrity of climate solutions with open data and tools.'
   const cardProp = card || 'https://images.carbonplan.org/social/homepage.png'
 
   return (
