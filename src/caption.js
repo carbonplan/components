@@ -10,6 +10,10 @@ const Caption = ({ as = 'figcaption', number, children, label = 'figure' }) => {
         display: 'block',
         textAlign: 'left',
         fontSize: [2, 2, 2, 3],
+        '& > :last-child': {
+          display: 'inline',
+          fontSize: [2, 2, 2, 3],
+        },
       }}
     >
       {number && (
