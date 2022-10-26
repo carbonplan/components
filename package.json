@@ -32,7 +32,7 @@
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {
     "@carbonplan/emoji": "2.0.0-develop.0",
-    "@carbonplan/icons": "2.0.0-develop.0",
+    "@carbonplan/icons": "2.0.0-develop.1",
     "@theme-ui/color": ">=0.15.0"
   },
   "prettier": "@carbonplan/prettier",
