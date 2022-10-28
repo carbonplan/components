@@ -12,7 +12,7 @@ const Caption = ({ as = 'figcaption', number, children, label = 'figure' }) => {
         fontSize: [2, 2, 2, 3],
         '& a': { color: 'secondary' },
         '& a:hover': { color: 'primary' },
-        '& > :last-child': {
+        '& > p': {
           display: 'inline',
           fontSize: [2, 2, 2, 3],
         },
