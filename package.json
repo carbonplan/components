@@ -1,6 +1,6 @@
 {
   "name": "@carbonplan/components",
-  "version": "11.8.2",
+  "version": "12.0.0",
   "description": "shared components for our websites",
   "main": "dst/index.js",
   "module": "dst/index.esm.js",
@@ -31,17 +31,17 @@
   ],
   "homepage": "https://github.com/carbonplan/components#readme",
   "dependencies": {
-    "@carbonplan/emoji": "^1.0.0",
-    "@carbonplan/icons": "^1.0.0",
-    "@theme-ui/color": ">=0.11.1"
+    "@carbonplan/emoji": "^2.0.0",
+    "@carbonplan/icons": "^2.0.0",
+    "@theme-ui/color": ">=0.15.0"
   },
   "prettier": "@carbonplan/prettier",
   "peerDependencies": {
-    "@emotion/react": "^11.1.5",
-    "next": "^10.1.3 || ^11.0.1 || ^12.0.4",
-    "react": "^16.14.0 || ^17.0.2",
-    "react-dom": "^16.14.0 || ^17.0.2",
-    "theme-ui": ">=0.11.1"
+    "@emotion/react": ">=11.1.5",
+    "next": ">=12",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "theme-ui": ">=0.15.0"
   },
   "devDependencies": {
     "@carbonplan/prettier": "^1.2.0",

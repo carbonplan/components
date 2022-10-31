@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Styled, Container, Grid } from 'theme-ui'
+import { Box } from 'theme-ui'
 import { PoopSad } from '@carbonplan/emoji'
 import Layout from './layout'
 import Row from './row'
@@ -16,7 +16,9 @@ const Custom404 = () => {
     >
       <Row sx={{ mb: [5, 0, 0], pt: [0, 0, 6] }}>
         <Column start={[1, 1, 3, 3]} width={[6, 4, 4, 4]}>
-          <Styled.h1>Oops!</Styled.h1>
+          <Box as='h1' variant='styles.h1'>
+            Oops!
+          </Box>
           <Box
             sx={{
               fontSize: [4, 4, 4, 5],
