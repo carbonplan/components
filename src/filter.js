@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Box } from 'theme-ui'
 import Tag from './tag'
 
@@ -66,10 +66,20 @@ const Filter = ({
   setValues,
   label,
   colors,
+  order,
   showAll = false,
   multiSelect = false,
   ...props
 }) => {
+  const keys = useMemo(() => {
+    console.log('calculating in Filter')
+    if (order) {
+      return order
+    } else {
+      return Object.keys(values)
+    }
+  }, [order, ...Object.keys(values).sort()])
+
   return (
     <Box {...props}>
       {label && <Box sx={sx.label}>{label}</Box>}
@@ -90,7 +100,7 @@ const Filter = ({
             All
           </Tag>
         )}
-        {Object.keys(values).map((d, i) => (
+        {keys.map((d, i) => (
           <Tag
             onClick={() =>
               updateValues({
