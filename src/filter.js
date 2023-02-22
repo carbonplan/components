@@ -72,7 +72,6 @@ const Filter = ({
   ...props
 }) => {
   const keys = useMemo(() => {
-    console.log('calculating in Filter')
     if (order) {
       return order
     } else {
