@@ -25,6 +25,27 @@ See them demoed at [design.carbonplan.org](https://design.carbonplan.org).
 
 ## usage
 
+### Initializing the Theme Provider
+
+When working with some of the components, it is important to have a `theme` object in place. Therefore, to ensure smooth functioning of the components, you must initialize the theme provider in your `Next.js` project. Here's an example of how you can achieve this in `pages/_app.js`:
+
+```jsx
+import { ThemeProvider } from 'theme-ui'
+
+// import your theme or define it here
+const theme = {}
+
+export default function App({ Component, pageProps }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
+}
+```
+
+### Using the components
+
 To use, import the component(s) you want into your `next` project. Here are some examples.
 
 Use our logo and monogram:
