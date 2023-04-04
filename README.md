@@ -1,7 +1,17 @@
-<img
-  src='https://carbonplan-assets.s3.amazonaws.com/monogram/dark-small.png'
-  height='48'
-/>
+<p align='left'>
+  <a href='https://carbonplan.org/#gh-light-mode-only'>
+    <img
+      src='https://carbonplan-assets.s3.amazonaws.com/monogram/dark-small.png'
+      height='48px'
+    />
+  </a>
+  <a href='https://carbonplan.org/#gh-dark-mode-only'>
+    <img
+      src='https://carbonplan-assets.s3.amazonaws.com/monogram/light-small.png'
+      height='48px'
+    />
+  </a>
+</p>
 
 # carbonplan / components
 
@@ -17,11 +27,11 @@
 [build status]: https://github.com/carbonplan/components/actions/workflows/main.yml/badge.svg
 [actions]: https://github.com/carbonplan/components/actions/workflows/main.yml
 [mit license]: https://badgen.net/badge/license/MIT/blue
-[npm version]: https://badgen.net/npm/v/@carbonplan/components
+[npm version]: https://img.shields.io/npm/v/@carbonplan/components
 
 These are a set of modular but opinionated [`react`](https://github.com/facebook/react) components. They assume and make extensive use of [`theme-ui`](https://github.com/system-ui/theme-ui) and [`next`](https://github.com/vercel/next.js), and are meant to be composed with our [`theme`](https://github.com/carbonplan/theme). The main use cases are to encourage consistency throughout our design and streamline building our own websites by reducing boilerplate. However, over time we might expand them to enable easier embedding of our content into other websites.
 
-See them demoed at [design.carbonplan.org](https://design.carbonplan.org).
+See them demoed at [carbonplan.org/design](https://carbonplan.org/design).
 
 ## usage
 
