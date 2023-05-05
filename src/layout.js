@@ -13,6 +13,7 @@ import Settings from './settings'
 const Layout = ({
   title,
   description,
+  url,
   card,
   children,
   status,
@@ -99,7 +100,7 @@ const Layout = ({
     <>
       {guide && <Guide color={guide} />}
       {scrollbar && <Scrollbar />}
-      <Meta card={card} description={description} title={title} />
+      <Meta card={card} description={description} title={title} url={url} />
       <Flex
         sx={{
           flexDirection: 'column',
