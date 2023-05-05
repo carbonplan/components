@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useThemeUI } from 'theme-ui'
 
-const Meta = ({ title, description, card }) => {
+const Meta = ({ title, description, card, url }) => {
   const { theme, colorMode } = useThemeUI()
   if (!description) {
     console.warn(
@@ -17,12 +17,14 @@ const Meta = ({ title, description, card }) => {
     description ||
     'Improving the transparency and scientific integrity of climate solutions with open data and tools.'
   const cardProp = card || 'https://images.carbonplan.org/social/homepage.png'
+  const urlProp = url || 'https://carbonplan.org'
 
   return (
     <Head>
       <title>{titleProp}</title>
       <meta name='description' content={descriptionProp} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      {url && <link rel='canonical' href={url} />}
       <link
         rel='alternate icon'
         type='image/png'
@@ -89,7 +91,7 @@ const Meta = ({ title, description, card }) => {
       <meta property='og:title' content={titleProp} />
       <meta property='og:description' content={descriptionProp} />
       <meta property='og:image' content={cardProp} />
-      <meta property='og:url' content='https://carbonplan.org' />
+      <meta property='og:url' content={urlProp} />
       <meta name='twitter:title' content={titleProp} />
       <meta name='twitter:description' content={descriptionProp} />
       <meta name='twitter:image' content={cardProp} />
