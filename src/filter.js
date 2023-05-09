@@ -67,6 +67,7 @@ const Filter = ({
   label,
   colors,
   order,
+  labels,
   showAll = false,
   multiSelect = false,
   ...props
@@ -126,7 +127,7 @@ const Filter = ({
               mb: [1],
             }}
           >
-            {d}
+            {labels ? labels[d] : d}
           </Tag>
         ))}
       </Box>
