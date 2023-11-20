@@ -60,16 +60,16 @@ const Footer = () => {
                 mb: [2],
               }}
             >
-              FOLLOW
+              NEWSLETTER
             </Box>
             <Link
-              href='https://twitter.com/carbonplanorg'
+              href='https://carbonplan.org/newsletter'
               sx={{
                 textDecoration: 'none',
                 fontSize: [2, 2, 2, 3],
               }}
             >
-              @carbonplanorg
+              Subscribe
             </Link>
           </Box>
         </Column>
@@ -119,7 +119,7 @@ const Footer = () => {
                 letterSpacing: 'mono',
               }}
             >
-              (c) 2022 CARBONPLAN
+              (c) 2023 CARBONPLAN
             </Box>
           </Box>
         </Column>
