@@ -1,9 +1,11 @@
 import React from 'react'
-import { Box, Grid, Link } from 'theme-ui'
+import { Box, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
 import Row from './row'
 import Column from './column'
+
+const getCurrentYear = () => new Date().getFullYear()
 
 const Footer = () => {
   return (
@@ -119,7 +121,7 @@ const Footer = () => {
                 letterSpacing: 'mono',
               }}
             >
-              (c) 2023 CARBONPLAN
+              (c) {getCurrentYear()} CARBONPLAN
             </Box>
           </Box>
         </Column>
