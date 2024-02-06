@@ -126,7 +126,6 @@ const Colorbar = ({
   bottom = false,
   sx,
   sxClim,
-  type,
   ...props
 }) => {
   if (!Array.isArray(colormap)) {
