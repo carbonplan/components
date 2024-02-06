@@ -37,8 +37,9 @@ const hexToRgb = (hex) => {
 
 const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
   const step = (1 / colormap.length) * 100
+  const isHex = colormap[0].startsWith('#')
   const values = colormap.map((color, i) => {
-    const rgbColor = color.startsWith('#') ? hexToRgb(color) : color
+    const rgbColor = isHex ? hexToRgb(color) : color
     const position = `${i * step}% ${
       discrete && i < colormap.length - 1 ? `${(i + 1) * step}%` : ''
     }`
