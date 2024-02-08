@@ -25,12 +25,25 @@ const DIMENSIONS = {
   height: ['80px', '110px', '110px', '130px'],
 }
 
+const hexToRgb = (hex) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result
+    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
+        result[3],
+        16
+      )}`
+    : null
+}
+
 const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
   const step = (1 / colormap.length) * 100
-  const values = colormap.map((d, i) => {
-    return `rgb(${d}) ${i * step}% ${
+  const isHex = colormap[0].startsWith('#')
+  const values = colormap.map((color, i) => {
+    const rgbColor = isHex ? hexToRgb(color) : color
+    const position = `${i * step}% ${
       discrete && i < colormap.length - 1 ? `${(i + 1) * step}%` : ''
     }`
+    return `rgb(${rgbColor}) ${position}`
   })
 
   const css = `linear-gradient(to ${
