@@ -20,7 +20,7 @@ const Avatar = ({
   if (name) {
     srcProp = `https://images.carbonplan.org/team/${name
       .toLowerCase()
-      .replace(' ', '-')}.png`
+      .replaceAll(' ', '-')}.png`
     altProp = alt || name
   } else if (github) {
     srcProp = `https://github.com/${github}.png`
