@@ -6,7 +6,7 @@
   "module": "dst/index.esm.js",
   "scripts": {
     "build": "rimraf dst && microbundle src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "watch": "microbundle watch src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment --no-compress",
+    "watch": "microbundle watch src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
     "format": "prettier --write 'src/**/*.js' '*.css'"
   },
   "repository": {
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@carbonplan/prettier": "^1.2.0",
-    "microbundle": "^0.14.0",
+    "microbundle": "^0.13.0",
     "prettier": "^2.2.1",
     "rimraf": "3.0.2"
   }
