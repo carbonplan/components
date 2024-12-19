@@ -70,17 +70,17 @@ const Nav = ({ link, mode, nav, first, setExpanded }) => {
 
   if (mode === 'homepage' || (mode === 'local' && nav === url)) {
     return (
-      <Link
-        as={NextLink}
-        href={href}
-        onClick={() => {
-          if (nav === url) setExpanded(false)
-        }}
-        sx={sx.link(nav, url, first)}
-      >
-        <HoverArrow />
-        {display}
-      </Link>
+      <NextLink href={href} passHref>
+        <Link
+          onClick={() => {
+            if (nav === url) setExpanded(false)
+          }}
+          sx={sx.link(nav, url, first)}
+        >
+          <HoverArrow />
+          {display}
+        </Link>
+      </NextLink>
     )
   } else {
     return (
@@ -126,22 +126,22 @@ const Header = ({ status, mode, nav, menuItems }) => {
           sx={{ pointerEvents: 'all', display: 'block', width: 'fit-content' }}
         >
           {(mode == 'homepage' || mode == 'local') && (
-            <Link
-              as={NextLink}
-              href='/'
-              aria-label='CarbonPlan Homepage'
-              sx={{
-                display: 'block',
-              }}
-            >
-              <Logo
-                id='logo'
+            <NextLink href='/' passHref>
+              <Link
+                aria-label='CarbonPlan Homepage'
                 sx={{
-                  cursor: 'pointer',
-                  color: 'primary',
+                  display: 'block',
                 }}
-              />
-            </Link>
+              >
+                <Logo
+                  id='logo'
+                  sx={{
+                    cursor: 'pointer',
+                    color: 'primary',
+                  }}
+                />
+              </Link>
+            </NextLink>
           )}
           {(mode == null || mode == 'remote') && (
             <Link

@@ -21,9 +21,11 @@ const Link = (
 ) => {
   if (internal || (href && href.startsWith('/'))) {
     return (
-      <ThemedLink as={NextLink} href={href} ref={ref} {...props}>
-        {children}
-      </ThemedLink>
+      <NextLink href={href} passHref>
+        <ThemedLink ref={ref} {...props}>
+          {children}
+        </ThemedLink>
+      </NextLink>
     )
   } else if (tracking) {
     let action
