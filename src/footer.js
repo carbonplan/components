@@ -145,7 +145,7 @@ const Footer = () => {
               pt: [2],
             }}
           >
-            <NextLink href='/terms' passHref>
+            <NextLink href='/terms' passHref legacyBehavior>
               <Box
                 as='a'
                 sx={{

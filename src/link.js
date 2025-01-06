@@ -21,7 +21,7 @@ const Link = (
 ) => {
   if (internal || (href && href.startsWith('/'))) {
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} passHref legacyBehavior>
         <ThemedLink ref={ref} {...props}>
           {children}
         </ThemedLink>

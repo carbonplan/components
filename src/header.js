@@ -70,7 +70,7 @@ const Nav = ({ link, mode, nav, first, setExpanded }) => {
 
   if (mode === 'homepage' || (mode === 'local' && nav === url)) {
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} passHref legacyBehavior>
         <Link
           onClick={() => {
             if (nav === url) setExpanded(false)
@@ -126,7 +126,7 @@ const Header = ({ status, mode, nav, menuItems }) => {
           sx={{ pointerEvents: 'all', display: 'block', width: 'fit-content' }}
         >
           {(mode == 'homepage' || mode == 'local') && (
-            <NextLink href='/' passHref>
+            <NextLink href='/' passHref legacyBehavior>
               <Link
                 aria-label='CarbonPlan Homepage'
                 sx={{
