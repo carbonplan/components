@@ -145,20 +145,21 @@ const Footer = () => {
               pt: [2],
             }}
           >
-            <Link
-              as={NextLink}
-              href='/terms'
-              sx={{
-                textDecoration: 'none',
-                fontSize: [1, 1, 1, 2],
-                color: 'secondary',
-                fontFamily: 'mono',
-                letterSpacing: 'mono',
-                display: 'block',
-              }}
-            >
-              READ OUR TERMS
-            </Link>
+            <NextLink href='/terms' passHref legacyBehavior>
+              <Box
+                as='a'
+                sx={{
+                  textDecoration: 'none',
+                  fontSize: [1, 1, 1, 2],
+                  color: 'secondary',
+                  fontFamily: 'mono',
+                  letterSpacing: 'mono',
+                  display: 'block',
+                }}
+              >
+                READ OUR TERMS
+              </Box>
+            </NextLink>
           </Box>
         </Column>
         <Column
