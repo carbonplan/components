@@ -33,7 +33,7 @@ const Expander = ({ value, id, onClick, sx }) => {
             strokeWidth: 2,
             transition: '0.25s all',
             transformOrigin: '8px 8px',
-            transform: value ? 'rotate(45deg)' : '',
+            transform: value ? 'rotate(45deg)' : 'rotate(0deg)',
           }}
         />
       </svg>
