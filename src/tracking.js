@@ -1,25 +1,12 @@
 import React from 'react'
 
-const Tracking = ({ id }) => {
-  if (!id) {
-    return null
-  }
+const Tracking = ({ domain = 'carbonplan.org' }) => {
   return (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${id}', {
-            page_path: window.location.pathname,
-          });
-        `,
-        }}
-      />
-    </>
+    <script
+      defer
+      data-domain={domain}
+      src='https://plausible.io/js/script.js'
+    />
   )
 }
 
