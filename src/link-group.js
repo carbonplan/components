@@ -7,7 +7,6 @@ const LinkGroup = ({
   members,
   color,
   inverted,
-  tracking,
   size = 'xs',
   rowGap = [2, 2, 2, 3],
   columnGap = [3, 3, 3, 4],
@@ -34,7 +33,6 @@ const LinkGroup = ({
             sx={{ color: color }}
             inverted={inverted}
             suffix={<RotatingArrow />}
-            tracking={tracking}
           >
             {d.label}
           </Button>

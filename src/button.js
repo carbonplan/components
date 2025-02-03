@@ -14,7 +14,6 @@ const Button = (
     align,
     href,
     internal,
-    tracking,
     ...props
   },
   ref
@@ -194,7 +193,6 @@ const Button = (
         ref={ref}
         href={href}
         internal={internal}
-        tracking={tracking}
         sx={{
           ...style,
           textDecoration: 'none',
