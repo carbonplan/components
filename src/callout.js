@@ -4,7 +4,7 @@ import { Arrow } from '@carbonplan/icons'
 import Link from './link'
 
 const Callout = (
-  { label, children, inverted, color, href, internal, tracking, sx, ...props },
+  { label, children, inverted, color, href, internal, sx, ...props },
   ref
 ) => {
   const baseColor = color || (inverted ? 'secondary' : 'primary')
@@ -78,14 +78,7 @@ const Callout = (
 
   if (href) {
     return (
-      <Link
-        ref={ref}
-        href={href}
-        internal={internal}
-        tracking={tracking}
-        sx={style}
-        {...props}
-      >
+      <Link ref={ref} href={href} internal={internal} sx={style} {...props}>
         {Inner}
       </Link>
     )
