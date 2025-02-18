@@ -110,6 +110,7 @@ const Footer = () => {
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
+              display: 'inline-block',
               pt: [2],
             }}
           >
@@ -127,7 +128,7 @@ const Footer = () => {
         </Column>
         <Column
           start={[4, 3, 5, 5]}
-          width={[2, 2, 3, 3]}
+          width={[3, 3, 4, 4]}
           sx={{
             display: 'flex',
             alignItems: ['flex-start', 'flex-start', 'flex-end'],
@@ -141,30 +142,57 @@ const Footer = () => {
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              width: ['100%', 'auto', 'auto', 'auto'],
+              display: 'inline-block',
+              width: 'fit-content',
               pt: [2],
             }}
           >
-            <NextLink href='/terms' passHref legacyBehavior>
-              <Box
-                as='a'
-                sx={{
-                  textDecoration: 'none',
-                  fontSize: [1, 1, 1, 2],
-                  color: 'secondary',
-                  fontFamily: 'mono',
-                  letterSpacing: 'mono',
-                  display: 'block',
-                }}
-              >
-                READ OUR TERMS
+            <Box
+              sx={{
+                color: 'secondary',
+                fontSize: [1, 1, 1, 2],
+                fontFamily: 'mono',
+                letterSpacing: 'mono',
+                display: 'flex',
+                flexDirection: ['column', 'column', 'row', 'row'],
+                gap: [0, 0, 2, 2],
+              }}
+            >
+              <NextLink href='/terms' passHref legacyBehavior>
+                <Box
+                  as='a'
+                  sx={{
+                    color: 'secondary',
+                    '&:hover': {
+                      color: 'primary',
+                    },
+                  }}
+                >
+                  TERMS OF USE
+                </Box>
+              </NextLink>
+              <Box sx={{ display: ['none', 'none', 'initial', 'initial'] }}>
+                {' / '}
               </Box>
-            </NextLink>
+              <NextLink href='/privacy' passHref legacyBehavior>
+                <Box
+                  as='a'
+                  sx={{
+                    color: 'secondary',
+                    '&:hover': {
+                      color: 'primary',
+                    },
+                  }}
+                >
+                  PRIVACY POLICY
+                </Box>
+              </NextLink>
+            </Box>
           </Box>
         </Column>
         <Column
           start={[5, 7, 9, 9]}
-          width={[2, 3, 3, 3]}
+          width={[2, 2, 3, 3]}
           sx={{ display: ['none', 'initial', 'initial', 'initial'] }}
         >
           <Monogram
