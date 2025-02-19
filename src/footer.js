@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Link } from 'theme-ui'
+import { Box, Flex, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
 import Row from './row'
@@ -110,6 +110,7 @@ const Footer = () => {
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
+              display: 'inline-block',
               pt: [2],
             }}
           >
@@ -127,7 +128,7 @@ const Footer = () => {
         </Column>
         <Column
           start={[4, 3, 5, 5]}
-          width={[2, 2, 3, 3]}
+          width={[3, 3, 4, 4]}
           sx={{
             display: 'flex',
             alignItems: ['flex-start', 'flex-start', 'flex-end'],
@@ -141,30 +142,54 @@ const Footer = () => {
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              width: ['100%', 'auto', 'auto', 'auto'],
               pt: [2],
             }}
           >
-            <NextLink href='/terms' passHref legacyBehavior>
-              <Box
-                as='a'
-                sx={{
-                  textDecoration: 'none',
-                  fontSize: [1, 1, 1, 2],
-                  color: 'secondary',
-                  fontFamily: 'mono',
-                  letterSpacing: 'mono',
-                  display: 'block',
-                }}
-              >
-                READ OUR TERMS
+            <Flex
+              sx={{
+                color: 'secondary',
+                fontSize: [1, 1, 1, 2],
+                fontFamily: 'mono',
+                letterSpacing: 'mono',
+                flexDirection: ['column', 'column', 'row', 'row'],
+                gap: [0, 0, 2, 2],
+              }}
+            >
+              <NextLink href='/terms' passHref legacyBehavior>
+                <Box
+                  as='a'
+                  sx={{
+                    color: 'secondary',
+                    '&:hover': {
+                      color: 'primary',
+                    },
+                  }}
+                >
+                  TERMS OF USE
+                </Box>
+              </NextLink>
+              <Box sx={{ display: ['none', 'none', 'initial', 'initial'] }}>
+                {' / '}
               </Box>
-            </NextLink>
+              <NextLink href='/privacy' passHref legacyBehavior>
+                <Box
+                  as='a'
+                  sx={{
+                    color: 'secondary',
+                    '&:hover': {
+                      color: 'primary',
+                    },
+                  }}
+                >
+                  PRIVACY POLICY
+                </Box>
+              </NextLink>
+            </Flex>
           </Box>
         </Column>
         <Column
           start={[5, 7, 9, 9]}
-          width={[2, 3, 3, 3]}
+          width={[2, 2, 3, 3]}
           sx={{ display: ['none', 'initial', 'initial', 'initial'] }}
         >
           <Monogram
