@@ -142,8 +142,6 @@ const Footer = () => {
               borderColor: 'muted',
               borderWidth: '0px',
               borderTopWidth: '1px',
-              display: 'inline-block',
-              width: 'fit-content',
               pt: [2],
             }}
           >
