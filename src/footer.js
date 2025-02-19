@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Link } from 'theme-ui'
+import { Box, Flex, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
 import Row from './row'
@@ -147,13 +147,12 @@ const Footer = () => {
               pt: [2],
             }}
           >
-            <Box
+            <Flex
               sx={{
                 color: 'secondary',
                 fontSize: [1, 1, 1, 2],
                 fontFamily: 'mono',
                 letterSpacing: 'mono',
-                display: 'flex',
                 flexDirection: ['column', 'column', 'row', 'row'],
                 gap: [0, 0, 2, 2],
               }}
@@ -187,7 +186,7 @@ const Footer = () => {
                   PRIVACY POLICY
                 </Box>
               </NextLink>
-            </Box>
+            </Flex>
           </Box>
         </Column>
         <Column
