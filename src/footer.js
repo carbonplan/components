@@ -122,7 +122,15 @@ const Footer = () => {
                 letterSpacing: 'mono',
               }}
             >
-              (c) {getCurrentYear()} CARBONPLAN
+              <Flex
+                sx={{
+                  flexDirection: ['column', 'column', 'row', 'row'],
+                  gap: [0, 0, '10px', '12px'],
+                }}
+              >
+                <Box>(c) {getCurrentYear()}</Box>
+                <Box>CARBONPLAN</Box>
+              </Flex>
             </Box>
           </Box>
         </Column>
@@ -152,7 +160,7 @@ const Footer = () => {
                 fontFamily: 'mono',
                 letterSpacing: 'mono',
                 flexDirection: ['column', 'column', 'row', 'row'],
-                gap: [0, 0, 2, 2],
+                gap: [0, 0, '10px', '12px'],
               }}
             >
               <NextLink href='/terms' passHref legacyBehavior>
