@@ -1,7 +1,15 @@
 import React from 'react'
 import { IconButton } from 'theme-ui'
+import { ThemeUIStyleObject } from 'theme-ui'
 
-const Settings = ({ value, sx, ...props }) => {
+export type SettingsProps = {
+  value: boolean
+  onClick?: () => void
+  sx?: ThemeUIStyleObject
+  [key: string]: any
+}
+
+const Settings = ({ value, sx, ...props }: SettingsProps) => {
   return (
     <IconButton
       sx={{

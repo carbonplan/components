@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactNode } from 'react'
 import { useThemeUI, Container, Flex, Box } from 'theme-ui'
 import Meta from './meta'
 import Header from './header'
@@ -8,9 +8,30 @@ import Metadata from './metadata'
 import FadeIn from './fade-in'
 import Scrollbar from './scrollbar'
 import Guide from './guide'
-import Settings from './settings'
+import Settings, { SettingsProps } from './settings'
 
-const Layout = ({
+export type LayoutProps = {
+  title?: string
+  description?: string
+  url?: string
+  card?: string
+  children?: ReactNode
+  status?: string
+  nav?: string
+  settings?: SettingsProps
+  footer?: boolean
+  header?: boolean
+  metadata?: 'mouse' | 'scroll' | boolean
+  links?: 'remote' | 'local' | 'homepage' | null
+  dimmer?: 'bottom' | 'top'
+  guide?: boolean | string
+  scrollbar?: boolean
+  fade?: boolean
+  container?: boolean
+  printable?: boolean
+}
+
+const Layout: React.FC<LayoutProps> = ({
   title,
   description,
   url,
@@ -56,13 +77,15 @@ const Layout = ({
   useEffect(() => {
     if (!theme) return
 
-    const handler = (e) => {
+    const handler = (e: MediaQueryListEvent) => {
       if (e.matches && settings?.value && settings?.onClick) {
         settings?.onClick()
       }
     }
 
-    const query = window.matchMedia(`(min-width: ${theme.breakpoints[1]})`)
+    const query = window.matchMedia(
+      `(min-width: ${theme?.breakpoints?.[1] || '64em'})`
+    )
     query.onchange = handler
 
     return () => {
@@ -98,7 +121,7 @@ const Layout = ({
 
   return (
     <>
-      {guide && <Guide color={guide} />}
+      {typeof guide === 'string' ? <Guide color={guide} /> : guide && <Guide />}
       {scrollbar && <Scrollbar />}
       <Meta card={card} description={description} title={title} url={url} />
       <Flex
