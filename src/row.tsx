@@ -1,10 +1,20 @@
-import React from 'react'
-import { Grid } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Grid, ThemeUIStyleObject } from 'theme-ui'
 
-const Row = ({ children, sx, columns, gap, ...props }) => {
-  const makeArray = (input) => {
+export type RowProps = {
+  children: ReactNode
+  sx?: ThemeUIStyleObject
+  columns?: number | number[]
+  gap?: number | number[]
+  [key: string]: any
+}
+
+type ArrayInput = number | number[] | undefined
+
+const Row = ({ children, sx, columns, gap, ...props }: RowProps) => {
+  const makeArray = (input: ArrayInput): number[] => {
     if (!Array.isArray(input)) {
-      input = [input, input, input, input]
+      input = [input, input, input, input] as number[]
     }
     if (Array.isArray(input) && ![1, 2, 4].includes(input.length)) {
       throw new Error('Array length must be 1, 2, or 4')
@@ -15,10 +25,10 @@ const Row = ({ children, sx, columns, gap, ...props }) => {
     if (Array.isArray(input) && input.length == 2) {
       input = input.map((d) => [d, d]).flat()
     }
-    return input
+    return input as number[]
   }
 
-  let columnGap, rowGap
+  let columnGap: number[], rowGap: number[]
   if (Number.isInteger(gap) || Array.isArray(gap)) {
     gap = makeArray(gap)
     columnGap = gap
