@@ -2,12 +2,14 @@
   "name": "@carbonplan/components",
   "version": "13.1.1",
   "description": "shared components for our websites",
-  "main": "dst/index.js",
+  "main": "dst/index.ts",
   "module": "dst/index.esm.js",
+  "types": "dst/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dst && microbundle src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "watch": "microbundle watch src/index.js -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "format": "prettier --write 'src/**/*.js' '*.css'"
+    "clean": "rimraf dst",
+    "build": "npm run clean && tsc --emitDeclarationOnly && microbundle src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "watch": "npm run clean && microbundle watch src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment & tsc --watch --emitDeclarationOnly",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js}' '*.css'"
   },
   "repository": {
     "type": "git",
@@ -45,8 +47,12 @@
   },
   "devDependencies": {
     "@carbonplan/prettier": "^1.2.0",
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "microbundle": "^0.13.0",
     "prettier": "^2.2.1",
-    "rimraf": "3.0.2"
+    "rimraf": "3.0.2",
+    "typescript": "^5.8.2"
   }
 }
