@@ -54,7 +54,7 @@ const links: LinkItem[] = [
   { url: 'press', display: 'Press' },
 ]
 
-const HoverArrow: React.FC = () => {
+const HoverArrow = (): JSX.Element => {
   return (
     <Arrow
       id='arrow'
@@ -82,7 +82,13 @@ export type NavProps = {
   setExpanded: (expanded: boolean) => void
 }
 
-const Nav: React.FC<NavProps> = ({ link, mode, nav, first, setExpanded }) => {
+const Nav = ({
+  link,
+  mode,
+  nav,
+  first,
+  setExpanded,
+}: NavProps): JSX.Element => {
   const { url, display } = link
   const href = mode === 'remote' ? 'https://carbonplan.org/' + url : '/' + url
 
@@ -117,12 +123,12 @@ export type NavGroupProps = {
   setExpanded: (expanded: boolean) => void
 }
 
-const NavGroup: React.FC<NavGroupProps> = ({
+const NavGroup = ({
   links,
   nav,
   mode,
   setExpanded,
-}) => {
+}: NavGroupProps): JSX.Element[] => {
   return links.map((d, i) => {
     return (
       <Nav
@@ -144,7 +150,7 @@ export type HeaderProps = {
   menuItems?: ReactNode
 }
 
-const Header: React.FC<HeaderProps> = ({ status, mode, nav, menuItems }) => {
+const Header = ({ status, mode, nav, menuItems }: HeaderProps): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean>(false)
 
   const toggle = (e: MouseEvent<HTMLButtonElement>): void => {

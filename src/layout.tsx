@@ -31,7 +31,7 @@ export type LayoutProps = {
   printable?: boolean
 }
 
-const Layout: React.FC<LayoutProps> = ({
+const Layout = ({
   title,
   description,
   url,
@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({
   fade = true,
   container = true,
   printable = false,
-}) => {
+}: LayoutProps): JSX.Element => {
   let content = children
 
   if (fade) {
