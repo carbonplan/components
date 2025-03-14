@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, ThemeUIStyleObject } from 'theme-ui'
+import { Box, ResponsiveStyleValue } from 'theme-ui'
 import Avatar, { AvatarProps } from './avatar'
-import Row from './row'
+import Row, { RowProps } from './row'
 import Column from './column'
-import Group from './group'
+import Group, { GroupProps } from './group'
 
 const sizes = {
   xs: [1],
@@ -60,14 +60,13 @@ export type AvatarGroupProps = {
   members: AvatarProps[]
   direction?: 'horizontal' | 'vertical'
   align?: Alignment | Alignment[]
-  spacing?: SizeKey | number | number[]
+  spacing?: SizeKey | ResponsiveStyleValue<number | string>
   limit?: number
   width?: string
   maxWidth?: string | number
   fixedCount?: number
-  sx?: ThemeUIStyleObject
-  [key: string]: any
-}
+} & RowProps &
+  GroupProps
 
 const AvatarGroup = ({
   members,
@@ -81,12 +80,12 @@ const AvatarGroup = ({
   sx,
   ...props
 }: AvatarGroupProps) => {
-  let gap: number[] | number
+  let gap: ResponsiveStyleValue<number | string>
 
   if (typeof spacing === 'string' && spacing in sizes) {
     gap = sizes[spacing as SizeKey]
   } else {
-    gap = spacing as number | number[]
+    gap = spacing as ResponsiveStyleValue<number | string>
   }
 
   let start = (idx: number): StartValue => 'auto'

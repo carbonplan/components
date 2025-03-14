@@ -1,18 +1,10 @@
 import React, { ReactNode } from 'react'
-import { Grid, ThemeUIStyleObject } from 'theme-ui'
+import { Grid, GridProps } from 'theme-ui'
 
-export type RowProps = {
-  children: ReactNode
-  sx?: ThemeUIStyleObject
-  columns?: number | number[]
-  gap?: number | number[]
-  [key: string]: any
-}
+export type RowProps = GridProps
 
-type ArrayInput = number | number[] | undefined
-
-const Row = ({ children, sx, columns, gap, ...props }: RowProps) => {
-  const makeArray = (input: ArrayInput): number[] => {
+const Row = ({ children, sx, columns, gap, ...props }: GridProps) => {
+  const makeArray = (input: GridProps['gap']): GridProps['gap'] => {
     if (!Array.isArray(input)) {
       input = [input, input, input, input] as number[]
     }
@@ -25,10 +17,10 @@ const Row = ({ children, sx, columns, gap, ...props }: RowProps) => {
     if (Array.isArray(input) && input.length == 2) {
       input = input.map((d) => [d, d]).flat()
     }
-    return input as number[]
+    return input
   }
 
-  let columnGap: number[], rowGap: number[]
+  let columnGap: GridProps['gap'], rowGap: GridProps['gap']
   if (Number.isInteger(gap) || Array.isArray(gap)) {
     gap = makeArray(gap)
     columnGap = gap

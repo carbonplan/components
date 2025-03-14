@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Image, ThemeUIStyleObject } from 'theme-ui'
+import { Box, Image, BoxProps } from 'theme-ui'
 
-export type AvatarProps = {
+export type AvatarProps = BoxProps & {
   color?: string
   width?: string
   maxWidth?: string | number
@@ -9,8 +9,6 @@ export type AvatarProps = {
   github?: string
   alt?: string
   src?: string
-  sx?: ThemeUIStyleObject
-  [key: string]: any
 }
 
 const Avatar = ({

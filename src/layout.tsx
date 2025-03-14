@@ -22,7 +22,7 @@ export type LayoutProps = {
   footer?: boolean
   header?: boolean
   metadata?: 'mouse' | 'scroll' | boolean
-  links?: 'remote' | 'local' | 'homepage' | null
+  links?: 'remote' | 'local' | 'homepage'
   dimmer?: 'bottom' | 'top'
   guide?: boolean | string
   scrollbar?: boolean
@@ -79,7 +79,7 @@ const Layout = ({
 
     const handler = (e: MediaQueryListEvent) => {
       if (e.matches && settings?.value && settings?.onClick) {
-        settings?.onClick()
+        settings.onClick({} as React.MouseEvent<HTMLButtonElement>)
       }
     }
 

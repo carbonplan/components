@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react'
-import { Box, ThemeUIStyleObject } from 'theme-ui'
+import React from 'react'
+import { ResponsiveStyleValue } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 
 const sizes = {
   xs: [1],
@@ -11,14 +12,12 @@ const sizes = {
 
 type SizeKey = keyof typeof sizes
 type Direction = 'horizontal' | 'vertical'
-type SpacingValue = SizeKey | number | number[]
+type SpacingValue = SizeKey | ResponsiveStyleValue<number | string>
 
 export type GroupProps = {
-  children: ReactNode
   direction?: Direction
   spacing?: SpacingValue
-  sx?: ThemeUIStyleObject
-}
+} & BoxProps
 
 const Group = ({
   children,
@@ -26,12 +25,12 @@ const Group = ({
   spacing = 'md',
   sx,
 }: GroupProps) => {
-  let marginValue: number | number[]
+  let marginValue: ResponsiveStyleValue<number | string>
 
   if (typeof spacing === 'string' && spacing in sizes) {
-    marginValue = sizes[spacing]
+    marginValue = sizes[spacing as SizeKey]
   } else {
-    marginValue = spacing as number | number[]
+    marginValue = spacing as ResponsiveStyleValue<number | string>
   }
 
   if (!['horizontal', 'vertical'].includes(direction)) {

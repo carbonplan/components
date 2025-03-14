@@ -1,19 +1,14 @@
-import React, { ReactNode } from 'react'
-import { Box, ThemeUIStyleObject } from 'theme-ui'
+import React from 'react'
+import { Box, BoxProps, ResponsiveStyleValue } from 'theme-ui'
 
-export type ColumnProps = {
+export type ColumnProps = BoxProps & {
   start?: number | 'auto' | (number | 'auto')[]
   width?: number | 'auto' | (number | 'auto')[]
   dl?: 0.5 | 1
   dr?: 0.5 | 1
-  children: ReactNode
-  sx?: ThemeUIStyleObject
-  [key: string]: any
 }
 
 type GridValue = number | 'auto'
-type GridArray = GridValue[]
-type ResponsiveValue = Array<string | number>
 
 const Column = ({
   start,
@@ -27,12 +22,12 @@ const Column = ({
   start = start || 'auto'
   width = width || 'auto'
 
-  const makeArray = (input: GridValue | GridArray): GridArray => {
+  const makeArray = (input: GridValue[]): GridValue[] => {
     if (input && !Array.isArray(input)) {
       input = [input]
     }
 
-    if (![1, 2, 4].includes((input as GridArray).length)) {
+    if (![1, 2, 4].includes(input.length)) {
       throw new Error('Array length must be 1, 2, or 4')
     }
 
@@ -42,18 +37,19 @@ const Column = ({
       input = input.map((d) => [d, d]).flat()
     }
 
-    return input as GridArray
+    return input
   }
 
-  start = makeArray(start as GridValue | GridArray)
-  width = makeArray(width as GridValue | GridArray)
+  start = makeArray(start as GridValue[])
+  width = makeArray(width as GridValue[])
 
   const end = start.map((d, i) => {
     if (d == 'auto') return 'auto'
     return (d as number) + (width[i] as number)
   })
 
-  let ml: ResponsiveValue | undefined, mr: ResponsiveValue | undefined
+  let ml: ResponsiveStyleValue<number | string> | undefined,
+    mr: ResponsiveStyleValue<number | string> | undefined
 
   if (dl) {
     if (![0.5, 1].includes(dl)) {

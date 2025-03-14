@@ -36,7 +36,7 @@ const sx = {
         },
       },
       '&:hover': {
-        color: current == label ? 'secondary' : 'text',
+        color: current === label ? 'secondary' : 'text',
       },
     }
   },
@@ -76,7 +76,7 @@ const HoverArrow = (): JSX.Element => {
 
 export type NavProps = {
   link: LinkItem
-  mode: 'homepage' | 'local' | 'remote' | null
+  mode?: 'homepage' | 'local' | 'remote'
   nav?: string
   first: boolean
   setExpanded: (expanded: boolean) => void
@@ -119,7 +119,7 @@ const Nav = ({
 export type NavGroupProps = {
   links: LinkItem[]
   nav?: string
-  mode: 'homepage' | 'local' | 'remote' | null
+  mode?: 'homepage' | 'local' | 'remote'
   setExpanded: (expanded: boolean) => void
 }
 
@@ -145,7 +145,7 @@ const NavGroup = ({
 
 export type HeaderProps = {
   status?: string
-  mode: 'homepage' | 'local' | 'remote' | null
+  mode?: 'homepage' | 'local' | 'remote'
   nav?: string
   menuItems?: ReactNode
 }
@@ -168,7 +168,7 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps): JSX.Element => {
         <Box
           sx={{ pointerEvents: 'all', display: 'block', width: 'fit-content' }}
         >
-          {(mode == 'homepage' || mode == 'local') && (
+          {(mode === 'homepage' || mode === 'local') && (
             <NextLink href='/' passHref legacyBehavior>
               <Link
                 aria-label='CarbonPlan Homepage'
@@ -186,7 +186,7 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps): JSX.Element => {
               </Link>
             </NextLink>
           )}
-          {(mode == null || mode == 'remote') && (
+          {(mode === undefined || mode === 'remote') && (
             <Link
               href='https://carbonplan.org'
               aria-label='CarbonPlan Homepage'

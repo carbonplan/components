@@ -1,12 +1,8 @@
 import React from 'react'
-import { IconButton } from 'theme-ui'
-import { ThemeUIStyleObject } from 'theme-ui'
+import { IconButton, IconButtonProps } from 'theme-ui'
 
-export type SettingsProps = {
+export type SettingsProps = IconButtonProps & {
   value: boolean
-  onClick?: () => void
-  sx?: ThemeUIStyleObject
-  [key: string]: any
 }
 
 const Settings = ({ value, sx, ...props }: SettingsProps) => {
