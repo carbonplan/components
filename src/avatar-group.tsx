@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from 'theme-ui'
-import Avatar from './avatar'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
+import Avatar, { AvatarProps } from './avatar'
 import Row from './row'
 import Column from './column'
 import Group from './group'
@@ -13,7 +13,14 @@ const sizes = {
   xl: [9],
 }
 
-const Blank = ({ overflow, maxWidth }) => {
+type SizeKey = keyof typeof sizes
+
+type BlankProps = {
+  overflow: number
+  maxWidth?: string | number
+}
+
+const Blank = ({ overflow, maxWidth }: BlankProps) => {
   return (
     <Box
       sx={{
@@ -45,6 +52,23 @@ const Blank = ({ overflow, maxWidth }) => {
   )
 }
 
+type Alignment = 'left' | 'right'
+
+type StartValue = 'auto' | number | (number | 'auto')[]
+
+export type AvatarGroupProps = {
+  members: AvatarProps[]
+  direction?: 'horizontal' | 'vertical'
+  align?: Alignment | Alignment[]
+  spacing?: SizeKey | number | number[]
+  limit?: number
+  width?: string
+  maxWidth?: string | number
+  fixedCount?: number
+  sx?: ThemeUIStyleObject
+  [key: string]: any
+}
+
 const AvatarGroup = ({
   members,
   direction = 'horizontal',
@@ -56,34 +80,37 @@ const AvatarGroup = ({
   fixedCount,
   sx,
   ...props
-}) => {
-  let gap
-  if (sizes.hasOwnProperty(spacing)) {
-    gap = sizes[spacing]
+}: AvatarGroupProps) => {
+  let gap: number[] | number
+
+  if (typeof spacing === 'string' && spacing in sizes) {
+    gap = sizes[spacing as SizeKey]
   } else {
-    gap = spacing
+    gap = spacing as number | number[]
   }
 
-  let start = (idx) => 'auto'
+  let start = (idx: number): StartValue => 'auto'
   if (align) {
     if (!Array.isArray(align)) {
       align = [align]
     }
-    start = (idx) =>
-      align.map((d) => {
+    start = (idx: number): StartValue => {
+      const alignArray = align as Alignment[]
+      return alignArray.map((d: Alignment) => {
         if (d === 'left') {
           return 'auto'
         } else if (d === 'right') {
-          const offset = Math.max(1, fixedCount - members.length + 1)
-          return (offset + idx) % fixedCount
+          const offset = Math.max(1, (fixedCount ?? 0) - members.length + 1)
+          return (offset + idx) % (fixedCount ?? 1)
         } else {
-          throw Error(`alignment '${align}' not recognized`)
+          throw Error(`alignment '${d}' not recognized`)
         }
       })
+    }
   }
 
-  const excess = members.length > limit
-  const overflow = members.length - limit + 1
+  const excess = limit !== undefined && members.length > limit
+  const overflow = limit !== undefined ? members.length - limit + 1 : 0
 
   return (
     <>
@@ -91,10 +118,10 @@ const AvatarGroup = ({
         <Row columns={fixedCount} gap={gap} sx={sx} {...props}>
           {members.map((props, idx) => (
             <Column key={idx} start={start(idx)}>
-              {(!excess || idx < limit - 1) && (
+              {(!excess || (limit !== undefined && idx < limit - 1)) && (
                 <Avatar {...props} width={width} maxWidth={maxWidth} />
               )}
-              {excess && idx === limit - 1 && (
+              {excess && limit !== undefined && idx === limit - 1 && (
                 <Blank overflow={overflow} maxWidth={maxWidth} />
               )}
             </Column>

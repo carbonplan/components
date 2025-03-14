@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
 
 const sizes = {
   xs: [1],
@@ -8,12 +8,30 @@ const sizes = {
   lg: [7],
   xl: [9],
 }
-const Group = ({ children, direction = 'vertical', spacing = 'md', sx }) => {
-  let marginValue
-  if (typeof spacing === 'string' && sizes.hasOwnProperty(spacing)) {
+
+type SizeKey = keyof typeof sizes
+type Direction = 'horizontal' | 'vertical'
+type SpacingValue = SizeKey | number | number[]
+
+export type GroupProps = {
+  children: ReactNode
+  direction?: Direction
+  spacing?: SpacingValue
+  sx?: ThemeUIStyleObject
+}
+
+const Group = ({
+  children,
+  direction = 'vertical',
+  spacing = 'md',
+  sx,
+}: GroupProps) => {
+  let marginValue: number | number[]
+
+  if (typeof spacing === 'string' && spacing in sizes) {
     marginValue = sizes[spacing]
   } else {
-    marginValue = spacing
+    marginValue = spacing as number | number[]
   }
 
   if (!['horizontal', 'vertical'].includes(direction)) {
@@ -28,10 +46,11 @@ const Group = ({ children, direction = 'vertical', spacing = 'md', sx }) => {
   return (
     <Box sx={sx}>
       {React.Children.map(children, (child, i) => {
+        const childrenCount = React.Children.count(children)
         return (
           <Box
             sx={{
-              [marginProperty]: i < children.length - 1 ? marginValue : 0,
+              [marginProperty]: i < childrenCount - 1 ? marginValue : 0,
               ...additionalStyles,
             }}
           >
