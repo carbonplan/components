@@ -1,16 +1,17 @@
 import React, { Children } from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
+
+export type BlockQuoteProps = BoxProps
 
 const specialChars = ['“', '"', "'", '‘']
 
-const Blockquote = ({ children }) => {
+const Blockquote = ({ children }: BlockQuoteProps) => {
   return (
     <Box variant='styles.blockquote'>
       {Children.map(children, (d, i) => {
         let firstChar = ''
         let remaining = children
-
-        if (d.props && typeof d.props.children === 'string') {
+        if (React.isValidElement(d) && typeof d.props.children === 'string') {
           firstChar = d.props.children.slice(0, 1)
           remaining = d.props.children.slice(1)
         } else if (typeof d === 'string') {
