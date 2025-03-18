@@ -1,8 +1,16 @@
 import React, { forwardRef } from 'react'
-import { Link as ThemedLink } from 'theme-ui'
+import { Link as ThemedLink, LinkProps as ThemedLinkProps } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 
-const Link = ({ href, children, internal = false, ...props }, ref) => {
+export type LinkProps = ThemedLinkProps & {
+  href: string
+  internal?: boolean
+}
+
+const Link = (
+  { href, children, internal = false, ...props }: LinkProps,
+  ref: React.Ref<HTMLAnchorElement>
+) => {
   if (internal || (href && href.startsWith('/'))) {
     return (
       <NextLink href={href} passHref legacyBehavior>
