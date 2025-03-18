@@ -1,7 +1,7 @@
-import React, { Children } from 'react'
-import { Box, BoxProps } from 'theme-ui'
+import React, { Children, PropsWithChildren } from 'react'
+import { Box } from 'theme-ui'
 
-export type BlockQuoteProps = BoxProps
+export type BlockQuoteProps = PropsWithChildren<{}>
 
 const specialChars = ['“', '"', "'", '‘']
 
