@@ -1,7 +1,29 @@
 import React, { forwardRef, cloneElement } from 'react'
-import { Box } from 'theme-ui'
-import Link from './link'
+import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
+import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
+
+export type ButtonProps = BoxProps & {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  align?:
+    | 'baseline'
+    | 'sub'
+    | 'super'
+    | 'text-top'
+    | 'text-bottom'
+    | 'middle'
+    | 'top'
+    | 'bottom'
+    | 'initial'
+  prefix?: React.ReactElement
+  suffix?: React.ReactElement
+  inverted?: boolean
+  href?: string
+  internal?: boolean
+  sx?: ThemeUIStyleObject & {
+    color?: string // ThemeUIStyleObject doesn't have a color property
+  }
+}
 
 const Button = (
   {
@@ -15,14 +37,14 @@ const Button = (
     href,
     internal,
     ...props
-  },
-  ref
+  }: ButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>
 ) => {
   if (!['xs', 'sm', 'md', 'lg', 'xl'].includes(size)) {
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  let offset, margin, top, height, width, strokeWidth
+  let offset, margin, height, width, strokeWidth
 
   const { color, ...sxProp } = sx || {}
 
@@ -99,14 +121,16 @@ const Button = (
     suffixOffset = offset
   }
 
+  let clonedPrefix, clonedSuffix
+
   if (prefix) {
     prefixHover = {
       '&:hover > #prefix-span > #prefix': {
         color: hoverColor,
-        ...prefix.type.hover,
+        ...(prefix.type as any).hover,
       },
     }
-    prefix = cloneElement(prefix, {
+    clonedPrefix = cloneElement(prefix, {
       id: 'prefix',
       sx: {
         position: 'relative',
@@ -125,10 +149,10 @@ const Button = (
     suffixHover = {
       '&:hover > #suffix-span >#suffix': {
         color: hoverColor,
-        ...suffix.type.hover,
+        ...(suffix.type as any).hover,
       },
     }
-    suffix = cloneElement(suffix, {
+    clonedSuffix = cloneElement(suffix, {
       id: 'suffix',
       sx: {
         height: height,
@@ -152,7 +176,7 @@ const Button = (
     display: 'block',
     color: baseColor,
     padding: [0],
-    textAlign: 'left',
+    textAlign: 'left' as const,
     cursor: 'pointer',
     width: 'fit-content',
     '@media (hover: hover) and (pointer: fine)': {
@@ -172,7 +196,7 @@ const Button = (
         id='prefix-span'
         sx={{ display: 'inline-block', ...prefixOffset }}
       >
-        {prefix && prefix}
+        {clonedPrefix && clonedPrefix}
       </Box>
       <Box as='span' sx={{ transition: 'color 0.15s' }}>
         {children}
@@ -182,7 +206,7 @@ const Button = (
         id='suffix-span'
         sx={{ display: 'inline-block', ...suffixOffset }}
       >
-        {suffix && suffix}
+        {clonedSuffix && clonedSuffix}
       </Box>
     </>
   )
@@ -190,25 +214,31 @@ const Button = (
   if (href) {
     return (
       <Link
-        ref={ref}
-        href={href}
+        ref={ref as React.Ref<HTMLAnchorElement>}
         internal={internal}
         sx={{
           ...style,
           textDecoration: 'none',
         }}
-        {...props}
+        {...(props as LinkProps)}
       >
         {Inner}
       </Link>
     )
   } else {
     return (
-      <Box ref={ref} as='button' sx={style} {...props}>
+      <Box
+        ref={ref as React.Ref<HTMLButtonElement>}
+        as='button'
+        sx={style}
+        {...props}
+      >
         {Inner}
       </Box>
     )
   }
 }
 
-export default forwardRef(Button)
+export default forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(
+  Button
+)
