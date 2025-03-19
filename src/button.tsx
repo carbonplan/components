@@ -199,7 +199,7 @@ const Button = (
         id='prefix-span'
         sx={{ display: 'inline-block', ...prefixOffset }}
       >
-        {clonedPrefix && clonedPrefix}
+        {clonedPrefix}
       </Box>
       <Box as='span' sx={{ transition: 'color 0.15s' }}>
         {children}
@@ -209,7 +209,7 @@ const Button = (
         id='suffix-span'
         sx={{ display: 'inline-block', ...suffixOffset }}
       >
-        {clonedSuffix && clonedSuffix}
+        {clonedSuffix}
       </Box>
     </>
   )
