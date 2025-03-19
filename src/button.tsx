@@ -3,7 +3,10 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
 
-export type ButtonProps = BoxProps & {
+const hasCustomHover = (comp: any): comp is { hover: ThemeUIStyleObject } =>
+  !!comp?.hover
+
+export type ButtonProps = Omit<BoxProps, 'prefix'> & {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   align?:
     | 'baseline'
@@ -15,8 +18,8 @@ export type ButtonProps = BoxProps & {
     | 'top'
     | 'bottom'
     | 'initial'
-  prefix?: React.ReactElement
-  suffix?: React.ReactElement
+  suffix?: React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }
+  prefix?: React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }
   inverted?: boolean
   href?: string
   internal?: boolean
@@ -127,7 +130,7 @@ const Button = (
     prefixHover = {
       '&:hover > #prefix-span > #prefix': {
         color: hoverColor,
-        ...(prefix.type as any).hover,
+        ...(hasCustomHover(prefix.type) ? prefix.type.hover : {}),
       },
     }
     clonedPrefix = cloneElement(prefix, {
@@ -140,7 +143,7 @@ const Button = (
         strokeWidth: strokeWidth,
         verticalAlign: prefixAlign,
         transition: 'color 0.15s, transform 0.15s',
-        ...prefix.props.sx,
+        ...prefix.props?.sx,
       },
     })
   }
@@ -149,7 +152,7 @@ const Button = (
     suffixHover = {
       '&:hover > #suffix-span >#suffix': {
         color: hoverColor,
-        ...(suffix.type as any).hover,
+        ...(hasCustomHover(suffix.type) ? suffix.type.hover : {}),
       },
     }
     clonedSuffix = cloneElement(suffix, {
@@ -161,7 +164,7 @@ const Button = (
         strokeWidth: strokeWidth,
         verticalAlign: suffixAlign,
         transition: 'color 0.15s, transform 0.15s',
-        ...suffix.props.sx,
+        ...suffix.props?.sx,
       },
     })
   }
