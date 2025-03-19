@@ -1,5 +1,15 @@
 import React from 'react'
-import { Box, Image } from 'theme-ui'
+import { Box, Image, BoxProps } from 'theme-ui'
+
+export type AvatarProps = BoxProps & {
+  color?: string
+  width?: string
+  maxWidth?: string | number
+  name?: string
+  github?: string
+  alt?: string
+  src?: string
+}
 
 const Avatar = ({
   color = 'transparent',
@@ -11,7 +21,7 @@ const Avatar = ({
   src,
   sx,
   ...props
-}) => {
+}: AvatarProps) => {
   if (!name && !src && !github) {
     console.warn('must specify either name, github, or src')
   }

@@ -1,8 +1,14 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
-const Badge = ({ sx, children, ...props }) => {
+export type BadgeProps = BoxProps & {
+  sx?: ThemeUIStyleObject & {
+    color?: string // ThemeUIStyleObject doesn't have a color property
+  }
+}
+
+const Badge = ({ sx, children, ...props }: BadgeProps) => {
   const color = sx && sx.color ? sx.color : 'primary'
   return (
     <Box

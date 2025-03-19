@@ -1,11 +1,28 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps, ResponsiveStyleValue } from 'theme-ui'
 
-const Column = ({ start, width, dl, dr, children, sx, ...props }) => {
+export type ColumnProps = BoxProps & {
+  start?: number | 'auto' | (number | 'auto')[]
+  width?: number | 'auto' | (number | 'auto')[]
+  dl?: 0.5 | 1
+  dr?: 0.5 | 1
+}
+
+type GridValue = number | 'auto'
+
+const Column = ({
+  start,
+  width,
+  dl,
+  dr,
+  children,
+  sx,
+  ...props
+}: ColumnProps) => {
   start = start || 'auto'
   width = width || 'auto'
 
-  const makeArray = (input) => {
+  const makeArray = (input: GridValue[]): GridValue[] => {
     if (input && !Array.isArray(input)) {
       input = [input]
     }
@@ -23,15 +40,16 @@ const Column = ({ start, width, dl, dr, children, sx, ...props }) => {
     return input
   }
 
-  start = makeArray(start)
-  width = makeArray(width)
+  start = makeArray(start as GridValue[])
+  width = makeArray(width as GridValue[])
 
   const end = start.map((d, i) => {
     if (d == 'auto') return 'auto'
-    return d + width[i]
+    return (d as number) + (width[i] as number)
   })
 
-  let ml, mr
+  let ml: ResponsiveStyleValue<number | string> | undefined,
+    mr: ResponsiveStyleValue<number | string> | undefined
 
   if (dl) {
     if (![0.5, 1].includes(dl)) {

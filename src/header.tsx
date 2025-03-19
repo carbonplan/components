@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, ReactNode, MouseEvent } from 'react'
 import { default as NextLink } from 'next/link'
-import { Box, Flex, Container, Link } from 'theme-ui'
+import { Box, Flex, Container, Link, ThemeUIStyleObject } from 'theme-ui'
+// @ts-ignore
 import { Arrow } from '@carbonplan/icons'
 import Logo from './logo'
 import Row from './row'
@@ -8,7 +9,11 @@ import Column from './column'
 import Menu from './menu'
 
 const sx = {
-  link: (current, label, first = false) => {
+  link: (
+    current: string | undefined,
+    label: string,
+    first = false
+  ): ThemeUIStyleObject => {
     return {
       width: 'auto',
       color: current === label ? 'secondary' : 'text',
@@ -31,20 +36,25 @@ const sx = {
         },
       },
       '&:hover': {
-        color: current == label ? 'secondary' : 'text',
+        color: current === label ? 'secondary' : 'text',
       },
     }
   },
 }
 
-const links = [
+export type LinkItem = {
+  url: string
+  display: string
+}
+
+const links: LinkItem[] = [
   { url: 'about', display: 'About' },
   { url: 'research', display: 'Research' },
   { url: 'blog', display: 'Blog' },
   { url: 'press', display: 'Press' },
 ]
 
-const HoverArrow = () => {
+const HoverArrow = (): JSX.Element => {
   return (
     <Arrow
       id='arrow'
@@ -64,7 +74,21 @@ const HoverArrow = () => {
   )
 }
 
-const Nav = ({ link, mode, nav, first, setExpanded }) => {
+export type NavProps = {
+  link: LinkItem
+  mode?: 'homepage' | 'local' | 'remote'
+  nav?: string
+  first: boolean
+  setExpanded: (expanded: boolean) => void
+}
+
+const Nav = ({
+  link,
+  mode,
+  nav,
+  first,
+  setExpanded,
+}: NavProps): JSX.Element => {
   const { url, display } = link
   const href = mode === 'remote' ? 'https://carbonplan.org/' + url : '/' + url
 
@@ -92,7 +116,19 @@ const Nav = ({ link, mode, nav, first, setExpanded }) => {
   }
 }
 
-const NavGroup = ({ links, nav, mode, setExpanded }) => {
+export type NavGroupProps = {
+  links: LinkItem[]
+  nav?: string
+  mode?: 'homepage' | 'local' | 'remote'
+  setExpanded: (expanded: boolean) => void
+}
+
+const NavGroup = ({
+  links,
+  nav,
+  mode,
+  setExpanded,
+}: NavGroupProps): JSX.Element[] => {
   return links.map((d, i) => {
     return (
       <Nav
@@ -107,10 +143,17 @@ const NavGroup = ({ links, nav, mode, setExpanded }) => {
   })
 }
 
-const Header = ({ status, mode, nav, menuItems }) => {
-  const [expanded, setExpanded] = useState(false)
+export type HeaderProps = {
+  status?: string
+  mode?: 'homepage' | 'local' | 'remote'
+  nav?: string
+  menuItems?: ReactNode
+}
 
-  const toggle = (e) => {
+const Header = ({ status, mode, nav, menuItems }: HeaderProps): JSX.Element => {
+  const [expanded, setExpanded] = useState<boolean>(false)
+
+  const toggle = (e: MouseEvent<HTMLButtonElement>): void => {
     setExpanded(!expanded)
   }
 
@@ -125,7 +168,7 @@ const Header = ({ status, mode, nav, menuItems }) => {
         <Box
           sx={{ pointerEvents: 'all', display: 'block', width: 'fit-content' }}
         >
-          {(mode == 'homepage' || mode == 'local') && (
+          {(mode === 'homepage' || mode === 'local') && (
             <NextLink href='/' passHref legacyBehavior>
               <Link
                 aria-label='CarbonPlan Homepage'
@@ -143,7 +186,7 @@ const Header = ({ status, mode, nav, menuItems }) => {
               </Link>
             </NextLink>
           )}
-          {(mode == null || mode == 'remote') && (
+          {(mode === undefined || mode === 'remote') && (
             <Link
               href='https://carbonplan.org'
               aria-label='CarbonPlan Homepage'
