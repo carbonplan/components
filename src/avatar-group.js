@@ -77,7 +77,7 @@ const AvatarGroup = ({
           const offset = Math.max(0, fixedCount - members.length)
           return ((offset + idx) % fixedCount) + 1
         } else {
-          throw Error(`alignment '${align}' not recognized`)
+          throw Error(`alignment '${d}' not recognized`)
         }
       })
   }
