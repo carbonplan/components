@@ -74,10 +74,10 @@ const AvatarGroup = ({
         if (d === 'left') {
           return 'auto'
         } else if (d === 'right') {
-          const offset = Math.max(1, fixedCount - members.length + 1)
-          return (offset + idx) % fixedCount
+          const offset = Math.max(0, fixedCount - members.length)
+          return ((offset + idx) % fixedCount) + 1
         } else {
-          throw Error(`alignment '${align}' not recognized`)
+          throw Error(`alignment '${d}' not recognized`)
         }
       })
   }
