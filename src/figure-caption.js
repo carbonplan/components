@@ -9,4 +9,6 @@ const FigureCaption = ({ as = 'figcaption', number, children }) => {
   )
 }
 
+FigureCaption.displayName = 'FigureCaption'
+
 export default FigureCaption
