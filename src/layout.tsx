@@ -10,7 +10,7 @@ import Scrollbar from './scrollbar'
 import Guide from './guide'
 import Settings, { SettingsProps } from './settings'
 
-export type LayoutProps = {
+export interface LayoutProps {
   title?: string
   description?: string
   url?: string

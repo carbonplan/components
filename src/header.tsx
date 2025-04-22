@@ -42,7 +42,7 @@ const sx = {
   },
 }
 
-export type LinkItem = {
+export interface LinkItem {
   url: string
   display: string
 }
@@ -74,7 +74,7 @@ const HoverArrow = (): JSX.Element => {
   )
 }
 
-export type NavProps = {
+export interface NavProps {
   link: LinkItem
   mode?: 'homepage' | 'local' | 'remote'
   nav?: string
@@ -116,7 +116,7 @@ const Nav = ({
   }
 }
 
-export type NavGroupProps = {
+export interface NavGroupProps {
   links: LinkItem[]
   nav?: string
   mode?: 'homepage' | 'local' | 'remote'
@@ -143,7 +143,7 @@ const NavGroup = ({
   })
 }
 
-export type HeaderProps = {
+export interface HeaderProps {
   status?: string
   mode?: 'homepage' | 'local' | 'remote'
   nav?: string

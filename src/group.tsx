@@ -14,10 +14,10 @@ type SizeKey = keyof typeof sizes
 type Direction = 'horizontal' | 'vertical'
 type SpacingValue = SizeKey | ResponsiveStyleValue<number | string>
 
-export type GroupProps = {
+export interface GroupProps extends BoxProps {
   direction?: Direction
   spacing?: SpacingValue
-} & BoxProps
+}
 
 const Group = ({
   children,

@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { Link as ThemedLink, LinkProps as ThemedLinkProps } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 
-export type LinkProps = ThemedLinkProps & {
+export interface LinkProps extends ThemedLinkProps {
   href: string
   internal?: boolean
 }

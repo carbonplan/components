@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, BoxProps, ResponsiveStyleValue } from 'theme-ui'
 
-export type ColumnProps = BoxProps & {
+export interface ColumnProps extends BoxProps {
   start?: number | 'auto' | (number | 'auto')[]
   width?: number | 'auto' | (number | 'auto')[]
   dl?: 0.5 | 1

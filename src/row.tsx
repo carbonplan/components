@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Grid, GridProps } from 'theme-ui'
 
 export type RowProps = GridProps

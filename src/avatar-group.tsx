@@ -56,7 +56,7 @@ type Alignment = 'left' | 'right'
 
 type StartValue = 'auto' | number | (number | 'auto')[]
 
-export type AvatarGroupProps = {
+export interface AvatarGroupProps extends RowProps, GroupProps {
   members: AvatarProps[]
   direction?: 'horizontal' | 'vertical'
   align?: Alignment | Alignment[]
@@ -65,8 +65,7 @@ export type AvatarGroupProps = {
   width?: string
   maxWidth?: string | number
   fixedCount?: number
-} & RowProps &
-  GroupProps
+}
 
 const AvatarGroup = ({
   members,

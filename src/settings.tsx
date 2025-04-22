@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconButton, IconButtonProps } from 'theme-ui'
 
-export type SettingsProps = IconButtonProps & {
+export interface SettingsProps extends Omit<IconButtonProps, 'value'> {
   value: boolean
 }
 
