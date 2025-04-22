@@ -1,11 +1,33 @@
-import React, { forwardRef } from 'react'
-import { Box } from 'theme-ui'
+import React, { forwardRef, ReactNode } from 'react'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
+// @ts-ignore
 import { Arrow } from '@carbonplan/icons'
 import Link from './link'
 
+export interface CalloutProps {
+  label: ReactNode
+  children: ReactNode
+  inverted?: boolean
+  color: string
+  href?: string
+  internal?: boolean
+  sx?: ThemeUIStyleObject
+}
+
+type RefType = React.Ref<HTMLAnchorElement | HTMLButtonElement>
+
 const Callout = (
-  { label, children, inverted, color, href, internal, sx, ...props },
-  ref
+  {
+    label,
+    children,
+    inverted,
+    color,
+    href,
+    internal,
+    sx,
+    ...props
+  }: CalloutProps,
+  ref: RefType
 ) => {
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
@@ -22,7 +44,7 @@ const Callout = (
     letterSpacing: 'body',
     width: 'fit-content',
     cursor: 'pointer',
-    textAlign: 'left',
+    textAlign: 'left' as const,
     mb: [1],
     '@media (hover: hover) and (pointer: fine)': {
       '&:hover > #container > #arrow': {
@@ -78,17 +100,30 @@ const Callout = (
 
   if (href) {
     return (
-      <Link ref={ref} href={href} internal={internal} sx={style} {...props}>
+      <Link
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        href={href}
+        internal={internal}
+        sx={style}
+        {...props}
+      >
         {Inner}
       </Link>
     )
   } else {
     return (
-      <Box ref={ref} as='button' sx={style} {...props}>
+      <Box
+        ref={ref as React.Ref<HTMLButtonElement>}
+        as='button'
+        sx={style}
+        {...props}
+      >
         {Inner}
       </Box>
     )
   }
 }
 
-export default forwardRef(Callout)
+export default forwardRef<HTMLAnchorElement | HTMLButtonElement, CalloutProps>(
+  Callout
+)

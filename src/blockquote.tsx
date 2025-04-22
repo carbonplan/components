@@ -1,11 +1,11 @@
 import React, { Children, PropsWithChildren } from 'react'
 import { Box } from 'theme-ui'
 
-export type BlockQuoteProps = PropsWithChildren<{}>
+export type BlockquoteProps = PropsWithChildren<{}>
 
 const specialChars = ['“', '"', "'", '‘']
 
-const Blockquote = ({ children }: BlockQuoteProps) => {
+const Blockquote = ({ children }: BlockquoteProps) => {
   return (
     <Box variant='styles.blockquote'>
       {Children.map(children, (d, i) => {

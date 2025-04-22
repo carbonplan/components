@@ -1,7 +1,19 @@
-import React from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Box, BoxProps } from 'theme-ui'
 
-const Caption = ({ as = 'figcaption', number, children, label = 'figure' }) => {
+export interface CaptionProps {
+  as?: BoxProps['as']
+  number?: number
+  children: ReactNode
+  label?: string
+}
+
+const Caption = ({
+  as = 'figcaption',
+  number,
+  children,
+  label = 'figure',
+}: CaptionProps) => {
   return (
     <Box
       as={as}

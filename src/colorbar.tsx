@@ -1,8 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Box, Flex } from 'theme-ui'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  ReactNode,
+  MouseEventHandler,
+} from 'react'
+import { Box, Flex, FlexProps, ThemeUIStyleObject, get } from 'theme-ui'
 
+type SetClim = (setter: (prev: [number, number]) => [number, number]) => any
+
+export interface ColorbarProps extends FlexProps {
+  colormap: string[]
+  label: ReactNode
+  clim: [number, number]
+  setClim?: SetClim
+  setClimStep?: number
+  units: ReactNode
+  width: string
+  height: string
+  format?: (d: number) => ReactNode
+  discrete?: boolean
+  horizontal?: boolean
+  bottom?: boolean
+  sx?: ThemeUIStyleObject
+  sxClim?: ThemeUIStyleObject
+}
 const styles = {
-  clim: (setClim) => {
+  clim: (setClim?: SetClim): ThemeUIStyleObject & { userSelect: any } => {
     return {
       bg: 'unset',
       border: 'none',
@@ -25,7 +49,7 @@ const DIMENSIONS = {
   height: ['80px', '110px', '110px', '130px'],
 }
 
-const hexToRgb = (hex) => {
+const hexToRgb = (hex: string) => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
     ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
@@ -35,7 +59,16 @@ const hexToRgb = (hex) => {
     : null
 }
 
-const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
+const Gradient = ({
+  colormap,
+  discrete,
+  horizontal,
+  width,
+  height,
+}: Pick<
+  ColorbarProps,
+  'colormap' | 'discrete' | 'horizontal' | 'width' | 'height'
+>) => {
   const step = (1 / colormap.length) * 100
   const isHex = String(colormap[0]).startsWith('#')
   const values = colormap.map((color, i) => {
@@ -63,20 +96,26 @@ const Gradient = ({ colormap, discrete, horizontal, width, height }) => {
               minHeight: height || DIMENSIONS.height,
             }),
         mt: horizontal ? ['1px', '1px', '1px', 0] : 0,
-        border: ({ colors }) => `solid 1px ${colors.hinted}`,
+        border: (t) => `solid 1px ${get(t, 'colors.hinted')}`,
         background: css,
       }}
     />
   )
 }
 
-const Label = ({ label, units, horizontal }) => (
+const Label = ({
+  label,
+  units,
+  horizontal,
+}: Pick<ColorbarProps, 'label' | 'units' | 'horizontal'>) => (
   <Box
     sx={
-      !horizontal && {
-        width: ['13px', '17px', '17px', '19px'],
-        alignSelf: 'flex-end',
-      }
+      horizontal
+        ? undefined
+        : {
+            width: ['13px', '17px', '17px', '19px'],
+            alignSelf: 'flex-end',
+          }
     }
   >
     <Box
@@ -128,24 +167,25 @@ const Colorbar = ({
   sx,
   sxClim,
   ...props
-}) => {
+}: ColorbarProps) => {
   if (!Array.isArray(colormap)) {
     throw new Error(`expected array for colormap, got '${colormap}'.`)
   }
 
-  const climRef = [useRef(), useRef()]
+  const climRef = [useRef<HTMLDivElement>(), useRef<HTMLDivElement>()]
   const [climMinDragging, setClimMinDragging] = useState(false)
   const [climMaxDragging, setClimMaxDragging] = useState(false)
 
-  let x,
-    y,
-    dx,
-    dy = 0
-  let id = null
+  let x: number,
+    y: number,
+    dx: number,
+    dy: number = 0
+  let id: null | string = null
   let init = [0, 0]
   let scale = setClimStep
 
-  const draggingFunction = (e) => {
+  const draggingFunction = (e: MouseEvent) => {
+    if (!setClim) return
     if (id === 'min' && !climMinDragging) setClimMinDragging(true)
     if (id === 'max' && !climMaxDragging) setClimMaxDragging(true)
     dx = e.pageX - x
@@ -163,10 +203,10 @@ const Colorbar = ({
     }
   }
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
     y = e.pageY
     x = e.pageX
-    id = e.target.id
+    id = (e.target as HTMLDivElement).id
     init = clim
 
     document.body.setAttribute(
@@ -186,7 +226,9 @@ const Colorbar = ({
     window.addEventListener('mouseup', updater)
   }
 
-  const increment = (e) => {
+  const increment = (e: KeyboardEvent) => {
+    if (!setClim) return
+
     if (climRef[0].current === document.activeElement) {
       e.preventDefault()
       setClim((prev) => [Math.min(prev[0] + scale, prev[1]), prev[1]])
@@ -199,7 +241,9 @@ const Colorbar = ({
     }
   }
 
-  const decrement = (e) => {
+  const decrement = (e: KeyboardEvent) => {
+    if (!setClim) return
+
     if (climRef[0].current === document.activeElement) {
       e.preventDefault()
       setClim((prev) => [Math.min(prev[0] - scale, prev[1]), prev[1]])
@@ -213,7 +257,7 @@ const Colorbar = ({
   }
 
   useEffect(() => {
-    const listener = (e) => {
+    const listener = (e: KeyboardEvent) => {
       if (
         ['ArrowUp', 'ArrowRight'].includes(e.code) ||
         ['ArrowUp', 'ArrowRight'].includes(e.key)
@@ -253,7 +297,7 @@ const Colorbar = ({
           mr: horizontal ? ['2px', '1px', '1px', '2px'] : 0,
           mb: horizontal ? 0 : ['-2px', '-2px', '-2px', '-3px'],
           borderBottom: setClim
-            ? ({ colors }) => `solid 1px ${colors.primary}`
+            ? (t) => `solid 1px ${get(t, 'colors.primary')}`
             : 'unset',
           cursor: setClim
             ? horizontal
@@ -263,7 +307,7 @@ const Colorbar = ({
           ...sxClim,
         }}
         onMouseDown={setClim ? handleMouseDown : () => {}}
-        onClick={() => climRef[0].current.focus()}
+        onClick={() => climRef[0].current?.focus()}
       >
         {format(clim[0])}
       </Box>
@@ -284,7 +328,7 @@ const Colorbar = ({
             : ['2px', '1px', '1px', '2px'],
           mt: horizontal ? 0 : ['-2px', '-3px', '-3px', '-3px'],
           borderBottom: setClim
-            ? ({ colors }) => `solid 1px ${colors.primary}`
+            ? (t) => `solid 1px ${get(t, 'colors.primary')}`
             : 'unset',
           cursor: setClim
             ? horizontal
@@ -294,7 +338,7 @@ const Colorbar = ({
           ...sxClim,
         }}
         onMouseDown={setClim ? handleMouseDown : () => {}}
-        onClick={() => climRef[1].current.focus()}
+        onClick={() => climRef[1].current?.focus()}
       >
         {format(clim[1])}
       </Box>
