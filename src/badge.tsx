@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
-export type BadgeProps = BoxProps & {
+export interface BadgeProps extends BoxProps {
   sx?: ThemeUIStyleObject & {
     color?: string // ThemeUIStyleObject doesn't have a color property
   }

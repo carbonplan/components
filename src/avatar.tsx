@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Image, BoxProps } from 'theme-ui'
 
-export type AvatarProps = BoxProps & {
+export interface AvatarProps extends BoxProps {
   color?: string
   width?: string
   maxWidth?: string | number

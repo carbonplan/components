@@ -6,7 +6,7 @@ import getSizeStyles from './utils/get-size-styles'
 const hasCustomHover = (comp: any): comp is { hover: ThemeUIStyleObject } =>
   !!comp?.hover
 
-export type ButtonProps = Omit<BoxProps, 'prefix'> & {
+export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   align?:
     | 'baseline'
