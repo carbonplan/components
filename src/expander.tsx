@@ -1,7 +1,13 @@
 import React from 'react'
-import { Box, IconButton } from 'theme-ui'
+import { IconButton, IconButtonProps } from 'theme-ui'
 
-const Expander = ({ value, id, onClick, sx }) => {
+export interface ExpanderProps {
+  value: IconButtonProps['aria-checked']
+  id: IconButtonProps['id']
+  onClick: IconButtonProps['onClick']
+  sx: IconButtonProps['sx']
+}
+const Expander = ({ value, id, onClick, sx }: ExpanderProps) => {
   return (
     <IconButton
       onClick={onClick}

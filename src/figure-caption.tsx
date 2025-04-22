@@ -1,7 +1,11 @@
 import React from 'react'
-import Caption from './caption'
+import Caption, { CaptionProps } from './caption'
 
-const FigureCaption = ({ as = 'figcaption', number, children }) => {
+const FigureCaption = ({
+  as = 'figcaption',
+  number,
+  children,
+}: CaptionProps) => {
   return (
     <Caption as={as} number={number} label='figure'>
       {children}

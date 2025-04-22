@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 
 import Group from './group'
 
-const Figure = ({ as = 'figure', children, sx }) => {
+const Figure = ({ as = 'figure', children, sx }: BoxProps) => {
   return (
     <Box
       as={as}

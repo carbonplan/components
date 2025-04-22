@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 import { keyframes } from '@emotion/react'
 
 const fade = keyframes({
@@ -11,7 +11,17 @@ const fade = keyframes({
   },
 })
 
-const FadeIn = ({ duration = 300, delay = 0, children, ...delegated }) => {
+export interface FadeInProps extends BoxProps {
+  duration?: number
+  delay?: number
+}
+
+const FadeIn = ({
+  duration = 300,
+  delay = 0,
+  children,
+  ...delegated
+}: FadeInProps) => {
   return (
     <Box
       {...delegated}

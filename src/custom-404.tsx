@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
+// @ts-ignore
 import { PoopSad } from '@carbonplan/emoji'
 import Layout from './layout'
 import Row from './row'
