@@ -1,33 +1,59 @@
-import React, { useMemo } from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode, useMemo } from 'react'
+import { Box, BoxProps } from 'theme-ui'
 import Tag from './tag'
 
+export interface FilterProps<T> extends BoxProps {
+  values: { [Property in keyof T]: boolean }
+  setValues: (updated: { [Property in keyof T]: boolean }) => void
+  order?: (keyof T)[]
+  colors?: { [Property in keyof T]: string }
+  labels?: { [Property in keyof T]: ReactNode }
+  label?: ReactNode
+  showAll?: boolean
+  multiSelect?: boolean
+}
 const sx = {
   label: {
     fontFamily: 'mono',
     letterSpacing: 'mono',
     fontSize: [1, 1, 1, 2],
     color: 'secondary',
-    userSelect: 'none',
-    textTransform: 'uppercase',
+    userSelect: 'none' as const,
+    textTransform: 'uppercase' as const,
   },
 }
 
-const duplicateOptions = (options, defaultValue, overrides = {}) => {
-  return Object.keys(options).reduce(
-    (o, key) => Object.assign(o, { [key]: overrides[key] || defaultValue }),
-    {}
-  )
+const duplicateOptions = <T,>(
+  options: { [Property in keyof T]: boolean },
+  defaultValue: boolean,
+  overrides: Partial<{ [Property in keyof T]: boolean }> = {}
+): { [Property in keyof T]: boolean } => {
+  let result = { ...options }
+  Object.keys(options).forEach((key) => {
+    result[key as keyof T] = !!overrides[key as keyof T] || defaultValue
+  })
+
+  return result
 }
 
-const isAll = (option) => {
+const isAll = <T,>(option: FilterProps<T>['values']) => {
   return (
-    Object.keys(option).filter((d) => option[d]).length ==
+    Object.keys(option).filter((d) => option[d as keyof T]).length ==
     Object.keys(option).length
   )
 }
 
-const updateValues = ({ values, multiSelect, setValues, value }) => {
+const updateValues = <T,>({
+  values,
+  multiSelect,
+  setValues,
+  value,
+}: {
+  values: FilterProps<T>['values']
+  multiSelect: FilterProps<T>['multiSelect']
+  setValues: FilterProps<T>['setValues']
+  value: keyof T
+}) => {
   const isAllAlreadySelected = isAll(values)
   const isSelectingAll = value === 'all'
 
@@ -52,7 +78,9 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
       // do nothing
     } else {
       // select only value
-      updatedToggle = duplicateOptions(values, false, { [value]: true })
+      updatedToggle = duplicateOptions(values, false, {
+        [value]: true,
+      } as Partial<{ [Property in keyof T]: boolean }>)
     }
   }
 
@@ -61,7 +89,7 @@ const updateValues = ({ values, multiSelect, setValues, value }) => {
   }
 }
 
-const Filter = ({
+const Filter = <T,>({
   values,
   setValues,
   label,
@@ -71,12 +99,12 @@ const Filter = ({
   showAll = false,
   multiSelect = false,
   ...props
-}) => {
+}: FilterProps<T>) => {
   const keys = useMemo(() => {
     if (order) {
       return order
     } else {
-      return Object.keys(values)
+      return Object.keys(values) as (keyof T)[]
     }
   }, [order, ...Object.keys(values).sort()])
 
@@ -86,12 +114,13 @@ const Filter = ({
       <Box sx={{ mt: label ? [3] : 0 }}>
         {showAll && (
           <Tag
+            label='all'
             onClick={() =>
               updateValues({
                 values: values,
                 multiSelect,
                 setValues: setValues,
-                value: 'all',
+                value: 'all' as keyof T,
               })
             }
             value={isAll(values)}
@@ -102,6 +131,7 @@ const Filter = ({
         )}
         {keys.map((d, i) => (
           <Tag
+            label={String(d)}
             onClick={() =>
               updateValues({
                 values: values,
@@ -127,7 +157,7 @@ const Filter = ({
               mb: [1],
             }}
           >
-            {labels ? labels[d] : d}
+            {labels ? labels[d] : String(d)}
           </Tag>
         ))}
       </Box>
