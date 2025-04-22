@@ -1,7 +1,14 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 
-const Tag = ({ label, value, sx, children, ...props }) => {
+export interface TagProps extends BoxProps {
+  label: BoxProps['aria-label']
+  value: BoxProps['aria-checked']
+  sx?: ThemeUIStyleObject & {
+    color?: string // ThemeUIStyleObject doesn't have a color property
+  }
+}
+const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
   const color = sx && sx.color ? sx.color : 'primary'
   const isClickable = props && (props.onClick || props.onDoubleClick)
 
