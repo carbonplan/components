@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link } from 'theme-ui'
-import Logo from './logo'
-import Row from './row'
-import Column from './column'
+import Logo from '../logo'
+import Row from '../row'
+import Column from '../column'
 import Menu from './menu'
 import NavigationMenu from './navigation-menu'
 

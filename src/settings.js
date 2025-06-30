@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderIcon from './header-icon'
+import HeaderIcon from './header/header-icon'
 
 const Settings = (props) => {
   return (
