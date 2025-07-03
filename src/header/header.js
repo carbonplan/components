@@ -6,13 +6,13 @@ import Row from '../row'
 import Column from '../column'
 import Menu from './menu'
 import NavigationMenu from './navigation-menu'
+import Search from './search'
+import SearchMenu from './search-menu'
 
 const Header = ({ status, mode, nav, menuItems }) => {
-  const [expanded, setExpanded] = useState(false)
-
-  const toggle = (e) => {
-    setExpanded(!expanded)
-  }
+  const [menuExpanded, setMenuExpanded] = useState(false)
+  const [searchExpanded, setSearchExpanded] = useState(false)
+  const expanded = searchExpanded || menuExpanded
 
   return (
     <Row
@@ -92,14 +92,20 @@ const Header = ({ status, mode, nav, menuItems }) => {
           >
             {menuItems}
           </Box>
-          <Menu
-            sx={{
-              flexShrink: 0,
-              mr: ['-2px'],
-            }}
-            value={expanded}
-            onClick={toggle}
-          />
+          <Flex sx={{ gap: 4 }}>
+            <Search
+              value={searchExpanded}
+              onClick={() => setSearchExpanded((prev) => !prev)}
+            />
+            <Menu
+              sx={{
+                flexShrink: 0,
+                mr: ['-2px'],
+              }}
+              value={menuExpanded}
+              onClick={() => setMenuExpanded((prev) => !prev)}
+            />
+          </Flex>
         </Flex>
       </Column>
       <Box
@@ -121,21 +127,27 @@ const Header = ({ status, mode, nav, menuItems }) => {
       >
         <Container>
           <Row>
-            <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
-              <Box
-                as='nav'
-                sx={{
-                  display: expanded ? 'inherit' : 'none',
-                  mt: [5, 5, 5, 6],
-                }}
-              >
-                <NavigationMenu
-                  nav={nav}
-                  mode={mode}
-                  setExpanded={setExpanded}
-                />
-              </Box>
-            </Column>
+            {menuExpanded ? (
+              <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
+                <Box
+                  as='nav'
+                  sx={{
+                    display: menuExpanded ? 'inherit' : 'none',
+                    mt: [5, 5, 5, 6],
+                  }}
+                >
+                  <NavigationMenu
+                    nav={nav}
+                    mode={mode}
+                    setExpanded={setMenuExpanded}
+                  />
+                </Box>
+              </Column>
+            ) : (
+              <Column start={[2]} width={[5, 4, 10, 10]}>
+                <SearchMenu />
+              </Column>
+            )}
           </Row>
         </Container>
       </Box>
