@@ -86,6 +86,7 @@ const SearchMenu = ({ setExpanded }) => {
           }}
           sx={{
             gap: 7,
+            mt: [0, 0, 2, '29px'],
             position: 'relative',
             borderStyle: 'solid',
             borderColor: 'muted',
