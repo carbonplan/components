@@ -95,7 +95,10 @@ const Header = ({ status, mode, nav, menuItems }) => {
           <Flex sx={{ gap: 4 }}>
             <Search
               value={searchExpanded}
-              onClick={() => setSearchExpanded((prev) => !prev)}
+              onClick={() => {
+                setSearchExpanded(!searchExpanded)
+                !searchExpanded && setMenuExpanded(false)
+              }}
             />
             <Menu
               sx={{
@@ -103,7 +106,10 @@ const Header = ({ status, mode, nav, menuItems }) => {
                 mr: ['-2px'],
               }}
               value={menuExpanded}
-              onClick={() => setMenuExpanded((prev) => !prev)}
+              onClick={() => {
+                setMenuExpanded(!menuExpanded)
+                !menuExpanded && setSearchExpanded(false)
+              }}
             />
           </Flex>
         </Flex>
@@ -145,7 +151,7 @@ const Header = ({ status, mode, nav, menuItems }) => {
               </Column>
             ) : (
               <Column start={[2]} width={[5, 4, 10, 10]}>
-                <SearchMenu />
+                <SearchMenu setExpanded={setSearchExpanded} />
               </Column>
             )}
           </Row>
