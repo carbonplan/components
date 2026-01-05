@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Flex, Link } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 import Monogram from './monogram'
 import Row from './row'
 import Column from './column'
 
-const getCurrentYear = () => new Date().getFullYear()
-
 const Footer = () => {
+  const [year, setYear] = useState(null)
+  useEffect(() => {
+    setYear(new Date().getFullYear())
+  }, [])
+
   return (
     <Box
       sx={{
@@ -128,7 +131,7 @@ const Footer = () => {
                   gap: [0, 0, '10px', '12px'],
                 }}
               >
-                <Box>(c) {getCurrentYear()}</Box>
+                <Box>(c) {year}</Box>
                 <Box>CARBONPLAN</Box>
               </Flex>
             </Box>
