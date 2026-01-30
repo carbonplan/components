@@ -37,10 +37,10 @@ const Avatar = ({
         maxWidth: maxWidth,
         height: 'auto',
         borderRadius: '50%',
+        overflow: 'hidden',
         position: 'relative',
         display: 'inline-block',
         verticalAlign: 'top',
-        bg: color,
         ...sx,
       }}
       {...props}
@@ -49,16 +49,27 @@ const Avatar = ({
         alt={altProp}
         src={srcProp}
         sx={{
-          opacity: color && color !== 'transparent' ? 0.25 : 1,
           filter:
             color && color !== 'transparent'
               ? 'grayscale(100%) contrast(200%) brightness(100%)'
               : 'none',
           width: '100%',
-          borderRadius: '50%',
           display: 'block',
         }}
       />
+      {color && color !== 'transparent' && (
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            bg: color,
+            width: '100%',
+            height: '100%',
+            opacity: 0.75,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
     </Box>
   )
 }
