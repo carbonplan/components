@@ -13,4 +13,6 @@ const FigureCaption = ({
   )
 }
 
+FigureCaption.displayName = 'FigureCaption'
+
 export default FigureCaption

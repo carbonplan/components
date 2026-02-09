@@ -98,8 +98,8 @@ const AvatarGroup = ({
         if (d === 'left') {
           return 'auto'
         } else if (d === 'right') {
-          const offset = Math.max(1, (fixedCount ?? 0) - members.length + 1)
-          return (offset + idx) % (fixedCount ?? 1)
+          const offset = Math.max(0, (fixedCount ?? 0) - members.length)
+          return ((offset + idx) % (fixedCount ?? 1)) + 1
         } else {
           throw Error(`alignment '${d}' not recognized`)
         }
