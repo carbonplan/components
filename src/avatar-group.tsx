@@ -89,12 +89,9 @@ const AvatarGroup = ({
 
   let start = (idx: number): StartValue => 'auto'
   if (align) {
-    if (!Array.isArray(align)) {
-      align = [align]
-    }
-    start = (idx: number): StartValue => {
-      const alignArray = align as Alignment[]
-      return alignArray.map((d: Alignment) => {
+    const alignArray = Array.isArray(align) ? align : [align]
+    start = (idx) => {
+      return alignArray.map((d) => {
         if (d === 'left') {
           return 'auto'
         } else if (d === 'right') {
