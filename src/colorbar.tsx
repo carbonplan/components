@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { Box, Flex, FlexProps, ThemeUIStyleObject, get } from 'theme-ui'
 
-type SetClim = (setter: (prev: [number, number]) => [number, number]) => any
+type SetClim = (setter: (prev: [number, number]) => [number, number]) => void
 
 export interface ColorbarProps extends FlexProps {
   colormap: string[]
@@ -26,7 +26,7 @@ export interface ColorbarProps extends FlexProps {
   sxClim?: ThemeUIStyleObject
 }
 const styles = {
-  clim: (setClim?: SetClim): ThemeUIStyleObject & { userSelect: any } => {
+  clim: (setClim?: SetClim): ThemeUIStyleObject => {
     return {
       bg: 'unset',
       border: 'none',
@@ -35,9 +35,9 @@ const styles = {
       fontFamily: 'mono',
       fontSize: ['9px', 0, 0, 1],
       letterSpacing: 'smallcaps',
-      textTransform: 'uppercase',
+      textTransform: 'uppercase' as const,
       transition: 'border 0.15s',
-      userSelect: setClim ? 'none !important' : 'unset',
+      userSelect: (setClim ? 'none !important' : 'unset') as 'none',
       width: 'fit-content',
       minWidth: 'fit-content',
     }
@@ -203,7 +203,9 @@ const Colorbar = ({
     }
   }
 
-  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     y = e.pageY
     x = e.pageX
     id = (e.target as HTMLDivElement).id
