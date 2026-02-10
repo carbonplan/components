@@ -3,20 +3,36 @@ import { Box, BoxProps } from 'theme-ui'
 
 import Group from './group'
 
-const Figure = ({ as = 'figure', children, sx }: BoxProps) => {
+export type FigureProps = BoxProps
+
+const Figure = ({ as = 'figure', children, sx }: FigureProps) => {
   // try to use figure/table number as id for anchoring
   const childrenArray = React.Children.toArray(children)
-  const captionElement = childrenArray.find(
-    (child: React.ReactElement) =>
-      React.isValidElement(child) &&
-      child.type?.displayName &&
-      (child.type.displayName === 'FigureCaption' ||
-        child.type.displayName === 'TableCaption')
-  )
+  const captionElement = childrenArray.find((child) => {
+    if (!React.isValidElement(child)) return false
+    const type = child.type
+    return (
+      typeof type !== 'string' &&
+      'displayName' in type &&
+      (type.displayName === 'FigureCaption' ||
+        type.displayName === 'TableCaption')
+    )
+  })
 
-  const elementNumber = captionElement?.props?.number
+  const captionProps = React.isValidElement<{ number?: number }>(captionElement)
+    ? captionElement.props
+    : undefined
+  const captionType = React.isValidElement(captionElement)
+    ? captionElement.type
+    : undefined
+  const elementNumber = captionProps?.number
   const elementType =
-    captionElement?.type?.displayName === 'TableCaption' ? 'table' : 'figure'
+    typeof captionType !== 'string' &&
+    captionType &&
+    'displayName' in captionType &&
+    captionType.displayName === 'TableCaption'
+      ? 'table'
+      : 'figure'
   const id = elementNumber ? `${elementType}-${elementNumber}` : undefined
 
   return (
