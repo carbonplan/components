@@ -224,6 +224,7 @@ const Button = (
           textDecoration: 'none',
         }}
         {...(props as LinkProps)}
+        href={href}
       >
         {Inner}
       </Link>
