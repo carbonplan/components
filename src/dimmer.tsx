@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconButton, useColorMode, IconButtonProps } from 'theme-ui'
 import { useCallback } from 'react'
-// @ts-ignore
+// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Sun } from '@carbonplan/icons'
 
 export type DimmerProps = IconButtonProps
