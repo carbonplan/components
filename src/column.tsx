@@ -22,30 +22,28 @@ const Column = ({
   start = start || 'auto'
   width = width || 'auto'
 
-  const makeArray = (input: GridValue[]): GridValue[] => {
-    if (input && !Array.isArray(input)) {
-      input = [input]
-    }
+  const makeArray = (input: GridValue | GridValue[]): GridValue[] => {
+    let arr: GridValue[] = Array.isArray(input) ? input : [input]
 
-    if (![1, 2, 4].includes(input.length)) {
+    if (![1, 2, 4].includes(arr.length)) {
       throw new Error('Array length must be 1, 2, or 4')
     }
 
-    if (Array.isArray(input) && input.length == 1) {
-      input = input.map((d) => [d, d, d, d]).flat()
-    } else if (Array.isArray(input) && input.length == 2) {
-      input = input.map((d) => [d, d]).flat()
+    if (arr.length == 1) {
+      arr = arr.map((d) => [d, d, d, d]).flat()
+    } else if (arr.length == 2) {
+      arr = arr.map((d) => [d, d]).flat()
     }
 
-    return input
+    return arr
   }
 
-  start = makeArray(start as GridValue[])
-  width = makeArray(width as GridValue[])
+  const startArray = makeArray(start)
+  const widthArray = makeArray(width)
 
-  const end = start.map((d, i) => {
-    if (d == 'auto') return 'auto'
-    return (d as number) + (width[i] as number)
+  const end = startArray.map((d, i) => {
+    if (d === 'auto' || widthArray[i] === 'auto') return 'auto'
+    return d + widthArray[i]
   })
 
   let ml: ResponsiveStyleValue<number | string> | undefined,
@@ -79,7 +77,7 @@ const Column = ({
     <Box
       {...props}
       sx={{
-        gridColumnStart: start,
+        gridColumnStart: startArray,
         gridColumnEnd: end,
         ml: ml,
         mr: mr,
