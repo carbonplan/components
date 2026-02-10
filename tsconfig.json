@@ -10,7 +10,8 @@
     "jsx": "react",
     "declaration": true,
     "declarationDir": "./dst/types",
-    "outDir": "./dst"
+    "outDir": "./dst",
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]
