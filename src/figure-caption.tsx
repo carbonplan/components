@@ -1,6 +1,8 @@
 import React from 'react'
 import Caption, { CaptionProps } from './caption'
 
+export type FigureCaptionProps = CaptionProps
+
 const FigureCaption = ({
   as = 'figcaption',
   number,
