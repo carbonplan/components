@@ -178,7 +178,7 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
               </Link>
             </NextLink>
           )}
-          {(mode === undefined || mode === 'remote') && (
+          {(mode == null || mode === 'remote') && (
             <Link
               href='https://carbonplan.org'
               aria-label='CarbonPlan Homepage'
