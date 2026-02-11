@@ -79,7 +79,7 @@ const Layout = ({
 
     const handler = (e: MediaQueryListEvent) => {
       if (e.matches && settings?.value && settings?.onClick) {
-        settings.onClick({} as React.MouseEvent<HTMLButtonElement>)
+        settings.onClick()
       }
     }
 

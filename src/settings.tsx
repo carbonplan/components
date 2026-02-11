@@ -1,8 +1,10 @@
 import React from 'react'
 import { IconButton, IconButtonProps } from 'theme-ui'
 
-export interface SettingsProps extends Omit<IconButtonProps, 'value'> {
+export interface SettingsProps
+  extends Omit<IconButtonProps, 'value' | 'onClick'> {
   value: boolean
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Settings = ({ value, sx, ...props }: SettingsProps) => {
