@@ -3,7 +3,7 @@ import { Link as ThemedLink, LinkProps as ThemedLinkProps } from 'theme-ui'
 import { default as NextLink } from 'next/link'
 
 export interface LinkProps extends ThemedLinkProps {
-  href: string
+  href?: string
   internal?: boolean
 }
 
@@ -11,7 +11,7 @@ const Link = (
   { href, children, internal = false, ...props }: LinkProps,
   ref: React.Ref<HTMLAnchorElement>
 ) => {
-  if (internal || (href && href.startsWith('/'))) {
+  if (href && (internal || href.startsWith('/'))) {
     return (
       <NextLink href={href} passHref legacyBehavior>
         <ThemedLink ref={ref} {...props}>
@@ -28,4 +28,4 @@ const Link = (
   }
 }
 
-export default forwardRef(Link)
+export default forwardRef<HTMLAnchorElement, LinkProps>(Link)
