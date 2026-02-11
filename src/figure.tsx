@@ -1,9 +1,13 @@
 import React from 'react'
-import { Box, BoxProps } from 'theme-ui'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
 
 import Group from './group'
 
-export type FigureProps = BoxProps
+export interface FigureProps {
+  as?: React.ElementType
+  children?: React.ReactNode
+  sx?: ThemeUIStyleObject
+}
 
 const Figure = ({ as = 'figure', children, sx }: FigureProps) => {
   // try to use figure/table number as id for anchoring

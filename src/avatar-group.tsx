@@ -79,12 +79,12 @@ const AvatarGroup = ({
   sx,
   ...props
 }: AvatarGroupProps) => {
-  let gap: GridProps['gap']
+  let gap
 
   if (typeof spacing === 'string' && spacing in sizes) {
     gap = sizes[spacing as SizeKey]
   } else {
-    gap = spacing as GridProps['gap']
+    gap = spacing
   }
 
   let start = (idx: number): StartValue => 'auto'
