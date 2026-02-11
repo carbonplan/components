@@ -11,13 +11,13 @@ type SetClim = (setter: (prev: [number, number]) => [number, number]) => void
 
 export interface ColorbarProps extends FlexProps {
   colormap: string[]
-  label: ReactNode
-  clim: [number, number]
+  label?: ReactNode
+  clim?: [number, number]
   setClim?: SetClim
   setClimStep?: number
-  units: ReactNode
-  width: string
-  height: string
+  units?: ReactNode
+  width?: string
+  height?: string
   format?: (d: number) => ReactNode
   discrete?: boolean
   horizontal?: boolean
@@ -209,7 +209,7 @@ const Colorbar = ({
     y = e.pageY
     x = e.pageX
     id = (e.target as HTMLDivElement).id
-    init = clim
+    init = clim!
 
     document.body.setAttribute(
       'style',
@@ -311,7 +311,7 @@ const Colorbar = ({
         onMouseDown={setClim ? handleMouseDown : () => {}}
         onClick={() => climRef[0].current?.focus()}
       >
-        {format(clim[0])}
+        {format(clim![0])}
       </Box>
     )
   }
@@ -342,7 +342,7 @@ const Colorbar = ({
         onMouseDown={setClim ? handleMouseDown : () => {}}
         onClick={() => climRef[1].current?.focus()}
       >
-        {format(clim[1])}
+        {format(clim![1])}
       </Box>
     )
   }
