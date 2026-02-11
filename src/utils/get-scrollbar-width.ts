@@ -8,7 +8,7 @@ const getScrollbarWidth = (document: Document) => {
   inner.style.width = '100%'
   outer.appendChild(inner)
   const delta = outer.offsetWidth - inner.offsetWidth
-  outer.parentNode!.removeChild(outer)
+  document.body.removeChild(outer)
   return delta
 }
 
