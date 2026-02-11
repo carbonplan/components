@@ -3,9 +3,9 @@ import { IconButton, IconButtonProps } from 'theme-ui'
 
 export interface ExpanderProps {
   value: IconButtonProps['aria-checked']
-  id: IconButtonProps['id']
+  id?: IconButtonProps['id']
   onClick: IconButtonProps['onClick']
-  sx: IconButtonProps['sx']
+  sx?: IconButtonProps['sx']
 }
 const Expander = ({ value, id, onClick, sx }: ExpanderProps) => {
   return (

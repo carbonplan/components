@@ -4,7 +4,7 @@ import getSxColor from './utils/get-sx-color'
 
 export interface TagProps extends BoxProps {
   label: BoxProps['aria-label']
-  value: BoxProps['aria-checked']
+  value?: boolean
 }
 const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
   const color = getSxColor(sx)
