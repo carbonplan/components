@@ -46,8 +46,7 @@ const Column = ({
     return d + widthArray[i]
   })
 
-  let ml: ThemeUICSSObject['ml'],
-    mr: ThemeUICSSObject['mr']
+  let ml: ThemeUICSSObject['ml'], mr: ThemeUICSSObject['mr']
 
   if (dl) {
     if (![0.5, 1].includes(dl)) {

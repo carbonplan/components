@@ -5,7 +5,14 @@ import React, {
   ReactNode,
   MouseEventHandler,
 } from 'react'
-import { Box, Flex, FlexProps, ThemeUICSSObject, ThemeUIStyleObject, get } from 'theme-ui'
+import {
+  Box,
+  Flex,
+  FlexProps,
+  ThemeUICSSObject,
+  ThemeUIStyleObject,
+  get,
+} from 'theme-ui'
 
 type SetClim = (setter: (prev: [number, number]) => [number, number]) => void
 

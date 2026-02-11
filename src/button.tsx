@@ -3,9 +3,7 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
 
-const hasCustomHover = (
-  comp: unknown
-): comp is { hover: ThemeUIStyleObject } =>
+const hasCustomHover = (comp: unknown): comp is { hover: ThemeUIStyleObject } =>
   comp != null && typeof comp === 'object' && 'hover' in comp
 
 export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
