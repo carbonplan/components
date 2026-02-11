@@ -52,7 +52,7 @@ const GitSha = () => {
             textTransform: 'uppercase',
           }}
         >
-          {String(color)}
+          {typeof color === 'string' ? color : ''}
         </Text>
       </Box>
     )
