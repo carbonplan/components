@@ -1,6 +1,5 @@
 import React from 'react'
 import { Flex, ResponsiveStyleValue, ThemeUIStyleObject } from 'theme-ui'
-// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { RotatingArrow } from '@carbonplan/icons'
 import Button from './button'
 

@@ -1,6 +1,5 @@
 import React, { forwardRef, ReactNode } from 'react'
 import { Box, ThemeUIStyleObject } from 'theme-ui'
-// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
 import Link from './link'
 

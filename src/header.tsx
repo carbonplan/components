@@ -1,7 +1,6 @@
 import React, { useState, ReactNode, MouseEvent } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link, ThemeUIStyleObject } from 'theme-ui'
-// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
 import Logo from './logo'
 import Row from './row'

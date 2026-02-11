@@ -1,6 +1,5 @@
 import React, { ReactNode, useRef } from 'react'
 import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
-// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
 import getSizeStyles from './utils/get-size-styles'
 import getSxColor from './utils/get-sx-color'
