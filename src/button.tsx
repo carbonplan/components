@@ -18,8 +18,8 @@ export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
     | 'top'
     | 'bottom'
     | 'initial'
-  suffix?: React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }
-  prefix?: React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }
+  suffix?: (React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }) | null
+  prefix?: (React.ReactElement & { props?: { sx?: ThemeUIStyleObject } }) | null
   inverted?: boolean
   href?: string
   internal?: boolean
