@@ -37,7 +37,8 @@ const styles = {
       letterSpacing: 'smallcaps',
       textTransform: 'uppercase' as const,
       transition: 'border 0.15s',
-      userSelect: (setClim ? 'none !important' : 'unset') as 'none',
+      // !important suffix isn't representable in CSS property types
+      userSelect: setClim ? ('none !important' as 'none') : 'unset',
       width: 'fit-content',
       minWidth: 'fit-content',
     }
@@ -181,7 +182,7 @@ const Colorbar = ({
     dx: number,
     dy: number = 0
   let id: null | string = null
-  let init = [0, 0]
+  let init: [number, number] = [0, 0]
   let scale = setClimStep
 
   const draggingFunction = (e: MouseEvent) => {
@@ -203,9 +204,7 @@ const Colorbar = ({
     }
   }
 
-  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (
-    e: React.MouseEvent<HTMLDivElement>
-  ) => {
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
     y = e.pageY
     x = e.pageX
     id = (e.target as HTMLDivElement).id
