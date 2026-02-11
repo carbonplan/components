@@ -10,7 +10,7 @@ const Blockquote = ({ children }: BlockquoteProps) => {
     <Box variant='styles.blockquote'>
       {Children.map(children, (d: React.ReactNode, i: number) => {
         let firstChar = ''
-        let remaining = children
+        let remaining: React.ReactNode = d
         if (React.isValidElement(d) && typeof d.props.children === 'string') {
           firstChar = d.props.children.slice(0, 1)
           remaining = d.props.children.slice(1)
