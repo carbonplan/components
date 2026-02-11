@@ -7,8 +7,9 @@
   "types": "dst/types/index.d.ts",
   "scripts": {
     "clean": "rimraf dst",
-    "build": "npm run clean && tsc --emitDeclarationOnly && microbundle src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
-    "watch": "npm run clean && microbundle watch src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment & tsc --watch --emitDeclarationOnly",
+    "build": "npm run clean && microbundle src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
+    "typecheck": "tsc --noEmit",
+    "watch": "npm run clean && microbundle watch src/index.ts -o dst/index.js --jsx React.createElement -f modern,es,cjs --jsxFragment React.Fragment",
     "format": "prettier --write 'src/**/*.{ts,tsx,js}' '*.css'"
   },
   "repository": {
