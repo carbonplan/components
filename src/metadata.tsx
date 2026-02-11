@@ -3,12 +3,16 @@ import { Box, Text } from 'theme-ui'
 import { useState, useEffect } from 'react'
 import GitSha from './gitsha'
 
-const Value = ({ mode }) => {
+export interface MetadataProps {
+  mode: 'mouse' | 'scroll'
+}
+
+const Value = ({ mode }: MetadataProps) => {
   const [display, setDisplay] = useState(init(mode))
 
   useEffect(() => {
     if (mode === 'mouse') {
-      const setFromEvent = (e) => {
+      const setFromEvent = (e: MouseEvent) => {
         const x = format(e.clientX, 4)
         const y = format(e.clientY, 4)
         setDisplay(`X,Y: ${x},${y}`)
@@ -19,12 +23,11 @@ const Value = ({ mode }) => {
       }
     }
     if (mode === 'scroll') {
-      const setFromEvent = (e) => {
+      const setFromEvent = () => {
         const y = scrollFraction(window, document)
         setDisplay(`SCROLL: 0.${format((y * 100).toFixed(0), 2)}`)
       }
       window.addEventListener('scroll', setFromEvent)
-      const y = scrollFraction(window, document)
       return () => {
         window.removeEventListener('scroll', setFromEvent)
       }
@@ -49,11 +52,11 @@ const Value = ({ mode }) => {
   )
 }
 
-const Metadata = ({ mode }) => {
+const Metadata = ({ mode }: MetadataProps) => {
   return (
     <Box
       sx={{
-        userSelect: 'none',
+        userSelect: 'none' as const,
         position: 'fixed',
         bottom: '42px',
         right: '24px',
@@ -68,7 +71,7 @@ const Metadata = ({ mode }) => {
   )
 }
 
-function init(mode) {
+function init(mode: MetadataProps['mode']) {
   if (mode === 'mouse') {
     return `X,Y: ${format(0, 4)},${format(0, 4)}`
   } else if (mode === 'scroll') {
@@ -78,11 +81,11 @@ function init(mode) {
   }
 }
 
-function format(num, pad) {
+function format(num: number | string, pad: number) {
   return num.toString().padStart(pad, '0')
 }
 
-function scrollFraction(window, documnt) {
+function scrollFraction(window: Window, document: Document) {
   return Math.min(window.scrollY / (document.body.offsetHeight - 770), 0.99)
 }
 

@@ -6,7 +6,7 @@ import Row from './row'
 import Column from './column'
 
 const Footer = () => {
-  const [year, setYear] = useState(null)
+  const [year, setYear] = useState<number | null>(null)
   useEffect(() => {
     setYear(new Date().getFullYear())
   }, [])

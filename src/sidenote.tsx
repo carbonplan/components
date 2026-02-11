@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Box } from 'theme-ui'
 import Column from './column'
 
-const Sidenote = ({ children, variant = 'h1' }) => {
+export interface SidenoteProps {
+  children: ReactNode
+  variant?: 'h1' | 'h2'
+}
+
+const Sidenote = ({ children, variant = 'h1' }: SidenoteProps) => {
   let mt
   if (variant === 'h1') mt = [4, '27px', '42px', '54px']
   if (variant === 'h2') mt = [4, 4, '14px', '25px']

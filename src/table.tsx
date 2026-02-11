@@ -1,11 +1,11 @@
-import React from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 
 const styles = {
   reset: {
-    verticalAlign: 'baseline',
+    verticalAlign: 'baseline' as const,
     border: 0,
     outline: 0,
     margin: 0,
@@ -22,14 +22,14 @@ const styles = {
   },
   header: {
     display: 'block',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase' as const,
     letterSpacing: 'smallcaps',
     fontFamily: 'heading',
     fontSize: [2, 2, 2, 3],
   },
   index: {
     display: 'block',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase' as const,
     letterSpacing: 'smallcaps',
     fontFamily: 'heading',
     fontSize: [2, 2, 2, 3],
@@ -44,6 +44,19 @@ const styles = {
   },
 }
 
+export interface TableProps {
+  data: ReactNode[][]
+  columns: number | number[]
+  start: (number | number[])[]
+  width: (number | number[])[]
+  index?: boolean
+  borderBottom?: boolean
+  borderTop?: boolean
+  sx?: ThemeUIStyleObject
+  color?: string
+  header?: ReactNode
+}
+
 const Table = ({
   data,
   sx,
@@ -55,7 +68,7 @@ const Table = ({
   index = true,
   borderBottom = true,
   borderTop = true,
-}) => {
+}: TableProps) => {
   if (!start || !columns || !width) {
     throw new Error('Must provide columns, start, and width')
   }
@@ -105,7 +118,7 @@ const Table = ({
                     start={start[j]}
                     width={width[j]}
                     sx={
-                      j == 0 && index
+                      j === 0 && index
                         ? { ...styles.reset, ...styles.index }
                         : { ...styles.reset, ...styles.entry }
                     }

@@ -1,7 +1,19 @@
 import React from 'react'
-import { Flex } from 'theme-ui'
+import { Flex, ResponsiveStyleValue, ThemeUIStyleObject } from 'theme-ui'
+// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { RotatingArrow } from '@carbonplan/icons'
 import Button from './button'
+
+export interface LinkGroupProps {
+  members: { href: string; label: string }[]
+  color?: string
+  inverted?: boolean
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  rowGap?: ResponsiveStyleValue<number>
+  columnGap?: ResponsiveStyleValue<number>
+  direction?: 'horizontal' | 'vertical'
+  sx?: ThemeUIStyleObject
+}
 
 const LinkGroup = ({
   members,
@@ -12,7 +24,7 @@ const LinkGroup = ({
   columnGap = [3, 3, 3, 4],
   direction = 'horizontal',
   sx,
-}) => {
+}: LinkGroupProps) => {
   return (
     <Flex
       sx={{
@@ -28,7 +40,6 @@ const LinkGroup = ({
           <Button
             key={i}
             href={d.href}
-            label={d.label}
             size={size}
             sx={{ color: color }}
             inverted={inverted}

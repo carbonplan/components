@@ -8,7 +8,7 @@ const GitSha = () => {
 
   const { theme } = useThemeUI()
 
-  const color = theme.rawColors.secondary
+  const color = theme.rawColors?.secondary
 
   if (sha && owner && slug) {
     const shortSha = sha.substring(0, 7)
@@ -16,7 +16,7 @@ const GitSha = () => {
 
     return (
       <Box sx={{ display: 'inline-block', width: '87px' }}>
-        <Separator color={color} />
+        <Separator color={typeof color === 'string' ? color : undefined} />
         <Link
           href={href}
           sx={{
@@ -39,7 +39,7 @@ const GitSha = () => {
     // fallback
     return (
       <Box sx={{ display: 'inline-block', width: '87px' }}>
-        <Separator color={color} />
+        <Separator color={typeof color === 'string' ? color : undefined} />
         <Text
           sx={{
             whiteSpace: 'nowrap',
@@ -52,14 +52,14 @@ const GitSha = () => {
             textTransform: 'uppercase',
           }}
         >
-          {color}
+          {String(color)}
         </Text>
       </Box>
     )
   }
 }
 
-const Separator = ({ color }) => {
+const Separator = ({ color = 'secondary' }: { color?: string }) => {
   return (
     <svg fill={color} opacity='0.8' viewBox='0 0 24 24' width='24' height='24'>
       <circle r={5} cx={19} cy={19} />

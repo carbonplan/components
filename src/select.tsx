@@ -1,45 +1,56 @@
-import React, { useRef } from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode, useRef } from 'react'
+import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
+// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
-import getProps from './utils/get-props'
 import getSizeStyles from './utils/get-size-styles'
 
-const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
-  const color = sx && sx.color ? sx.color : 'primary'
-  const sizeStyles = getSizeStyles(size)
-  const ref = useRef(null)
+export interface SelectProps extends Omit<BoxProps, 'onChange'> {
+  size?: 'xs' | 'sm' | 'md'
+  sxSelect?: ThemeUIStyleObject
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>
+  children: ReactNode
+}
 
-  const { onChange } = props
-  const omitOnChange = getProps((k) => k !== 'onChange')(props)
+const Select = ({
+  children,
+  size = 'sm',
+  sx,
+  sxSelect,
+  onChange,
+  ...props
+}: SelectProps) => {
+  const color =
+    sx && typeof sx === 'object' && 'color' in sx ? sx.color : 'primary'
+  const sizeStyles = getSizeStyles(size)
+  const ref = useRef<HTMLSelectElement>(null)
 
   if (!['xs', 'sm', 'md'].includes(size)) {
     throw new Error('Size must be xs, sm, or md')
   }
 
-  let pr, height, width, ml, top
-
-  if (size === 'xs') {
-    height = [14, 14, 14, 16]
-    width = [14, 14, 14, 14]
-    top = ['1px']
-    ml = ['-14px', '-14px', '-14px', '-16px']
+  const sizeConfig = {
+    xs: {
+      height: [14, 14, 14, 16],
+      width: [14, 14, 14, 14],
+      top: ['1px'],
+      ml: ['-14px', '-14px', '-14px', '-16px'],
+    },
+    sm: {
+      height: [15, 15, 15, 20],
+      width: [15, 15, 15, 20],
+      top: ['1px'],
+      ml: ['-16px', '-16px', '-16px', '-20px'],
+    },
+    md: {
+      height: [20, 20, 20, 20],
+      width: [20, 20, 20, 20],
+      top: ['2px'],
+      ml: ['-20px', '-20px', '-20px', '-20px'],
+    },
   }
 
-  if (size === 'sm') {
-    height = [15, 15, 15, 20]
-    width = [15, 15, 15, 20]
-    top = ['1px']
-    ml = ['-16px', '-16px', '-16px', '-20px']
-  }
-
-  if (size === 'md') {
-    height = [20, 20, 20, 20]
-    width = [20, 20, 20, 20]
-    top = ['2px']
-    ml = ['-20px', '-20px', '-20px', '-20px']
-  }
-
-  pr = width.map((d) => d + 12)
+  const { height, width, top, ml } = sizeConfig[size]
+  const pr = width.map((d) => d + 12)
 
   return (
     <Box
@@ -52,8 +63,10 @@ const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
         as='select'
         ref={ref}
         onChange={(e) => {
-          ref.current.blur()
-          if (onChange) onChange(e)
+          ref.current?.blur()
+          // theme-ui Box doesn't narrow event types for `as='select'`
+          if (onChange)
+            onChange(e as unknown as React.ChangeEvent<HTMLSelectElement>)
         }}
         sx={{
           ...sizeStyles,
@@ -69,10 +82,9 @@ const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
           borderBottomWidth: '1px',
           borderBottomColor: 'primary',
           borderRadius: '0px',
-          color: 'text',
           width: 'fit-content',
           color: color,
-          userSelect: 'none',
+          userSelect: 'none' as const,
           '@media (hover: none) and (pointer: coarse)': {
             '&:focus-visible': {
               outline: 'none !important',
@@ -81,7 +93,7 @@ const Select = ({ children, size = 'sm', sx, sxSelect, ...props }) => {
           },
           ...sxSelect,
         }}
-        {...omitOnChange}
+        {...props}
       >
         {children}
       </Box>

@@ -1,17 +1,30 @@
 import React, { forwardRef } from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
-const Toggle = ({ value, onClick, disabled, sx, ...props }, ref) => {
-  const color = sx && sx.color ? sx.color : 'primary'
-  value = disabled ? false : value
+export interface ToggleProps extends Omit<BoxProps, 'value'> {
+  value?: boolean
+  onClick?: React.MouseEventHandler<HTMLElement>
+  disabled?: boolean
+  sx?: ThemeUIStyleObject
+}
+
+const Toggle = (
+  { value, onClick, disabled, sx, ...props }: ToggleProps,
+  ref: React.Ref<HTMLButtonElement>
+) => {
+  const color =
+    sx && typeof sx === 'object' && 'color' in sx && typeof sx.color === 'string'
+      ? sx.color
+      : 'primary'
+  const active = disabled ? false : value
   return (
     <Box
       ref={ref}
       as='button'
       onClick={onClick}
       role='checkbox'
-      aria-checked={value}
+      aria-checked={active}
       aria-label='Toggle'
       sx={{
         border: 'none',
@@ -29,8 +42,8 @@ const Toggle = ({ value, onClick, disabled, sx, ...props }, ref) => {
           width: '50px',
           height: '20px',
           borderRadius: '20px',
-          backgroundColor: value
-            ? transparentize(color, color == 'primary' ? 0.5 : 0.45)
+          backgroundColor: active
+            ? transparentize(color, color === 'primary' ? 0.5 : 0.45)
             : 'muted',
           position: 'relative',
           transition: '0.15s',
@@ -43,9 +56,9 @@ const Toggle = ({ value, onClick, disabled, sx, ...props }, ref) => {
             height: '14px',
             borderRadius: '7px',
             position: 'absolute',
-            left: value ? '32px' : '4px',
+            left: active ? '32px' : '4px',
             top: '3px',
-            backgroundColor: value ? color : 'secondary',
+            backgroundColor: active ? color : 'secondary',
             transition: '0.15s',
           }}
         ></Box>
@@ -54,4 +67,4 @@ const Toggle = ({ value, onClick, disabled, sx, ...props }, ref) => {
   )
 }
 
-export default forwardRef(Toggle)
+export default forwardRef<HTMLButtonElement, ToggleProps>(Toggle)

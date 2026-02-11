@@ -1,9 +1,15 @@
-import React from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 
-const Tray = ({ expanded, sx, children }) => {
+export interface TrayProps {
+  expanded: boolean
+  sx?: ThemeUIStyleObject
+  children: ReactNode
+}
+
+const Tray = ({ expanded, sx, children }: TrayProps) => {
   return (
     <>
       <Box

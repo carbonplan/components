@@ -2,7 +2,14 @@ import React from 'react'
 import Head from 'next/head'
 import { useThemeUI } from 'theme-ui'
 
-const Meta = ({ title, description, card, url }) => {
+export interface MetaProps {
+  title?: string
+  description?: string
+  card?: string
+  url?: string
+}
+
+const Meta = ({ title, description, card, url }: MetaProps) => {
   const { theme, colorMode } = useThemeUI()
   if (!description) {
     console.warn(
@@ -64,7 +71,7 @@ const Meta = ({ title, description, card, url }) => {
         crossOrigin='anonymous'
       />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
-      <meta name='theme-color' content={theme.colors.background} />
+      <meta name='theme-color' content={typeof theme.colors?.background === 'string' ? theme.colors.background : ''} />
       <meta
         name='color-scheme'
         content={colorMode === 'light' ? 'light' : 'dark'}
@@ -79,7 +86,10 @@ const Meta = ({ title, description, card, url }) => {
         sizes='180x180'
         href='https://images.carbonplan.org/apple-touch-icon.png'
       />
-      <meta name='msapplication-TileColor' content={theme.colors.background} />
+      <meta
+        name='msapplication-TileColor'
+        content={typeof theme.colors?.background === 'string' ? theme.colors.background : ''}
+      />
       <meta
         name='msapplication-TileImage'
         content='https://images.carbonplan.org/mstile-144x144.png'

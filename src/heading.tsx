@@ -1,8 +1,18 @@
-import React from 'react'
-import { Box } from 'theme-ui'
+import React, { ReactNode } from 'react'
+import { Box, ThemeUIStyleObject } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 import Sidenote from './sidenote'
+
+export interface HeadingProps {
+  children: ReactNode
+  sidenote?: ReactNode
+  variant?: 'h1' | 'h2'
+  description?: ReactNode
+  descriptionStart?: number[]
+  descriptionWidth?: number[]
+  sx?: ThemeUIStyleObject
+}
 
 const Heading = ({
   children,
@@ -12,7 +22,7 @@ const Heading = ({
   descriptionStart = [1, 3, 5, 5],
   descriptionWidth = [5, 5, 5, 4],
   sx,
-}) => {
+}: HeadingProps) => {
   let titleWidth = [6, 6, 6, 6]
   if (description) {
     titleWidth[1] = descriptionStart[1] - 1

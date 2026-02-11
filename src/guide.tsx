@@ -3,12 +3,16 @@ import { Box, Container } from 'theme-ui'
 import Row from './row'
 import Column from './column'
 
-const Guide = ({ color = 'muted' }) => {
+export interface GuideProps {
+  color?: string
+}
+
+const Guide = ({ color = 'muted' }: GuideProps) => {
   const [display, setDisplay] = useState(false)
 
   useEffect(() => {
-    function handler(event) {
-      const { key, keyCode, metaKey } = event
+    function handler(event: KeyboardEvent) {
+      const { key, metaKey } = event
       if (key === ';' && metaKey) {
         setDisplay((prev) => !prev)
       }
@@ -61,21 +65,27 @@ const colorCycle = [
   'pink',
 ]
 
-function GuideColumns({ indices, color }) {
+function GuideColumns({
+  indices,
+  color,
+}: {
+  indices: number[]
+  color: string
+}) {
   const sx = {
     outerGuideColumn: {
       borderStyle: 'solid',
       borderWidth: '0px',
       borderLeftWidth: color === 'teal' ? '0px' : '1px',
       borderRightWidth: color === 'teal' ? '0px' : '1px',
-      opacity: color == 'teal' ? 0.4 : 1,
+      opacity: color === 'teal' ? 0.4 : 1,
     },
     innerGuideColumn: {
       borderStyle: 'solid',
       borderWidth: '0px',
       borderLeftWidth: '0px',
       borderRightWidth: '0px',
-      opacity: color == 'teal' ? 0.4 : 1,
+      opacity: color === 'teal' ? 0.4 : 1,
     },
   }
 

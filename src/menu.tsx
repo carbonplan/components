@@ -1,7 +1,11 @@
 import React from 'react'
-import { IconButton } from 'theme-ui'
+import { IconButton, IconButtonProps } from 'theme-ui'
 
-const Menu = ({ value, sx, ...props }) => {
+export interface MenuProps extends Omit<IconButtonProps, 'value'> {
+  value?: boolean
+}
+
+const Menu = ({ value, sx, ...props }: MenuProps) => {
   return (
     <IconButton
       sx={{

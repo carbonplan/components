@@ -1,14 +1,18 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 
-const Monogram = ({ ...props }) => {
+export type MonogramProps = BoxProps
+
+const Monogram = ({ ...props }: MonogramProps) => {
   return (
     <Box
       as='svg'
-      width='80'
-      stroke='none'
-      fill='currentColor'
-      viewBox='0 0 32 32'
+      {...{
+        width: '80',
+        stroke: 'none',
+        fill: 'currentColor',
+        viewBox: '0 0 32 32',
+      }}
       {...props}
     >
       <path d='M21.9395,14.9395 L17.5005,19.3785 L17.5005,7.0005 L14.5005,7.0005 L14.5005,19.3785 L10.0605,14.9395 L7.9395,17.0605 L14.9395,24.0605 C15.2325,24.3535 15.6165,24.5005 16.0005,24.5005 C16.3835,24.5005 16.7675,24.3535 17.0605,24.0605 L24.0605,17.0605 L21.9395,14.9395 Z'></path>

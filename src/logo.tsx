@@ -1,14 +1,18 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 
-const Logo = ({ ...props }) => {
+export type LogoProps = BoxProps
+
+const Logo = ({ ...props }: LogoProps) => {
   return (
     <Box
       as='svg'
-      width='150'
-      fill='currentColor'
-      stroke='none'
-      viewBox='0 0 151.1 28.8'
+      {...{
+        width: '150',
+        fill: 'currentColor',
+        stroke: 'none',
+        viewBox: '0 0 151.1 28.8',
+      }}
       {...props}
     >
       <g>
