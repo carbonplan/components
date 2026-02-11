@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 
 interface InlineColorProps extends BoxProps {
-  sx: ThemeUIStyleObject
+  sx?: ThemeUIStyleObject
   color: string
   children: ReactNode
 }

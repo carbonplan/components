@@ -8,7 +8,7 @@ export interface CalloutProps {
   label: ReactNode
   children: ReactNode
   inverted?: boolean
-  color: string
+  color?: string
   href?: string
   internal?: boolean
   sx?: ThemeUIStyleObject
