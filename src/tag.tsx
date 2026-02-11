@@ -1,19 +1,13 @@
 import React from 'react'
-import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
+import getSxColor from './utils/get-sx-color'
 
 export interface TagProps extends BoxProps {
   label: BoxProps['aria-label']
   value: BoxProps['aria-checked']
-  sx?: ThemeUIStyleObject
 }
 const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
-  const color =
-    sx &&
-    typeof sx === 'object' &&
-    'color' in sx &&
-    typeof sx.color === 'string'
-      ? sx.color
-      : 'primary'
+  const color = getSxColor(sx)
   const isClickable = props && (props.onClick || props.onDoubleClick)
 
   return (

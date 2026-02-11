@@ -1,25 +1,19 @@
 import React, { forwardRef } from 'react'
-import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
+import getSxColor from './utils/get-sx-color'
 
 export interface ToggleProps extends Omit<BoxProps, 'value'> {
   value?: boolean
   onClick?: React.MouseEventHandler<HTMLElement>
   disabled?: boolean
-  sx?: ThemeUIStyleObject
 }
 
 const Toggle = (
   { value, onClick, disabled, sx, ...props }: ToggleProps,
   ref: React.Ref<HTMLButtonElement>
 ) => {
-  const color =
-    sx &&
-    typeof sx === 'object' &&
-    'color' in sx &&
-    typeof sx.color === 'string'
-      ? sx.color
-      : 'primary'
+  const color = getSxColor(sx)
   const active = disabled ? false : value
   return (
     <Box

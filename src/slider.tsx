@@ -1,22 +1,14 @@
 import React, { forwardRef } from 'react'
-import { useThemeUI, Slider as ThemeSlider, ThemeUIStyleObject } from 'theme-ui'
+import { useThemeUI, Slider as ThemeSlider } from 'theme-ui'
+import getSxColor from './utils/get-sx-color'
 
-export interface SliderProps
-  extends React.ComponentPropsWithRef<typeof ThemeSlider> {
-  sx?: ThemeUIStyleObject
-}
+export type SliderProps = React.ComponentPropsWithRef<typeof ThemeSlider>
 
 const Slider = (
   { sx, ...props }: SliderProps,
   ref: React.Ref<HTMLInputElement>
 ) => {
-  const color =
-    sx &&
-    typeof sx === 'object' &&
-    'color' in sx &&
-    typeof sx.color === 'string'
-      ? sx.color
-      : 'primary'
+  const color = getSxColor(sx)
   const {
     theme: { rawColors: colors },
   } = useThemeUI()

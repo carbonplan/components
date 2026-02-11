@@ -1,19 +1,12 @@
 import React from 'react'
-import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
+import { Box, BoxProps } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
+import getSxColor from './utils/get-sx-color'
 
-export interface BadgeProps extends BoxProps {
-  sx?: ThemeUIStyleObject
-}
+export type BadgeProps = BoxProps
 
 const Badge = ({ sx, children, ...props }: BadgeProps) => {
-  const color =
-    sx &&
-    typeof sx === 'object' &&
-    'color' in sx &&
-    typeof sx.color === 'string'
-      ? sx.color
-      : 'primary'
+  const color = getSxColor(sx)
   return (
     <Box
       sx={{

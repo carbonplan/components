@@ -3,6 +3,7 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 // @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
 import getSizeStyles from './utils/get-size-styles'
+import getSxColor from './utils/get-sx-color'
 
 export interface SelectProps extends Omit<BoxProps, 'onChange'> {
   size?: 'xs' | 'sm' | 'md'
@@ -19,8 +20,7 @@ const Select = ({
   onChange,
   ...props
 }: SelectProps) => {
-  const color =
-    sx && typeof sx === 'object' && 'color' in sx ? sx.color : 'primary'
+  const color = getSxColor(sx)
   const sizeStyles = getSizeStyles(size)
   const ref = useRef<HTMLSelectElement>(null)
 
