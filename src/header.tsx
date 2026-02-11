@@ -1,7 +1,7 @@
 import React, { useState, ReactNode, MouseEvent } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link, ThemeUIStyleObject } from 'theme-ui'
-// @ts-ignore
+// @ts-expect-error - @carbonplan/icons lacks types field in published package
 import { Arrow } from '@carbonplan/icons'
 import Logo from './logo'
 import Row from './row'
@@ -54,7 +54,7 @@ const links: LinkItem[] = [
   { url: 'press', display: 'Press' },
 ]
 
-const HoverArrow = (): JSX.Element => {
+const HoverArrow = () => {
   return (
     <Arrow
       id='arrow'
@@ -82,13 +82,7 @@ export interface NavProps {
   setExpanded: (expanded: boolean) => void
 }
 
-const Nav = ({
-  link,
-  mode,
-  nav,
-  first,
-  setExpanded,
-}: NavProps): JSX.Element => {
+const Nav = ({ link, mode, nav, first, setExpanded }: NavProps) => {
   const { url, display } = link
   const href = mode === 'remote' ? 'https://carbonplan.org/' + url : '/' + url
 
@@ -123,24 +117,23 @@ export interface NavGroupProps {
   setExpanded: (expanded: boolean) => void
 }
 
-const NavGroup = ({
-  links,
-  nav,
-  mode,
-  setExpanded,
-}: NavGroupProps): JSX.Element[] => {
-  return links.map((d, i) => {
-    return (
-      <Nav
-        key={i}
-        link={d}
-        mode={mode}
-        nav={nav}
-        first={i === 0}
-        setExpanded={setExpanded}
-      />
-    )
-  })
+const NavGroup = ({ links, nav, mode, setExpanded }: NavGroupProps) => {
+  return (
+    <>
+      {links.map((d, i) => {
+        return (
+          <Nav
+            key={i}
+            link={d}
+            mode={mode}
+            nav={nav}
+            first={i === 0}
+            setExpanded={setExpanded}
+          />
+        )
+      })}
+    </>
+  )
 }
 
 export interface HeaderProps {
@@ -150,10 +143,10 @@ export interface HeaderProps {
   menuItems?: ReactNode
 }
 
-const Header = ({ status, mode, nav, menuItems }: HeaderProps): JSX.Element => {
-  const [expanded, setExpanded] = useState<boolean>(false)
+const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
+  const [expanded, setExpanded] = useState(false)
 
-  const toggle = (e: MouseEvent<HTMLButtonElement>): void => {
+  const toggle = (e: MouseEvent<HTMLButtonElement>) => {
     setExpanded(!expanded)
   }
 

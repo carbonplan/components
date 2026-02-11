@@ -50,7 +50,7 @@ const Layout = ({
   fade = true,
   container = true,
   printable = false,
-}: LayoutProps): JSX.Element => {
+}: LayoutProps) => {
   let content = children
 
   if (fade) {
@@ -194,7 +194,9 @@ const Layout = ({
             <Dimmer />
           </Box>
         )}
-        {metadata && <Metadata mode={metadata} />}
+        {metadata && (
+          <Metadata mode={typeof metadata === 'string' ? metadata : 'mouse'} />
+        )}
       </Flex>
     </>
   )
