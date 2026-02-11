@@ -38,7 +38,7 @@ const duplicateOptions = <T,>(
 
 const isAll = <T,>(option: FilterProps<T>['values']) => {
   return (
-    Object.keys(option).filter((d) => option[d as keyof T]).length ==
+    Object.keys(option).filter((d) => option[d as keyof T]).length ===
     Object.keys(option).length
   )
 }

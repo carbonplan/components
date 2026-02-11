@@ -4,12 +4,16 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 export interface TagProps extends BoxProps {
   label: BoxProps['aria-label']
   value: BoxProps['aria-checked']
-  sx?: ThemeUIStyleObject & {
-    color?: string // ThemeUIStyleObject doesn't have a color property
-  }
+  sx?: ThemeUIStyleObject
 }
 const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
-  const color = sx && sx.color ? sx.color : 'primary'
+  const color =
+    sx &&
+    typeof sx === 'object' &&
+    'color' in sx &&
+    typeof sx.color === 'string'
+      ? sx.color
+      : 'primary'
   const isClickable = props && (props.onClick || props.onDoubleClick)
 
   return (
@@ -38,7 +42,7 @@ const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
         pb: ['2px'],
         px: [0],
         m: [0],
-        opacity: value == null || value ? 1 : color == 'primary' ? 0.24 : 0.33,
+        opacity: value == null || value ? 1 : color === 'primary' ? 0.24 : 0.33,
         ...sx,
       }}
       {...props}

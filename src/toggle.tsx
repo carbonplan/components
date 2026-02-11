@@ -14,7 +14,10 @@ const Toggle = (
   ref: React.Ref<HTMLButtonElement>
 ) => {
   const color =
-    sx && typeof sx === 'object' && 'color' in sx && typeof sx.color === 'string'
+    sx &&
+    typeof sx === 'object' &&
+    'color' in sx &&
+    typeof sx.color === 'string'
       ? sx.color
       : 'primary'
   const active = disabled ? false : value

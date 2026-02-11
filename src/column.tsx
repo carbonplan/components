@@ -29,9 +29,9 @@ const Column = ({
       throw new Error('Array length must be 1, 2, or 4')
     }
 
-    if (arr.length == 1) {
+    if (arr.length === 1) {
       arr = arr.map((d) => [d, d, d, d]).flat()
-    } else if (arr.length == 2) {
+    } else if (arr.length === 2) {
       arr = arr.map((d) => [d, d]).flat()
     }
 

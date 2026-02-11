@@ -11,7 +11,10 @@ const Slider = (
   ref: React.Ref<HTMLInputElement>
 ) => {
   const color =
-    sx && typeof sx === 'object' && 'color' in sx && typeof sx.color === 'string'
+    sx &&
+    typeof sx === 'object' &&
+    'color' in sx &&
+    typeof sx.color === 'string'
       ? sx.color
       : 'primary'
   const {

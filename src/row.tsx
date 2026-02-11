@@ -11,10 +11,10 @@ const Row = ({ children, sx, columns, gap, ...props }: GridProps) => {
     if (Array.isArray(input) && ![1, 2, 4].includes(input.length)) {
       throw new Error('Array length must be 1, 2, or 4')
     }
-    if (Array.isArray(input) && input.length == 1) {
+    if (Array.isArray(input) && input.length === 1) {
       input = input.map((d) => [d]).flat()
     }
-    if (Array.isArray(input) && input.length == 2) {
+    if (Array.isArray(input) && input.length === 2) {
       input = input.map((d) => [d, d]).flat()
     }
     return input

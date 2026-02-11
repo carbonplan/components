@@ -3,13 +3,17 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 
 export interface BadgeProps extends BoxProps {
-  sx?: ThemeUIStyleObject & {
-    color?: string // ThemeUIStyleObject doesn't have a color property
-  }
+  sx?: ThemeUIStyleObject
 }
 
 const Badge = ({ sx, children, ...props }: BadgeProps) => {
-  const color = sx && sx.color ? sx.color : 'primary'
+  const color =
+    sx &&
+    typeof sx === 'object' &&
+    'color' in sx &&
+    typeof sx.color === 'string'
+      ? sx.color
+      : 'primary'
   return (
     <Box
       sx={{
@@ -18,7 +22,7 @@ const Badge = ({ sx, children, ...props }: BadgeProps) => {
         height: ['24px', '24px', '24px', '26px'],
         borderRadius: '5px',
         backgroundColor:
-          color == 'primary' || color == 'secondary'
+          color === 'primary' || color === 'secondary'
             ? 'muted'
             : transparentize(color, 0.7),
         textAlign: 'center',
