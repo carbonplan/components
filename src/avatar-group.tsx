@@ -87,7 +87,7 @@ const AvatarGroup = ({
     gap = spacing
   }
 
-  let start = (idx: number): StartValue => 'auto'
+  let start = (_idx: number): StartValue => 'auto'
   if (align) {
     const alignArray = Array.isArray(align) ? align : [align]
     start = (idx) => {

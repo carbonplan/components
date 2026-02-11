@@ -8,7 +8,7 @@ const specialChars = ['“', '"', "'", '‘']
 const Blockquote = ({ children }: BlockquoteProps) => {
   return (
     <Box variant='styles.blockquote'>
-      {Children.map(children, (d: React.ReactNode, i: number) => {
+      {Children.map(children, (d: React.ReactNode) => {
         let firstChar = ''
         let remaining: React.ReactNode = d
         if (React.isValidElement(d) && typeof d.props.children === 'string') {

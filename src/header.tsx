@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, MouseEvent } from 'react'
+import React, { useState, ReactNode } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link, ThemeUIStyleObject } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
@@ -145,7 +145,7 @@ export interface HeaderProps {
 const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
   const [expanded, setExpanded] = useState(false)
 
-  const toggle = (e: MouseEvent<HTMLButtonElement>) => {
+  const toggle = () => {
     setExpanded(!expanded)
   }
 

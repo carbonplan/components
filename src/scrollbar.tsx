@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import getScrollbarWidth from './utils/get-scrollbar-width'
 
 const Scrollbar = () => {
