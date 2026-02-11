@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, ResponsiveStyleValue } from 'theme-ui'
+import { Box, GridProps } from 'theme-ui'
 import Avatar, { AvatarProps } from './avatar'
 import Row, { RowProps } from './row'
 import Column from './column'
@@ -60,7 +60,7 @@ export interface AvatarGroupProps extends RowProps, GroupProps {
   members: AvatarProps[]
   direction?: 'horizontal' | 'vertical'
   align?: Alignment | Alignment[]
-  spacing?: SizeKey | ResponsiveStyleValue<number | string>
+  spacing?: SizeKey | GridProps['gap']
   limit?: number
   width?: string
   maxWidth?: string | number
@@ -79,12 +79,12 @@ const AvatarGroup = ({
   sx,
   ...props
 }: AvatarGroupProps) => {
-  let gap: ResponsiveStyleValue<number | string>
+  let gap: GridProps['gap']
 
   if (typeof spacing === 'string' && spacing in sizes) {
     gap = sizes[spacing as SizeKey]
   } else {
-    gap = spacing as ResponsiveStyleValue<number | string>
+    gap = spacing as GridProps['gap']
   }
 
   let start = (idx: number): StartValue => 'auto'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, BoxProps, ResponsiveStyleValue } from 'theme-ui'
+import { Box, BoxProps, ThemeUICSSObject } from 'theme-ui'
 
 export interface ColumnProps extends BoxProps {
   start?: number | 'auto' | (number | 'auto')[]
@@ -46,8 +46,8 @@ const Column = ({
     return d + widthArray[i]
   })
 
-  let ml: ResponsiveStyleValue<number | string> | undefined,
-    mr: ResponsiveStyleValue<number | string> | undefined
+  let ml: ThemeUICSSObject['ml'],
+    mr: ThemeUICSSObject['mr']
 
   if (dl) {
     if (![0.5, 1].includes(dl)) {

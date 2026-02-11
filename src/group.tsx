@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResponsiveStyleValue } from 'theme-ui'
+import { ResponsiveStyleValue, ThemeUICSSObject } from 'theme-ui'
 import { Box, BoxProps } from 'theme-ui'
 
 const sizes = {
@@ -25,12 +25,12 @@ const Group = ({
   spacing = 'md',
   sx,
 }: GroupProps) => {
-  let marginValue: ResponsiveStyleValue<number | string>
+  let marginValue: ThemeUICSSObject['margin']
 
   if (typeof spacing === 'string' && spacing in sizes) {
     marginValue = sizes[spacing as SizeKey]
   } else {
-    marginValue = spacing as ResponsiveStyleValue<number | string>
+    marginValue = spacing as ThemeUICSSObject['margin']
   }
 
   if (!['horizontal', 'vertical'].includes(direction)) {

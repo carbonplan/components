@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, ResponsiveStyleValue, ThemeUIStyleObject } from 'theme-ui'
+import { Flex, ThemeUICSSObject, ThemeUIStyleObject } from 'theme-ui'
 import { RotatingArrow } from '@carbonplan/icons'
 import Button from './button'
 
@@ -8,8 +8,8 @@ export interface LinkGroupProps {
   color?: string
   inverted?: boolean
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  rowGap?: ResponsiveStyleValue<number>
-  columnGap?: ResponsiveStyleValue<number>
+  rowGap?: ThemeUICSSObject['rowGap']
+  columnGap?: ThemeUICSSObject['columnGap']
   direction?: 'horizontal' | 'vertical'
   sx?: ThemeUIStyleObject
 }
