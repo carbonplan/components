@@ -77,19 +77,25 @@ const Gradient = ({
   ColorbarProps,
   'colormap' | 'discrete' | 'horizontal' | 'width' | 'height'
 >) => {
-  const step = (1 / colormap.length) * 100
-  const isHex = colormap[0].startsWith('#')
+  const hasColors = colormap.length > 0
+  const step = hasColors ? (1 / colormap.length) * 100 : 0
+  const firstColor = colormap[0]
+  const isHex = typeof firstColor === 'string' && firstColor.startsWith('#')
   const values = colormap.map((color, i) => {
-    const rgbColor = isHex ? hexToRgb(color) : color
+    const normalizedColor = String(color)
+    const rgbColor = isHex ? hexToRgb(normalizedColor) : normalizedColor
     const position = `${i * step}% ${
       discrete && i < colormap.length - 1 ? `${(i + 1) * step}%` : ''
     }`
     return `rgb(${rgbColor}) ${position}`
   })
 
-  const css = `linear-gradient(to ${
-    horizontal ? 'right' : 'top'
-  }, ${values.join(',')})`
+  const css =
+    values.length > 0
+      ? `linear-gradient(to ${horizontal ? 'right' : 'top'}, ${values.join(
+          ','
+        )})`
+      : 'none'
 
   return (
     <Box
