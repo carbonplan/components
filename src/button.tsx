@@ -2,6 +2,7 @@ import React, { forwardRef, cloneElement } from 'react'
 import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
+import getSxColor from './utils/get-sx-color'
 
 const hasCustomHover = (comp: unknown): comp is { hover: ThemeUIStyleObject } =>
   comp != null && typeof comp === 'object' && 'hover' in comp
@@ -23,9 +24,6 @@ export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
   inverted?: boolean
   href?: string
   internal?: boolean
-  sx?: ThemeUIStyleObject & {
-    color?: string // ThemeUIStyleObject doesn't have a color property
-  }
 }
 
 const Button = (
@@ -47,10 +45,12 @@ const Button = (
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  const { color, ...sxProp } = sx || {}
-
-  const baseColor = color || (inverted ? 'secondary' : 'primary')
-  const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
+  const defaultColor = inverted ? 'secondary' : 'primary'
+  const baseColor = getSxColor(sx, defaultColor)
+  const hoverColor =
+    baseColor !== defaultColor || inverted ? 'primary' : 'secondary'
+  const { color: _, ...sxProp } =
+    sx && typeof sx === 'object' ? (sx as Record<string, unknown>) : {}
 
   const sizeConfig = {
     xs: {
