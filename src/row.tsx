@@ -6,7 +6,7 @@ export type RowProps = GridProps
 const Row = ({ children, sx, columns, gap, ...props }: GridProps) => {
   const makeArray = (input: GridProps['gap']): GridProps['gap'] => {
     if (!Array.isArray(input)) {
-      input = [input, input, input, input] as number[]
+      input = [input, input, input, input]
     }
     if (Array.isArray(input) && ![1, 2, 4].includes(input.length)) {
       throw new Error('Array length must be 1, 2, or 4')
