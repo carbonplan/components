@@ -71,7 +71,14 @@ const Meta = ({ title, description, card, url }: MetaProps) => {
         crossOrigin='anonymous'
       />
       <link rel='manifest' href='https://images.carbonplan.org/manifest.json' />
-      <meta name='theme-color' content={typeof theme.colors?.background === 'string' ? theme.colors.background : ''} />
+      <meta
+        name='theme-color'
+        content={
+          typeof theme.colors?.background === 'string'
+            ? theme.colors.background
+            : ''
+        }
+      />
       <meta
         name='color-scheme'
         content={colorMode === 'light' ? 'light' : 'dark'}
@@ -88,7 +95,11 @@ const Meta = ({ title, description, card, url }: MetaProps) => {
       />
       <meta
         name='msapplication-TileColor'
-        content={typeof theme.colors?.background === 'string' ? theme.colors.background : ''}
+        content={
+          typeof theme.colors?.background === 'string'
+            ? theme.colors.background
+            : ''
+        }
       />
       <meta
         name='msapplication-TileImage'
