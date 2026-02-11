@@ -1,4 +1,4 @@
-const getScrollbarWidth = (document) => {
+const getScrollbarWidth = (document: Document) => {
   const outer = document.createElement('div')
   outer.style.visibility = 'hidden'
   outer.style.width = '100px'
@@ -8,7 +8,7 @@ const getScrollbarWidth = (document) => {
   inner.style.width = '100%'
   outer.appendChild(inner)
   const delta = outer.offsetWidth - inner.offsetWidth
-  outer.parentNode.removeChild(outer)
+  outer.parentNode!.removeChild(outer)
   return delta
 }
 

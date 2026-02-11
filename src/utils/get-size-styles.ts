@@ -1,4 +1,4 @@
-const getSizeStyles = (size) => {
+const getSizeStyles = (size: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
   if (!['xs', 'sm', 'md', 'lg', 'xl'].includes(size)) {
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }

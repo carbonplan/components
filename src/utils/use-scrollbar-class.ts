@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import getScrollbarWidth from './get-scrollbar-width'
 
 const useScrollbarClass = () => {
-  const [className, setClassName] = useState(null)
+  const [className, setClassName] = useState<string | null>(null)
 
   useEffect(() => {
     if (document && getScrollbarWidth(document) > 0) {

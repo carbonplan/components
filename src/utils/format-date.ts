@@ -1,15 +1,27 @@
-const defaultOptions = {
+interface FormatDateOptions {
+  month?: string | boolean
+  day?: string | boolean
+  year?: string | boolean
+  separator?: string
+}
+
+const defaultOptions: FormatDateOptions = {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
 }
 
-const formatDateElement = (date, element, option) => {
+const formatDateElement = (
+  date: Date,
+  element: 'month' | 'day' | 'year',
+  option: string | boolean | undefined
+) => {
   if (!option) {
     return null
   }
 
-  const format = typeof option === 'string' ? option : defaultOptions[element]
+  const format =
+    typeof option === 'string' ? option : (defaultOptions[element] as string)
 
   const result = date.toLocaleString('default', {
     [element]: format,
@@ -21,7 +33,10 @@ const formatDateElement = (date, element, option) => {
     return result
   }
 }
-const formatDate = (date, options = defaultOptions) => {
+const formatDate = (
+  date: string,
+  options: FormatDateOptions = defaultOptions
+) => {
   const d = new Date(date.replace(/-/g, '/'))
 
   const month = formatDateElement(d, 'month', options.month)
