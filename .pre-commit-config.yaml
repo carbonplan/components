@@ -31,3 +31,10 @@ repos:
           |md|markdown|mdown|mkdn\
           |mdx\
           )$"
+  - repo: local
+    hooks:
+      - id: typecheck
+        name: typecheck
+        entry: npm run typecheck
+        language: system
+        pass_filenames: false
