@@ -3,8 +3,10 @@ import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
 
-const hasCustomHover = (comp: any): comp is { hover: ThemeUIStyleObject } =>
-  !!comp?.hover
+const hasCustomHover = (
+  comp: unknown
+): comp is { hover: ThemeUIStyleObject } =>
+  comp != null && typeof comp === 'object' && 'hover' in comp
 
 export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -47,49 +49,50 @@ const Button = (
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  let offset, margin, height, width, strokeWidth
-
   const { color, ...sxProp } = sx || {}
 
   const baseColor = color || (inverted ? 'secondary' : 'primary')
   const hoverColor = color ? 'primary' : inverted ? 'primary' : 'secondary'
 
-  if (size === 'xs') {
-    margin = ['6px', '6px', '6px', '6px']
-    height = [12, 12, 12, 13]
-    width = [12, 12, 12, 13]
-    strokeWidth = [1.5, 1.5, 1.5, 1.5]
-    offset = { transform: 'translateY(0.25px)' }
+  const sizeConfig = {
+    xs: {
+      margin: ['6px', '6px', '6px', '6px'],
+      height: [12, 12, 12, 13],
+      width: [12, 12, 12, 13],
+      strokeWidth: [1.5, 1.5, 1.5, 1.5],
+      offset: { transform: 'translateY(0.25px)' },
+    },
+    sm: {
+      margin: ['7px', '7px', '7px', '7px'],
+      height: [13, 13, 13, 18],
+      width: [13, 13, 13, 18],
+      strokeWidth: [1.5, 1.5, 1.5, 2],
+      offset: { transform: 'translateY(0.25px)' },
+    },
+    md: {
+      margin: ['8px', '8px', '8px', '8px'],
+      height: [18, 18, 18, 24],
+      width: [18, 18, 18, 24],
+      strokeWidth: [2, 2, 2, 3],
+      offset: {},
+    },
+    lg: {
+      margin: ['10px', '10px', '12px', '16px'],
+      height: [24, 24, 34, 46],
+      width: [24, 24, 34, 46],
+      strokeWidth: [3, 3, 4, 5],
+      offset: {},
+    },
+    xl: {
+      margin: ['12px', '16px', '18px', '20px'],
+      height: [34, 46, 56, 68],
+      width: [34, 46, 56, 68],
+      strokeWidth: [4, 5, 6, 7],
+      offset: {},
+    },
   }
 
-  if (size === 'sm') {
-    margin = ['7px', '7px', '7px', '7px']
-    height = [13, 13, 13, 18]
-    width = [13, 13, 13, 18]
-    strokeWidth = [1.5, 1.5, 1.5, 2]
-    offset = { transform: 'translateY(0.25px)' }
-  }
-
-  if (size === 'md') {
-    margin = ['8px', '8px', '8px', '8px']
-    height = [18, 18, 18, 24]
-    width = [18, 18, 18, 24]
-    strokeWidth = [2, 2, 2, 3]
-  }
-
-  if (size === 'lg') {
-    margin = ['10px', '10px', '12px', '16px']
-    height = [24, 24, 34, 46]
-    width = [24, 24, 34, 46]
-    strokeWidth = [3, 3, 4, 5]
-  }
-
-  if (size === 'xl') {
-    margin = ['12px', '16px', '18px', '20px']
-    height = [34, 46, 56, 68]
-    width = [34, 46, 56, 68]
-    strokeWidth = [4, 5, 6, 7]
-  }
+  const { margin, height, width, strokeWidth, offset } = sizeConfig[size]
 
   let prefixHover,
     suffixHover,
