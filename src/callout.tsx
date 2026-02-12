@@ -3,12 +3,15 @@ import { Box, ThemeUIStyleObject } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
 import Link from './link'
 
-export interface CalloutProps extends React.AnchorHTMLAttributes<HTMLElement> {
+export interface CalloutProps
+  extends React.AnchorHTMLAttributes<HTMLElement>,
+    Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      keyof React.AnchorHTMLAttributes<HTMLElement>
+    > {
   label: ReactNode
   children: ReactNode
   inverted?: boolean
-  color?: string
-  href?: string
   internal?: boolean
   sx?: ThemeUIStyleObject
 }

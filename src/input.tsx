@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react'
-import { Input as ThemedInput, ThemeUIStyleObject } from 'theme-ui'
+import { Input as ThemedInput } from 'theme-ui'
 import getSizeStyles from './utils/get-size-styles'
 
 export interface InputProps
   extends Omit<React.ComponentPropsWithRef<typeof ThemedInput>, 'size'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   inverted?: boolean
-  sx?: ThemeUIStyleObject
 }
 
 const Input = (

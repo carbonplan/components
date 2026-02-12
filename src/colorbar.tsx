@@ -29,7 +29,6 @@ export interface ColorbarProps extends FlexProps {
   discrete?: boolean
   horizontal?: boolean
   bottom?: boolean
-  sx?: ThemeUIStyleObject
   sxClim?: ThemeUIStyleObject
 }
 const styles = {

@@ -1,14 +1,18 @@
-import React, { ReactNode, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Box, BoxProps, ThemeUIStyleObject } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
 import getSizeStyles from './utils/get-size-styles'
 import getSxColor from './utils/get-sx-color'
 
-export interface SelectProps extends Omit<BoxProps, 'onChange'> {
+export interface SelectProps
+  extends Omit<BoxProps, 'onChange'>,
+    Omit<
+      React.SelectHTMLAttributes<HTMLSelectElement>,
+      keyof BoxProps | 'onChange' | 'size'
+    > {
   size?: 'xs' | 'sm' | 'md'
   sxSelect?: ThemeUIStyleObject
   onChange?: React.ChangeEventHandler<HTMLSelectElement>
-  children: ReactNode
 }
 
 const Select = ({

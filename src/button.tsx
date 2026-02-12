@@ -7,7 +7,12 @@ import getSxColor from './utils/get-sx-color'
 const hasCustomHover = (comp: unknown): comp is { hover: ThemeUIStyleObject } =>
   comp != null && typeof comp === 'object' && 'hover' in comp
 
-export interface ButtonProps extends Omit<BoxProps, 'prefix'> {
+export interface ButtonProps
+  extends Omit<BoxProps, 'prefix'>,
+    Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      keyof BoxProps | 'prefix'
+    > {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   align?:
     | 'baseline'

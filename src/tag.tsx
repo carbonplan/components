@@ -2,7 +2,12 @@ import React from 'react'
 import { Box, BoxProps } from 'theme-ui'
 import getSxColor from './utils/get-sx-color'
 
-export interface TagProps extends BoxProps {
+export interface TagProps
+  extends BoxProps,
+    Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      keyof BoxProps | 'value'
+    > {
   label: BoxProps['aria-label']
   value?: boolean
 }

@@ -3,10 +3,13 @@ import { Box, BoxProps } from 'theme-ui'
 import { transparentize } from '@theme-ui/color'
 import getSxColor from './utils/get-sx-color'
 
-export interface ToggleProps extends Omit<BoxProps, 'value'> {
+export interface ToggleProps
+  extends Omit<BoxProps, 'value'>,
+    Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      keyof BoxProps | 'value'
+    > {
   value?: boolean
-  onClick?: React.MouseEventHandler<HTMLElement>
-  disabled?: boolean
 }
 
 const Toggle = (
