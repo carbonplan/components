@@ -8,9 +8,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "declaration": true,
-    "declarationDir": "./dst/types",
-    "outDir": "./dst",
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
