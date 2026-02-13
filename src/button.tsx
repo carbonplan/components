@@ -4,8 +4,12 @@ import Link, { LinkProps } from './link'
 import getSizeStyles from './utils/get-size-styles'
 import getSxColor from './utils/get-sx-color'
 
-const hasCustomHover = (comp: unknown): comp is { hover: ThemeUIStyleObject } =>
-  comp != null && typeof comp === 'object' && 'hover' in comp
+const hasHoverProp = (comp: unknown): comp is { hover: ThemeUIStyleObject } => {
+  if (comp == null) return false
+  const isObjectOrFunction =
+    typeof comp === 'object' || typeof comp === 'function'
+  return isObjectOrFunction && 'hover' in comp
+}
 
 export interface ButtonProps
   extends Omit<BoxProps, 'prefix'>,
@@ -136,7 +140,7 @@ const Button = (
     prefixHover = {
       '&:hover > #prefix-span > #prefix': {
         color: hoverColor,
-        ...(hasCustomHover(prefix.type) ? prefix.type.hover : {}),
+        ...(hasHoverProp(prefix.type) ? prefix.type.hover : {}),
       },
     }
     clonedPrefix = cloneElement(prefix, {
@@ -158,7 +162,7 @@ const Button = (
     suffixHover = {
       '&:hover > #suffix-span >#suffix': {
         color: hoverColor,
-        ...(hasCustomHover(suffix.type) ? suffix.type.hover : {}),
+        ...(hasHoverProp(suffix.type) ? suffix.type.hover : {}),
       },
     }
     clonedSuffix = cloneElement(suffix, {
