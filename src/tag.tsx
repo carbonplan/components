@@ -8,7 +8,7 @@ export interface TagProps
       React.ButtonHTMLAttributes<HTMLButtonElement>,
       keyof BoxProps | 'value'
     > {
-  label: BoxProps['aria-label']
+  label?: BoxProps['aria-label']
   value?: boolean
 }
 const Tag = ({ label, value, sx, children, ...props }: TagProps) => {
