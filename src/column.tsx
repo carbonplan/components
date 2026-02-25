@@ -1,0 +1,91 @@
+import React from 'react'
+import { Box, BoxProps, ThemeUICSSObject } from 'theme-ui'
+
+export interface ColumnProps extends BoxProps {
+  start?: number | 'auto' | (number | 'auto')[]
+  width?: number | 'auto' | (number | 'auto')[]
+  dl?: 0.5 | 1
+  dr?: 0.5 | 1
+}
+
+type GridValue = number | 'auto'
+
+const Column = ({
+  start,
+  width,
+  dl,
+  dr,
+  children,
+  sx,
+  ...props
+}: ColumnProps) => {
+  start = start || 'auto'
+  width = width || 'auto'
+
+  const makeArray = (input: GridValue | GridValue[]): GridValue[] => {
+    let arr: GridValue[] = Array.isArray(input) ? input : [input]
+
+    if (![1, 2, 4].includes(arr.length)) {
+      throw new Error('Array length must be 1, 2, or 4')
+    }
+
+    if (arr.length === 1) {
+      arr = arr.map((d) => [d, d, d, d]).flat()
+    } else if (arr.length === 2) {
+      arr = arr.map((d) => [d, d]).flat()
+    }
+
+    return arr
+  }
+
+  const startArray = makeArray(start)
+  const widthArray = makeArray(width)
+
+  const end = startArray.map((d, i) => {
+    if (d === 'auto' || widthArray[i] === 'auto') return 'auto'
+    return d + widthArray[i]
+  })
+
+  let ml: ThemeUICSSObject['ml'], mr: ThemeUICSSObject['mr']
+
+  if (dl) {
+    if (![0.5, 1].includes(dl)) {
+      throw new Error('dl must be 0.5 or 1')
+    }
+    if (dl === 0.5) {
+      ml = ['-12px', -3, -3, -4]
+    }
+    if (dl === 1) {
+      ml = [-4, -5, -5, -6]
+    }
+  }
+
+  if (dr) {
+    if (![0.5, 1].includes(dr)) {
+      throw new Error('dr must be 0.5 or 1')
+    }
+    if (dr === 0.5) {
+      mr = ['-12px', -3, -3, -4]
+    }
+    if (dr === 1) {
+      mr = [-4, -5, -5, -6]
+    }
+  }
+
+  return (
+    <Box
+      {...props}
+      sx={{
+        gridColumnStart: startArray,
+        gridColumnEnd: end,
+        ml: ml,
+        mr: mr,
+        ...sx,
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
+
+export default Column
