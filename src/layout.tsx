@@ -121,7 +121,7 @@ const Layout = ({
 
   return (
     <>
-      {typeof guide === 'string' ? <Guide color={guide} /> : guide && <Guide />}
+      {guide && <Guide color={typeof guide === 'string' ? guide : undefined} />}
       {scrollbar && <Scrollbar />}
       <Meta card={card} description={description} title={title} url={url} />
       <Flex

@@ -5,7 +5,7 @@ interface FormatDateOptions {
   separator?: string
 }
 
-const defaultOptions: FormatDateOptions = {
+const defaultOptions = {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
@@ -20,8 +20,7 @@ const formatDateElement = (
     return null
   }
 
-  const format =
-    typeof option === 'string' ? option : (defaultOptions[element] as string)
+  const format = typeof option === 'string' ? option : defaultOptions[element]
 
   const result = date.toLocaleString('default', {
     [element]: format,

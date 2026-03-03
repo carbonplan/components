@@ -52,36 +52,29 @@ const updateValues = <T,>({
   values: FilterProps<T>['values']
   multiSelect: FilterProps<T>['multiSelect']
   setValues: FilterProps<T>['setValues']
-  value: keyof T
+  value: keyof T | 'all'
 }) => {
   const isAllAlreadySelected = isAll(values)
-  const isSelectingAll = value === 'all'
 
   let updatedToggle
 
-  if (multiSelect) {
-    if (isSelectingAll && !isAllAlreadySelected) {
+  if (value === 'all') {
+    if (!isAllAlreadySelected) {
       // select all
       updatedToggle = duplicateOptions(values, true)
-    } else if (isSelectingAll && isAllAlreadySelected) {
+    } else if (multiSelect) {
       // deselect all
       updatedToggle = duplicateOptions(values, false)
-    } else {
-      // de/select value, inherit other values
-      updatedToggle = { ...values, [value]: !values[value] }
     }
+    // else: !multiSelect && isAllAlreadySelected -> do nothing
+  } else if (multiSelect) {
+    // de/select value, inherit other values
+    updatedToggle = { ...values, [value]: !values[value] }
   } else {
-    if (isSelectingAll && !isAllAlreadySelected) {
-      // select all
-      updatedToggle = duplicateOptions(values, true)
-    } else if (isSelectingAll && isAllAlreadySelected) {
-      // do nothing
-    } else {
-      // select only value
-      updatedToggle = duplicateOptions(values, false, {
-        [value]: true,
-      } as Partial<{ [Property in keyof T]: boolean }>)
-    }
+    // select only value
+    updatedToggle = duplicateOptions(values, false, {
+      [value]: true,
+    } as Partial<{ [Property in keyof T]: boolean }>)
   }
 
   if (updatedToggle) {
@@ -120,7 +113,7 @@ const Filter = <T,>({
                 values: values,
                 multiSelect,
                 setValues: setValues,
-                value: 'all' as keyof T,
+                value: 'all',
               })
             }
             value={isAll(values)}

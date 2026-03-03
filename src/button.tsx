@@ -53,8 +53,7 @@ const Button = (
     throw new Error('Size must be xs, sm, md, lg, or xl')
   }
 
-  const { color: sxColor, ...sxProp } =
-    sx && typeof sx === 'object' ? (sx as Record<string, unknown>) : {}
+  const { color: sxColor, ...sxProp } = sx && typeof sx === 'object' ? sx : {}
   const baseColor =
     (typeof sxColor === 'string' && sxColor) ||
     (inverted ? 'secondary' : 'primary')
