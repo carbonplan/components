@@ -219,7 +219,7 @@ const Colorbar = ({
   const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
     y = e.pageY
     x = e.pageX
-    id = (e.target as HTMLDivElement).id
+    id = e.currentTarget.id
     init = clim!
 
     document.body.setAttribute(
