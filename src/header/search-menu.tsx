@@ -161,7 +161,7 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
             Popular resources
           </Box>
         </Column>
-        <Column start={[1, 1, 3, 3]} width={3}>
+        <Column start={[1, 1, 2, 2]} width={3}>
           <Box sx={sx.highlight}>{resources[0].label}</Box>
           {resources[0].links.map(({ label, href }) => (
             <Button
@@ -175,7 +175,7 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
             </Button>
           ))}
         </Column>
-        <Column start={[4, 4, 6, 6]} width={3}>
+        <Column start={[4, 4, 5, 5]} width={3}>
           <Box sx={sx.highlight}>{resources[1].label}</Box>
           {resources[1].links.map(({ label, href }) => (
             <Button
@@ -189,7 +189,7 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
             </Button>
           ))}
         </Column>
-        <Column start={[1, 1, 9, 9]} width={2} sx={{ mt: [0, 4, 0, 0] }}>
+        <Column start={[1, 1, 8, 8]} width={3} sx={{ mt: [0, 4, 0, 0] }}>
           <Box sx={sx.highlight}>{resources[2].label}</Box>
           {resources[2].links.map(({ label, href }) => (
             <Button
