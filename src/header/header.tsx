@@ -157,7 +157,7 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
                 </Box>
               </Column>
             ) : (
-              <Column start={[2]} width={[5, 4, 10, 10]}>
+              <Column start={[1, 2, 2, 2]} width={[6, 6, 10, 10]}>
                 <SearchMenu setExpanded={setSearchExpanded} />
               </Column>
             )}
