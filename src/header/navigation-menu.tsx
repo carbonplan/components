@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { default as NextLink } from 'next/link'
 import { Link, ThemeUIStyleObject } from 'theme-ui'
 import { Arrow } from '@carbonplan/icons'
@@ -107,6 +107,14 @@ interface NavigationMenuProps {
 }
 
 const NavigationMenu = ({ nav, mode, setExpanded }: NavigationMenuProps) => {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setExpanded(false)
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [setExpanded])
+
   return (
     <>
       {links.map((d, i) => (

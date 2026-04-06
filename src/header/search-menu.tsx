@@ -59,7 +59,11 @@ type Resource = {
   links: { href: string; label: string }[]
 }
 
-const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
+const SearchMenu = ({
+  setExpanded,
+}: {
+  setExpanded: (value: boolean) => void
+}) => {
   const [value, setValue] = useState('')
   const [resources, setResources] = useState<Resource[]>(RESOURCES)
   const destination = `/search?query=${value.trim()}`
@@ -79,6 +83,14 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
         setResources(RESOURCES)
       })
   }, [])
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setExpanded(false)
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [setExpanded])
 
   return (
     <>
