@@ -152,11 +152,7 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
         columns={[6, 6, 10, 10]}
         sx={{ display: ['none', 'grid', 'grid', 'grid'] }}
       >
-        <Column
-          start={1}
-          width={5}
-          sx={{ mt: [2, 2, 8, 8], mb: [1, 1, , 6, 6] }}
-        >
+        <Column start={1} width={5} sx={{ mt: [2, 2, 8, 8], mb: [1, 1, 4, 5] }}>
           <Box as='h2' variant='styles.h2' sx={{ my: 0 }}>
             Popular resources
           </Box>
