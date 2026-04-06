@@ -125,6 +125,7 @@ const SearchMenu = ({}: { setExpanded: (value: boolean) => void }) => {
               Search
             </Box>
             <Input
+              autoFocus
               id='search'
               size='xl'
               value={value}

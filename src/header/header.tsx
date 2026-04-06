@@ -140,15 +140,9 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
       >
         <Container>
           <Row>
-            {menuExpanded ? (
+            {menuExpanded && (
               <Column start={[2, 4, 7, 7]} width={[5, 4, 5, 5]}>
-                <Box
-                  as='nav'
-                  sx={{
-                    display: menuExpanded ? 'inherit' : 'none',
-                    mt: [5, 5, 5, 6],
-                  }}
-                >
+                <Box as='nav' sx={{ mt: [5, 5, 5, 6] }}>
                   <NavigationMenu
                     nav={nav}
                     mode={mode}
@@ -156,7 +150,8 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
                   />
                 </Box>
               </Column>
-            ) : (
+            )}
+            {searchExpanded && !menuExpanded && (
               <Column start={[1, 2, 2, 2]} width={[6, 6, 10, 10]}>
                 <SearchMenu setExpanded={setSearchExpanded} />
               </Column>
