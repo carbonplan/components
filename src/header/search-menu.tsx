@@ -71,10 +71,7 @@ const SearchMenu = ({
     fetch('/resources.json')
       .then((res) => res.json())
       .then((res: Resource[]) => {
-        if (
-          res.length === 3 &&
-          res.every((el) => el.label && Array.isArray(el.links))
-        ) {
+        if (res.every((el) => el.label && Array.isArray(el.links))) {
           setResources(res)
         }
       })
@@ -167,52 +164,25 @@ const SearchMenu = ({
           rowGap: [5, 4, 6, 7],
         }}
       >
-        <Column start={[1, 1, 2, 2]} width={[6, 3, 3, 3]}>
-          <Box sx={sx.highlight}>{resources[0].label}</Box>
-          {resources[0].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='md'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
-        <Column start={[1, 4, 5, 5]} width={[6, 3, 3, 3]}>
-          <Box sx={sx.highlight}>{resources[1].label}</Box>
-          {resources[1].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='md'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
-        <Column
-          start={[1, 1, 8, 8]}
-          width={[6, 3, 3, 3]}
-          sx={{ mt: [0, 4, 0, 0] }}
-        >
-          <Box sx={sx.highlight}>{resources[2].label}</Box>
-          {resources[2].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='md'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
+        {resources.map((group, i) => (
+          <Column
+            start={[1, 1 + ((i * 3) % 6), 2 + ((i * 3) % 9), 2 + ((i * 3) % 9)]}
+            width={[6, 3, 3, 3]}
+          >
+            <Box sx={sx.highlight}>{group.label}</Box>
+            {group.links.map(({ label, href }) => (
+              <Button
+                key={href}
+                href={href}
+                size='md'
+                sx={{ mb: [1] }}
+                suffix={<RotatingArrow />}
+              >
+                {label}
+              </Button>
+            ))}
+          </Column>
+        ))}
       </Row>
     </>
   )
