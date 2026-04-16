@@ -45,7 +45,6 @@ const RESOURCES = [
 const sx = {
   highlight: {
     mb: [2, 2, 3, 3],
-    mt: [3, 3, 0, 0],
     fontSize: [3, 3, 3, 4],
     fontFamily: 'heading',
     letterSpacing: 'smallcaps',
@@ -163,14 +162,12 @@ const SearchMenu = ({
 
       <Row
         columns={[6, 6, 10, 10]}
-        sx={{ display: ['none', 'grid', 'grid', 'grid'] }}
+        sx={{
+          mt: [6, 7, 8, 8],
+          rowGap: [5, 4, 6, 7],
+        }}
       >
-        <Column start={1} width={5} sx={{ mt: [2, 2, 8, 8], mb: [1, 1, 4, 5] }}>
-          <Box as='h2' variant='styles.h2' sx={{ my: 0 }}>
-            Popular resources
-          </Box>
-        </Column>
-        <Column start={[1, 1, 2, 2]} width={3}>
+        <Column start={[1, 1, 2, 2]} width={[6, 3, 3, 3]}>
           <Box sx={sx.highlight}>{resources[0].label}</Box>
           {resources[0].links.map(({ label, href }) => (
             <Button
@@ -184,7 +181,7 @@ const SearchMenu = ({
             </Button>
           ))}
         </Column>
-        <Column start={[4, 4, 5, 5]} width={3}>
+        <Column start={[1, 4, 5, 5]} width={[6, 3, 3, 3]}>
           <Box sx={sx.highlight}>{resources[1].label}</Box>
           {resources[1].links.map(({ label, href }) => (
             <Button
@@ -198,64 +195,17 @@ const SearchMenu = ({
             </Button>
           ))}
         </Column>
-        <Column start={[1, 1, 8, 8]} width={3} sx={{ mt: [0, 4, 0, 0] }}>
+        <Column
+          start={[1, 1, 8, 8]}
+          width={[6, 3, 3, 3]}
+          sx={{ mt: [0, 4, 0, 0] }}
+        >
           <Box sx={sx.highlight}>{resources[2].label}</Box>
           {resources[2].links.map(({ label, href }) => (
             <Button
               key={href}
               href={href}
               size='md'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
-      </Row>
-
-      <Row
-        columns={[6, 6, 10, 10]}
-        sx={{ display: ['grid', 'none', 'none', 'none'] }}
-      >
-        <Column start={1} width={6}>
-          <Box as='h2' variant='styles.h3' sx={{ my: 4 }}>
-            Popular resources
-          </Box>
-          <Box sx={sx.highlight}>{resources[0].label}</Box>
-          {resources[0].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='xs'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
-        <Column start={1} width={6}>
-          <Box sx={sx.highlight}>{resources[1].label}</Box>
-          {resources[1].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='xs'
-              sx={{ mb: [1] }}
-              suffix={<RotatingArrow />}
-            >
-              {label}
-            </Button>
-          ))}
-        </Column>
-        <Column start={1} width={6}>
-          <Box sx={sx.highlight}>{resources[2].label}</Box>
-          {resources[2].links.map(({ label, href }) => (
-            <Button
-              key={href}
-              href={href}
-              size='xs'
               sx={{ mb: [1] }}
               suffix={<RotatingArrow />}
             >
