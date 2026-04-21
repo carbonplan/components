@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react'
+import React, { useState, useEffect, ReactNode } from 'react'
 import { default as NextLink } from 'next/link'
 import { Box, Flex, Container, Link } from 'theme-ui'
 import Logo from '../logo'
@@ -20,6 +20,13 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
   const [menuExpanded, setMenuExpanded] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
   const expanded = searchExpanded || menuExpanded
+
+  useEffect(() => {
+    document.body.style.overflow = expanded ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [expanded])
 
   return (
     <Row
@@ -136,6 +143,8 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
           zIndex: 4000,
           pt: ['79px'],
           transition: 'opacity 0.25s',
+          overflowY: 'auto',
+          overscrollBehavior: 'contain',
         }}
       >
         <Container>
