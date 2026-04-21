@@ -168,6 +168,7 @@ const SearchMenu = ({
           <Column
             start={[1, 1 + ((i * 3) % 6), 2 + ((i * 3) % 9), 2 + ((i * 3) % 9)]}
             width={[6, 3, 3, 3]}
+            key={group.label}
           >
             <Box sx={sx.highlight}>{group.label}</Box>
             {group.links.map(({ label, href }) => (
