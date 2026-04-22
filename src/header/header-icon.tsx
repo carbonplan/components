@@ -1,11 +1,18 @@
 import React from 'react'
 import { IconButton, IconButtonProps } from 'theme-ui'
 
-export interface MenuProps extends Omit<IconButtonProps, 'value'> {
+export interface HeaderIconProps extends Omit<IconButtonProps, 'value'> {
   value?: boolean
+  label?: string
 }
 
-const Menu = ({ value, sx, ...props }: MenuProps) => {
+const HeaderIcon = ({
+  label = 'Toggle Menu',
+  children,
+  value,
+  sx,
+  ...props
+}: HeaderIconProps) => {
   return (
     <IconButton
       sx={{
@@ -23,7 +30,7 @@ const Menu = ({ value, sx, ...props }: MenuProps) => {
         },
         ...sx,
       }}
-      aria-label='Toggle Menu'
+      aria-label={label}
       {...props}
     >
       {!value && (
@@ -37,9 +44,7 @@ const Menu = ({ value, sx, ...props }: MenuProps) => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 68 36'
         >
-          <line x1='52' y1='29.9' x2='16' y2='29.9' />
-          <line x1='52' y1='6.1' x2='16' y2='6.1' />
-          <line x1='52' y1='18' x2='16' y2='18' />
+          {children}
           <path
             style={{ transition: 'all 0.2s' }}
             className='paren'
@@ -81,4 +86,4 @@ const Menu = ({ value, sx, ...props }: MenuProps) => {
   )
 }
 
-export default Menu
+export default HeaderIcon
