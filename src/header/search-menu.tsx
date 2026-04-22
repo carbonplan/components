@@ -68,7 +68,7 @@ const SearchMenu = ({
   const destination = `/search?query=${encodeURIComponent(value.trim())}`
 
   useEffect(() => {
-    fetch('/resources.json')
+    fetch('https://carbonplan.org/resources.json')
       .then((res) => res.json())
       .then((res: Resource[]) => {
         if (res.every((el) => el.label && Array.isArray(el.links))) {
