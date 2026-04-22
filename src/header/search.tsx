@@ -5,7 +5,7 @@ import HeaderIcon, { HeaderIconProps } from './header-icon'
 const Search = (props: HeaderIconProps) => {
   return (
     <HeaderIcon {...props} label='Toggle Search'>
-      <SearchIcon width={50} height={30} x={8} />
+      <SearchIcon width={50} height={30} x={8} y={1} />
     </HeaderIcon>
   )
 }
