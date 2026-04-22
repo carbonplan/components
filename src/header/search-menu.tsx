@@ -65,7 +65,7 @@ const SearchMenu = ({
 }) => {
   const [value, setValue] = useState('')
   const [resources, setResources] = useState<Resource[]>(RESOURCES)
-  const destination = `/search?query=${value.trim()}`
+  const destination = `/search?query=${encodeURIComponent(value.trim())}`
 
   useEffect(() => {
     fetch('/resources.json')
