@@ -162,7 +162,7 @@ const Header = ({ status, mode, nav, menuItems }: HeaderProps) => {
             )}
             {searchExpanded && !menuExpanded && (
               <Column start={[1, 2, 2, 2]} width={[6, 6, 10, 10]}>
-                <SearchMenu setExpanded={setSearchExpanded} />
+                <SearchMenu mode={mode} setExpanded={setSearchExpanded} />
               </Column>
             )}
           </Row>

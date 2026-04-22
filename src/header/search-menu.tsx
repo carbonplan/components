@@ -60,15 +60,20 @@ type Resource = {
 
 const SearchMenu = ({
   setExpanded,
+  mode,
 }: {
   setExpanded: (value: boolean) => void
+  mode?: 'homepage' | 'local' | 'remote'
 }) => {
   const [value, setValue] = useState('')
   const [resources, setResources] = useState<Resource[]>(RESOURCES)
-  const destination = `/search?query=${encodeURIComponent(value.trim())}`
+  const baseUrl = mode === 'remote' ? 'https://carbonplan.org' : ''
+  const destination = `${baseUrl}/search?query=${encodeURIComponent(
+    value.trim()
+  )}`
 
   useEffect(() => {
-    fetch('https://carbonplan.org/resources.json')
+    fetch(`${baseUrl}/resources.json`)
       .then((res) => res.json())
       .then((res: Resource[]) => {
         if (res.every((el) => el.label && Array.isArray(el.links))) {
