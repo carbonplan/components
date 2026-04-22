@@ -30,7 +30,7 @@ const FadeIn = ({
         animationDelay: delay + 'ms',
         animationName: fade.toString(),
         animationFillMode: 'backwards',
-        WebkitTransform: 'translateZ(0)',
+        willChange: 'opacity',
       }}
     >
       {children}
